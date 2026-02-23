@@ -11,15 +11,54 @@ export interface Article {
   readingTime?: string
 }
 
-// Category display order
-export const categoryOrder = [
-  'Fundamentals',
-  'Clinical Practice',
-  'Research Synthesis',
-  'Women\'s Health',
-  'Clinical Reference',
-  'Practice & Philosophy',
+export interface CategoryMeta {
+  name: string
+  slug: string
+  description: string
+  icon: string // SVG path data for a 24x24 viewBox
+}
+
+export const categoryMeta: CategoryMeta[] = [
+  {
+    name: 'Fundamentals',
+    slug: 'fundamentals',
+    description: 'Foundation courses in cannabis science, the endocannabinoid system, and core pharmacology.',
+    icon: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+  },
+  {
+    name: 'Clinical Practice',
+    slug: 'clinical-practice',
+    description: 'Consultation frameworks, prescribing protocols, and patient care fundamentals.',
+    icon: 'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4',
+  },
+  {
+    name: 'Research Synthesis',
+    slug: 'research-synthesis',
+    description: 'Peer-reviewed research syntheses on advanced pharmacology and adaptive prescribing.',
+    icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2zm4-8v2m-2-1h4',
+  },
+  {
+    name: 'Women\'s Health',
+    slug: 'womens-health',
+    description: 'Menopause, hormonal transition, and endocannabinoid-mediated care.',
+    icon: 'M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z',
+  },
+  {
+    name: 'Clinical Reference',
+    slug: 'clinical-reference',
+    description: 'Comprehensive lookup references, databases, and clinical tools.',
+    icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4',
+  },
+  {
+    name: 'Practice & Philosophy',
+    slug: 'practice-philosophy',
+    description: 'Frameworks for integrative, relational, and transformative clinical practice.',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
+  },
 ]
+
+// Category display order (derived from metadata)
+export const categoryOrder = categoryMeta.map(c => c.name)
 
 export const articles: Article[] = [
   // ── Fundamentals ──
@@ -158,13 +197,17 @@ export const articles: Article[] = [
 ]
 
 // Group articles by category in display order
-export function getArticlesByCategory(): { category: string; articles: Article[] }[] {
-  return categoryOrder
-    .map(cat => ({
-      category: cat,
-      articles: articles.filter(a => a.category === cat),
+export function getArticlesByCategory(): { meta: CategoryMeta; articles: Article[] }[] {
+  return categoryMeta
+    .map(meta => ({
+      meta,
+      articles: articles.filter(a => a.category === meta.name),
     }))
     .filter(group => group.articles.length > 0)
+}
+
+export function getCategoryBySlug(slug: string): CategoryMeta | undefined {
+  return categoryMeta.find(c => c.slug === slug)
 }
 
 export const categories = ['All', ...categoryOrder.filter(cat => articles.some(a => a.category === cat))]
