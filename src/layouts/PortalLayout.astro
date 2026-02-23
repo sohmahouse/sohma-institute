@@ -1,6 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro'
-import PasswordGate from '../components/PasswordGate.astro'
 import sohmaLogo from '../assets/images/sohma_house_logo_mockup.svg?raw'
 
 interface TocItem {
@@ -41,7 +40,6 @@ const articles = [
 ---
 
 <BaseLayout title={title} description={description}>
-  <PasswordGate password="sohmapractitioner" storageKey="sohma-portal" />
 
   <div class="portal-layout">
     <!-- Mobile header -->
