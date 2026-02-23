@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro'
 import sohmaLogo from '../assets/images/sohma_house_logo_mockup.svg?raw'
+import { articles } from '../data/articles'
 
 interface TocItem {
   id: string
@@ -16,27 +17,6 @@ interface Props {
 }
 
 const { title, description, toc, activeArticle } = Astro.props
-
-const articles = [
-  {
-    slug: 'adaptive-prescribing-ecs',
-    title: 'The Endocannabinoid System Across the Hormonal Cycle',
-    category: 'Clinical Protocols',
-    author: 'Cam Rosin, RN',
-  },
-  {
-    slug: 'terpene-bible',
-    title: 'The Terpene Bible',
-    category: 'Clinical Reference',
-    author: 'Cam Rosin, RN',
-  },
-  {
-    slug: 'providing-cannabis-care',
-    title: 'Providing Cannabis Care',
-    category: 'Clinical Fundamentals',
-    author: 'Cam Rosin, RN',
-  },
-]
 ---
 
 <BaseLayout title={title} description={description}>
