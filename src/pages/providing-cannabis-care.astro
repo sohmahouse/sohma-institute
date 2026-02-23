@@ -1,0 +1,1430 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro'
+
+const toc = [
+  { id: 'getting-started', label: 'Getting Started in Cannabis Care', level: 1 },
+  { id: 'eligibility', label: 'Eligibility and Suitability', level: 1 },
+  { id: 'conducting-consult', label: 'Conducting a Cannabis Consult', level: 1 },
+  { id: 'history-taking', label: 'Important Aspects of History Taking', level: 1 },
+  { id: 'history-primary', label: 'Primary Condition', level: 2 },
+  { id: 'history-comorbid', label: 'Comorbid Health Conditions', level: 2 },
+  { id: 'history-cannabis-exp', label: 'Past Cannabis Experience', level: 2 },
+  { id: 'history-objectives', label: 'Objectives and Consent', level: 2 },
+  { id: 'contraindications', label: 'Contraindications and Warnings', level: 1 },
+  { id: 'contra-allergy', label: 'Allergy', level: 2 },
+  { id: 'contra-psychosis', label: 'Schizophrenia / Psychosis', level: 2 },
+  { id: 'contra-anxiety', label: 'Anxiety Disorders', level: 2 },
+  { id: 'contra-cardiac', label: 'Unstable Heart Disease', level: 2 },
+  { id: 'contra-falls', label: 'Falls Risk', level: 2 },
+  { id: 'contra-addiction', label: 'Drug Use Disorder', level: 2 },
+  { id: 'contra-renal', label: 'Renal and Liver Disease', level: 2 },
+  { id: 'contra-pregnancy', label: 'Pregnancy and Breastfeeding', level: 2 },
+  { id: 'contra-immunotherapy', label: 'Cancer Immunotherapies', level: 2 },
+  { id: 'drug-interactions', label: 'Cannabis Drug Interactions', level: 1 },
+  { id: 'finding-products', label: 'Finding Suitable Products', level: 1 },
+  { id: 'delivery-methods', label: 'Preparations and Delivery Methods', level: 1 },
+  { id: 'dosage-titration', label: 'Dosage, Titration and Therapeutic Window', level: 1 },
+  { id: 'dosage-cbd', label: 'CBD Predominant Medication', level: 2 },
+  { id: 'dosage-combination', label: 'Combination Products', level: 2 },
+  { id: 'dosage-thc', label: 'THC Predominant Medication', level: 2 },
+  { id: 'dosage-initiation', label: 'Initiation and Sensitisation', level: 2 },
+  { id: 'dosage-window', label: 'Therapeutic Window', level: 2 },
+  { id: 'dosage-tolerance', label: 'Tolerance Breaks', level: 2 },
+  { id: 'dosage-layering', label: 'Layering Medications', level: 2 },
+  { id: 'dosage-administering', label: 'Administering Cannabis Medications', level: 2 },
+  { id: 'side-effects', label: 'Managing Side Effects', level: 1 },
+  { id: 'patient-management', label: 'Patient Management and Follow Up', level: 1 },
+  { id: 'self-medicating', label: 'Prescribing to Self-Medicating Patients', level: 1 },
+  { id: 'de-prescribing', label: 'De-prescribing Conventional Medications', level: 1 },
+  { id: 'optimising-outcomes', label: 'Optimising Outcomes', level: 1 },
+  { id: 'optimising-pea', label: 'Palmitoylethanolamide (PEA)', level: 2 },
+  { id: 'optimising-supplements', label: 'Supplements and Other', level: 2 },
+  { id: 'optimising-adaptogens', label: 'Adaptogenic Herbs and Mushrooms', level: 2 },
+  { id: 'clinical-pearls', label: 'Condition-Specific Clinical Pearls', level: 1 },
+  { id: 'pearls-mental-health', label: 'Mental Health', level: 2 },
+  { id: 'pearls-sleep', label: 'Sleep Related Issues', level: 2 },
+  { id: 'pearls-pain', label: 'Chronic Pain', level: 2 },
+  { id: 'pearls-cancer', label: 'Cannabis and Cancer Care', level: 2 },
+  { id: 'pearls-neuro', label: 'Neurological Conditions', level: 2 },
+  { id: 'pearls-gi', label: 'Gastrointestinal Disorders', level: 2 },
+  { id: 'pearls-asd', label: 'ASD', level: 2 },
+]
+---
+
+<PortalLayout
+  title="Providing Cannabis Care"
+  description="Fundamentals for Clinical Practice"
+  toc={toc}
+  activeArticle="providing-cannabis-care"
+>
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="reading-progress"></div>
+  </div>
+
+  <article class="whitepaper">
+    <header class="wp-header">
+      <div class="wp-header-blob"></div>
+      <nav class="wp-breadcrumbs">
+        <a href="/">Sohma Institute</a>
+        <span class="wp-breadcrumb-sep">&rsaquo;</span>
+        <a href="/">Clinical Fundamentals</a>
+      </nav>
+      <h1 class="wp-title">Providing Cannabis Care</h1>
+      <p class="wp-subtitle">Fundamentals for Clinical Practice</p>
+
+      <div class="wp-byline">
+        <div class="wp-byline-row">
+          <div class="wp-author-photo">
+            <img src="/images/team/cam-rosin-portrait.jpg" alt="Cam Rosin" width="92" height="92" loading="eager" decoding="async" />
+          </div>
+          <div class="wp-author-info">
+            <p class="wp-author-name">Cameron Rosin, RN</p>
+            <p class="wp-author-role">Specialist Cannabis Nurse Educator</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wp-body">
+
+      <!-- Getting Started in Cannabis Care -->
+      <section id="getting-started" class="wp-section">
+        <span class="wp-section-number">Section 01</span>
+        <h2 class="wp-section-heading">Getting Started in Cannabis Care</h2>
+
+        <ol class="wp-overview-list">
+          <li>
+            <strong>Don't be afraid but still maintain caution:</strong> Cannabis is a very safe medicine. CBD has nil toxicity and THC's LD50 is practically impossible to consume without forced administration. This does not mean that THC has nil toxicity, as a THC 'overdose' can be extremely unpleasant with extreme anxiety, paranoia, N&amp;V and motor disturbance. Carefully check for contraindications and consider medication interactions before prescribing.
+          </li>
+          <li>
+            <strong>Start low and go slow:</strong> start at subtherapeutic doses and work your way up in a slow and mindful manner. Once at a therapeutic dose THC based medications work very quickly, while CBD preparations can take up to 4 weeks to notice maximal effect. For patients who have previously experienced anxiety with THC then use CBD predominant medications or if THC is indicated then pair with CBD to reduce potential negative effects and start at extremely low doses.
+          </li>
+          <li>
+            <strong>Empower patients:</strong> by getting them to engage in self reflection, keep journals and make their own adjustments based on how they are feeling. It is important to remember the patient is the most important member of the team.
+          </li>
+          <li>
+            <strong>Less can be more:</strong> there is a bidirectional nature with THC. This means that more up until a certain point is more effective but once you go past your optimal dose then you are more likely to experience intoxication and side effects without getting increasing benefit. CBD can have multiphasic effects as well and more does not always make it more effective.
+          </li>
+          <li>
+            <strong>Always consider the ECS:</strong> using cannabis as a medicine should be upregulating and supporting this system. Tolerance to beneficial effects is a sign that the ECS is becoming downregulated. Instead of increasing medication have a tolerance break instead.
+          </li>
+          <li>
+            <strong>Tolerance to side effects:</strong> can develop long before tolerance to beneficial effects. If a patient is experiencing side effects prior to receiving beneficial effects, stay on the maximum tolerated dose for 1&ndash;2 weeks and then increase once more. This can often be done with minimal ongoing side effects.
+          </li>
+          <li>
+            <strong>Cannabis as a functional medicine:</strong> cannabis can be a powerful catalyst for change however getting patients relief is just the first step in improving their health. Getting them to engage in health promoting activities, having clear functional goals and setting intentions will optimise results and reduce the risk of problematic use. Also think of the functional needs of differing times of day i.e. clear headed and uplifting for daytime; sedating, relaxing and relieving at night.
+          </li>
+          <li>
+            <strong>Utilise the complexity of the plant:</strong> consider the terpenes and minor cannabinoids. Don't be afraid to use multiple formulations and delivery formats. I find most people get the best relief with a layered approach to prescribing, this often includes separate long acting formulations for day and night and inhaled cannabis for breakthrough symptoms.
+          </li>
+          <li>
+            <strong>Listen to the patient:</strong> cannabis is a very personalised medicine with large interpersonal variability. Some people respond exceptionally well to treatments at low doses and other patients with similar symptoms will have minimal response or intolerable side effects. Changing the profile of the minor constituents of the medicine can make a big difference.
+          </li>
+        </ol>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Eligibility and Suitability -->
+      <section id="eligibility" class="wp-section">
+        <span class="wp-section-number">Section 02</span>
+        <h2 class="wp-section-heading">Eligibility and Suitability</h2>
+
+        <p>
+          To be eligible for medicinal cannabis, patients must have experienced a chronic condition or symptom lasting three months or longer that either hasn't responded positively to traditional treatments, or those treatments have resulted in intolerable side effects.
+        </p>
+        <p>
+          The patients do not need to have exhausted all treatment options, but they do need to have been discussed or considered prior to accessing cannabis therapies.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Conducting a Cannabis Consult -->
+      <section id="conducting-consult" class="wp-section">
+        <span class="wp-section-number">Section 03</span>
+        <h2 class="wp-section-heading">Conducting a Medicinal Cannabis Consult</h2>
+
+        <p>
+          Cannabis consultations are not significantly different from a normal consultation. Taking a thorough history is important and exploring all areas that are causing dysfunction gives you the best opportunity to find a combination of products that improves a patient's QOL and minimises the chance of significant side effects.
+        </p>
+        <p>
+          Cannabis isn't always the most powerful tool for a single symptom but it can often improve the primary complaint as well as improving sleep, reducing stress, improving mood, aiding digestion, reducing inflammation, improving skin etc. By improving all of these areas even if just a little it can have a major functional impact on someone's QOL.
+        </p>
+        <p>
+          The main differences with a medical cannabis consultation compared to a conventional consultation with a new patient is discussing the unique legal and prescription aspects of prescribing medical cannabis as well as providing education around the ECS and cannabis as a medicine.
+        </p>
+        <p>
+          Another specific focus is information around patients past experience with cannabis. This will often inform which treatments you might start with i.e. someone self medicating with THC vs someone with past anxiety from THC vs complete novice.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Important Aspects of History Taking -->
+      <section id="history-taking" class="wp-section">
+        <span class="wp-section-number">Section 04</span>
+        <h2 class="wp-section-heading">Important Aspects of History Taking</h2>
+
+        <p>
+          <strong>Eligibility</strong> &mdash; condition &gt;3 months, non-responsive to conventional medicines or experienced intolerable side effects from other treatments. Note: previous treatments can include OTC treatments or lifestyle, dietary and behavioural modifications. It is important to clarify that the patient did not have to have tried all available treatments, but should have considered them.
+        </p>
+
+        <!-- Primary Condition -->
+        <h3 id="history-primary" class="wp-subsection-heading">Primary Condition / Presenting Complaint</h3>
+
+        <p>
+          Make sure of appropriate diagnostic work up as we don't want to mask symptoms of something sinister that needs timely intervention. Don't want cannabis to take the place of more appropriate medication.
+        </p>
+
+        <ul>
+          <li>Timing / duration</li>
+          <li>Severity</li>
+          <li>Location</li>
+          <li>Character</li>
+          <li>Associated features</li>
+          <li>What makes it better</li>
+          <li>What makes it worse</li>
+          <li>Progression of symptoms</li>
+          <li>Diagnosis</li>
+          <li>Current treatments</li>
+          <li>Previously trialled treatments</li>
+          <li>Other members of healthcare team</li>
+          <li>Hardest parts of condition to deal with</li>
+          <li>Impact on ADLs, relationships, work, sense of self</li>
+        </ul>
+
+        <p>
+          <strong>Medications and natural therapies:</strong> Length of time that the failed treatment options were trialled. Reasons for ceasing the treatment options that have failed.
+        </p>
+
+        <p>
+          <strong>Secondary features:</strong> Sleep, stress, digestion, mood, motivation, infections. Looking for ECS dysfunction.
+        </p>
+
+        <!-- Comorbid Health Conditions -->
+        <h3 id="history-comorbid" class="wp-subsection-heading">Comorbid Health Conditions</h3>
+
+        <p>Looking for contraindications, interactions and cautions:</p>
+
+        <ul>
+          <li>Cardiovascular disease or other severe cardiac conditions</li>
+          <li>Falls risk</li>
+          <li>Drug dependency issue</li>
+          <li>Pregnant / breastfeeding / planning on becoming pregnant</li>
+          <li>End organ disease</li>
+          <li>Family history of significant mental illness</li>
+          <li>Suspected or confirmed personal history with mental illness, specifically schizophrenia</li>
+          <li>Drug / ETOH use disorders</li>
+        </ul>
+
+        <p>
+          <strong>Current medications and supplements:</strong> keeping in mind potential interactions.
+        </p>
+
+        <!-- Past Cannabis Experience -->
+        <h3 id="history-cannabis-exp" class="wp-subsection-heading">Past Cannabis Experience</h3>
+
+        <ul>
+          <li>Experience</li>
+          <li>Type, duration, effects</li>
+          <li>Sensitivity to THC?</li>
+        </ul>
+
+        <p>
+          <strong>Social History:</strong> Roles, responsibilities, dependents.
+        </p>
+
+        <!-- Objectives and Consent -->
+        <h3 id="history-objectives" class="wp-subsection-heading">Objectives and Consent</h3>
+
+        <ul>
+          <li>Expectations</li>
+          <li>Goals</li>
+          <li>Question: "What does being unencumbered by their condition look like to them?"</li>
+        </ul>
+
+        <p>
+          <strong>Goal setting:</strong> Realistic, patient driven, functional (not about the symptom).
+        </p>
+
+        <p>
+          <strong>Understanding around cannabis as a medicine:</strong> Assess baseline knowledge and provide appropriate education.
+        </p>
+
+        <p>
+          <strong>Consent:</strong> Understand driving, unapproved nature of medicine, costs, follow up, potential side effects.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Contraindications and Warnings -->
+      <section id="contraindications" class="wp-section">
+        <span class="wp-section-number">Section 05</span>
+        <h2 class="wp-section-heading">Contraindications, Interactions and Warnings</h2>
+
+        <!-- Allergy -->
+        <h3 id="contra-allergy" class="wp-subsection-heading">Allergy to Cannabis or Constituents in Formulations</h3>
+
+        <p>
+          Rare but can happen. Can have reactions to carrier oil especially sesame oil in a few products. Some particular terpenes can cause side effects for individuals.
+        </p>
+
+        <!-- Schizophrenia / Psychosis -->
+        <h3 id="contra-psychosis" class="wp-subsection-heading">Schizophrenia or Previous Psychosis</h3>
+
+        <p>
+          <em>Note: this is relevant to THC, not CBD. CBD itself is being studied for its potential application as an antipsychotic medication.</em>
+        </p>
+
+        <!-- Anxiety Disorders -->
+        <h3 id="contra-anxiety" class="wp-subsection-heading">Anxiety Disorders (excluding PTSD)</h3>
+
+        <p>
+          The right dose of THC can have significant anxiolytic effects. The wrong dose can worsen anxiety in susceptible individuals. This is due to the bidirectional nature of THC. In the case of anxiety disorders, slower titration protocols are recommended and pairing THC with CBD can widen the therapeutic window and reduce anxiogenic properties of THC.
+        </p>
+
+        <!-- Unstable Heart Disease -->
+        <h3 id="contra-cardiac" class="wp-subsection-heading">Unstable Heart Disease</h3>
+
+        <p>
+          Increased risk of MI after having high dose THC due to the potential induction of tachycardia and subsequent drop in blood pressure, however the actual size of the infarct is reduced due to the cardioprotective nature of cannabinoids.
+        </p>
+
+        <p>Extreme caution is recommended for patients with:</p>
+        <ul>
+          <li>Unstable angina</li>
+          <li>Difficulty walking up two flights of stairs without experiencing chest pain or significant SOB</li>
+          <li>Ejection fraction &lt;20%</li>
+          <li>Dangerous arrhythmia</li>
+        </ul>
+
+        <!-- Falls Risk -->
+        <h3 id="contra-falls" class="wp-subsection-heading">Falls Risk</h3>
+
+        <p>
+          Due to THC's potential to cause motor or cognitive dysfunction, especially with high dose. THC can also cause hypotension so beware patients with postural hypotension. Advise at risk patients to be extra cautious during nocturnal waking to go to bathroom etc.
+        </p>
+
+        <!-- Drug Use Disorder -->
+        <h3 id="contra-addiction" class="wp-subsection-heading">Previous Drug Use Disorder (Addictive Potential of Cannabis)</h3>
+
+        <p>
+          THC predominant medications do have low addictive potential. Reported levels of addiction are between 7&ndash;9% in recreational uses. This is much lower than caffeine, alcohol, cigarettes, benzodiazepines and opioids but still needs to be considered when choosing therapies.
+        </p>
+        <p>
+          Addiction is much more likely to occur in adolescents as the brain is still maturing and in those using concentrates or high percentage THC whole flower via the inhaled route. The inhaled route is more likely to cause addiction due to the instant gratification consumers get which can activate reward pathways. If addiction does occur then withdrawals are unpleasant but mild compared to many other drugs, often quoted as being similar physical symptoms to withdrawing from caffeine.
+        </p>
+        <p>
+          When used appropriately, with intentions aimed at managing symptoms rather than intoxication cannabis has very low likelihood of addiction and abuse especially in more mature patients. The Sativex (1:1 ratio CBD:THC) trials which are the largest cumulative trials using cannabis to date showed no evidence of abuse or addiction in any of the patients being treated.
+        </p>
+
+        <!-- Renal and Liver Disease -->
+        <h3 id="contra-renal" class="wp-subsection-heading">Renal and Liver Disease</h3>
+
+        <p>
+          <strong>End stage renal disease:</strong> Although cannabis is predominantly metabolised by the liver, closer monitoring is warranted in patients with CRF (Chronic renal failure). Patients with CRF are often taking multiple medications which already require dose adjustments based on GFR. Cannabis can interact with medications due to common pathways of metabolism in the liver potentially altering concentrations of these other drugs. Patients may need further adjustment of these medications to maintain safe levels.
+        </p>
+
+        <p>
+          <strong>Liver disease:</strong> CB1 activation is pro-fibrotic, whilst CB2 activation is anti-fibrotic. Therefore, if the use of THC is clinically justified in a patient experiencing liver disease, it is recommended to utilise CBD alongside THC to mitigate THC's potential pro-fibrotic effects. Also it is important to check for drug interactions that may cause liver toxicity in these patients.
+        </p>
+
+        <!-- Pregnancy and Breastfeeding -->
+        <h3 id="contra-pregnancy" class="wp-subsection-heading">Pregnancy and Breastfeeding</h3>
+
+        <p>
+          Limited clinical evidence surrounding THC's safety in pregnancy and breastfeeding. Epidemiological studies indicate that THC is likely safe when used in controlled and monitored doses, however the ECS is extremely important in foetal development and potential disruption by excessive use of THC could lead to future ECS dysregulation.
+        </p>
+
+        <!-- Cancer Immunotherapies -->
+        <h3 id="contra-immunotherapy" class="wp-subsection-heading">Cancer Immunotherapies</h3>
+
+        <p>
+          Due to the specific immune mediated response caused by these medications and their efficacy as potentially life saving treatments for cancer, cannabis as an immune modulator can potentially reduce the effectiveness of these treatments. This has been shown specifically with PD-1 inhibitors. If cannabis is warranted because the severity of the side effects caused by the treatment would otherwise mean they could no longer have the therapy, use the lowest effective dose for shortest duration. Try not to use any cannabis preparations for 2 days prior and a week after receiving immunotherapy.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Cannabis Drug Interactions -->
+      <section id="drug-interactions" class="wp-section">
+        <span class="wp-section-number">Section 06</span>
+        <h2 class="wp-section-heading">Cannabis Drug Interactions</h2>
+
+        <p>
+          Cannabis medicines like many medications and other substances are metabolised in the liver by cytochrome P450 enzymes. Most drug interactions occur due to inhibition of 2C9, 2C19 &amp; 3A4 isoforms. CBD and THC affect these enzymatic pathways differently with most significant drug interactions occurring with CBD.
+        </p>
+        <p>
+          Even though there is theoretically a large number of medications cannabis can interact with most of these aren't clinically relevant with normal dosing regimens seen in practice and would only occur with supratherapeutic doses of cannabinoids.
+        </p>
+
+        <blockquote class="wp-callout">
+          <p><strong>Cannabis DDIs that are most concerning include those with medications that have the potential for toxic side effects, have a narrow therapeutic window or are potentially life saving:</strong></p>
+          <ul>
+            <li><strong>Warfarin:</strong> CBD increases INR &rarr; needs closer monitoring</li>
+            <li><strong>Clobazam:</strong> increase in N-desmethylclobazam which can lead to excessive sedation. However combination of CBD and clobazam does have greater efficacy for treatment resistant epilepsy.</li>
+            <li><strong>Antiepileptics:</strong> Can increase levels of many AEDs but not outside of the therapeutic window of these medications.</li>
+            <li><strong>Sodium Valproate:</strong> Increase the chance of LFT derangement therefore needs closer monitoring.</li>
+            <li><strong>Tacrolimus:</strong> Increases levels of tacrolimus outside of therapeutic window which can cause toxicity.</li>
+            <li><strong>Tamoxifen:</strong> Increased level of medication.</li>
+            <li><strong>Clopidogrel:</strong> Reduces antiplatelet activity of clopidogrel; may need additional antiplatelet medications added if at high risk of clotting.</li>
+            <li><strong>Amiodarone:</strong> Increased levels of amiodarone leading to potential for increase in toxic effects.</li>
+            <li><strong>Statins:</strong> Can lead to increased levels of certain statins increasing the potential of statin induced side effects like myopathy or LFT derangement. Pravastatin is metabolised through other pathways and is safe to use with cannabis; other statins may need to have the dose reduced.</li>
+            <li><strong>Cancer immunotherapies:</strong> Cannabis as an immune modulator can potentially reduce the effectiveness of these treatments.</li>
+          </ul>
+        </blockquote>
+
+        <p>
+          <strong>Cannabinoid concentration:</strong> Medications that affect the level of CBD are generally of nil concern but those that can increase the effects of THC need to be considered. Pharmacodynamic effects can occur with opioids, benzodiazepines and other CNS depressants leading to increased falls risk and sedation. Pharmacokinetic effects with azole antifungals can lead to an increase in THC therefore causing an exaggerated effect.
+        </p>
+
+        <p>
+          It is difficult to remember all of the potential medication interactions as many medications are metabolised through the Cyt P450 enzymes. Therefore it is prudent to use an online drug interaction checker to check for clinically significant DDIs.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Finding Suitable Products -->
+      <section id="finding-products" class="wp-section">
+        <span class="wp-section-number">Section 07</span>
+        <h2 class="wp-section-heading">Finding Suitable Products</h2>
+
+        <p>
+          In Australia, currently there are over 300 different formulations available to prescribers. These have been divided into categories by the TGA based on the percentage of CBD in the product. All cannabinoids that are not CBD are lumped together however they can have very different therapeutic effects.
+        </p>
+
+        <p><strong>TGA Categories (by percentage of CBD):</strong></p>
+        <ul>
+          <li>0% CBD = Category 5</li>
+          <li>2% CBD = Category 4</li>
+          <li>40% CBD = Category 3</li>
+          <li>60% CBD = Category 2</li>
+          <li>98% CBD = Category 1</li>
+        </ul>
+
+        <p><strong>Products come in many different forms:</strong></p>
+        <ul>
+          <li>Capsules and softgels</li>
+          <li>Oil based tinctures</li>
+          <li>Oromucosal sprays</li>
+          <li>Whole flower for vaporisation</li>
+          <li>Bubble hash for vaporisation</li>
+          <li>Vape cartridges for inhalation</li>
+        </ul>
+
+        <p>
+          Despite this many products are very similar in their cannabinoid profile, their extraction techniques, carrier oil and effects. Considering there is just a vast array of potential combinations of cannabinoids and other constituents that create unique formulations there is still very little product differentiation on the Australian market.
+        </p>
+
+        <p>
+          When choosing products it needs to be tailored to the patient's needs and unique set of circumstances, including employment and driving due to legalities around THC. It is often a case of balancing priorities as well between functionality, cost effectiveness, efficacy and risk aversion. Adding in THC generally increases the cost effectiveness and efficacy but can cause functional impairment in susceptible individuals and increases risk of side effects and other legal issues.
+        </p>
+
+        <p>
+          Most patients we see are relatively complex and will have different needs through the day and at night with symptoms that vary in intensity. For this reason many patients need multiple products that they use at varying times of day and often a combination of long and short acting medications.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Preparations and Delivery Methods -->
+      <section id="delivery-methods" class="wp-section">
+        <span class="wp-section-number">Section 08</span>
+        <h2 class="wp-section-heading">Cannabis Preparations and Delivery Methods</h2>
+
+        <ul>
+          <li>Oils</li>
+          <li>Flower</li>
+          <li>Sprays</li>
+          <li>Capsules</li>
+          <li>Vape cartridges</li>
+        </ul>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Dosage, Titration and Therapeutic Window -->
+      <section id="dosage-titration" class="wp-section">
+        <span class="wp-section-number">Section 09</span>
+        <h2 class="wp-section-heading">Dosage, Titration and Therapeutic Window</h2>
+
+        <!-- CBD Predominant Medication -->
+        <h3 id="dosage-cbd" class="wp-subsection-heading">CBD Predominant Medication</h3>
+
+        <p>
+          Very safe and well tolerated even at extremely high doses. CBD is non intoxicating and non impairing and has a wide range of clinical applications. CBD is a promiscuous molecule and preclinical studies have shown activity at approximately 65 different receptors, enzymes and neurotransmitters across the body. CBD activates different pathways in a dose dependent manner, therefore for most people increasing dose improves effectiveness of the medication. However in some instances there has been reported multiphasic responses to CBD so it is worth exploring a range of doses.
+        </p>
+        <p>
+          The main limiting factor for many patients with CBD is cost at higher doses. Most studies have assessed CBD in clinical settings far beyond what is practically affordable for most patients. From clinical experience I have found the majority of patients dosage range is from 10&ndash;100mg per dose depending on severity of symptoms and condition being treated. This is also influenced by the complexity of the preparation with full spectrum products often requiring far less than narrow spectrum or isolate products.
+        </p>
+        <p>
+          When titrating it is best to start low and go slow, so you don't use more medicine than is necessary to treat symptoms. For most people CBD helps regulate sleep patterns but for some it can be stimulating. Especially at the lower dosage ranges. Due to this I recommend twice daily dosing in the morning and afternoon. Once it has been ascertained whether someone feels stimulated or relaxed by a product I may change the dosing to morning and evening or if needed for faster metabolisers to a TDS dosing regimen. Due to CBD's tolerability and relatively quick onset of action, if symptoms flair due to increased triggers, increasing CBD temporarily can help relieve the extra burden of symptoms during these periods. Afterwards reduce back to the lowest effective dose.
+        </p>
+        <p>
+          CBD acts relatively quickly with many patients noticing benefit within a few days once they have reached a therapeutic dose. There is however cumulative benefit and it can take up to 4 weeks for a particular dose to reach its full potential. I recommend increasing doses once a week and increasing by 10mg at a time. The lower doses of CBD are often adequate for mild anxiety and mood disturbance and can be more energising than higher doses. Moderate doses are more effective for pain, behavioural disturbance and sleep. High doses are often needed for more severe symptoms, epilepsy, psychotic disorders etc. The higher the dose the more likely for patients to have side effects and medication interactions.
+        </p>
+
+        <!-- Combination Products -->
+        <h3 id="dosage-combination" class="wp-subsection-heading">Combination Products</h3>
+
+        <p>
+          Balanced products with a 1:1 ratio are generally the most effective for pain.
+        </p>
+        <p>
+          Both THC and CBD have many potential therapeutic effects and combining the two can increase the effectiveness of the medication. Most side effects related to cannabis medicines are caused by THC and CBD reduces the activity of THC at the cannabinoid receptors in the brain and central nervous system, hence reducing many of THC's side effects. This is due to CBD being a negative allosteric modulator at CB1 receptors. This can improve the tolerability of THC containing medicines and widen a patient's therapeutic window to THC containing medicines.
+        </p>
+        <p>
+          The amount that CBD reduces the activity of THC at cannabinoid receptors is dependent on the ratio of CBD to THC. Most people won't notice significant intoxicating or impairing effects of THC if the ratio of CBD:THC is greater than 6:1. For people who are more sensitive to THC this may be CBD:THC ratio of 10:1. The higher the ratio of CBD to THC the faster the medication can be titrated and the better tolerated the medicine generally is. If lower ratio then titrated in the same manner as THC predominant medications.
+        </p>
+        <p>
+          When choosing the right ratio it is important to understand the person's functional needs through the day. You can often increase the functionality by increasing the CBD ratio. You can increase effectiveness and reduce cost by adding in THC to the mix for many conditions. I often use more CBD predominant treatments during the day and more THC predominant treatments at night time.
+        </p>
+
+        <!-- THC Predominant Medication -->
+        <h3 id="dosage-thc" class="wp-subsection-heading">THC Predominant Medication</h3>
+
+        <p>
+          THC is a powerful medicine even at very low doses, however it is also associated with most of cannabis's side effects. It is intoxicating and impairing at higher doses and frequent overuse of THC based medications can down regulate the body's own endocannabinoid system (ECS) making it more difficult to deal with stressors as they arise. THC based medications need to be titrated in a mindful and reflective manner. Journaling or using apps like Ontracka can be a great way to monitor progress. It is best to start in the subtherapeutic range and slowly work up to therapeutic doses over a few weeks.
+        </p>
+
+        <!-- Initiation and Sensitisation -->
+        <h3 id="dosage-initiation" class="wp-subsection-heading">Initiation and Sensitisation</h3>
+
+        <p>
+          As well as reducing chance of adverse reactions it is important to titrate up slowly to allow the body's ECS to acclimatise to the increased levels of circulating cannabinoids. Start at a very low dose e.g. 1&ndash;2mg THC. Stay on this dose for 3&ndash;4 days. If there is no noticeable change then next dose increase total amount by 1&ndash;2mg. Continue increasing every 3&ndash;4 days until you start to notice benefit e.g. relaxation, reduction in pain, improvement in mood, improved sleep.
+        </p>
+
+        <!-- Therapeutic Window -->
+        <h3 id="dosage-window" class="wp-subsection-heading">Therapeutic Window</h3>
+
+        <p>
+          After the sensitisation period slowly increase the dose to therapeutic effect e.g. good sleep, reduced pain, improved wellbeing, improved nausea etc. Therapeutic window is the dose from when you first notice benefit to the dose where you experience side effects. It is best to use the lowest effective dose to treat your symptoms. If you go past your optimal dose (dose just prior to experiencing side effects) you will find the medicine becomes less effective and you are more likely to experience side effects. Often less is more with THC containing medicines.
+        </p>
+        <p>
+          If you experience side effects before reaching therapeutic benefit, reduce back down to the highest dose that doesn't cause side effects and stay on this dose for 2 weeks. Over this time your therapeutic window should widen and you can start increasing the dose again until you reach therapeutic effect or encounter side effects once more.
+        </p>
+        <p>
+          Pairing with CBD can widen a patient's therapeutic window. Positive effects can be enhanced through lifestyle modifications that enhance and upregulate the own ECS to improve overall health as well as reduce symptoms. Using products with appropriate terpene profiles can help enhance desirable effects and mitigate certain side effects improving tolerability.
+        </p>
+
+        <!-- Tolerance Breaks -->
+        <h3 id="dosage-tolerance" class="wp-subsection-heading">Tolerance Breaks</h3>
+
+        <p>
+          As THC directly stimulates the body's cannabinoid receptors it is possible to build tolerance over time. Tolerance builds faster if you are taking more than your optimum dose. It is a common mistake for people to increase their dose of cannabis if they find the effects starting to wane. If a dose of THC stops being therapeutic then it is best to have a 48&ndash;72hr break from cannabis and start again at 50% of last dose. If this is ineffective slowly titrate up. If you have been using the same medication for a long time it is possible to build tolerance to a particular product. If this happens try switching to a similar product but different chemovar.
+        </p>
+
+        <!-- Layering Medications -->
+        <h3 id="dosage-layering" class="wp-subsection-heading">Layering of Medications</h3>
+
+        <p>
+          Patient needs vary through the day with significant variations between day and night functional goals. Also for most people with chronic conditions they can have large variations naturally in the intensity of their symptoms. I often use multiple products within the one patient to use the most appropriate formulation for the patient's needs for a particular time of day.
+        </p>
+        <p>
+          In general I will use more CBD predominant or balanced products during the day. If sleep disturbance is a major issue I will often use more THC predominant treatments at night time. For background symptoms I will use oral or sublingual medications for their longer duration of action. If a patient has an acute flair or breakthrough symptoms I will use the inhaled route on top of their background SR medications to get on top of symptoms quickly.
+        </p>
+
+        <!-- Administering Cannabis Medications -->
+        <h3 id="dosage-administering" class="wp-subsection-heading">Administering Cannabis Medications</h3>
+
+        <p><strong>Tincture and softgels:</strong></p>
+        <ul>
+          <li>Having with fat containing food can increase absorption by 5 times e.g. few nuts, teaspoon of peanut butter, avocado etc</li>
+          <li>Hold medicine under the tongue for few minutes for added sublingual absorption (tincture only). Limited evidence to show that normal oil based tinctures are absorbed effectively through SL route.</li>
+          <li>Takes 30&ndash;60mins before having some effect, can take up to 2 hrs or longer if having on a full stomach.</li>
+          <li>Peak effect 2&ndash;3hrs</li>
+          <li>Depending on speed of metabolism effects last 6&ndash;12hrs</li>
+        </ul>
+
+        <p><strong>Flower:</strong></p>
+        <ul>
+          <li>To be used with vaporiser e.g. Volcano, Mighty Medic, Arizer</li>
+          <li>Vaporiser takes a minute to heat up, use this time to set positive intentions and reflect on what you are wanting to achieve while using cannabis</li>
+          <li>Vaporisers can be set between 160&ndash;220 degrees. A good place to start is 190 degrees</li>
+          <li>Start with 1 medium inhalation, wait 10 mins before repeating</li>
+          <li>Continue until therapeutic effect, once you know your therapeutic dose you can start next time just below this e.g. 4 inhalations without waiting 10 mins between inhalations</li>
+          <li>Onset 2&ndash;10 mins</li>
+          <li>Peak effect 30mins</li>
+          <li>Effects wane after 2&ndash;4hrs</li>
+        </ul>
+
+        <p><strong>Oromucosal sprays:</strong></p>
+        <ul>
+          <li>Each spray contains around 2&ndash;2.5mg cannabinoids depending on product</li>
+          <li>Spray solution to inside of cheek</li>
+          <li>Having small amount of fat containing food after use can help absorption</li>
+          <li>Onset 20&ndash;40mins</li>
+          <li>Peak effect 1&ndash;2hrs</li>
+          <li>Effects wane 4&ndash;8hrs</li>
+        </ul>
+
+        <p><strong>Topical:</strong></p>
+        <ul>
+          <li>For pain apply directly to the area up to 4x daily as required</li>
+          <li>For skin conditions use 2&ndash;3x daily</li>
+          <li>Nil significant systemic absorption with topical use</li>
+        </ul>
+
+        <p><strong>Storage:</strong></p>
+        <ul>
+          <li>Light and heat will degrade cannabis products</li>
+          <li>Store all cannabis products in a cool dark place below 25 degrees Celsius</li>
+          <li>Some tinctures can become more concentrated towards the bottom of the product, it is worth inverting and gently agitating to reduce the chance of this occurring</li>
+        </ul>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Managing Side Effects -->
+      <section id="side-effects" class="wp-section">
+        <span class="wp-section-number">Section 10</span>
+        <h2 class="wp-section-heading">Managing Side Effects and Adverse Reactions</h2>
+
+        <ul>
+          <li><strong>Reassurance:</strong> no one has ever died from THC overdose. The amount of THC required to cause toxicity would be impossible to self-administer</li>
+          <li>Calm space, gentle music and chamomile tea</li>
+          <li>If you also have CBD taking 20&ndash;40mg stat dose can help</li>
+          <li>Concentrated limonene found in lemon rind can help reduce anxiety associated with THC overdose</li>
+          <li>&alpha;-Pinene in pine nuts can help reduce side effects of THC</li>
+          <li>Calamus root can also improve anxiety, dry mouth, conjunctival erythema and memory impairment associated with THC</li>
+        </ul>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Patient Management and Follow Up -->
+      <section id="patient-management" class="wp-section">
+        <span class="wp-section-number">Section 11</span>
+        <h2 class="wp-section-heading">Patient Management Plan and Follow Up</h2>
+
+        <p>
+          Regular follow up is essential to monitor patient progress, adjust dosing, assess for side effects and ensure that treatment goals are being met. Follow up intervals should be tailored to the individual patient's needs and the stage of their treatment.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Prescribing to Self-Medicating Patients -->
+      <section id="self-medicating" class="wp-section">
+        <span class="wp-section-number">Section 12</span>
+        <h2 class="wp-section-heading">Prescribing Cannabis to Self-Medicating Patients</h2>
+
+        <p>
+          Mankind has had significant and longstanding cultural, spiritual and medicinal relationships with the cannabis plant. The last 90 odd years however have led to significant changes in that relationship; both in the ways it's used, and in the way we think about its use.
+        </p>
+        <p>
+          Despite prohibition cannabis has remained an integral component in many people's personal medicinal and/or recreational toolkit. However, without the guidance and clarity gleaned through tangible research, clinical insights and pharmacological understanding, that relationship is often sub optimal.
+        </p>
+        <p>
+          As a cannabis practitioner, you will undoubtably come across people with previous cannabis relationships who are looking to legitimise their access. These interactions are an opportunity to re-establish and co-create healthy, sustainable and beneficial relationships between 'self-medicating' patients and their go to medicine, cannabis. To do so involves providing education and meaningful support free from judgement to a group of people used to being perceived through a lens of criminality or shame.
+        </p>
+        <p>
+          Most patients with prior cannabis experience haven't learned how to use cannabis appropriately but how could they when they have been without guidance. Similar to our European counterparts, Australians have generally mixed their cannabis with tobacco for use in either joints or water pipes. The effects experienced under that particular combination, at uncontrolled and often uninformed dosages, may have contributed to a fairly singular idea of what cannabis and its constituents can actually do. Moreover, the inclusion of tobacco within cannabis preparations may also present the challenge of a concurrent nicotine addiction.
+        </p>
+        <p>
+          Education around the benefits of vaporisation, activating the 'full spectrum' of constituents, eliciting deliberate effects, setting intentions, engaging in mindful dosage and administration, understanding that more intoxicating doesn't mean more effective, understanding potential risks and practicing regular tolerance breaks are all key components in establishing these healthy relationships. These patients can be some of the most engaged and excited by the newfound knowledge they are presented with.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- De-prescribing Conventional Medications -->
+      <section id="de-prescribing" class="wp-section">
+        <span class="wp-section-number">Section 13</span>
+        <h2 class="wp-section-heading">De-prescribing Conventional Medications</h2>
+
+        <p>
+          Cannabis in general is safe to use alongside most medicines, however due to its broad range of action and capacity to treat many different conditions it can be a great tool for reducing the burden of polypharmacy. Many patients have unrealistic expectations on how effective cannabis is going to be for them and see it as a panacea. It is important to make sure patients have realistic expectations and goals.
+        </p>
+        <p>
+          Normally I don't make any changes to a patient's medication regimen prior to starting cannabis. I may mention that it is likely we will be able to reduce (analgesics, sedatives, antidepressants, antiemetics, antispasmodics, antihypertensives etc) however it is not necessary prior to starting. Also due to the significant interpersonal variability we do not know how well someone will respond to their cannabis medicines.
+        </p>
+        <p>
+          If there is a potential pharmacodynamic interaction or pharmacokinetic interaction I get patients to look out for signs of increased sedation, dizziness, stronger effects from medications. If this occurs then that is a sign to check in again and start reducing certain medications. This needs to be done slowly and methodically and preferably in conjunction with their regular GP or treating specialist.
+        </p>
+        <p>
+          It is important to be able to take our time and go slowly when titrating so we don't want their symptoms to become poorly managed because they stopped partially effective treatments prior to starting. This is confounding and makes it more likely patients will have a negative experience with cannabis.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Optimising Outcomes -->
+      <section id="optimising-outcomes" class="wp-section">
+        <span class="wp-section-number">Section 14</span>
+        <h2 class="wp-section-heading">Optimising Outcomes</h2>
+
+        <p>
+          Cannabis is just one of many tools that we can utilise to achieve optimal results. Conventional medicines are generally safe to use alongside cannabis medicines and often have some synergistic properties e.g. opioids and THC. Having another set of medically trained eyes, it is often possible to find areas of optimisation within the conventional scope of practice as well as the addition of cannabis medicine, lifestyle optimisation and supplementation.
+        </p>
+        <p>
+          To allow cannabis to be a catalyst for change it is important that patients have the appropriate building blocks to assist that change to happen. This should be done with appropriate nutrition, exercise and sunlight but many patients have significant deficiencies or hurdles to lifestyle changes that optimise micronutrients. A good motto to follow though is "eat real food, not too much, mostly plants".
+        </p>
+        <p>
+          When optimising health it is important to recognise that the levels reported as deficient on pathology tests are well below what is optimal. Zinc and Magnesium are deficient in most of the population due to farming practices and soil depletion. Vitamin D levels are low due to more time indoors and fear of skin cancer. Omega 3:6 ratio is skewed in the direction of omega 6 predominance which is proinflammatory and effects the function of the ECS. Protein deficiency is a major issue amongst those with severe illness. Restrictive diets like those who are fully plant based will have deficiencies in iron, B12, zinc, omega 3 and vitamin D. Meat heavy diets like carnivore with minimal fruit and vegetables will have a low phytonutrient index, which directly correlates to chronic disease and cancers.
+        </p>
+        <p>
+          We can also utilise elements from our prescribed cannabis medicine in varying ways to get different effects i.e. cannabis tea, eating raw cannabis. We can add in external terpenes to exaggerate or mitigate certain effects.
+        </p>
+
+        <!-- PEA -->
+        <h3 id="optimising-pea" class="wp-subsection-heading">Palmitoylethanolamide (PEA)</h3>
+
+        <ul>
+          <li>Congener of anandamide</li>
+          <li>Also produced by many plants &mdash; Soy lecithin is the best dietary source</li>
+          <li>Can get as nutraceutical</li>
+          <li>Better absorbed in ultramicronised form</li>
+          <li>Acts through PPAR&alpha;, GPR55 and TRPV1, inhibition of FAAH and stimulation of DAGL</li>
+          <li>Analgesic, anti-inflammatory, neuroprotectant, mood benefits, ASD management</li>
+          <li>Potential role in reducing intestinal permeability in "leaky gut"</li>
+        </ul>
+
+        <p>
+          Cannabis being a herbal medicine has lots of potential herbal synergies. This is an area of expanded interest of ours and one that we will continue to develop. Commonly used herbs are Tulsi, turmeric, medicinal mushrooms and some adaptogens.
+        </p>
+
+        <!-- Supplements and Other -->
+        <h3 id="optimising-supplements" class="wp-subsection-heading">Supplements and Other</h3>
+
+        <ol class="wp-overview-list">
+          <li>
+            <strong>Cannabis tea</strong> (non-intoxicating, utilises water soluble acidic cannabinoids THCA/CBDA) &mdash; Pea sized bud steeped in hot water for 10&ndash;15mins. Mix with favourite herbal tea e.g. Tulsi for day or night blend for sleep. Can have with peppermint or ginger tea for nausea.
+          </li>
+          <li>
+            <strong>PEA</strong> 400mg 3x daily
+          </li>
+          <li>
+            <strong>Terpenes</strong>
+          </li>
+          <li>
+            <strong>Turmeric/black pepper or curcumin/piperine supplement</strong> &rarr; 1.5g daily
+          </li>
+          <li>
+            <strong>Omega 3 supplementation:</strong> 1200&micro;g daily of EPA/DHA
+          </li>
+          <li>
+            <strong>Vitamin D:</strong> levels ideally above 100. Natural sources fish, eggs, milk and sunlight. 20 min sunshine daily with arms uncovered. Absorption deteriorates as we age. Often will need loading dose of Vit D 3000&ndash;5000U daily for a month prior to maintenance of 1000U.
+          </li>
+          <li>
+            <strong>Magnesium:</strong> High fibre foods e.g. legumes, whole grains, some vegetables, seeds, and nuts (especially almonds) &rarr; many current farming practices bind available magnesium and create poorly absorbed forms. Use Magnesium Glycinate for inflammation, anxiety and insomnia. Use Magnesium Citrate for constipation, PMS and migraines. 200&ndash;1000mg daily.
+          </li>
+          <li>
+            <strong>CoQ10:</strong> MS, Migraine, Fibromyalgia, Diabetic neuropathy, MS, heart disease. Supports mitochondrial function &rarr; helps with brain and muscle fatigue. 100&ndash;400mg daily depending on disease.
+          </li>
+          <li>
+            Consider <strong>Zinc, Vitamin C, B complex multivitamin, iron, B12</strong>
+          </li>
+          <li>
+            <strong>GABA</strong> 100&ndash;200mg PRN &rarr; Stress / anxiety / panic / sleep
+          </li>
+          <li>
+            <strong>5-HTP</strong> 100mg nocte &rarr; mood / anxiety
+          </li>
+          <li>
+            <strong>L-theanine</strong> &rarr; stress
+          </li>
+        </ol>
+
+        <!-- Adaptogenic Herbs and Mushrooms -->
+        <h3 id="optimising-adaptogens" class="wp-subsection-heading">Adaptogenic Herbs and Medicinal Mushrooms</h3>
+
+        <ul>
+          <li><strong>Maitake:</strong> cardiovascular health, LDL cholesterol, arterial function</li>
+          <li><strong>Reishi:</strong> neuroprotective, enhance neurogenesis, stress and anxiety</li>
+          <li><strong>Shiitake:</strong> anti-inflammatory, neuroprotective, cardiovascular health, immune function</li>
+          <li><strong>Cordyceps:</strong> increased ATP, exercise capacity, immune function</li>
+          <li><strong>Lion's mane:</strong> enhanced cognition, neurogenesis, myelin repair, dopamine agonist</li>
+          <li><strong>Ginseng:</strong> cognitive performance / energy</li>
+          <li><strong>Turmeric:</strong> a terpenoid with significant anti-inflammatory properties</li>
+          <li><strong>Ginkgo biloba:</strong> dopaminergic adaptogen</li>
+        </ul>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Condition-Specific Clinical Pearls -->
+      <section id="clinical-pearls" class="wp-section">
+        <span class="wp-section-number">Section 15</span>
+        <h2 class="wp-section-heading">Condition-Specific Clinical Pearls</h2>
+
+        <!-- Mental Health -->
+        <h3 id="pearls-mental-health" class="wp-subsection-heading">Mental Health</h3>
+
+        <p><strong>Anxiety:</strong></p>
+        <ol>
+          <li>
+            <strong>General:</strong> Cannabis including both CBD and THC predominant treatments can be effective treatments for anxiety disorders. They can be used as the primary pharmacotherapy or as an adjunctive therapy with conventional medications. There are many SSRIs which have a medication interaction with CBD due to shared metabolic pathways in the liver. This can lead to increased blood levels of these medications, however clinically I haven't seen any significant reactions and haven't heard of serotonin syndrome amongst patients using CBD and other serotonergic agents. It is important to monitor for side effects though and if they seem to be related to supratherapeutic levels of an SSRI then it would be prudent to reduce the dose.
+          </li>
+          <li>
+            <strong>CBD:</strong> Is the most tolerable option for use in anxiety disorders. It exerts most of its effects through 5HT1a agonism. However it also has action through many other pathways that can have synergistic effects including GABA, dopamine and upregulation of the body's own ECS through inhibition of FAAH enzymes and competition for fatty acid binding proteins. CBD seems to be quite effective for stress and anxiety at relatively low doses i.e. 10&ndash;20mg of a FS product. If sleep is affected or there is concurrent pain from neck tension, headaches, TMJ dysfunction then higher doses of CBD would be more effective.
+          </li>
+          <li>
+            <strong>THC:</strong> Is polarizing when it comes to the treatment of anxiety disorders. The right dose of THC in the right individuals can be a very powerful treatment for anxiety, leading to full body relaxation, reduction in ruminating thoughts, promotion of positive mood.
+          </li>
+        </ol>
+
+        <p><strong>Depression:</strong></p>
+        <ol>
+          <li>ECS is heavily involved in mood and ECS dysfunction is likely a hallmark feature of depression</li>
+          <li>Cannabinoids can help with neurogenesis in the hippocampus and upregulation of the ECS</li>
+          <li>CBD can be helpful through serotonin activity as well as helping with upregulation of other helpful neurotransmitters</li>
+          <li>THC can improve mood and euphorigenic effects can be beneficial side effect of THC intoxication</li>
+          <li>THC can also cause dysphoria as a side effect as well</li>
+          <li>THC can lead to issues with motivation and apathy which can cause lots of dysfunction in those already struggling with these symptoms</li>
+          <li>With THC very important to set strong intentions around use and have functional goals otherwise can become a crutch</li>
+          <li>This can lead to higher rates of abuse in those using inhaled THC</li>
+        </ol>
+
+        <p><strong>Bipolar disorder:</strong></p>
+        <ol>
+          <li>No mood stabilizing effects of cannabinoids that I am aware of</li>
+          <li>CBD can be beneficial for mood and anxiety issues associated with bipolar disorder</li>
+          <li>High dose CBD has antipsychotic properties so potentially mood stabilizing effects</li>
+          <li>THC used inappropriately can lead to rapid cycling and poor medication compliance in bipolar disorder</li>
+          <li>Insomnia is often a major trigger for mania though so appropriate use of THC to correct sleep related issues could be of benefit in certain individuals</li>
+        </ol>
+
+        <p><strong>Schizophrenia:</strong></p>
+        <ol type="a">
+          <li>Likely significant ECS dysfunction in schizophrenia</li>
+          <li>THC is contraindicated</li>
+          <li>Use of THC is associated with earlier onset of psychotic symptoms in susceptible individuals. It can also induce positive symptoms in those diagnosed with schizophrenia</li>
+          <li>On a population level though THC use does not cause or increase the rates of schizophrenia, just the age of onset</li>
+          <li>THC can have some protective effects against the negative symptoms associated with schizophrenia</li>
+          <li>CBD at high doses has antipsychotic properties equivalent to amisulpride with much better side effect profile</li>
+          <li>CBD at lower doses can help with mood related symptoms associated with schizophrenia and other psychotic disorders</li>
+        </ol>
+
+        <p><strong>PTSD:</strong></p>
+        <ol type="a">
+          <li>Significant ECS dysfunction in PTSD. Cumulative trauma burden places excessive load on the ECS</li>
+          <li>THC can be profoundly beneficial almost like a supplement for lack of anandamide production in these individuals</li>
+          <li>THC extremely beneficial for sleep related issues, including reduction in nightmares and reduced recollection of traumatic dreams</li>
+          <li>fMRI has been shown THC to decrease emotional reactivity in heightened hippocampal regions and increase connections to the prefrontal cortex allowing for more appropriate response to stimuli</li>
+          <li>CBD is also helpful in PTSD but doesn't have the same profound effects seen with THC. Good to use during the day to alleviate symptoms of anxiety</li>
+        </ol>
+
+        <!-- Sleep Related Issues -->
+        <h3 id="pearls-sleep" class="wp-subsection-heading">Sleep Related Issues</h3>
+
+        <p><strong>Insomnia:</strong></p>
+        <ol type="i">
+          <li>Insomnia can be a primary disorder or a secondary component of another condition like anxiety or pain</li>
+          <li>Due to the wide ranging effects of both CBD and THC they can be beneficial for treating the underlying issues leading to sleep disturbance</li>
+          <li>In regards to primary insomnia CBD in my experience is very hit and miss. Some find it beneficial falling asleep, others report a deeper sleep and others find CBD stimulating. This is likely due to the varied and interpersonal variability of effect on opposing systems i.e. adenosine vs serotonin</li>
+          <li>THC is a very effective and reliable sleep aide. If used at the right doses it causes minimal disruption to normal sleep architecture which means that patients maintain quality as well as getting quantity</li>
+          <li>If patients feel groggy or hungover the next day then this is an indication they are taking too much THC and disrupting their sleep architecture</li>
+        </ol>
+
+        <p><strong>Restless legs:</strong></p>
+        <ul>
+          <li>THC can be beneficial in reducing the symptomatic burden of restless legs</li>
+        </ul>
+
+        <p><strong>Overactive bladder / nocturia:</strong></p>
+        <ol>
+          <li>Many patients report reduction in the need to urinate through the night, likely due to reduction in aberrant nerve impulses and detrusor overactivity</li>
+          <li>If patients do frequently need to urinate through the night then it is important that they take extra care due to the increased falls risk associated with THC based medications</li>
+        </ol>
+
+        <!-- Chronic Pain -->
+        <h3 id="pearls-pain" class="wp-subsection-heading">Chronic Pain</h3>
+
+        <ul>
+          <li>Neuropathic pain</li>
+          <li>Arthritis (Inflammatory, Degenerative)</li>
+          <li>Fibromyalgia</li>
+          <li>Endometriosis</li>
+          <li>Muscular spasm / spasticity</li>
+          <li>Migraines</li>
+        </ul>
+
+        <!-- Cannabis and Cancer Care -->
+        <h3 id="pearls-cancer" class="wp-subsection-heading">Cannabis and Cancer Care</h3>
+
+        <ul>
+          <li>CINV (chemotherapy-induced nausea and vomiting)</li>
+          <li>Chemotherapy induced peripheral neuropathy</li>
+          <li>Appetite stimulation</li>
+          <li>Cancer pain</li>
+          <li>Medication sparing &rarr; reduction in side effects</li>
+          <li>Improving acceptance and reducing stress</li>
+          <li>Sleep regulation</li>
+          <li>Improving host response by reducing symptom burden</li>
+          <li>Improving tolerability of conventional treatments to increase efficacy</li>
+          <li>Potential for synergies between cannabinoids and chemotherapy</li>
+          <li>Protective effects of cannabinoids on healthy tissues</li>
+          <li>Direct antitumour effects of cannabinoids</li>
+        </ul>
+
+        <!-- Neurological Conditions -->
+        <h3 id="pearls-neuro" class="wp-subsection-heading">Neurodegenerative / Neurological Conditions</h3>
+
+        <ul>
+          <li>Parkinson's</li>
+          <li>Motor neurone disease</li>
+          <li>Alzheimer's</li>
+          <li>TBI</li>
+        </ul>
+
+        <!-- Gastrointestinal Disorders -->
+        <h3 id="pearls-gi" class="wp-subsection-heading">Gastrointestinal Disorders</h3>
+
+        <ul>
+          <li>IBD</li>
+          <li>GORD</li>
+          <li>IBS</li>
+          <li>Gastroparesis</li>
+        </ul>
+
+        <!-- ASD -->
+        <h3 id="pearls-asd" class="wp-subsection-heading">ASD</h3>
+
+        <ul>
+          <li>Improvements in learning</li>
+          <li>Behavioural management</li>
+          <li>Associated symptoms i.e. ADHD, anxiety, gastrointestinal issues, seizure disorders, sleep dysregulation</li>
+        </ul>
+
+        <p>Also of note:</p>
+        <ul>
+          <li>Epilepsy</li>
+          <li>Respiratory conditions</li>
+        </ul>
+      </section>
+
+    </div>
+  </article>
+</PortalLayout>
+
+<style>
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar-track {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #A53D2E, #8E2A22);
+    transition: width 0.1s linear;
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* ===== GLOBAL WHITEPAPER STYLES ===== */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .whitepaper {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 1.25rem 6rem;
+    font-family: 'Manrope', sans-serif;
+    color: #3d3229;
+    line-height: 1.75;
+  }
+
+  /* ===== ARTICLE HEADER ===== */
+  @keyframes swirlA {
+    0%, 100% { transform: translate(0%, 0%) scale(1); }
+    33% { transform: translate(30%, -20%) scale(1.1); }
+    66% { transform: translate(-20%, 15%) scale(0.95); }
+  }
+
+  @keyframes swirlB {
+    0%, 100% { transform: translate(0%, 0%) scale(1); }
+    33% { transform: translate(-25%, 25%) scale(1.05); }
+    66% { transform: translate(20%, -10%) scale(1.1); }
+  }
+
+  @keyframes swirlC {
+    0%, 100% { transform: translate(0%, 0%) scale(1.05); }
+    33% { transform: translate(15%, 20%) scale(0.95); }
+    66% { transform: translate(-30%, -15%) scale(1.1); }
+  }
+
+  .wp-header {
+    max-width: none;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: 2.5rem;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    background: #f3f1ee;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wp-header::before,
+  .wp-header::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(60px);
+  }
+
+  .wp-header::before {
+    width: 500px;
+    height: 500px;
+    top: -120px;
+    left: -50px;
+    background: rgba(0, 0, 0, 0.07);
+    animation: swirlA 18s ease-in-out infinite;
+  }
+
+  .wp-header::after {
+    width: 450px;
+    height: 450px;
+    bottom: -100px;
+    right: -30px;
+    background: rgba(0, 0, 0, 0.06);
+    animation: swirlB 22s ease-in-out infinite;
+  }
+
+  .wp-header-blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    filter: blur(50px);
+    pointer-events: none;
+    animation: swirlC 25s ease-in-out infinite;
+  }
+
+  .wp-header > *:not(.wp-header-blob) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .wp-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .wp-breadcrumbs a {
+    color: #8a7e74;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .wp-breadcrumbs a:hover {
+    color: #A53D2E;
+  }
+
+  .wp-breadcrumb-sep {
+    color: #c4bdb6;
+    font-size: 0.875rem;
+  }
+
+  .wp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #3d3229;
+    line-height: 1.1;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.01em;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .wp-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #6b5e52;
+    line-height: 1.4;
+    margin: 0 0 0.25rem;
+    max-width: 580px;
+    letter-spacing: 0.01em;
+  }
+
+  .wp-subtitle-secondary {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9375rem;
+    font-style: italic;
+    color: #8a7e74;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .wp-byline {
+    margin-top: 2.5rem;
+  }
+
+  .wp-byline-rule {
+    width: 40px;
+    height: 1px;
+    background: rgba(196, 90, 66, 0.4);
+    margin-bottom: 1rem;
+  }
+
+  .wp-byline-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .wp-author-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: none;
+  }
+
+  .wp-author-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .wp-author-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #3d3229;
+    margin: 0 0 -0.25rem;
+  }
+
+  .wp-author-role {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    color: #8a7e74;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  /* ===== BODY ===== */
+  .wp-body {
+    font-size: 1rem;
+    color: rgba(18, 18, 18, 0.75);
+  }
+
+  .wp-body p {
+    margin: 0 0 1.125rem;
+    line-height: 1.95;
+  }
+
+  /* ===== SECTION HEADINGS ===== */
+  .wp-section {
+    margin-bottom: 1rem;
+  }
+
+  .wp-section-number {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #A53D2E;
+    margin-bottom: 1.25rem;
+    white-space: nowrap;
+  }
+
+  .wp-section-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(165, 61, 46, 0.1);
+    margin-right: calc(-50vw + 50%);
+  }
+
+  .wp-section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.375rem;
+    font-weight: 400;
+    color: #3d3229;
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 2rem;
+  }
+
+  .wp-subsection-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: #5a4d42;
+    line-height: 1.3;
+    margin: 2.5rem 0 1.25rem;
+    scroll-margin-top: 2rem;
+  }
+
+  /* ===== SECTION DIVIDER ===== */
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; background: #687C57; }
+    25% { transform: scale(1.4); opacity: 0.7; background: #576943; }
+    50% { transform: scale(1); opacity: 0.5; background: #A53D2E; }
+    75% { transform: scale(1.4); opacity: 0.7; background: #8E2A22; }
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 2.5rem 0;
+  }
+
+  .section-divider span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c45a42;
+    opacity: 0.3;
+    animation: dotPulse 3s ease-in-out infinite;
+  }
+
+  .section-divider span:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .section-divider span:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  /* ===== BLOCKQUOTE / CALLOUT ===== */
+  .wp-callout {
+    background: rgba(196, 90, 66, 0.04);
+    border-left: 3px solid #c45a42;
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .wp-callout p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #4a3f35;
+    margin: 0 0 0.75rem;
+  }
+
+  .wp-callout p:last-child {
+    margin-bottom: 0;
+  }
+
+  .wp-callout strong {
+    color: #c45a42;
+    font-weight: 700;
+  }
+
+  .wp-callout ul {
+    padding-left: 1.25rem;
+    margin: 0.5rem 0 0;
+  }
+
+  .wp-callout ul li {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #4a3f35;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ===== OVERVIEW LIST (numbered points) ===== */
+  .wp-overview-list {
+    padding-left: 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .wp-overview-list li {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+    padding-left: 0.25rem;
+  }
+
+  .wp-overview-list li strong {
+    color: #3d3229;
+    font-weight: 700;
+  }
+
+  /* ===== STANDARD LISTS ===== */
+  .wp-body ul,
+  .wp-body ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 1.25rem;
+  }
+
+  .wp-body ul li,
+  .wp-body ol li {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .wp-body ul li strong,
+  .wp-body ol li strong {
+    color: #3d3229;
+    font-weight: 600;
+  }
+
+  /* ===== RESEARCH LIST ===== */
+  .wp-research-list {
+    padding-left: 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .wp-research-list li {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+    padding-left: 0.25rem;
+  }
+
+  .wp-research-list li strong {
+    color: #3d3229;
+    font-weight: 700;
+  }
+
+  /* ===== REFERENCES ===== */
+  .wp-references-section {
+    margin-top: 1rem;
+  }
+
+  .wp-references {
+    padding-left: 2rem;
+    margin: 0;
+  }
+
+  .wp-references li {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: #5a4d42;
+    margin-bottom: 0.875rem;
+    padding-left: 0.5rem;
+    text-indent: -0.5rem;
+  }
+
+  .wp-references li em {
+    color: #6b5e52;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .wp-section-heading,
+    .wp-subsection-heading {
+      scroll-margin-top: 4.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .whitepaper {
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .wp-title {
+      font-size: 2rem;
+    }
+
+    .wp-subtitle {
+      font-size: 0.9375rem;
+    }
+
+    .wp-subtitle-secondary {
+      font-size: 0.875rem;
+    }
+
+    .wp-section-heading {
+      font-size: 1.625rem;
+    }
+
+    .wp-subsection-heading {
+      font-size: 1.3125rem;
+    }
+
+    .wp-body {
+      font-size: 0.9375rem;
+    }
+
+    .wp-header {
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .whitepaper {
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .wp-title {
+      font-size: 1.75rem;
+    }
+
+    .wp-section-heading {
+      font-size: 1.375rem;
+    }
+
+    .wp-subsection-heading {
+      font-size: 1.125rem;
+    }
+
+    .wp-body {
+      font-size: 0.875rem;
+    }
+
+    .wp-callout {
+      padding: 1rem 1.25rem;
+    }
+
+    .section-divider {
+      padding: 2rem 0;
+    }
+
+    .wp-references li {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .progress-bar-track {
+      top: 56px;
+    }
+  }
+</style>
+
+<script>
+  function initProgressBar() {
+    const bar = document.getElementById('reading-progress')
+    if (!bar) return
+
+    function update() {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
+      bar.style.width = progress + '%'
+    }
+
+    window.addEventListener('scroll', update, { passive: true })
+    update()
+  }
+
+  document.addEventListener('DOMContentLoaded', initProgressBar)
+  document.addEventListener('astro:page-load', initProgressBar)
+</script>

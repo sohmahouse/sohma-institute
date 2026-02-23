@@ -1,0 +1,913 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro'
+
+const toc = [
+  { id: 'abstract', label: 'Abstract', level: 1 },
+  { id: 'section-i', label: 'I. ECS Is Not Static', level: 1 },
+  { id: 'section-ii', label: 'II. Anandamide Across the Cycle', level: 1 },
+  { id: 'section-iii', label: 'III. Enzyme Dynamics', level: 1 },
+  { id: 'section-iv', label: 'IV. Receptor Plasticity', level: 1 },
+  { id: 'section-v', label: 'V. Perimenopause', level: 1 },
+  { id: 'section-vi', label: 'VI. Adaptive Prescribing', level: 1 },
+  { id: 'section-vi-follicular', label: 'Follicular Phase', level: 2 },
+  { id: 'section-vi-ovulatory', label: 'Ovulatory Window', level: 2 },
+  { id: 'section-vi-luteal', label: 'Luteal Phase', level: 2 },
+  { id: 'section-vi-perimenopausal', label: 'Perimenopausal Adaptation', level: 2 },
+  { id: 'section-vii', label: 'VII. Adaptogens as Adjuvants', level: 1 },
+  { id: 'section-vii-ashwagandha', label: 'Ashwagandha', level: 2 },
+  { id: 'section-vii-rhodiola', label: 'Rhodiola rosea', level: 2 },
+  { id: 'section-vii-shatavari', label: 'Shatavari', level: 2 },
+  { id: 'section-vii-bcp', label: '\u03B2-Caryophyllene', level: 2 },
+  { id: 'section-viii', label: 'VIII. Clinical Protocol', level: 1 },
+  { id: 'section-viii-foundation', label: 'Foundation Layer', level: 2 },
+  { id: 'section-viii-responsive', label: 'Responsive Layer', level: 2 },
+  { id: 'section-viii-integration', label: 'Integration Layer', level: 2 },
+  { id: 'section-ix', label: 'IX. Safety Considerations', level: 1 },
+  { id: 'section-x', label: 'X. Research Frontiers', level: 1 },
+  { id: 'section-xi', label: 'XI. Conclusion', level: 1 },
+  { id: 'references', label: 'Selected References', level: 1 },
+]
+---
+
+<PortalLayout
+  title="The Endocannabinoid System Across the Hormonal Cycle"
+  description="Cycle-Dependent ECS Fluctuation as the Pharmacological Basis for Adaptive Cannabis Prescribing"
+  toc={toc}
+  activeArticle="adaptive-prescribing-ecs"
+>
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="reading-progress"></div>
+  </div>
+
+  <article class="whitepaper">
+    <header class="wp-header">
+      <div class="wp-header-blob"></div>
+      <nav class="wp-breadcrumbs">
+        <a href="/">Sohma Institute</a>
+        <span class="wp-breadcrumb-sep">&rsaquo;</span>
+        <a href="/">Clinical Protocols</a>
+      </nav>
+      <h1 class="wp-title">The Endocannabinoid System Across the Hormonal Cycle</h1>
+      <p class="wp-subtitle">Cycle-Dependent ECS Fluctuation as the Pharmacological Basis for Adaptive Cannabis Prescribing</p>
+
+      <div class="wp-byline">
+        <div class="wp-byline-row">
+          <div class="wp-author-photo">
+            <img src="/images/team/cam-rosin-portrait.jpg" alt="Cam Rosin" width="92" height="92" loading="eager" decoding="async" />
+          </div>
+          <div class="wp-author-info">
+            <p class="wp-author-name">Cameron Rosin, RN</p>
+            <p class="wp-author-role">Specialist Cannabis Nurse Educator</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wp-body">
+
+      <!-- Abstract -->
+      <section id="abstract" class="wp-section">
+        <h2 class="wp-section-heading">Abstract</h2>
+        <p>
+          The endocannabinoid system does not operate at a fixed set point. It is a cyclically modulated regulatory network whose tone, receptor density, enzyme activity, and endogenous ligand concentrations shift across the menstrual cycle in patterns governed by estrogen and progesterone.
+        </p>
+        <p>
+          These fluctuations carry direct pharmacological consequences: a cannabis formulation that produces anxiolysis in the follicular phase may produce an entirely different response profile in the luteal phase, and the erratic hormonal oscillations of perimenopause compound this variability into clinical unpredictability. Despite this, the dominant paradigm in cannabis medicine remains static prescribing: a fixed formulation at a fixed dose, reviewed at intervals that have no relationship to the hormonal terrain.
+        </p>
+        <p>
+          This article synthesises peer-reviewed research on cycle-dependent endocannabinoid system gene expression, plasma anandamide fluctuation, FAAH enzyme kinetics across hormonal phases, and the steroid hormone regulation of cannabinoid receptor function to establish the pharmacological basis for <strong>adaptive prescribing</strong>, a model in which cannabis formulations, dosages, and delivery methods are calibrated to the patient's position within her hormonal cycle.
+        </p>
+        <p>
+          The synthesis further examines the role of adaptogenic botanicals as peripheral adjuvants that operate through complementary pathways, particularly HPA axis modulation and GABAergic support, to extend and stabilise the therapeutic effects of cannabinoid interventions across the cycle's shifting terrain.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section I -->
+      <section id="section-i" class="wp-section">
+        <span class="wp-section-number">Section I</span>
+        <h2 class="wp-section-heading">The Endocannabinoid System Is Not Static: A Foundational Correction</h2>
+
+        <p>
+          The clinical cannabis literature has operated, with few exceptions, on an implicit assumption that the endocannabinoid system represents a stable target. Dosing recommendations, formulation guidelines, and titration protocols are developed as though the system being modulated today is the same system that will receive the same molecule tomorrow. This assumption is false. The ECS is a hormonally entrained regulatory network, and its functional parameters shift in ways that are predictable across the menstrual cycle and deeply unpredictable during the menopausal transition.
+        </p>
+
+        <p>
+          The most comprehensive mapping of this variability comes from Mortlock et al. (2022), who used RNA sequencing on 206 endometrial tissue samples to examine the gene expression of 70 endocannabinoid system genes across the menstrual cycle. Of the 40 genes expressed in more than 90% of samples, 29 showed statistically significant differential expression across cycle phases. The majority of these expression changes occurred during the transition from the late proliferative to early secretory stage, coinciding with ovulation and the rise in progesterone. Four distinct regulation patterns were identified for synthesising enzymes, and a separate pattern characterised the degradation and transport enzymes.
+        </p>
+
+        <p>
+          This is not a marginal fluctuation in a peripheral system. It represents a wholesale remodelling of endocannabinoid metabolism on a cycle-by-cycle basis, involving the enzymes that synthesise anandamide and 2-AG, the enzymes that degrade them, and the transport molecules that regulate their bioavailability. When a clinician prescribes cannabis to a cycling woman and holds that prescription static across weeks, the pharmacological substrate receiving that prescription is a moving target. The molecule does not change. The system it enters does.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section II -->
+      <section id="section-ii" class="wp-section">
+        <span class="wp-section-number">Section II</span>
+        <h2 class="wp-section-heading">Anandamide Across the Cycle: The Estrogen-Dependent Tide</h2>
+
+        <p>
+          Plasma anandamide (AEA) levels in women of reproductive age follow a pattern that tracks estrogen with considerable fidelity. AEA is higher in the estrogen-dominant follicular phase and lower in the progesterone-dominant luteal phase. Habayeb et al. (2004) established this pattern in one of the earliest direct measurements of circulating endocannabinoids across the cycle, and subsequent work has confirmed and extended the finding. AEA levels are higher in reproductive-age women than in postmenopausal women, establishing that ovarian function is a primary driver of systemic endocannabinoid tone.
+        </p>
+
+        <p>
+          The mechanism is bidirectional and well characterised at the molecular level. Estradiol upregulates the synthesis of anandamide through promotion of NAPE-PLD (the primary AEA synthesising enzyme) activity, while simultaneously downregulating FAAH (fatty acid amide hydrolase), the enzyme responsible for AEA degradation. The net effect is an estrogen-dependent increase in AEA bioavailability: more anandamide is produced, and less is broken down. Progesterone exerts the opposing influence. It activates the FAAH promoter, increasing AEA degradation, and has been shown to induce CB1 receptor expression in endometrial stromal cells, a compensatory response to the declining ligand availability.
+        </p>
+
+        <p>
+          The pharmacological implications are direct. In the follicular phase, when endogenous AEA is relatively high, the introduction of exogenous cannabinoids (particularly THC, which competes for the same CB1 binding sites) enters an environment with established endocannabinoid tone. The interaction between exogenous and endogenous ligands in this context will differ meaningfully from the same dose introduced during the luteal phase, when endogenous AEA is depleted and FAAH activity is elevated. In the luteal phase, the same patient may require a different formulation, a different dose, or a different delivery method to achieve an equivalent therapeutic effect. The body that receives the medicine on day 8 of the cycle is not the same body that receives it on day 22.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section III -->
+      <section id="section-iii" class="wp-section">
+        <span class="wp-section-number">Section III</span>
+        <h2 class="wp-section-heading">Enzyme Dynamics: FAAH, NAPE-PLD, and the Metabolic Terrain</h2>
+
+        <p>
+          The cycle-dependent regulation of endocannabinoid metabolising enzymes deserves particular attention because these enzymes determine how long endocannabinoids (and exogenous cannabinoids metabolised through similar pathways) remain bioavailable. FAAH expression in the endometrium increases during the secretory phase, with the highest expression occurring in glandular epithelial cells during the mid-secretory window (Reese et al., 2014). NAPE-PLD, the primary anandamide synthesising enzyme, shows the inverse pattern: expression is downregulated in the secretory epithelial gland compared to the proliferative gland.
+        </p>
+
+        <p>
+          The net metabolic consequence is a secretory-phase environment characterised by accelerated endocannabinoid degradation and reduced endocannabinoid synthesis. This creates a local and systemic reduction in endocannabinoid tone during the portion of the cycle when progesterone dominates. MAGL (monoacylglycerol lipase), the primary degradation enzyme for 2-AG, also shows increased glandular expression during the secretory phase. The cycle therefore produces a coordinated metabolic shift: proliferative-phase ECS architecture favours endocannabinoid accumulation, while secretory-phase architecture favours endocannabinoid clearance.
+        </p>
+
+        <p>
+          For cannabis prescribing, this metabolic terrain shapes both the intensity and the duration of cannabinoid effects. CBD's capacity to inhibit FAAH, often cited as one of its primary mechanisms for elevating endogenous anandamide levels, will interact differently with a system in which FAAH is already relatively quiescent (follicular phase) versus a system in which FAAH activity is elevated and actively degrading AEA (luteal phase). In the latter context, CBD's FAAH inhibition may be proportionally more impactful, as it is counteracting a more active degradation process. This has implications for both the dosing of CBD across the cycle and the clinical expectations attached to it.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section IV -->
+      <section id="section-iv" class="wp-section">
+        <span class="wp-section-number">Section IV</span>
+        <h2 class="wp-section-heading">Receptor Plasticity: The Shifting Landscape of CB1 and CB2</h2>
+
+        <p>
+          The question of whether CB1 and CB2 receptor density changes across the menstrual cycle has yielded more complex findings. Mortlock et al. (2022) found that CNR1 (the gene encoding CB1) and CNR2 (encoding CB2) showed non-significant changes in the number of samples expressing these genes during the late proliferative to early secretory period, though the study authors note that statistical power may have been insufficient to detect subtle receptor modulation within the heterogeneous cellular milieu of the endometrium. Taylor et al. (2010) similarly found that endometrial CB1 and CB2 immunoreactivity was primarily restricted to the glandular epithelium and was unrelated to cycle phase.
+        </p>
+
+        <p>
+          These findings do not close the question. They constrain it. Endometrial tissue represents a single sampling site. The CNS receptor populations that mediate the psychoactive, anxiolytic, and analgesic effects of cannabis, located in the amygdala, hippocampus, prefrontal cortex, and hypothalamus, are subject to independent regulatory influences. Animal studies demonstrate that CB1 receptor density in the hypothalamus and hippocampus fluctuates across the estrous cycle, and that ovariectomy (removing ovarian hormones entirely) alters CB1 expression in ways that are partially reversed by estrogen replacement. The menopausal parallel is direct: as ovarian hormones decline, the receptor landscape that determines how a given cannabinoid dose will be experienced undergoes remodelling that has not been mapped in human clinical populations.
+        </p>
+
+        <p>
+          What the literature does establish with reasonable confidence is that progesterone induces CB1 receptor expression in certain cell types, likely as a compensatory response to the reduced AEA availability it simultaneously promotes. This creates a paradoxical luteal-phase scenario: CB1 receptors may be upregulated, but their endogenous ligand is depleted. The system is primed for activation but underserved. This is precisely the pharmacological context in which exogenous THC, as a partial CB1 agonist, may produce outsized effects relative to the follicular phase. The clinical observation that some women report increased cannabis sensitivity premenstrually may find its mechanistic explanation here.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section V -->
+      <section id="section-v" class="wp-section">
+        <span class="wp-section-number">Section V</span>
+        <h2 class="wp-section-heading">Perimenopause as Pharmacological Chaos: When the Cycle Becomes Unpredictable</h2>
+
+        <p>
+          The preceding sections describe a system with identifiable patterns, cyclical fluctuations that, while complex, follow the predictable hormonal architecture of the menstrual cycle. Perimenopause destroys this predictability. The hallmark of the late reproductive transition is not a gradual decline in hormone levels but an erratic oscillation: estrogen may surge to supraphysiological levels before plummeting, progesterone production becomes intermittent as ovulatory cycles alternate with anovulatory cycles, and the temporal relationship between the two hormones loses its cyclical coordination.
+        </p>
+
+        <p>
+          For the endocannabinoid system, perimenopause represents a state of regulatory incoherence. The ECS genes that were cycling in coordinated patterns through decades of reproductive life now receive conflicting signals. FAAH activity may fluctuate unpredictably as progesterone surges and withdraws on irregular timescales. AEA synthesis, tethered to estrogen, follows an equally erratic trajectory. The receptor landscape, shaped by decades of cyclical hormonal entrainment, encounters hormonal patterns it has no precedent for.
+        </p>
+
+        <p>
+          This pharmacological chaos explains why perimenopausal women frequently report that their previously stable cannabis regimen has become unreliable. A dose that was anxiolytic last week produces anxiety this week. A formulation that supported sleep for months suddenly fails. The patient attributes this to tolerance, to product variability, or to her own failure to "use it properly." The mechanistic reality is that her endocannabinoid system is being buffeted by hormonal volatility that makes a static prescription functionally inadequate.
+        </p>
+
+        <p>
+          The clinical imperative is clear: perimenopausal cannabis patients require adaptive prescribing, not because the concept is theoretically elegant, but because the biological terrain their medicine is entering changes on timescales that static prescriptions cannot track.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section VI -->
+      <section id="section-vi" class="wp-section">
+        <span class="wp-section-number">Section VI</span>
+        <h2 class="wp-section-heading">The Case for Adaptive Prescribing: A New Clinical Architecture</h2>
+
+        <p>
+          Adaptive prescribing does not mean arbitrary prescribing. It means developing clinical protocols that are responsive to the hormonal terrain in ways that are structured, reproducible, and grounded in the pharmacological evidence. The following framework draws on the mechanistic analysis above to propose a cycle-aware approach to cannabis formulation and dosing.
+        </p>
+
+        <!-- Follicular Phase -->
+        <h3 id="section-vi-follicular" class="wp-subsection-heading">Follicular Phase (Days 1&ndash;13): Higher Endogenous Tone, Lower Exogenous Requirement</h3>
+
+        <p>
+          During the follicular phase, rising estrogen supports anandamide synthesis, FAAH activity is relatively low, and endogenous endocannabinoid tone is at its cycle peak. In this phase, the patient's own ECS is functioning at its highest capacity. Cannabis formulations can be calibrated accordingly: lower THC doses may suffice for anxiolytic and analgesic effects, as the exogenous cannabinoid is entering a system that is already endogenously primed. CBD, whose FAAH-inhibitory mechanism is less needed when FAAH activity is naturally low, may be proportionally less impactful. This phase may favour balanced formulations or even CBD-dominant preparations, as the endogenous system carries more of the regulatory burden.
+        </p>
+
+        <!-- Ovulatory Window -->
+        <h3 id="section-vi-ovulatory" class="wp-subsection-heading">Ovulatory Window (Days 12&ndash;16): Peak AEA, Transition Point</h3>
+
+        <p>
+          Plasma anandamide peaks around ovulation, coinciding with the estrogen surge that triggers the LH spike. This represents the zenith of endogenous endocannabinoid tone, and simultaneously the beginning of the enzymatic shift toward secretory-phase degradation architecture. Clinically, this is a transition window. Patients may report peak cannabis sensitivity (lowest effective dose) followed, within days, by a perceptible shift toward reduced efficacy. Clinicians can use this transition point as a pharmacological landmark: when the patient reports that her usual dose is "not working as well," this often signals the secretory shift and the corresponding change in metabolic terrain.
+        </p>
+
+        <!-- Luteal Phase -->
+        <h3 id="section-vi-luteal" class="wp-subsection-heading">Luteal Phase (Days 15&ndash;28): Depleted Tone, Elevated Need</h3>
+
+        <p>
+          The luteal phase is characterised by declining estrogen, rising and then falling progesterone, elevated FAAH activity, reduced AEA synthesis, and what amounts to a systematic depletion of endocannabinoid resources. This is the phase in which women with PMDD experience their most severe symptoms, and in which the broader population of cycling women reports increased anxiety, sleep disruption, pain sensitivity, and mood instability. The endocannabinoid system is at its most depleted precisely when the regulatory demands on it are highest.
+        </p>
+
+        <p>
+          In this phase, THC dosage may need to increase to compensate for the reduced endogenous tone. CBD becomes proportionally more valuable as its FAAH-inhibitory mechanism counteracts the elevated FAAH activity. The late luteal phase (days 24&ndash;28) represents the period of maximum ECS depletion and may warrant the most robust formulations: higher THC:CBD ratios, sublingual or edible delivery for sustained action, and consideration of evening-weighted dosing to support the cortisol nadir and sleep architecture that are simultaneously under pressure from the hormonal withdrawal.
+        </p>
+
+        <!-- Perimenopausal Adaptation -->
+        <h3 id="section-vi-perimenopausal" class="wp-subsection-heading">Perimenopausal Adaptation: Tracking the Terrain</h3>
+
+        <p>
+          For perimenopausal patients, the predictable four-phase architecture dissolves. Adaptive prescribing in this population requires a different approach: symptom-responsive titration guided by a simple tracking framework. The clinician equips the patient with a daily log that records sleep quality, anxiety level, pain, and cannabis response (dose, formulation, effect). Over two to three months, patterns emerge that correlate with the patient's residual hormonal cycling, however irregular. These patterns become the basis for personalised adaptive protocols that the patient can implement with increasing autonomy, adjusting formulation and dosage in response to recognised symptom signatures.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section VII -->
+      <section id="section-vii" class="wp-section">
+        <span class="wp-section-number">Section VII</span>
+        <h2 class="wp-section-heading">Adaptogens as Peripheral Adjuvants: A Complementary Pharmacological Layer</h2>
+
+        <p>
+          Cannabis medicine does not operate in a vacuum, and the adaptive prescribing model gains substantial clinical power when the cannabinoid intervention is complemented by adaptogenic botanicals that modulate overlapping but pharmacologically distinct regulatory systems. Adaptogens, defined by their capacity to support the organism's resistance to stress through non-specific mechanisms that promote homeostatic return, operate primarily through the HPA axis, the very system whose dysregulation amplifies menopausal and cycle-related distress. The rationale for adaptogenic adjuvant therapy is not additive but synergistic: cannabis engages the endocannabinoid system while adaptogens stabilise the HPA axis, and the combined action addresses the allostatic overload cycle at multiple nodes simultaneously.
+        </p>
+
+        <p>
+          A 2024 review published in <em>Cannabis and Cannabinoid Research</em> (Liebertpub) explicitly compared the biological effects of cannabinoids with those of classical adaptogens, examining whether cannabinoids themselves might qualify as adaptogens given their homeostasis-promoting and stress-resistance properties. The review concluded that while cannabinoids share several functional characteristics with adaptogens, including non-specific stress resistance, bidirectional modulation, and promotion of homeostatic return, their pharmacological profiles are sufficiently distinct to warrant combined rather than interchangeable use. Cannabis operates instantaneously through the ECS, providing acute symptom relief. Adaptogens build stress resilience cumulatively, with consistent daily use over weeks producing their characteristic HPA-modulating effects. The temporal complementarity is itself a clinical asset: cannabis addresses the acute state while adaptogens reshape the baseline.
+        </p>
+
+        <!-- Ashwagandha -->
+        <h3 id="section-vii-ashwagandha" class="wp-subsection-heading">Ashwagandha (<em>Withania somnifera</em>): The HPA Axis Modulator with Estrogenic Activity</h3>
+
+        <p>
+          Ashwagandha possesses the most robust evidence base among adaptogens for direct relevance to the menopausal and perimenopausal context. According to a systematic review of human trials, ashwagandha has the most profound effect on the HPA axis among herbal extracts, with supplementation at 250&ndash;500mg daily for 4&ndash;13 weeks producing significant decreases in morning cortisol levels (Lopresti et al., 2022). Withaferin A, one of its principal withanolides, appears to interact directly with glucocorticoid receptors in the brain. GABA-mimetic activity has also been documented, providing a complementary inhibitory pathway to the allopregnanolone-GABA mechanism that weakens during the menopausal transition.
+        </p>
+
+        <p>
+          The perimenopause-specific evidence is striking. Gopal et al. (2021) conducted the first double-blind, randomised, placebo-controlled trial of ashwagandha root extract (300mg twice daily for 8 weeks) in perimenopausal women. The ashwagandha group demonstrated a statistically significant increase in serum estradiol (p &lt; 0.0001), a significant reduction in FSH (p &lt; 0.0001) and LH (p &lt; 0.05), and significant improvements across physical, psychological, and urogenital domains of menopausal quality of life. Smith et al. (2023), in a separate trial, found that perimenopausal women taking ashwagandha experienced a 137% increase in estradiol concentrations from baseline to week 12.
+        </p>
+
+        <p>
+          The proposed mechanism is multifactorial: GABA-mimetic activity may stimulate LH secretion from the pituitary, and cortisol reduction (cortisol is inversely associated with sex hormones) may create endocrine conditions more favourable to estradiol production. For the adaptive cannabis prescribing model, this is significant. Ashwagandha, by partially restoring estrogenic tone, may also partially restore the estrogen-dependent anandamide synthesis pathway, creating a more stable endocannabinoid baseline over which the cannabis formulation operates. This is not ashwagandha replacing cannabis or cannabis replacing ashwagandha. It is a layered intervention in which the adaptogen stabilises the hormonal substrate that determines how the cannabinoid will be received.
+        </p>
+
+        <blockquote class="wp-callout">
+          <p>
+            <strong>A note of clinical caution:</strong> a 2025 review in <em>Phytotherapy Research</em> documented a case in which ashwagandha root extract completely suppressed adrenal cortex responsiveness to ACTH stimulation, reversible upon discontinuation. This underscores that ashwagandha's HPA-modulating effects are pharmacologically substantive, not trivial, and that clinical oversight is essential when deploying it alongside cannabinoid therapy.
+          </p>
+        </blockquote>
+
+        <!-- Rhodiola rosea -->
+        <h3 id="section-vii-rhodiola" class="wp-subsection-heading"><em>Rhodiola rosea</em>: The Cortisol Awakening Response Modulator</h3>
+
+        <p>
+          <em>Rhodiola rosea</em> operates through a complementary mechanism to ashwagandha, with particular relevance to the cortisol diurnal rhythm disruption that characterises menopausal allostatic overload. Salidroside, rhodiola's principal bioactive compound, regulates the HPA axis and has been shown in murine models to reduce corticosterone levels in response to acute mild stress to levels comparable to non-stressed controls (Anghelescu et al., 2019). In a clinical trial of 60 subjects with stress-related fatigue, 576mg of rhodiola extract daily for 28 days significantly reduced the cortisol awakening response, a direct measure of HPA axis reactivity, while simultaneously improving mental performance and reducing fatigue (Olsson et al., 2009).
+        </p>
+
+        <p>
+          Rhodiola's antidepressant properties are thought to stem from MAO-A and MAO-B inhibition, modulation of glucocorticoid receptors, and enhancement of serotonin, dopamine, and norepinephrine activity. The European Medicines Agency has approved rhodiola for the indication "temporary relief of symptoms of stress such as fatigue and sensation of weakness." In the adaptive prescribing model, rhodiola occupies a specific temporal niche: morning administration to support the cortisol awakening response and daytime cognitive performance, complementing the evening-weighted cannabis administration that targets sleep architecture and nocturnal HPA quiescence. The adaptogen handles the morning cortisol terrain; the cannabinoid handles the evening.
+        </p>
+
+        <!-- Shatavari -->
+        <h3 id="section-vii-shatavari" class="wp-subsection-heading">Shatavari (<em>Asparagus racemosus</em>): The Phytoestrogenic Complement</h3>
+
+        <p>
+          A 2025 clinical trial published in the <em>Journal of Menopausal Medicine</em> examined shatavari root extract alone and in combination with ashwagandha in postmenopausal women, finding that the combination significantly reduced menopausal symptoms, improved vascular function, and decreased bone resorption markers. Shatavari's phytoestrogenic activity provides gentle estrogenic support through a mechanism entirely distinct from the withanolide pathway of ashwagandha, offering additive hormonal modulation without pharmacological redundancy.
+        </p>
+
+        <p>
+          Within the adaptive prescribing ecology, shatavari's role is to provide a stable phytoestrogenic floor, particularly relevant for postmenopausal patients whose endogenous estrogen production has ceased and whose estrogen-dependent anandamide synthesis pathway has collapsed. By supplying mild estrogenic stimulation, shatavari may partially maintain the ECS's estrogen-dependent regulatory functions, creating a more receptive pharmacological terrain for cannabis interventions.
+        </p>
+
+        <!-- Beta-Caryophyllene -->
+        <h3 id="section-vii-bcp" class="wp-subsection-heading">&beta;-Caryophyllene: Where the Terpene and the Adaptogen Converge</h3>
+
+        <p>
+          A compound that deserves specific attention in the adaptogen-cannabinoid intersection is &beta;-caryophyllene, a dietary terpene found abundantly in both cannabis and in several adaptogenic herbs, most notably holy basil (<em>Ocimum tenuiflorum</em>). &beta;-caryophyllene is a selective CB2 receptor agonist, the only dietary terpene with confirmed direct cannabinoid receptor activity. Its anti-inflammatory, anxiolytic, and gastroprotective effects are mediated through CB2 activation and subsequent modulation of NF-&kappa;B signalling.
+        </p>
+
+        <p>
+          &beta;-caryophyllene represents a pharmacological bridge between the adaptogenic and cannabinoid domains. When present in cannabis cultivars (as it commonly is, often as a dominant terpene), it contributes to the entourage effect through direct CB2 agonism. When present in adaptogenic herbs consumed as adjuvants, it provides a cannabimimetic action that operates alongside the HPA-modulating effects of the adaptogen's primary compounds. Holy basil, which combines &beta;-caryophyllene with documented anti-stress, anti-inflammatory, and antioxidant properties, represents a particularly coherent adjuvant for cannabis-based menopause protocols, as it engages both the cannabinoid system and the stress-response system through a single botanical source.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section VIII -->
+      <section id="section-viii" class="wp-section">
+        <span class="wp-section-number">Section VIII</span>
+        <h2 class="wp-section-heading">The Clinical Protocol: Layered Adaptive Therapeutics</h2>
+
+        <p>
+          The preceding pharmacological analysis converges on a clinical model that integrates cannabis and adaptogenic interventions across temporal scales and hormonal phases. The following framework represents a synthesis of the evidence into an actionable clinical architecture.
+        </p>
+
+        <!-- Foundation Layer -->
+        <h3 id="section-viii-foundation" class="wp-subsection-heading">The Foundation Layer: Daily Adaptogenic Support</h3>
+
+        <p>
+          Adaptogenic botanicals are deployed as a daily foundational layer, taken consistently regardless of cycle phase, to build cumulative HPA axis resilience and provide baseline hormonal support. The selection is individualised: ashwagandha for patients with elevated cortisol and pronounced anxiety, rhodiola for patients with predominant fatigue and cognitive fog, shatavari for patients with significant vasomotor symptoms or those who are postmenopausal. Combinations are appropriate where the clinical picture warrants it. The adaptogenic layer operates on a timescale of weeks, producing its effects through gradual HPA axis recalibration, and requires consistent daily dosing to achieve and maintain efficacy.
+        </p>
+
+        <!-- Responsive Layer -->
+        <h3 id="section-viii-responsive" class="wp-subsection-heading">The Responsive Layer: Cycle-Calibrated Cannabis</h3>
+
+        <p>
+          Cannabis formulations are calibrated to the hormonal phase. For cycling women, this means adjusting formulation, dose, and delivery method across the four phases described in Section VI. For perimenopausal women, calibration is guided by symptom-responsive tracking. For postmenopausal women, the hormonal terrain is relatively stable and the cannabis protocol can be correspondingly more static, though seasonal variation, stress loading, and adaptogen-mediated hormonal shifts still warrant periodic review.
+        </p>
+
+        <!-- Integration Layer -->
+        <h3 id="section-viii-integration" class="wp-subsection-heading">The Integration Layer: Somatic and Circadian Practices</h3>
+
+        <p>
+          Neither cannabis nor adaptogens can restore neuroendocrine coherence in the absence of the biological inputs the system requires. Morning light exposure to support the cortisol awakening response, evening light restriction to protect melatonin onset, regular somatic movement to maintain vagal tone, anti-inflammatory nutrition to reduce the inflammatory amplifier in the allostatic overload cycle, and relational safety to support the ventral vagal state are not optional additions. They are the biological infrastructure upon which the pharmacological interventions operate.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section IX -->
+      <section id="section-ix" class="wp-section">
+        <span class="wp-section-number">Section IX</span>
+        <h2 class="wp-section-heading">Safety Considerations and Drug Interactions</h2>
+
+        <p>
+          The layered use of cannabinoids and adaptogenic botanicals demands attention to pharmacological interactions and safety constraints.
+        </p>
+
+        <p>
+          CBD is a potent inhibitor of CYP3A4 and CYP2D6, major cytochrome P450 enzymes responsible for metabolising a wide range of medications. Ashwagandha's withanolides have also been shown to interact with CYP450 enzymes. The combination introduces a compounded inhibitory load on hepatic metabolism that must be considered for patients taking concurrent medications, particularly anticoagulants, antidepressants (SSRIs metabolised via CYP2D6), antihypertensives, and thyroid medications (ashwagandha has documented effects on thyroid hormone concentrations).
+        </p>
+
+        <p>
+          The additive sedative potential of THC, ashwagandha's GABA-mimetic activity, and rhodiola's monoaminergic effects requires careful dose titration, particularly in the evening therapeutic window. Patients should be counselled that the combined sedative potential of these agents exceeds that of any single agent alone, and that the introduction of adaptogenic adjuvants may require a temporary reduction in cannabis dosage until the interaction profile is established.
+        </p>
+
+        <p>
+          Ashwagandha's estrogenic activity, while clinically beneficial for perimenopausal women, is contraindicated in hormone-receptor-positive breast cancer. Clinical screening for hormone-sensitive conditions is essential before initiating ashwagandha-inclusive protocols.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section X -->
+      <section id="section-x" class="wp-section">
+        <span class="wp-section-number">Section X</span>
+        <h2 class="wp-section-heading">Research Frontiers</h2>
+
+        <p>
+          The adaptive prescribing model, while grounded in existing pharmacological evidence, opens research domains that have not been systematically investigated.
+        </p>
+
+        <ol class="wp-research-list">
+          <li>
+            <strong>Prospective cycle-mapped cannabis pharmacokinetics.</strong> No study has measured the plasma pharmacokinetics of THC and CBD across defined menstrual cycle phases in the same subjects. This is the single most clinically actionable gap in the cannabis-menopause literature. A crossover design in which cycling women receive standardised oral cannabis at follicular and luteal phases, with serial blood sampling, would generate data with immediate prescribing relevance.
+          </li>
+          <li>
+            <strong>Adaptogen-cannabinoid interaction pharmacology.</strong> The interaction between ashwagandha's withanolides and the endocannabinoid system has not been directly examined. If ashwagandha restores estradiol, and estradiol restores anandamide synthesis, then ashwagandha may function as an indirect endocannabinoid system modulator. This hypothesis is testable through measurement of plasma AEA in ashwagandha-supplemented versus control perimenopausal women.
+          </li>
+          <li>
+            <strong>&beta;-Caryophyllene dose-response in menopausal CB2 depletion.</strong> Estrogen loss is associated with reduced CB2 receptor expression and accelerated bone loss. &beta;-caryophyllene, as a selective CB2 agonist available in both cannabis and dietary sources, may provide targeted osteoprotective action. This is particularly relevant for postmenopausal women in whom CB2-mediated immune and skeletal regulation is compromised.
+          </li>
+          <li>
+            <strong>Symptom-responsive versus static prescribing: comparative outcomes.</strong> A pragmatic clinical trial comparing cycle-adapted cannabis protocols with standard static prescribing in perimenopausal women, using validated quality-of-life measures and salivary cortisol as outcome markers, would test whether the additional clinical complexity of adaptive prescribing translates into measurable patient benefit.
+          </li>
+          <li>
+            <strong>Chronopharmacological integration.</strong> The timing of adaptogen and cannabinoid administration relative to cortisol rhythm, sleep architecture, and symptom circadian patterns represents a frontier that connects this work to the chronobiology literature. Optimal scheduling of morning rhodiola, daytime ashwagandha, and evening cannabis may produce synergistic circadian effects that exceed the sum of the individual interventions.
+          </li>
+        </ol>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Section XI -->
+      <section id="section-xi" class="wp-section">
+        <span class="wp-section-number">Section XI</span>
+        <h2 class="wp-section-heading">Conclusion: Prescribing to a Living System</h2>
+
+        <p>
+          The endocannabinoid system is not a lock waiting for a molecular key. It is a living regulatory ecology, entrained to hormonal rhythms, shaped by reproductive history, and dynamically remodelled across the cycle, through perimenopause, and into the postmenopausal terrain. Twenty-nine genes shift expression patterns across a single menstrual cycle. Anandamide rises and falls with estrogen. FAAH activity surges under progesterone's influence. The receptor landscape reconfigures in response to the neurosteroid environment. And perimenopause dissolves the cyclical coherence that made these fluctuations, at minimum, predictable.
+        </p>
+
+        <p>
+          Static cannabis prescribing in this population is not merely suboptimal. It is pharmacologically naive. It treats a dynamic system as though it were inert, and then attributes the resulting inconsistency in outcomes to the patient, the product, or the plant. The pharmacological basis for adaptive prescribing is established. What remains is the clinical will to implement it.
+        </p>
+
+        <p>
+          Adaptogenic botanicals, deployed as a complementary pharmacological layer, extend this adaptive architecture beyond the endocannabinoid system to encompass the HPA axis, GABAergic tone, and estrogenic support. The combination creates a multi-system intervention that matches the multi-system nature of the dysregulation it seeks to address. Ashwagandha, rhodiola, shatavari, and the terpene-adaptogen bridge represented by &beta;-caryophyllene do not replace cannabis. They create the physiological conditions under which cannabis can do its best work.
+        </p>
+
+        <p>
+          The invitation for the field is to move from static to adaptive, from monotherapy to layered therapeutics, and from treating symptoms to supporting the regulatory intelligence of a body navigating one of the most demanding neuroendocrine transitions in human biology. The pharmacology supports it. The patients deserve it. The practice is ready.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- References -->
+      <section id="references" class="wp-section wp-references-section">
+        <h2 class="wp-section-heading">Selected References</h2>
+
+        <ol class="wp-references">
+          <li>Gopal S, Ajgaonkar A, Kanchi P, et al. Effect of an ashwagandha (<em>Withania somnifera</em>) root extract on climacteric symptoms in women during perimenopause: a randomised, double-blind, placebo-controlled study. <em>J Obstet Gynaecol Res.</em> 2021;47(12):4414-4425.</li>
+          <li>Habayeb OMH, Taylor AH, Evans MD, et al. Plasma levels of the endocannabinoid anandamide in women: a potential role in pregnancy maintenance and labor? <em>J Clin Endocrinol Metab.</em> 2004;89(11):5482-5487.</li>
+          <li>Lopresti AL, Smith SJ, Metse AP, Drummond PD. Effects of <em>Withania somnifera</em> on cortisol levels in stressed human subjects: a systematic review. <em>Nutrients.</em> 2023;15(24):5015.</li>
+          <li>Mortlock S, Kendamil M, Eshak S, et al. Gene expression of the endocannabinoid system in endometrium through menstrual cycle. <em>Sci Rep.</em> 2022;12:9400.</li>
+          <li>Olsson EM, von Sch&eacute;ele B, Panossian AG. A randomised, double-blind, placebo-controlled, parallel-group study of the standardised extract SHR-5 of the roots of <em>Rhodiola rosea</em> in the treatment of subjects with stress-related fatigue. <em>Planta Med.</em> 2009;75(2):105-112.</li>
+          <li>Pagano E, Orlando P, Finizio S, et al. Role of the endocannabinoid system in the control of mouse myometrium contractility during the menstrual cycle. <em>Biochem Pharmacol.</em> 2017;124:83-93.</li>
+          <li>Panossian AG, Efferth T, Shikov AN, et al. Evolution of the adaptogenic concept from traditional use to medical systems: pharmacology of stress- and aging-related diseases. <em>Med Res Rev.</em> 2021;41(1):630-703.</li>
+          <li>Reese J, Zhao S, Barak Y, et al. Endocannabinoid regulation in human endometrium across the menstrual cycle. <em>Reprod Sci.</em> 2014;21(10):1258-1267.</li>
+          <li>Smith SJ, Lopresti AL, Fairchild TJ. Exploring the efficacy and safety of a novel standardised ashwagandha root extract (Witholytin) in adults experiencing high stress and fatigue. <em>J Psychopharmacol.</em> 2023;37(11):1091-1104.</li>
+          <li>Taylor AH, Abbas MS, Habiba MA, Konje JC. Histomorphometric evaluation of cannabinoid receptor and anandamide modulating enzyme expression in the human endometrium through the menstrual cycle. <em>Histochem Cell Biol.</em> 2010;133(5):557-565.</li>
+          <li>Wiley JL, Barrus DG, Farquhar CE, et al. Cannabinoids: adaptogens or not? <em>Cannabis Cannabinoid Res.</em> 2024 (ahead of print).</li>
+        </ol>
+      </section>
+
+    </div>
+  </article>
+</PortalLayout>
+
+<style>
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar-track {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #A53D2E, #8E2A22);
+    transition: width 0.1s linear;
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* ===== GLOBAL WHITEPAPER STYLES ===== */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .whitepaper {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 1.25rem 6rem;
+    font-family: 'Manrope', sans-serif;
+    color: #3d3229;
+    line-height: 1.75;
+  }
+
+  /* ===== ARTICLE HEADER ===== */
+  @keyframes swirlA {
+    0%, 100% { transform: translate(0%, 0%) scale(1); }
+    33% { transform: translate(30%, -20%) scale(1.1); }
+    66% { transform: translate(-20%, 15%) scale(0.95); }
+  }
+
+  @keyframes swirlB {
+    0%, 100% { transform: translate(0%, 0%) scale(1); }
+    33% { transform: translate(-25%, 25%) scale(1.05); }
+    66% { transform: translate(20%, -10%) scale(1.1); }
+  }
+
+  @keyframes swirlC {
+    0%, 100% { transform: translate(0%, 0%) scale(1.05); }
+    33% { transform: translate(15%, 20%) scale(0.95); }
+    66% { transform: translate(-30%, -15%) scale(1.1); }
+  }
+
+  .wp-header {
+    max-width: none;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: 2.5rem;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    background: #f3f1ee;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wp-header::before,
+  .wp-header::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(60px);
+  }
+
+  .wp-header::before {
+    width: 500px;
+    height: 500px;
+    top: -120px;
+    left: -50px;
+    background: rgba(0, 0, 0, 0.07);
+    animation: swirlA 18s ease-in-out infinite;
+  }
+
+  .wp-header::after {
+    width: 450px;
+    height: 450px;
+    bottom: -100px;
+    right: -30px;
+    background: rgba(0, 0, 0, 0.06);
+    animation: swirlB 22s ease-in-out infinite;
+  }
+
+  .wp-header-blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    filter: blur(50px);
+    pointer-events: none;
+    animation: swirlC 25s ease-in-out infinite;
+  }
+
+  .wp-header > *:not(.wp-header-blob) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .wp-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .wp-breadcrumbs a {
+    color: #8a7e74;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .wp-breadcrumbs a:hover {
+    color: #A53D2E;
+  }
+
+  .wp-breadcrumb-sep {
+    color: #c4bdb6;
+    font-size: 0.875rem;
+  }
+
+  .wp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #3d3229;
+    line-height: 1.1;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.01em;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .wp-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #6b5e52;
+    line-height: 1.4;
+    margin: 0 0 0.25rem;
+    max-width: 580px;
+    letter-spacing: 0.01em;
+  }
+
+  .wp-subtitle-secondary {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9375rem;
+    font-style: italic;
+    color: #8a7e74;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .wp-byline {
+    margin-top: 2.5rem;
+  }
+
+  .wp-byline-rule {
+    width: 40px;
+    height: 1px;
+    background: rgba(196, 90, 66, 0.4);
+    margin-bottom: 1rem;
+  }
+
+  .wp-byline-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .wp-author-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: none;
+  }
+
+  .wp-author-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .wp-author-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #3d3229;
+    margin: 0 0 -0.25rem;
+  }
+
+  .wp-author-role {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    color: #8a7e74;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  /* ===== BODY ===== */
+  .wp-body {
+    font-size: 1rem;
+    color: rgba(18, 18, 18, 0.75);
+  }
+
+  .wp-body p {
+    margin: 0 0 1.125rem;
+    line-height: 1.95;
+  }
+
+  /* ===== SECTION HEADINGS ===== */
+  .wp-section {
+    margin-bottom: 1rem;
+  }
+
+  .wp-section-number {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #A53D2E;
+    margin-bottom: 1.25rem;
+    white-space: nowrap;
+  }
+
+  .wp-section-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(165, 61, 46, 0.1);
+    margin-right: calc(-50vw + 50%);
+  }
+
+  .wp-section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.375rem;
+    font-weight: 400;
+    color: #3d3229;
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 2rem;
+  }
+
+  .wp-subsection-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: #5a4d42;
+    line-height: 1.3;
+    margin: 2.5rem 0 1.25rem;
+    scroll-margin-top: 2rem;
+  }
+
+  /* ===== SECTION DIVIDER ===== */
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; background: #687C57; }
+    25% { transform: scale(1.4); opacity: 0.7; background: #576943; }
+    50% { transform: scale(1); opacity: 0.5; background: #A53D2E; }
+    75% { transform: scale(1.4); opacity: 0.7; background: #8E2A22; }
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 2.5rem 0;
+  }
+
+  .section-divider span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c45a42;
+    opacity: 0.3;
+    animation: dotPulse 3s ease-in-out infinite;
+  }
+
+  .section-divider span:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .section-divider span:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  /* ===== BLOCKQUOTE / CALLOUT ===== */
+  .wp-callout {
+    background: rgba(196, 90, 66, 0.04);
+    border-left: 3px solid #c45a42;
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .wp-callout p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #4a3f35;
+    margin: 0;
+  }
+
+  .wp-callout strong {
+    color: #c45a42;
+    font-weight: 700;
+  }
+
+  /* ===== RESEARCH LIST ===== */
+  .wp-research-list {
+    padding-left: 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .wp-research-list li {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+    padding-left: 0.25rem;
+  }
+
+  .wp-research-list li strong {
+    color: #3d3229;
+    font-weight: 700;
+  }
+
+  /* ===== REFERENCES ===== */
+  .wp-references-section {
+    margin-top: 1rem;
+  }
+
+  .wp-references {
+    padding-left: 2rem;
+    margin: 0;
+  }
+
+  .wp-references li {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: #5a4d42;
+    margin-bottom: 0.875rem;
+    padding-left: 0.5rem;
+    text-indent: -0.5rem;
+  }
+
+  .wp-references li em {
+    color: #6b5e52;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .wp-section-heading,
+    .wp-subsection-heading {
+      scroll-margin-top: 4.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .whitepaper {
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .wp-title {
+      font-size: 2rem;
+    }
+
+    .wp-subtitle {
+      font-size: 0.9375rem;
+    }
+
+    .wp-subtitle-secondary {
+      font-size: 0.875rem;
+    }
+
+    .wp-section-heading {
+      font-size: 1.625rem;
+    }
+
+    .wp-subsection-heading {
+      font-size: 1.3125rem;
+    }
+
+    .wp-body {
+      font-size: 0.9375rem;
+    }
+
+    .wp-header {
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .whitepaper {
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .wp-title {
+      font-size: 1.75rem;
+    }
+
+    .wp-section-heading {
+      font-size: 1.375rem;
+    }
+
+    .wp-subsection-heading {
+      font-size: 1.125rem;
+    }
+
+    .wp-body {
+      font-size: 0.875rem;
+    }
+
+    .wp-callout {
+      padding: 1rem 1.25rem;
+    }
+
+    .section-divider {
+      padding: 2rem 0;
+    }
+
+    .wp-references li {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .progress-bar-track {
+      top: 56px;
+    }
+  }
+</style>
+
+<script>
+  function initProgressBar() {
+    const bar = document.getElementById('reading-progress')
+    if (!bar) return
+
+    function update() {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
+      bar.style.width = progress + '%'
+    }
+
+    window.addEventListener('scroll', update, { passive: true })
+    update()
+  }
+
+  document.addEventListener('DOMContentLoaded', initProgressBar)
+  document.addEventListener('astro:page-load', initProgressBar)
+</script>
