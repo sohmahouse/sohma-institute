@@ -30,11 +30,17 @@ const activeCategory = activeArticle
     <!-- Mobile header -->
     <div class="portal-mobile-header">
       <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <path d="M3 12h18M3 6h18M3 18h18" />
         </svg>
       </button>
-      <a href="/" class="mobile-brand">Sohma Institute</a>
+      <div class="mobile-brand">
+        <div class="mobile-brand-top">
+          <a href="/" class="mobile-logo" set:html={sohmaLogo} />
+          <a href="/" class="mobile-institute">.INSTITUTE</a>
+        </div>
+        <span class="mobile-subtitle">FOR PRACTITIONERS</span>
+      </div>
     </div>
 
     <!-- Left sidebar overlay (mobile) -->
@@ -42,6 +48,11 @@ const activeCategory = activeArticle
 
     <!-- LEFT SIDEBAR — Articles -->
     <aside class="portal-sidebar-left" id="portal-sidebar">
+      <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
       <div class="sidebar-inner">
         <!-- Brand -->
         <div class="sidebar-brand">
@@ -54,11 +65,7 @@ const activeCategory = activeArticle
 
         <!-- Home link -->
         <a href="/" class:list={['sidebar-home-link', { active: !activeArticle }]}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-          </svg>
-          <span>All Resources</span>
+          <span class="sidebar-home-name">All Resources</span>
         </a>
 
         <!-- Article nav grouped by category -->
@@ -82,6 +89,10 @@ const activeCategory = activeArticle
                     href={`/${article.slug}`}
                     class:list={['sidebar-article-link', { active: activeArticle === article.slug }]}
                   >
+                    <svg class="sidebar-article-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                    </svg>
                     <span class="sidebar-article-title">{article.title}</span>
                   </a>
                 ))}
@@ -95,6 +106,40 @@ const activeCategory = activeArticle
 
     <!-- MAIN CONTENT -->
     <main class="portal-main" id="portal-main">
+      {toc && toc.length > 0 && (
+        <div class="mobile-toc" id="mobile-toc">
+          <button class="mobile-toc-toggle" id="mobile-toc-toggle" type="button" aria-expanded="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6" />
+              <line x1="8" y1="12" x2="21" y2="12" />
+              <line x1="8" y1="18" x2="21" y2="18" />
+              <line x1="3" y1="6" x2="3.01" y2="6" />
+              <line x1="3" y1="12" x2="3.01" y2="12" />
+              <line x1="3" y1="18" x2="3.01" y2="18" />
+            </svg>
+            <span>On this page</span>
+            <svg class="mobile-toc-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <nav class="mobile-toc-list" id="mobile-toc-list" aria-label="Table of contents">
+            <ul>
+              {toc.map(item => (
+                <li class:list={[`mobile-toc-level-${item.level}`]}>
+                  <a href={`#${item.id}`} class="mobile-toc-link">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div class="mobile-toc-dots">
+            <span class="mobile-toc-dot"></span>
+            <span class="mobile-toc-dot"></span>
+            <span class="mobile-toc-dot"></span>
+          </div>
+        </div>
+      )}
       <slot />
     </main>
 
@@ -146,6 +191,7 @@ const activeCategory = activeArticle
     background: #fff;
     border-bottom: 1px solid rgba(0,0,0,0.08);
     align-items: center;
+    justify-content: space-between;
     padding: 0 16px;
     gap: 12px;
   }
@@ -153,7 +199,8 @@ const activeCategory = activeArticle
   .sidebar-toggle {
     background: none;
     border: none;
-    color: #3d3229;
+    color: #c45a42;
+    order: 1;
     cursor: pointer;
     padding: 4px;
     display: flex;
@@ -162,12 +209,53 @@ const activeCategory = activeArticle
   }
 
   .mobile-brand {
-    font-family: 'Manrope', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #3d3229;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .mobile-brand-top {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
     text-decoration: none;
-    letter-spacing: 0.02em;
+  }
+
+  .mobile-subtitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: #9e3a2e;
+    -webkit-text-stroke: 0.4px #9e3a2e;
+  }
+
+  .mobile-logo {
+    display: flex;
+    align-items: flex-end;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .mobile-logo :global(svg) {
+    height: 16px;
+    width: auto;
+  }
+
+  .mobile-logo :global(svg path),
+  .mobile-logo :global(svg *) {
+    fill: #c45a42;
+  }
+
+  .mobile-institute {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #b8afa7;
+    line-height: 1;
+    margin-bottom: -1px;
   }
 
   /* ===== LEFT SIDEBAR — Articles ===== */
@@ -176,7 +264,7 @@ const activeCategory = activeArticle
     top: 0;
     left: 0;
     bottom: 0;
-    width: 260px;
+    width: 300px;
     background: #fff;
     border-right: 1px solid rgba(0,0,0,0.08);
     z-index: 100;
@@ -194,6 +282,21 @@ const activeCategory = activeArticle
   .portal-sidebar-left::-webkit-scrollbar-thumb {
     background: rgba(0,0,0,0.1);
     border-radius: 2px;
+  }
+
+  .sidebar-close {
+    display: none;
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    z-index: 10;
+    background: none;
+    border: none;
+    color: #c45a42;
+    cursor: pointer;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
   }
 
   .sidebar-inner {
@@ -264,42 +367,32 @@ const activeCategory = activeArticle
     color: #c45a42;
   }
 
-  /* Home link */
+  /* Home link — styled like category header */
   .sidebar-home-link {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 20px;
-    margin-bottom: 12px;
-    font-family: 'Manrope', sans-serif;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: #6b5e52;
+    width: 100%;
+    padding: 7px 20px;
+    margin-bottom: 2px;
     text-decoration: none;
-    border-left: 2px solid transparent;
-    transition: all 0.15s;
+    transition: background 0.15s;
   }
 
   .sidebar-home-link:hover {
+    background: rgba(0,0,0,0.02);
+  }
+
+  .sidebar-home-link.active .sidebar-home-name {
     color: #c45a42;
-    background: rgba(196, 90, 66, 0.04);
   }
 
-  .sidebar-home-link.active {
-    color: #c45a42;
-    border-left-color: #c45a42;
-    background: rgba(196, 90, 66, 0.06);
-  }
-
-  .sidebar-home-link svg {
-    flex-shrink: 0;
-    opacity: 0.7;
-  }
-
-  .sidebar-home-link.active svg,
-  .sidebar-home-link:hover svg {
-    opacity: 1;
-    stroke: #c45a42;
+  .sidebar-home-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8a7e74;
   }
 
   /* Article nav */
@@ -331,7 +424,7 @@ const activeCategory = activeArticle
 
   .sidebar-category-name {
     font-family: 'Manrope', sans-serif;
-    font-size: 10px;
+    font-size: 11.5px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -341,13 +434,13 @@ const activeCategory = activeArticle
 
   .sidebar-category-count {
     font-family: 'Manrope', sans-serif;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 600;
     color: #b8afa7;
     background: rgba(0,0,0,0.04);
-    padding: 1px 5px;
-    border-radius: 8px;
-    min-width: 16px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    min-width: 20px;
     text-align: center;
   }
 
@@ -382,7 +475,9 @@ const activeCategory = activeArticle
   }
 
   .sidebar-article-link {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     padding: 5px 20px 5px 28px;
     text-decoration: none;
     border-left: 2px solid transparent;
@@ -398,12 +493,24 @@ const activeCategory = activeArticle
     background: rgba(196, 90, 66, 0.06);
   }
 
+  .sidebar-article-icon {
+    flex-shrink: 0;
+    color: #b8afa7;
+    opacity: 0.7;
+  }
+
+  .sidebar-article-link.active .sidebar-article-icon,
+  .sidebar-article-link:hover .sidebar-article-icon {
+    color: #c45a42;
+    opacity: 1;
+  }
+
   .sidebar-article-title {
     display: block;
     font-family: 'Manrope', sans-serif;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 500;
-    color: #3d3229;
+    color: #8a7e74;
     line-height: 1.4;
   }
 
@@ -546,6 +653,159 @@ const activeCategory = activeArticle
     color: #c45a42;
   }
 
+  /* ===== MOBILE TOC ===== */
+  .mobile-toc {
+    display: none;
+  }
+
+  @media (max-width: 1280px) {
+    .mobile-toc {
+      display: block;
+      margin: 0 0 1.5rem;
+      padding-top: 1rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .mobile-toc {
+      margin: 0 0 1.5rem;
+      padding-top: 1rem;
+    }
+  }
+
+  .mobile-toc-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    border: 1px solid #e8e4e0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3d3229;
+    transition: border-color 0.2s;
+  }
+
+  .mobile-toc-toggle:hover,
+  .mobile-toc-toggle:focus,
+  .mobile-toc-toggle:active {
+    border-color: #e8e4e0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-toc-toggle svg:first-child {
+    color: #8a7e74;
+    flex-shrink: 0;
+  }
+
+  .mobile-toc-toggle span {
+    flex: 1;
+    text-align: left;
+  }
+
+  .mobile-toc-chevron {
+    flex-shrink: 0;
+    color: #b8afa7;
+    transition: transform 0.2s;
+  }
+
+  .mobile-toc.open .mobile-toc-chevron {
+    transform: rotate(180deg);
+  }
+
+  .mobile-toc-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: transparent;
+    border: 1px solid #e8e4e0;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-top: -1px;
+  }
+
+  .mobile-toc.open .mobile-toc-list {
+    max-height: 600px;
+  }
+
+  .mobile-toc.open .mobile-toc-toggle {
+    border-radius: 8px 8px 0 0;
+    border-bottom-color: transparent;
+  }
+
+  .mobile-toc-list ul {
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+  }
+
+  .mobile-toc-link {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #8a7e74;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .mobile-toc-link:hover {
+    color: #c45a42;
+    background: rgba(196, 90, 66, 0.04);
+  }
+
+  .mobile-toc-level-2 .mobile-toc-link {
+    padding-left: 28px;
+    font-size: 12.5px;
+    color: #a89e94;
+  }
+
+  /* ===== MOBILE TOC DOTS ===== */
+  .mobile-toc-dots {
+    display: none;
+  }
+
+  @media (max-width: 1280px) {
+    .mobile-toc-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 2.5rem 0;
+    }
+  }
+
+  .mobile-toc-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c45a42;
+    opacity: 0.3;
+    animation: mobileDotPulse 3s ease-in-out infinite;
+  }
+
+  .mobile-toc-dot:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .mobile-toc-dot:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  @keyframes mobileDotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; background: #687C57; }
+    25% { transform: scale(1.4); opacity: 0.7; background: #576943; }
+    50% { transform: scale(1); opacity: 0.5; background: #A53D2E; }
+    75% { transform: scale(1.4); opacity: 0.7; background: #8E2A22; }
+  }
+
   /* ===== RESIZE HANDLES ===== */
   .resize-handle {
     position: absolute;
@@ -573,7 +833,7 @@ const activeCategory = activeArticle
   /* ===== MAIN CONTENT ===== */
   .portal-main {
     flex: 1;
-    margin-left: 260px;
+    margin-left: 300px;
     margin-right: 220px;
     min-height: 100vh;
   }
@@ -617,6 +877,10 @@ const activeCategory = activeArticle
       display: block;
     }
 
+    .sidebar-close {
+      display: flex;
+    }
+
     .portal-main {
       margin-left: 0;
       padding-top: 56px;
@@ -625,7 +889,35 @@ const activeCategory = activeArticle
 
   @media (max-width: 640px) {
     .portal-sidebar-left {
-      width: 300px;
+      width: 100%;
+    }
+
+    .sidebar-category-header {
+      padding: 16px 20px;
+    }
+
+    .sidebar-home-link {
+      padding: 16px 20px;
+    }
+
+    .sidebar-article-link {
+      padding: 12px 20px 12px 28px;
+    }
+
+    .sidebar-category-group {
+      margin-bottom: 6px;
+    }
+
+    .sidebar-category-name {
+      font-size: 14px;
+    }
+
+    .sidebar-home-name {
+      font-size: 14px;
+    }
+
+    .sidebar-article-title {
+      font-size: 14px;
     }
   }
 </style>
@@ -633,6 +925,7 @@ const activeCategory = activeArticle
 <script>
   function initPortalSidebar() {
     const toggle = document.getElementById('sidebar-toggle')
+    const closeBtn = document.getElementById('sidebar-close')
     const sidebar = document.getElementById('portal-sidebar')
     const overlay = document.getElementById('sidebar-overlay')
     if (!toggle || !sidebar || !overlay) return
@@ -654,6 +947,7 @@ const activeCategory = activeArticle
     })
 
     overlay.addEventListener('click', closeSidebar)
+    if (closeBtn) closeBtn.addEventListener('click', closeSidebar)
 
     // Close sidebar on link click (mobile)
     sidebar.querySelectorAll('a').forEach(link => {
@@ -662,12 +956,20 @@ const activeCategory = activeArticle
       })
     })
 
-    // Category group collapsible toggle
+    // Category group collapsible toggle — accordion (one open at a time)
+    const allGroups = sidebar.querySelectorAll('.sidebar-category-group')
     sidebar.querySelectorAll('.sidebar-category-header').forEach(header => {
       header.addEventListener('click', () => {
         const group = header.closest('.sidebar-category-group') as HTMLElement
         if (!group) return
         const isExpanded = group.dataset.expanded === 'true'
+        // Close all other groups
+        allGroups.forEach(g => {
+          if (g !== group) {
+            (g as HTMLElement).dataset.expanded = 'false'
+            g.querySelector('.sidebar-category-header')?.setAttribute('aria-expanded', 'false')
+          }
+        })
         group.dataset.expanded = isExpanded ? 'false' : 'true'
         header.setAttribute('aria-expanded', isExpanded ? 'false' : 'true')
       })
@@ -762,15 +1064,43 @@ const activeCategory = activeArticle
     setupDrag(resizeRight, rightSidebar, 'right')
   }
 
+  function initMobileToc() {
+    const mobileToc = document.getElementById('mobile-toc')
+    const toggleBtn = document.getElementById('mobile-toc-toggle')
+    if (!mobileToc || !toggleBtn) return
+
+    // Move TOC above the abstract section
+    const abstract = document.getElementById('abstract')
+    if (abstract) {
+      abstract.parentElement?.insertBefore(mobileToc, abstract)
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = mobileToc.classList.contains('open')
+      mobileToc.classList.toggle('open')
+      toggleBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true')
+    })
+
+    // Close on link click
+    mobileToc.querySelectorAll('.mobile-toc-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileToc.classList.remove('open')
+        toggleBtn.setAttribute('aria-expanded', 'false')
+      })
+    })
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initPortalSidebar()
     initScrollSpy()
     initResize()
+    initMobileToc()
   })
 
   document.addEventListener('astro:page-load', () => {
     initPortalSidebar()
     initScrollSpy()
     initResize()
+    initMobileToc()
   })
 </script>
