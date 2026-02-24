@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro'
-import sohmaLogo from '../assets/images/sohma_house_logo_mockup.svg?raw'
+import sohmaLogo from '../assets/images/sohma_practitioners_logo.svg?raw'
 import { articles, getArticlesByCategory } from '../data/articles'
 
 interface TocItem {
@@ -45,8 +45,11 @@ const activeCategory = activeArticle
       <div class="sidebar-inner">
         <!-- Brand -->
         <div class="sidebar-brand">
-          <a href="/" class="sidebar-logo" aria-label="Sohma House" set:html={sohmaLogo} />
-          <a href="/" class="sidebar-title">For Practitioners</a>
+          <div class="sidebar-brand-top">
+            <a href="/" class="sidebar-logo" aria-label="Sohma House" set:html={sohmaLogo} />
+            <a href="/" class="sidebar-title">.INSTITUTE</a>
+          </div>
+          <span class="sidebar-subtitle">FOR PRACTITIONERS</span>
         </div>
 
         <!-- Home link -->
@@ -202,19 +205,38 @@ const activeCategory = activeArticle
 
   /* Brand */
   .sidebar-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     padding: 0 20px 20px;
     border-bottom: 1px solid rgba(0,0,0,0.06);
     margin-bottom: 20px;
   }
 
+  .sidebar-brand-top {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+  }
+
+  .sidebar-subtitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: #9e3a2e;
+    -webkit-text-stroke: 0.4px #9e3a2e;
+  }
+
   .sidebar-logo {
-    display: block;
-    height: 32px;
-    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-end;
+    height: 16px;
+    flex-shrink: 0;
   }
 
   .sidebar-logo :global(svg) {
-    height: 32px;
+    height: 16px;
     width: auto;
     fill: #c45a42;
   }
@@ -229,10 +251,13 @@ const activeCategory = activeArticle
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #8a7e74;
+    letter-spacing: 0.04em;
+    color: #b8afa7;
+    line-height: 1;
+    margin-bottom: -1px;
     text-decoration: none;
     transition: color 0.2s;
+    white-space: nowrap;
   }
 
   .sidebar-title:hover {

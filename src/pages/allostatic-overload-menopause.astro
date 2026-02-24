@@ -1,0 +1,919 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro'
+
+const toc = [
+  { id: 'abstract', label: 'Abstract', level: 1 },
+  { id: 'allostasis', label: 'Allostasis, Allostatic Load, and the Threshold of Overload', level: 1 },
+  { id: 'hpa-axis', label: 'The HPA Axis in the Menopausal Transition', level: 1 },
+  { id: 'cortisol-diurnal-rhythm', label: 'Cortisol Diurnal Rhythm: Architecture and Dissolution', level: 1 },
+  { id: 'allopregnanolone-gaba', label: 'The Allopregnanolone-GABA Pathway', level: 1 },
+  { id: 'endocannabinoid-system', label: 'The Endocannabinoid System: A Third Brake', level: 1 },
+  { id: 'vicious-cycle', label: 'The Vicious Cycle: Self-Sustaining Overload', level: 1 },
+  { id: 'cannabis-intervention', label: 'Cannabis as a Regulatory Intervention', level: 1 },
+  { id: 'restoring-ecs-tone', label: 'Restoring Endocannabinoid Tone', level: 2 },
+  { id: 'cortisol-rhythm-restoration', label: 'Supporting Cortisol Rhythm Restoration', level: 2 },
+  { id: 'gabaergic-brake', label: 'Complementing the Weakened GABAergic Brake', level: 2 },
+  { id: 'inflammatory-amplifier', label: 'Interrupting the Inflammatory Amplifier', level: 2 },
+  { id: 'clinical-implications', label: 'Clinical Implications: Loop-Aware Prescribing', level: 1 },
+  { id: 'research-domains', label: 'Research Domains', level: 1 },
+  { id: 'conclusion', label: 'Conclusion: The Architecture of a Return', level: 1 },
+  { id: 'references', label: 'Selected References', level: 1 },
+]
+---
+
+<PortalLayout
+  title="Allostatic Overload in the Menopausal Transition"
+  description="HPA Axis Dysregulation, Cortisol Diurnal Rhythm Collapse, and the Allopregnanolone-GABA Pathway"
+  toc={toc}
+  activeArticle="allostatic-overload-menopause"
+>
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="reading-progress"></div>
+  </div>
+
+  <article class="whitepaper">
+    <header class="wp-header">
+      <div class="wp-header-blob"></div>
+      <nav class="wp-breadcrumbs">
+        <a href="/">Sohma Institute</a>
+        <span class="wp-breadcrumb-sep">&rsaquo;</span>
+        <a href="/category/womens-health">Women's Health</a>
+      </nav>
+      <h1 class="wp-title">Allostatic Overload in the Menopausal Transition</h1>
+      <p class="wp-subtitle">HPA Axis Dysregulation, Cortisol Diurnal Rhythm Collapse, and the Allopregnanolone-GABA Pathway</p>
+      <p class="wp-subtitle-secondary">A Deep Synthesis for Cannabis Medicine Research</p>
+
+      <div class="wp-byline">
+        <div class="wp-byline-row">
+          <div class="wp-author-photo">
+            <img src="/images/team/cam-rosin-portrait.jpg" alt="Cam Rosin" width="92" height="92" loading="eager" decoding="async" />
+          </div>
+          <div class="wp-author-info">
+            <p class="wp-author-name">Cameron Rosin, RN</p>
+            <p class="wp-author-role">Specialist Cannabis Nurse Educator</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wp-body">
+
+      <!-- Abstract -->
+      <section id="abstract" class="wp-section">
+        <span class="wp-section-number">Abstract</span>
+        <h2 class="wp-section-heading">Abstract</h2>
+
+        <p>
+          The menopausal transition produces a neuroendocrine crisis that has been consistently underestimated by clinical science. As ovarian steroidogenesis declines, three interconnected regulatory systems destabilise in cascade: the hypothalamic-pituitary-adrenal (HPA) axis loses its estrogenic modulation, cortisol diurnal rhythmicity flattens, and the allopregnanolone-mediated GABAergic brake on stress reactivity progressively weakens. The convergence of these three dysregulations constitutes a state of <em>allostatic overload</em> in which the body's capacity to recover from stress exposure is functionally overwhelmed. This article synthesises peer-reviewed research across neuroendocrinology, chronobiology, neurosteroid pharmacology, and stress physiology to map the mechanistic architecture of menopausal allostatic overload, with particular attention to the role of the endocannabinoid system as both a casualty of and a potential therapeutic vector for this destabilisation. The synthesis establishes a research foundation for clinicians seeking to understand why menopausal women become trapped in chronic stress states and how cannabis medicine, situated within a broader clinical ecology, might support the restoration of neuroendocrine coherence.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- I. Allostasis, Allostatic Load, and the Threshold of Overload -->
+      <section id="allostasis" class="wp-section">
+        <span class="wp-section-number">Section 01</span>
+        <h2 class="wp-section-heading">Allostasis, Allostatic Load, and the Threshold of Overload</h2>
+
+        <p>
+          The concept of allostasis, formulated by Sterling and Eyer (1988) and substantially elaborated by McEwen (1998), describes the process by which the body achieves stability through change. Unlike homeostasis, which implies a fixed set point, allostasis recognises that physiological parameters shift dynamically to meet anticipated environmental demands. The HPA axis is the primary endocrine effector of this process: cortisol mobilises glucose, suppresses immune activity, and reconfigures metabolic priorities to optimise the organism's response to perceived threat.
+        </p>
+
+        <p>
+          Allostatic load describes the cumulative physiological cost of this ongoing adaptation. It is the wear on biological systems that accrues from repeated cycles of activation and recovery, particularly when recovery is incomplete, when the stress response activates in the absence of genuine threat, or when the regulatory feedback mechanisms that terminate the response become impaired. McEwen identified four conditions under which allostatic load escalates to <em>allostatic overload</em>: repeated exposure to novel stressors, failure to habituate to repeated stressors, inability to terminate the stress response after the stressor has resolved, and inadequate hormonal response that allows compensatory hyperactivation of other stress mediators.
+        </p>
+
+        <p>
+          The menopausal transition satisfies all four conditions simultaneously. The erratic hormonal fluctuations of perimenopause constitute repeated exposure to a novel physiological stressor. The body does not habituate because the stressor is endogenous and unpredictable. The loss of estrogenic and GABAergic modulation of the HPA axis impairs stress response termination. And the decline of endocannabinoid tone, which normally serves as a complementary stress termination pathway, forces compensatory hyperactivation of the very systems already under strain. The result is not merely elevated stress. It is a systemic transition into a state where the stress response itself becomes the primary source of physiological damage.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- II. The HPA Axis in the Menopausal Transition -->
+      <section id="hpa-axis" class="wp-section">
+        <span class="wp-section-number">Section 02</span>
+        <h2 class="wp-section-heading">The HPA Axis in the Menopausal Transition: What the Research Actually Shows</h2>
+
+        <p>
+          The relationship between ovarian hormone fluctuation and HPA axis function during the menopausal transition has been investigated through several methodological approaches, producing a literature that is more nuanced and in some respects more contradictory than is commonly acknowledged. This complexity is itself instructive.
+        </p>
+
+        <p>
+          The Seattle Midlife Women's Health Study, one of the most rigorous longitudinal investigations of cortisol across the menopausal transition, followed 91 women through serial first-morning urine cortisol measurements as they transitioned across menopausal stages. The findings were striking: 68% of women transitioning from the middle to late menopausal transition exhibited increases in cortisol of a magnitude previously associated with measurable cognitive decrements in older women (Woods et al., 2009). This is a significant finding. It locates the cortisol elevation not in postmenopause, where the body has reached a new steady state, but in the turbulent late perimenopausal period where hormonal fluctuation is most extreme.
+        </p>
+
+        <p>
+          Komesaroff et al. (1999) examined cortisol reactivity to the Trier Social Stress Test (TSST) in perimenopausal women and found that eight weeks of oral estradiol therapy attenuated the cortisol response. This finding supports a direct modulatory role for estrogen in HPA axis reactivity. Estrogen antagonists administered in animal models amplify the ACTH and corticosterone response to restraint stress, while low-dose estradiol in ovariectomised mice attenuates it (as reviewed in Brinton et al., 2015). The implication is clear: estrogen normally functions as a dampener of HPA axis reactivity, and its withdrawal during the menopausal transition removes this protective modulation.
+        </p>
+
+        <p>
+          Schmidt et al. (2015) examined basal cortisol in 24 women with perimenopausal depression versus 26 asymptomatic controls and found no difference, a finding that initially appears to contradict the allostatic overload model. The resolution lies in understanding that basal cortisol and cortisol <em>reactivity</em> are fundamentally different measures. A woman may have normal morning cortisol levels yet exhibit dramatically exaggerated cortisol responses to psychosocial stress, slower recovery to baseline, and disrupted diurnal slope. The field's early reliance on basal cortisol measurements has likely obscured the true extent of HPA dysregulation in this population. As Gordon et al. (2015) observed, perimenopausal depression may be associated not with alterations in basal HPA concentrations but with dysregulation of the <em>dynamic</em> properties of the axis: its reactivity, its recovery kinetics, and its capacity for contextual recalibration.
+        </p>
+
+        <p>
+          More recently, Gordon et al. (2024) found that weekly fluctuation in estrone-3-glucuronide (E1G), a urinary metabolite of estradiol, was positively associated with anhedonic depressive symptoms in perimenopausal women, though not with cortisol response to the TSST. This dissociation suggests that the pathway from estradiol fluctuation to mood disturbance may operate through multiple mechanisms, with the HPA axis representing one vector among several, and that the relationship between hormonal volatility and stress physiology is mediated through intermediary systems, including the neurosteroid and endocannabinoid pathways.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- III. Cortisol Diurnal Rhythm -->
+      <section id="cortisol-diurnal-rhythm" class="wp-section">
+        <span class="wp-section-number">Section 03</span>
+        <h2 class="wp-section-heading">Cortisol Diurnal Rhythm: The Architecture of a Day and Its Dissolution</h2>
+
+        <p>
+          Cortisol follows one of the most robust circadian patterns in human endocrinology. Under normal conditions, cortisol peaks within 30 to 60 minutes of waking, producing the cortisol awakening response (CAR), a surge of approximately 50&ndash;60% above baseline that mobilises metabolic resources for the demands of the day. Cortisol then declines steeply through the morning and early afternoon, entering a gradual descent to its nadir around midnight, when melatonin reaches its peak and the organism enters its deepest restorative sleep phases. This rhythm is not decorative. It is functionally constitutive of health. Cortisol is the primary signal by which the central circadian clock in the suprachiasmatic nucleus (SCN) synchronises peripheral clocks in the liver, gut, pancreas, immune system, and cardiovascular system (Bass and Lazar, 2016; Man et al., 2016).
+        </p>
+
+        <p>
+          A comprehensive meta-analysis by Adam et al. (2017) examining associations between the diurnal cortisol slope (DCS) and health outcomes found that flatter slopes, representing a slower decline from morning peak to evening nadir, were significantly associated with increased mortality, poorer cardiovascular outcomes, greater inflammation, higher BMI, depression, and fatigue. The consistency of these associations across methodologically diverse studies establishes the DCS as one of the most robust biomarkers for chronic stress-related pathology.
+        </p>
+
+        <p>
+          In the menopausal population specifically, Cagnacci et al. (2011) identified a link between increased cortisol levels and climacteric symptoms, proposing elevated cortisol as a possible mediator between vasomotor symptoms and cardiovascular risk. A 2024 polysomnographic study of perimenopausal and postmenopausal women (Polo-Kantola et al.) found that objective measures of sleep architecture degradation, including reduced slow-wave sleep, longer slow-wave sleep latency, lower sleep efficiency, and fewer REM periods, were significantly associated with higher diurnal cortisol levels. Crucially, self-reported insomnia and sleepiness were <em>not</em> associated with cortisol elevation, only the polysomnographic measures were. This dissociation carries a critical clinical implication: menopausal women may report their sleep as "adequate" while their sleep architecture is measurably degraded and their cortisol profiles significantly disrupted.
+        </p>
+
+        <p>
+          The mechanism of cortisol rhythm dissolution in menopause operates through multiple convergent pathways. First, nocturnal vasomotor events (hot flashes and night sweats) fragment sleep architecture, reducing the depth and continuity of slow-wave sleep that normally permits HPA axis quiescence. Second, the loss of estrogenic inhibition of the HPA axis raises tonic cortisol levels during the evening and early sleep phases, producing a paradoxical nocturnal hypercortisolism that further fragments sleep, creating a self-reinforcing cycle. Third, the decline of melatonin, which normally opposes cortisol's activating effects, becomes less robust with age and is further suppressed by the elevated evening cortisol. The result is a progressive flattening of the diurnal curve: morning cortisol blunts while evening cortisol elevates, producing a loss of circadian amplitude that degrades the synchronising signal to every peripheral clock in the body.
+        </p>
+
+        <p>
+          This is not merely insomnia. It is a chronobiological destabilisation with systemic metabolic, immunological, and psychiatric consequences. The menopausal woman with a flattened cortisol slope is not simply "tired." Her peripheral clocks are receiving a degraded timing signal that desynchronises glucose metabolism, inflammatory regulation, cardiovascular function, and immune surveillance. The clinical downstream includes insulin resistance, increased inflammatory markers, accelerated bone loss, impaired memory consolidation, and the persistent subjective experience of exhaustion that no amount of rest can resolve.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- IV. The Allopregnanolone-GABA Pathway -->
+      <section id="allopregnanolone-gaba" class="wp-section">
+        <span class="wp-section-number">Section 04</span>
+        <h2 class="wp-section-heading">The Allopregnanolone-GABA Pathway: The Neurological Brake That Fails</h2>
+
+        <p>
+          Allopregnanolone (ALLO), a 3&alpha;-reduced metabolite of progesterone, is among the most potent endogenous positive allosteric modulators of the GABA-A receptor. It binds at the receptor-bilayer interface, at sites distinct from the GABA, benzodiazepine, and barbiturate binding sites (Legesse et al., 2023), and enhances chloride ion conductance, producing anxiolytic, sedative, anticonvulsant, and antidepressant effects. ALLO is synthesised in the brain, adrenals, and gonads, and its levels fluctuate dynamically across the menstrual cycle, pregnancy, and the lifespan (Wang, 2011; Mellon, 2007). It is, in the most precise sense, a neurological braking compound: its presence enhances the inhibitory capacity of the GABAergic system, constraining neuronal excitability, dampening stress reactivity, and supporting the autonomic conditions necessary for rest, digestion, and restoration.
+        </p>
+
+        <p>
+          The clinical significance of ALLO is now beyond dispute. Brexanolone (Zulresso), a synthetic formulation of allopregnanolone, received FDA approval in 2019 for the treatment of postpartum depression, and zuranolone (Zurzuvae), an oral GABA-A receptor positive allosteric modulator with a similar mechanism, was approved in 2023 for the same indication. Both operate through the same fundamental principle: restoring GABAergic inhibitory tone in a population whose neurosteroid levels have precipitously declined. The therapeutic logic is directly transferable to the menopausal context.
+        </p>
+
+        <p>
+          During the reproductive years, ALLO levels track progesterone across the menstrual cycle, peaking in the luteal phase and declining premenstrually. This decline is associated, in susceptible women, with the mood, anxiety, and irritability symptoms of premenstrual dysphoric disorder (PMDD), a condition now understood as a disorder of suboptimal sensitivity to neuroactive steroids rather than a simple progesterone deficiency (Bixo et al., 2018; Timby et al., 2016). Importantly, women with PMDD do not necessarily have <em>lower</em> ALLO levels than controls. Rather, their GABA-A receptors respond <em>differently</em> to ALLO, exhibiting a paradoxical anxiogenic reaction to a compound that is normally anxiolytic. This finding has transformed our understanding of reproductive mood disorders: the pathology lies not in the quantity of the neurosteroid but in the sensitivity of the receptor system to its modulation.
+        </p>
+
+        <p>
+          The menopausal transition represents a qualitatively different challenge. As ovarian progesterone production declines and eventually ceases, ALLO synthesis from gonadal sources collapses. Adrenal and brain-derived ALLO continues, but at levels insufficient to maintain the GABAergic inhibitory tone that characterised the reproductive years. The GABA-A receptor system, simultaneously, undergoes subunit composition changes in response to the altered neurosteroid milieu, with fluctuations in the expression of &delta;-subunit-containing extrasynaptic receptors that mediate tonic inhibition, the very receptor populations most responsive to allopregnanolone modulation (Gilfarb and Leuner, 2022; Maguire et al., 2005).
+        </p>
+
+        <p>
+          The HPA axis consequences are direct. Under normal conditions, ALLO-mediated GABAergic inhibition constrains CRH-expressing neurons in the paraventricular nucleus (PVN), effectively limiting the magnitude and duration of cortisol release in response to stress. Gordon et al. (2015) proposed a heuristic model in which declining progesterone-derived neurosteroids during the menopausal transition alter how GABA modulates the HPA axis, ultimately sensitising perimenopausal women to stress. This model posits that the loss of ALLO removes a tonic inhibitory constraint on the HPA axis, producing a state of enhanced stress reactivity that manifests as anxiety, affective lability, insomnia, and cognitive disruption, the cardinal neuropsychiatric symptoms of the menopausal transition.
+        </p>
+
+        <p>
+          The clinical picture is one of cascading disinhibition. As progesterone falls, ALLO levels decline. As ALLO declines, GABAergic tone weakens. As GABAergic tone weakens, the HPA axis loses its inhibitory brake. As the HPA axis becomes disinhibited, cortisol reactivity increases and recovery slows. As cortisol elevation persists, sleep architecture degrades. As sleep degrades, the restorative processes that would normally recalibrate the HPA axis are compromised. Each step feeds the next. The system does not simply malfunction. It enters a self-reinforcing cycle of progressive destabilisation.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- V. The Endocannabinoid System -->
+      <section id="endocannabinoid-system" class="wp-section">
+        <span class="wp-section-number">Section 05</span>
+        <h2 class="wp-section-heading">The Endocannabinoid System: A Third Brake That Fails Simultaneously</h2>
+
+        <p>
+          The endocannabinoid system provides an independent but deeply interlocking regulatory constraint on HPA axis activity. CB1 receptor signalling in the amygdala, prefrontal cortex, hypothalamus, and brainstem nuclei modulates both the activation and termination of the stress response. The two primary endocannabinoids, anandamide (AEA) and 2-AG, play complementary roles: the stress-induced decline in AEA appears to gate the <em>initiation</em> of HPA axis activation, while the rise in 2-AG contributes to its <em>termination</em> (Hill et al., 2010; 2015).
+        </p>
+
+        <p>
+          Within the amygdala specifically, corticotropin-releasing hormone (CRH) drives anandamide hydrolysis through upregulation of FAAH, creating a local reduction in endocannabinoid tone that facilitates anxiety and threat vigilance (Gray et al., 2015). In the hypothalamus, glucocorticoids recruit endocannabinoid signalling as part of a rapid negative feedback loop: cortisol triggers 2-AG release, which then suppresses further CRH secretion from the PVN (Evanson et al., 2010). This is the endocannabinoid system functioning as a stress termination mechanism. When endocannabinoid tone is depleted, the fast feedback loop fails, and the HPA axis remains activated beyond adaptive duration.
+        </p>
+
+        <p>
+          Here the menopausal cascade acquires its full mechanistic weight. Estrogen normally upregulates AEA synthesis and downregulates FAAH activity. As estrogen declines, AEA tone drops and FAAH activity rises. This produces a parallel reduction in endocannabinoid-mediated stress buffering at precisely the same time that ALLO-mediated GABAergic inhibition is withdrawing. The organism loses both brakes simultaneously. The HPA axis, now subject to neither GABAergic inhibition from above nor endocannabinoid-mediated negative feedback from below, operates without effective constraint.
+        </p>
+
+        <p>
+          Chronic stress further degrades both systems. Repeated stress exposure reliably downregulates CB1 receptors across brain regions (Hill et al., 2015). Chronic HPA activation depletes the very neurosteroids that would normally constrain it. The menopausal woman in allostatic overload is therefore contending with a triple failure: estrogenic modulation of the HPA axis is lost, GABAergic inhibition via allopregnanolone is withdrawn, and endocannabinoid-mediated fast feedback is impaired. Each system's decline accelerates the decline of the others.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- VI. The Vicious Cycle -->
+      <section id="vicious-cycle" class="wp-section">
+        <span class="wp-section-number">Section 06</span>
+        <h2 class="wp-section-heading">The Vicious Cycle: How Allostatic Overload Becomes Self-Sustaining</h2>
+
+        <p>
+          The preceding sections have mapped the individual regulatory failures that converge during the menopausal transition. The clinical reality is that these failures do not operate in parallel. They operate in a reinforcing loop whose architecture explains why menopausal symptoms can persist for years, why they resist piecemeal pharmacological intervention, and why women frequently describe the experience as one of being "stuck" in a state they cannot exit.
+        </p>
+
+        <p>
+          The loop operates as follows. Declining estrogen reduces anandamide synthesis and increases FAAH activity, lowering endocannabinoid tone. Declining progesterone reduces allopregnanolone, weakening GABAergic inhibition. Both reductions disinhibit the HPA axis, increasing cortisol reactivity. Elevated cortisol disrupts sleep architecture, particularly slow-wave sleep. Reduced slow-wave sleep impairs the nocturnal quiescence of the HPA axis, producing nocturnal hypercortisolism. Nocturnal hypercortisolism suppresses melatonin and fragments restorative sleep. Fragmented sleep increases inflammatory markers, which further sensitise the HPA axis. Chronic HPA activation drives CRH-mediated anandamide hydrolysis in the amygdala, further depleting endocannabinoid tone. Chronic stress additionally downregulates CB1 receptors, further impairing the endocannabinoid stress termination pathway. The cycle tightens.
+        </p>
+
+        <p>
+          The subjective experience of this loop maps onto the clinical presentation with precision. The woman reports she cannot sleep, and when she does sleep she does not feel restored. She reports anxiety that feels disproportionate to her circumstances. She reports cognitive difficulties, particularly with word retrieval, short-term memory, and executive function, consistent with the effects of chronic cortisol elevation on hippocampal and prefrontal function. She reports a pervasive sense of being unable to "come down" from a state of activation. She reports hot flashes, which are themselves mediated by hypothalamic thermoregulatory instability that shares neural substrate with the stress response. She reports a loss of emotional resilience, a narrowing of the window of tolerance. She may report dissociative episodes, emotional numbness, or a sense of detachment from her own life, consistent with dorsal vagal activation in the polyvagal hierarchy.
+        </p>
+
+        <p>
+          None of these are separate conditions. They are facets of a single dysregulatory state. And the state is self-sustaining because every mechanism that would normally resolve it, estrogen-mediated HPA modulation, allopregnanolone-mediated GABAergic inhibition, endocannabinoid-mediated fast feedback, restorative sleep architecture, has been degraded by the same process that activated the stress in the first place.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- VII. Cannabis as a Regulatory Intervention -->
+      <section id="cannabis-intervention" class="wp-section">
+        <span class="wp-section-number">Section 07</span>
+        <h2 class="wp-section-heading">Cannabis as a Regulatory Intervention: Entering the Loop at Multiple Points</h2>
+
+        <p>
+          The therapeutic significance of cannabis medicine for the menopausal allostatic overload state lies not in its capacity to address any single symptom but in its potential to intervene at multiple points within the self-reinforcing cycle simultaneously.
+        </p>
+
+        <!-- Restoring Endocannabinoid Tone -->
+        <h3 id="restoring-ecs-tone" class="wp-subsection-heading">Restoring Endocannabinoid Tone</h3>
+
+        <p>
+          Exogenous cannabinoids, particularly THC, directly engage CB1 receptors in the amygdala, prefrontal cortex, and hypothalamus, the same structures where endocannabinoid depletion drives HPA axis disinhibition. At appropriate doses, THC can provide the CB1 receptor activation that the organism's depleted endogenous system can no longer sustain, supporting the fast negative feedback loop that terminates cortisol release. CBD, through its inhibition of FAAH and its modulation of anandamide reuptake, may support endogenous anandamide levels, addressing the root depletion rather than substituting for it.
+        </p>
+
+        <!-- Supporting Cortisol Rhythm Restoration -->
+        <h3 id="cortisol-rhythm-restoration" class="wp-subsection-heading">Supporting Cortisol Rhythm Restoration</h3>
+
+        <p>
+          Research demonstrates that CBD interferes with cortisol secretion in human volunteers, attenuating the normal circadian decline at doses of 300&ndash;600mg (Zuardi et al., 1993). While this finding requires careful interpretation, it suggests that CBD modulates HPA axis dynamics in ways that could support cortisol rhythm normalisation when deployed strategically, for example, through evening administration to support the cortisol nadir and facilitate the melatonin crossover that initiates restorative sleep. THC's established sedative effects, particularly at lower doses, further support sleep onset and continuity, potentially interrupting the nocturnal hypercortisolism cycle.
+        </p>
+
+        <!-- Complementing the Weakened GABAergic Brake -->
+        <h3 id="gabaergic-brake" class="wp-subsection-heading">Complementing the Weakened GABAergic Brake</h3>
+
+        <p>
+          While cannabis is not a direct GABA-A receptor modulator in the manner of allopregnanolone or benzodiazepines, the ECS interacts with GABAergic neurotransmission at multiple levels. CB1 receptors on GABAergic interneurons modulate inhibitory tone in cortical and limbic circuits. CBD's anxiolytic effects, mediated in part through serotonin 5-HT1A receptor agonism and TRPV1 modulation, provide a complementary anxiolytic pathway that does not depend on GABAergic mechanisms and therefore does not compete with or deplete the already compromised neurosteroid system. In this sense, cannabis offers a parallel inhibitory support that works alongside whatever residual allopregnanolone activity remains, rather than attempting to replace it.
+        </p>
+
+        <!-- Interrupting the Inflammatory Amplifier -->
+        <h3 id="inflammatory-amplifier" class="wp-subsection-heading">Interrupting the Inflammatory Amplifier</h3>
+
+        <p>
+          Chronic HPA activation produces elevated inflammatory markers, including IL-6, TNF-&alpha;, and C-reactive protein, which in turn sensitise the HPA axis to further activation. Both THC and CBD possess well-documented anti-inflammatory properties, with CBD acting through PPAR-&gamma; receptor activation and suppression of NF-&kappa;B signalling. By reducing systemic inflammation, cannabis-based interventions may attenuate one of the key amplifiers of the allostatic overload cycle.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- VIII. Clinical Implications -->
+      <section id="clinical-implications" class="wp-section">
+        <span class="wp-section-number">Section 08</span>
+        <h2 class="wp-section-heading">Clinical Implications: Toward Loop-Aware Prescribing</h2>
+
+        <p>
+          The framework presented in this synthesis suggests that effective cannabis prescribing for the menopausal allostatic overload state requires an understanding of the patient's position within the self-reinforcing cycle. The following clinical principles follow from the mechanistic analysis.
+        </p>
+
+        <p>
+          <strong>Assess the loop, not the symptom.</strong> A patient presenting with insomnia, anxiety, and cognitive fog is not presenting with three separate conditions. She is presenting with a single dysregulatory state expressing through multiple channels. Treatment should target the loop itself, not its individual manifestations.
+        </p>
+
+        <p>
+          <strong>Map the cortisol rhythm.</strong> Salivary cortisol testing across four time points (waking, mid-morning, afternoon, bedtime) provides a direct measure of diurnal slope flattening. This is among the most clinically actionable biomarkers available and should be standard assessment for menopausal cannabis patients.
+        </p>
+
+        <p>
+          <strong>Time the intervention to the rhythm.</strong> Evening-weighted CBD administration may support the cortisol nadir and melatonin crossover. Morning or daytime administration of balanced THC:CBD formulations may support social engagement and cognitive function without disrupting the morning cortisol awakening response.
+        </p>
+
+        <p>
+          <strong>Anticipate the interaction with HRT.</strong> For women on hormone replacement therapy, estrogen supplementation may partially restore the FAAH-anandamide axis and the allopregnanolone-GABA brake. Cannabis prescribing in these patients should account for the partial regulatory restoration that HRT provides. For women who are not candidates for HRT or who decline it, the endocannabinoid intervention becomes proportionally more significant as it represents one of the few remaining entry points for regulatory support.
+        </p>
+
+        <p>
+          <strong>Monitor adaptively.</strong> The menopausal transition is not static. Perimenopausal hormonal volatility means that the patient's allostatic load profile may shift from month to month. Static prescribing is inadequate. Review intervals should be calibrated to the pace of transition, with formulation and dosage adjustments responsive to changing symptom patterns, sleep quality, and, where available, cortisol rhythm data.
+        </p>
+
+        <p>
+          <strong>Situate cannabis within an ecology of practice.</strong> Cannabis alone cannot resolve allostatic overload. The self-reinforcing cycle must be interrupted at multiple points: sleep hygiene and circadian entrainment (morning light exposure, evening light restriction), somatic practices that support vagal tone (breathwork, yoga, cold exposure), anti-inflammatory nutrition, and relational support that provides the neuroception of safety necessary for ventral vagal activation. Cannabis is one instrument in this ecology. It is not the ecology itself.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- IX. Research Domains -->
+      <section id="research-domains" class="wp-section">
+        <span class="wp-section-number">Section 09</span>
+        <h2 class="wp-section-heading">Research Domains That Fractal from This Synthesis</h2>
+
+        <p>
+          The mechanistic architecture mapped in this article opens multiple research frontiers, each of which could sustain independent investigation.
+        </p>
+
+        <p>
+          <strong>1. ALLO-ECS crosstalk.</strong> The interaction between allopregnanolone and endocannabinoid signalling has been hypothesised but not experimentally mapped. Pregnenolone, the precursor to both progesterone (and hence ALLO) and the endocannabinoids, modulates the cannabinoid system directly: pregnenolone has been identified as an endogenous CB1 receptor signalling inhibitor. The triangle between pregnenolone, ALLO, and the ECS may represent a master regulatory node whose disruption underlies the menopausal cascade. Notably, research at MGH is investigating pregnenolone as a treatment for menopausal depression, and pregnenolone is documented to modulate the endocannabinoid system. These are not separate investigations. They are approaching the same node from different angles.
+        </p>
+
+        <p>
+          <strong>2. GABA-A receptor subunit remodelling and cannabis sensitivity.</strong> If GABA-A receptor &delta;-subunit expression changes across the menopausal transition (Maguire et al., 2005), and these receptors are the primary targets of neurosteroid action, the question arises: does GABA-A receptor remodelling alter the pharmacological response to cannabis? CB1-mediated modulation of GABAergic interneurons would produce different effects depending on the subunit composition of postsynaptic GABA-A receptors. This is an unexplored intersection.
+        </p>
+
+        <p>
+          <strong>3. Cortisol diurnal slope as a cannabis outcome measure.</strong> The DCS is an established, validated, cost-effective biomarker. No study has examined whether cannabis use in menopausal women restores diurnal cortisol slope steepness. This is a straightforward, fundable clinical trial design that would generate high-impact data.
+        </p>
+
+        <p>
+          <strong>4. Terpene-neurosteroid interactions.</strong> Several terpenes present in cannabis, including linalool, myrcene, and &beta;-caryophyllene, have documented GABAergic, CB2-agonistic, or anti-inflammatory properties. The question of whether specific terpene profiles in cannabis formulations can partially compensate for declining neurosteroid tone in menopausal women is both clinically relevant and commercially significant.
+        </p>
+
+        <p>
+          <strong>5. Sensory integration and the menopausal body.</strong> Hot flashes, skin crawling, pelvic floor changes, and joint pain are all somatic expressions of neuroendocrine dysregulation. Cannabis-assisted somatic therapy, in which the plant's capacity to enhance interoceptive awareness is deployed within a structured clinical container, may offer a pathway for menopausal women to re-establish relationship with a body that feels unfamiliar. This is the territory where cannabis medicine meets the broader ecology of practice.
+        </p>
+
+        <p>
+          <strong>6. Racial and socioeconomic modifiers of menopausal allostatic overload.</strong> Research on cortisol diurnal rhythms has documented significantly flatter slopes in Black versus White young adults, reflecting the embodied physiological consequences of racism and discrimination (DeSantis et al., 2007). The menopausal transition in women already carrying elevated allostatic load from structural racism, poverty, or chronic marginalisation begins from a different baseline. Cannabis medicine research must account for these disparities or risk generating clinical guidelines that serve only the well-resourced.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- X. Conclusion -->
+      <section id="conclusion" class="wp-section">
+        <span class="wp-section-number">Section 10</span>
+        <h2 class="wp-section-heading">Conclusion: The Architecture of a Return</h2>
+
+        <p>
+          Allostatic overload in the menopausal transition is not a mystery. It is a mechanistically legible cascade of regulatory failures: estrogenic modulation withdraws, allopregnanolone-mediated GABAergic inhibition weakens, endocannabinoid stress termination pathways degrade, cortisol rhythms flatten, sleep architecture collapses, inflammation amplifies, and the system locks into a self-reinforcing cycle that resists resolution by any single intervention.
+        </p>
+
+        <p>
+          The architecture of this cycle is also the architecture of its potential resolution. Every point at which the cycle reinforces itself is a point at which a well-targeted intervention can weaken it. Cannabis medicine, with its capacity to engage CB1 and CB2 receptors, modulate FAAH activity, support anandamide tone, interact with serotonergic and vanilloid pathways, reduce inflammation, and promote sleep, represents one of the most versatile pharmacological tools available for a condition that demands multi-system regulatory support.
+        </p>
+
+        <p>
+          The task for clinicians is to deploy this tool with the sophistication the biology demands. This means understanding the loop, mapping the patient's position within it, timing interventions to the cortisol rhythm, adapting formulations to the hormonal terrain, and situating cannabis within a broader ecology of practices that support the nervous system's return to coherence.
+        </p>
+
+        <p>
+          The menopausal body is not broken. It is navigating one of the most complex neuroendocrine reorganisations in human biology with regulatory resources that have been systematically depleted. The return from allostatic overload is not a return to what was. It is the construction of a new regulatory equilibrium. Cannabis, held with intelligence and care, can be part of that construction.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Selected References -->
+      <section id="references" class="wp-section wp-references-section">
+        <span class="wp-section-number">References</span>
+        <h2 class="wp-section-heading">Selected References</h2>
+
+        <ol class="wp-references">
+          <li>Adam EK, Quinn ME, Tavernier R, McQuillan MT, Dahlke KA, Gilbert KE. Diurnal cortisol slopes and mental and physical health outcomes: a systematic review and meta-analysis. <em>Psychoneuroendocrinology</em>. 2017;83:25-41.</li>
+          <li>Bixo M, Johansson M, Timby E, Michelakos T, B&auml;ckstr&ouml;m T. Effects of GABA active steroids in the female brain with focus on the premenstrual dysphoric disorder. <em>J Neuroendocrinol</em>. 2018;30(2):e12553.</li>
+          <li>Cagnacci A, Cannoletta M, Caretto S, et al. Increased cortisol level: a possible link between climacteric symptoms and cardiovascular risk factors. <em>Menopause</em>. 2011;18(3):273-278.</li>
+          <li>Evanson NK, Tasker JG, Hill MN, Hillard CJ, Herman JP. Fast feedback inhibition of the HPA axis by glucocorticoids is mediated by endocannabinoid signaling. <em>Endocrinology</em>. 2010;151(10):4811-4819.</li>
+          <li>Gilfarb RA, Leuner B. GABA system modifications during periods of hormonal flux across the female lifespan. <em>Front Behav Neurosci</em>. 2022;16:802530.</li>
+          <li>Gordon JL, Girdler SS, Meltzer-Brody SE, et al. Ovarian hormone fluctuation, neurosteroids and HPA axis dysregulation in perimenopausal depression: a novel heuristic model. <em>Am J Psychiatry</em>. 2015;172(3):227-236.</li>
+          <li>Gray JM, Vecchiarelli HA, Morena M, et al. Corticotropin-releasing hormone drives anandamide hydrolysis in the amygdala to promote anxiety. <em>J Neurosci</em>. 2015;35(9):3879-3892.</li>
+          <li>Hill MN, Campolongo P, Yehuda R, Patel S. Integrating endocannabinoid signaling and cannabinoids with the stress and fear memory systems. <em>Neuropsychopharmacology</em>. 2018;43(1):80-102.</li>
+          <li>Legesse DH, Fan C, Bhatt D, et al. Structural insights into opposing actions of neurosteroids on GABAA receptors. <em>Nat Commun</em>. 2023;14:5091.</li>
+          <li>McEwen BS. Protective and damaging effects of stress mediators. <em>N Engl J Med</em>. 1998;338(3):171-179.</li>
+          <li>Polo-Kantola P, et al. Worse sleep architecture but not self-reported insomnia and sleepiness is associated with higher cortisol levels in menopausal women. <em>Maturitas</em>. 2024;186:108025.</li>
+          <li>Santoro A, Mele E, Marino M, et al. The complex interplay between endocannabinoid system and the estrogen system in CNS and periphery. <em>Int J Mol Sci</em>. 2021;22(2):972.</li>
+          <li>Wang M. Neurosteroids and GABA-A receptor function. <em>Front Endocrinol</em>. 2011;2:44.</li>
+          <li>Woods NF, Mitchell ES, Smith-DiJulio K. Cortisol levels during the menopausal transition and early postmenopause. <em>Menopause</em>. 2009;16(4):708-718.</li>
+          <li>Zuardi AW, Guimar&atilde;es FS, Moreira AC. Effect of cannabidiol on plasma prolactin, growth hormone and cortisol in human volunteers. <em>Braz J Med Biol Res</em>. 1993;26(2):213-217.</li>
+        </ol>
+      </section>
+
+    </div>
+  </article>
+</PortalLayout>
+
+<style>
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar-track {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #A53D2E, #8E2A22);
+    transition: width 0.1s linear;
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* ===== GLOBAL WHITEPAPER STYLES ===== */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .whitepaper {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 1.25rem 6rem;
+    font-family: 'Manrope', sans-serif;
+    color: #3d3229;
+    line-height: 1.75;
+  }
+
+  /* ===== ARTICLE HEADER ===== */
+  @keyframes swirlA {
+    0%, 100% { transform: translate(0%, 0%) scale(1); }
+    33% { transform: translate(30%, -20%) scale(1.1); }
+    66% { transform: translate(-20%, 15%) scale(0.95); }
+  }
+
+  @keyframes swirlB {
+    0%, 100% { transform: translate(0%, 0%) scale(1); }
+    33% { transform: translate(-25%, 25%) scale(1.05); }
+    66% { transform: translate(20%, -10%) scale(1.1); }
+  }
+
+  @keyframes swirlC {
+    0%, 100% { transform: translate(0%, 0%) scale(1.05); }
+    33% { transform: translate(15%, 20%) scale(0.95); }
+    66% { transform: translate(-30%, -15%) scale(1.1); }
+  }
+
+  .wp-header {
+    max-width: none;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: 2.5rem;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    background: #f3f1ee;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wp-header::before,
+  .wp-header::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(60px);
+  }
+
+  .wp-header::before {
+    width: 500px;
+    height: 500px;
+    top: -120px;
+    left: -50px;
+    background: rgba(0, 0, 0, 0.07);
+    animation: swirlA 18s ease-in-out infinite;
+  }
+
+  .wp-header::after {
+    width: 450px;
+    height: 450px;
+    bottom: -100px;
+    right: -30px;
+    background: rgba(0, 0, 0, 0.06);
+    animation: swirlB 22s ease-in-out infinite;
+  }
+
+  .wp-header-blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    filter: blur(50px);
+    pointer-events: none;
+    animation: swirlC 25s ease-in-out infinite;
+  }
+
+  .wp-header > *:not(.wp-header-blob) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .wp-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .wp-breadcrumbs a {
+    color: #8a7e74;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .wp-breadcrumbs a:hover {
+    color: #A53D2E;
+  }
+
+  .wp-breadcrumb-sep {
+    color: #c4bdb6;
+    font-size: 0.875rem;
+  }
+
+  .wp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #3d3229;
+    line-height: 1.1;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.01em;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .wp-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #6b5e52;
+    line-height: 1.4;
+    margin: 0 0 0.25rem;
+    max-width: 580px;
+    letter-spacing: 0.01em;
+  }
+
+  .wp-subtitle-secondary {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9375rem;
+    font-style: italic;
+    color: #8a7e74;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .wp-byline {
+    margin-top: 2.5rem;
+  }
+
+  .wp-byline-rule {
+    width: 40px;
+    height: 1px;
+    background: rgba(196, 90, 66, 0.4);
+    margin-bottom: 1rem;
+  }
+
+  .wp-byline-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .wp-author-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: none;
+  }
+
+  .wp-author-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .wp-author-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #3d3229;
+    margin: 0 0 -0.25rem;
+  }
+
+  .wp-author-role {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    color: #8a7e74;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  /* ===== BODY ===== */
+  .wp-body {
+    font-size: 1rem;
+    color: rgba(18, 18, 18, 0.75);
+  }
+
+  .wp-body p {
+    margin: 0 0 1.125rem;
+    line-height: 1.95;
+  }
+
+  /* ===== SECTION HEADINGS ===== */
+  .wp-section {
+    margin-bottom: 1rem;
+  }
+
+  .wp-section-number {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #A53D2E;
+    margin-bottom: 1.25rem;
+    white-space: nowrap;
+  }
+
+  .wp-section-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(165, 61, 46, 0.1);
+    margin-right: calc(-50vw + 50%);
+  }
+
+  .wp-section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.375rem;
+    font-weight: 400;
+    color: #3d3229;
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 2rem;
+  }
+
+  .wp-subsection-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: #5a4d42;
+    line-height: 1.3;
+    margin: 2.5rem 0 1.25rem;
+    scroll-margin-top: 2rem;
+  }
+
+  /* ===== SECTION DIVIDER ===== */
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; background: #687C57; }
+    25% { transform: scale(1.4); opacity: 0.7; background: #576943; }
+    50% { transform: scale(1); opacity: 0.5; background: #A53D2E; }
+    75% { transform: scale(1.4); opacity: 0.7; background: #8E2A22; }
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 2.5rem 0;
+  }
+
+  .section-divider span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c45a42;
+    opacity: 0.3;
+    animation: dotPulse 3s ease-in-out infinite;
+  }
+
+  .section-divider span:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .section-divider span:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  /* ===== BLOCKQUOTE / CALLOUT ===== */
+  .wp-callout {
+    background: rgba(196, 90, 66, 0.04);
+    border-left: 3px solid #c45a42;
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .wp-callout p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #4a3f35;
+    margin: 0 0 0.75rem;
+  }
+
+  .wp-callout p:last-child {
+    margin-bottom: 0;
+  }
+
+  .wp-callout strong {
+    color: #c45a42;
+    font-weight: 700;
+  }
+
+  .wp-callout ul {
+    padding-left: 1.25rem;
+    margin: 0.5rem 0 0;
+  }
+
+  .wp-callout ul li {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #4a3f35;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ===== OVERVIEW LIST (numbered points) ===== */
+  .wp-overview-list {
+    padding-left: 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .wp-overview-list li {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+    padding-left: 0.25rem;
+  }
+
+  .wp-overview-list li strong {
+    color: #3d3229;
+    font-weight: 700;
+  }
+
+  /* ===== STANDARD LISTS ===== */
+  .wp-body ul,
+  .wp-body ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 1.25rem;
+  }
+
+  .wp-body ul li,
+  .wp-body ol li {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .wp-body ul li strong,
+  .wp-body ol li strong {
+    color: #3d3229;
+    font-weight: 600;
+  }
+
+  /* ===== RESEARCH LIST ===== */
+  .wp-research-list {
+    padding-left: 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .wp-research-list li {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+    padding-left: 0.25rem;
+  }
+
+  .wp-research-list li strong {
+    color: #3d3229;
+    font-weight: 700;
+  }
+
+  /* ===== REFERENCES ===== */
+  .wp-references-section {
+    margin-top: 1rem;
+  }
+
+  .wp-references {
+    padding-left: 2rem;
+    margin: 0;
+  }
+
+  .wp-references li {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: #5a4d42;
+    margin-bottom: 0.875rem;
+    padding-left: 0.5rem;
+    text-indent: -0.5rem;
+  }
+
+  .wp-references li em {
+    color: #6b5e52;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .wp-section-heading,
+    .wp-subsection-heading {
+      scroll-margin-top: 4.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .whitepaper {
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .wp-title {
+      font-size: 2rem;
+    }
+
+    .wp-subtitle {
+      font-size: 0.9375rem;
+    }
+
+    .wp-subtitle-secondary {
+      font-size: 0.875rem;
+    }
+
+    .wp-section-heading {
+      font-size: 1.625rem;
+    }
+
+    .wp-subsection-heading {
+      font-size: 1.3125rem;
+    }
+
+    .wp-body {
+      font-size: 0.9375rem;
+    }
+
+    .wp-header {
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .whitepaper {
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .wp-title {
+      font-size: 1.75rem;
+    }
+
+    .wp-section-heading {
+      font-size: 1.375rem;
+    }
+
+    .wp-subsection-heading {
+      font-size: 1.125rem;
+    }
+
+    .wp-body {
+      font-size: 0.875rem;
+    }
+
+    .wp-callout {
+      padding: 1rem 1.25rem;
+    }
+
+    .section-divider {
+      padding: 2rem 0;
+    }
+
+    .wp-references li {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .progress-bar-track {
+      top: 56px;
+    }
+  }
+</style>
+
+<script>
+  function initProgressBar() {
+    const bar = document.getElementById('reading-progress')
+    if (!bar) return
+
+    function update() {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
+      bar.style.width = progress + '%'
+    }
+
+    window.addEventListener('scroll', update, { passive: true })
+    update()
+  }
+
+  document.addEventListener('DOMContentLoaded', initProgressBar)
+  document.addEventListener('astro:page-load', initProgressBar)
+</script>

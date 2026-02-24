@@ -1,0 +1,1165 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro'
+
+const toc = [
+  { id: 'brief-history', label: 'A Brief History of Cannabis', level: 1 },
+  { id: 'synergistic-qualities', label: 'The Synergistic Qualities of Cannabis', level: 1 },
+  { id: 'major-cannabinoids', label: 'Intro to Major Cannabinoids (THC & CBD)', level: 1 },
+  { id: 'what-is-thc', label: 'What Is THC?', level: 2 },
+  { id: 'what-is-cbd', label: 'What Is CBD?', level: 2 },
+  { id: 'side-effects-cbd', label: 'Side Effects of CBD', level: 2 },
+  { id: 'minor-cannabinoids', label: 'Intro to Minor Cannabinoids & Cannabis Pharmacology', level: 1 },
+  { id: 'decarboxylation', label: 'Decarboxylation: Acidic vs Neutral Cannabinoids', level: 2 },
+  { id: 'intro-terpenes', label: 'Intro to Terpenes', level: 1 },
+  { id: 'terpene-linalool', label: 'Linalool', level: 2 },
+  { id: 'terpene-myrcene', label: 'Myrcene', level: 2 },
+  { id: 'terpene-limonene', label: 'D-Limonene', level: 2 },
+  { id: 'terpene-pinene', label: 'Pinene', level: 2 },
+  { id: 'intro-flavonoids', label: 'Intro to Flavonoids', level: 1 },
+  { id: 'indica-vs-sativa', label: 'Indica vs Sativa', level: 1 },
+  { id: 'type-classification', label: 'Type I, II & III Classification', level: 2 },
+  { id: 'hemp-vs-cannabis', label: 'Hemp vs Cannabis', level: 1 },
+  { id: 'medicinal-vs-black-market', label: 'Medicinal vs Black Market Cannabis', level: 2 },
+  { id: 'schedule-4-vs-8', label: 'Schedule 4 vs Schedule 8', level: 2 },
+  { id: 'condition-specific-evidence', label: 'Condition-Specific Cannabis Evidence', level: 1 },
+  { id: 'long-term-effects', label: 'Long Term Effects of Cannabis', level: 1 },
+  { id: 'respiratory-concerns', label: 'Respiratory Concerns', level: 2 },
+  { id: 'psychosis-schizophrenia', label: 'Psychosis and Schizophrenia', level: 2 },
+  { id: 'cognitive-impairment', label: 'Cognitive Impairment', level: 2 },
+  { id: 'cannabis-use-disorder', label: 'Cannabis Use Disorder', level: 2 },
+  { id: 'developing-brain', label: 'Effects on the Developing Brain', level: 2 },
+]
+---
+
+<PortalLayout
+  title="Cannabis as Medicine — Sohma Institute"
+  description="A Foundation for Clinical Understanding — exploring the history, pharmacology, and therapeutic applications of cannabis as medicine."
+  toc={toc}
+  activeArticle="cannabis-as-medicine"
+>
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="reading-progress"></div>
+  </div>
+
+  <article class="whitepaper">
+    <header class="wp-header">
+      <div class="wp-header-blob"></div>
+      <nav class="wp-breadcrumbs">
+        <a href="/">Home</a>
+        <span class="wp-breadcrumb-sep">&rsaquo;</span>
+        <a href="/category/fundamentals">Fundamentals</a>
+      </nav>
+      <h1 class="wp-title">Cannabis as Medicine</h1>
+      <p class="wp-subtitle">A Foundation for Clinical Understanding</p>
+
+      <div class="wp-byline">
+        <div class="wp-byline-row">
+          <div class="wp-author-photo">
+            <img src="/images/team/cam-rosin-portrait.jpg" alt="Cameron Rosin" width="92" height="92" loading="eager" decoding="async" />
+          </div>
+          <div class="wp-author-info">
+            <p class="wp-author-name">Cameron Rosin, RN</p>
+            <p class="wp-author-role">Specialist Cannabis Nurse Educator</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wp-body">
+
+      <!-- A Brief History of Cannabis -->
+      <section id="brief-history" class="wp-section">
+        <h2 class="wp-section-heading">A Brief History of Cannabis</h2>
+
+        <p>
+          Cannabis is an extremely complex herbal medicine, with hundreds of therapeutically active compounds and wide-ranging effects. The most abundant and well researched of the cannabinoids are cannabidiol (CBD) and delta-9-tetrahydrocannabinol (THC).
+        </p>
+
+        <p>
+          The importance of cannabis has been recognised by humans for millennia, with diverse applications as medicine, fibre and ceremony. The cannabis plant likely originated around the Tibetan plateau around 28 million years ago, and due to its importance in human health and civilisation it spread to every corner of the globe in varying formats. The Cannabis plant is one of mankind's first domesticated plants.
+        </p>
+
+        <p>
+          In recent history, cannabis was a commonly prescribed medicine by Western doctors. Cannabis as a medicine was brought to the West by Dr. William O'Shaunassy following his travels to India in the 1840s.
+        </p>
+
+        <p>
+          Prior to this, Europe and the Americas relied on hemp for fibre, with sailing ships requiring huge amounts of hemp for ropes and sails.
+        </p>
+
+        <p>
+          Between the 1840s and 1930s, cannabis was treated as a versatile essential medicine, used for over 100 different conditions. Due to social and political reasons, cannabis was made illegal, stigmatised and vilified by Harry Anslinger following a failed prohibition on alcohol.
+        </p>
+
+        <p>
+          Despite prohibition, research in the 20th century continued, albeit slowly. In the 1960s Raphael Mechoulam and his team in Israel isolated the psychoactive compound THC and other cannabinoids including CBD. It wasn't until the late '80s and early '90s that scientists discovered the body's own endocannabinoid system (ECS). This was a direct result of scientists trying to understand the mechanisms of THC's psychoactive properties.
+        </p>
+
+        <p>
+          The discovery of the endocannabinoid system is arguably one of the most important discoveries for human health of the 20th century. Despite a lack of awareness among doctors and healthcare providers, the ECS is a vital link in the puzzle of human physiology.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- The Synergistic Qualities of Cannabis -->
+      <section id="synergistic-qualities" class="wp-section">
+        <h2 class="wp-section-heading">The Synergistic Qualities of Cannabis</h2>
+        <p class="wp-subtitle-secondary"><em>Also referred to as the 'entourage effect' or the 'ensemble effect'.</em></p>
+
+        <p>
+          The cannabis plant has over 700 different active compounds with scientists discovering new ones regularly. Some of these compounds are the most bioactive molecules known to humans. It is a treasure trove with potentially thousands/millions of variations. Of these 700 compounds approximately 140 are cannabinoids which are found almost exclusively in cannabis.
+        </p>
+
+        <p>
+          There are also other active components like terpenes and flavonoids which can have therapeutic effects. Terpenes are the essential oils of the plant and give each plant its unique scent. There is a known synergy with the whole plant that cannot be created by using THC or CBD alone. This is called the "entourage effect".
+        </p>
+
+        <p>
+          We have seen it many times in clinical practice that the dose required of a full spectrum product to have a therapeutic result is often much lower than more refined products like isolates or broad spectrum products. Also the full spectrum products can be better tolerated as certain components of the cannabis plant can be utilised to counteract potential side effects. This opposite is also true though where choosing a product with an inappropriate terpene profile can cause side effects i.e. too much myrcene can cause sedation making it too fatiguing for day use. Therefore it is essential to consider the terpene profile when prescribing a full spectrum product.
+        </p>
+
+        <div class="wp-callout">
+          <div class="wp-callout-title">Cannabis Formulations Containing Terpenes</div>
+          <p>
+            <strong>Full spectrum</strong> is an extract of everything in the original plant. <strong>Broad spectrum</strong> typically has THC removed; however, broad spectrum simply means something removed. A <strong>terpsolate</strong> is typically a CBD isolate with terpenes added; however, it could be any cannabinoid isolate with terpenes added.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Intro to Major Cannabinoids (THC & CBD) -->
+      <section id="major-cannabinoids" class="wp-section">
+        <h2 class="wp-section-heading">Intro to Major Cannabinoids (THC &amp; CBD)</h2>
+
+        <p>
+          CBD and THC are the two most well known cannabinoids. Whilst both compounds are valued for their unique therapeutic effects, THC is the only compound in cannabis with the potential to cause impairment through its psychoactive effects.
+        </p>
+
+        <p>
+          Both CBD and THC are psychoactive as they can both influence the neurochemical state of the brain, however, only THC has the potential to induce intoxication or impairment.
+        </p>
+
+        <p>
+          <strong>THC:</strong> potentially intoxicating &nbsp;&nbsp; <strong>CBD:</strong> non-intoxicating
+        </p>
+
+        <!-- What is THC? -->
+        <h3 id="what-is-thc" class="wp-subsection-heading">What Is THC?</h3>
+
+        <p>
+          THC (Delta-9-Tetrahydrocannabinol) is the compound in cannabis responsible for the plant's psychoactive effects and many of its medicinal properties. THC is a very powerful medicine even in small doses, and although it's associated with the cannabis 'high', intoxication or impairment is not necessary to experience its therapeutic effects. In fact, impairment is generally considered a side effect that can be mitigated through mindful administration.
+        </p>
+
+        <p>
+          THC has a very similar molecular shape to Anandamide, with activity that is very similar at the receptor level, however with less selectivity and longer duration. Anandamide is responsible for feelings of bliss and social connection.
+        </p>
+
+        <p><strong>Therapeutic applications of THC include:</strong></p>
+        <ul>
+          <li>Analgesic</li>
+          <li>Anti-inflammatory</li>
+          <li>Muscle relaxant</li>
+          <li>Immune modulator</li>
+          <li>Neuroprotectant</li>
+          <li>Antioxidant</li>
+          <li>Anti-nausea and vomiting</li>
+          <li>Anticonvulsant</li>
+          <li>Antispasmodic</li>
+          <li>Appetite stimulant</li>
+          <li>Relaxant</li>
+          <li>Antidepressant</li>
+          <li>Sleep aid</li>
+          <li>Reduction in visceral hypersensitivity and GI motility</li>
+          <li>Changes nature of memory by promoting positive memories and reducing traumatic memories</li>
+        </ul>
+
+        <div class="wp-callout">
+          <div class="wp-callout-title">Clinical Note: THC Side Effects</div>
+          <p>
+            THC needs to be used with caution as it is also responsible for most of the side effects associated with cannabis. Common THC side effects include:
+          </p>
+          <ul>
+            <li>Dry mouth</li>
+            <li>Red eyes</li>
+            <li>Reduced coordination</li>
+            <li>Impaired balance</li>
+            <li>Dizziness</li>
+            <li>Fatigue</li>
+            <li>Anxiety/Paranoia</li>
+            <li>Euphoria/Dysphoria</li>
+            <li>Reduction in blood pressure</li>
+            <li>Transient increase in heart rate</li>
+            <li>Nausea/Vomiting</li>
+            <li>Short term memory impairment</li>
+            <li>Difficulty focusing</li>
+            <li>Asthenia</li>
+          </ul>
+        </div>
+
+        <!-- What is CBD? -->
+        <h3 id="what-is-cbd" class="wp-subsection-heading">What Is CBD?</h3>
+
+        <p>
+          CBD (cannabidiol) is considered to be very safe and well tolerated even at extremely high doses. CBD is non intoxicating and non impairing and has a wide range of clinical applications. CBD is a promiscuous molecule and preclinical studies have shown activity at approximately 65 different receptors, enzymes and neurotransmitters across the body. Because of this, CBD often has unintentional 'side benefits', which is especially helpful for people living with multiple comorbidities. CBD activates different pathways in a dose dependent manner, therefore for most people increasing dose improves effectiveness of the medication. However in some instances there has been reported multiphasic responses to CBD so it is worth exploring a range of doses.
+        </p>
+
+        <p>
+          Conventional medicines that work across many different pathways are often referred to as dirty drugs and are associated with increased side effects. This is not the case with CBD and may be due to the fact that it is upregulating the ECS which keeps the physiological shifts within balance, hence minimising the side effect burden.
+        </p>
+
+        <p><strong>Therapeutic applications of CBD include:</strong></p>
+        <ul>
+          <li>Anti-inflammatory</li>
+          <li>Analgesic</li>
+          <li>Anxiolytic (anti-anxiety)</li>
+          <li>Antidepressant</li>
+          <li>Antioxidant</li>
+          <li>Neuroprotective</li>
+          <li>Anticonvulsant</li>
+          <li>Antiemetic (anti-nausea)</li>
+          <li>Antipsychotic</li>
+          <li>Immune modulation</li>
+          <li>Anti-cancer properties</li>
+        </ul>
+
+        <!-- Side Effects of CBD -->
+        <h3 id="side-effects-cbd" class="wp-subsection-heading">Side Effects of CBD</h3>
+
+        <ul>
+          <li>Well tolerated, side effects generally mild to moderate</li>
+          <li>Most side effects resolve over few days to 2 weeks. Please advise if not resolving as these may be mitigated by changing product</li>
+          <li>Most common side effects:
+            <ul>
+              <li>Nausea</li>
+              <li>Dizziness</li>
+              <li>Fatigue</li>
+              <li>Changes in weight</li>
+              <li>Difficulty sleeping</li>
+              <li>Diarrhoea</li>
+            </ul>
+          </li>
+          <li>Contraindicated:
+            <ul>
+              <li>Pregnancy and breastfeeding</li>
+              <li>Transplant patients using tacrolimus</li>
+            </ul>
+          </li>
+          <li>Use with caution:
+            <ul>
+              <li>Glaucoma</li>
+              <li>Poorly controlled high blood pressure</li>
+              <li>Hepatic and renal failure</li>
+              <li>Medications metabolised by cytochrome P450 enzymes liver e.g. Clobazam, antiepileptics, statins, warfarin</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Intro to Minor Cannabinoids & Cannabis Pharmacology -->
+      <section id="minor-cannabinoids" class="wp-section">
+        <h2 class="wp-section-heading">Intro to Minor Cannabinoids &amp; Cannabis Pharmacology</h2>
+
+        <p>
+          In Australia, we have limited access to plants rich in minor cannabinoids. Despite that, there is growing clinical interest in these compounds and with selective breeding practices, we will likely see higher concentrations of these cannabinoids in future products.
+        </p>
+
+        <p>
+          For a greater insight into these compounds, please check out the Cannigma article below.
+        </p>
+
+        <div class="wp-callout">
+          <div class="wp-callout-title">Further Reading</div>
+          <p>
+            <strong>Cannabinoids and Their Effects</strong> &mdash; One of the main reasons cannabis has so many diverse uses is the plant's ability to produce a wide variety of different chemicals. In fact, there are over 500 different chemicals identified in cannabis. Some, like terpenes and flavonoids (the compounds responsible for the taste and smell of cannabis), have therapeutic potential. <em>(Cannigma)</em>
+          </p>
+          <p>
+            <strong>Cannabis Pharmacology: The Usual Suspects and a Few Promising Leads</strong> &mdash; A comprehensive review of the pharmacological profiles of major and minor cannabinoids.
+          </p>
+        </div>
+
+        <!-- Decarboxylation -->
+        <h3 id="decarboxylation" class="wp-subsection-heading">Decarboxylation: Acidic vs Neutral Cannabinoids</h3>
+
+        <p>
+          CBD and THC are the neutral forms of their acidic parents CBDA and THCA. Within the plant, THC and CBD are present in their acidic forms. When heat is applied to acidic cannabinoids, they go through a process called 'decarboxylation' in which a carboxyl is removed. This can happen as part of the natural degradation of cannabis over time due to exposure to light, air and heat or more rapidly when higher temperatures are used i.e. smoking, vaporisation.
+        </p>
+
+        <p>
+          Although THC and CBD are broadly considered to be the therapeutic components of the cannabis plant, growing research indicates that acidic cannabinoids such as THCA and CBDA have their own unique therapeutic potentials. They have minimal activity at the classical cannabinoid receptors CB1 and CB2 therefore are non intoxicating (can eat raw cannabis without getting high) but have strong activity at many of the receptors in the expanded endocannabidiome. They can be a powerful adjunct to your treatment plan and work synergistically with their neutral counterparts.
+        </p>
+
+        <p>
+          CBDA works similarly to CBD but is significantly more potent as an anti-nausea medication and as an anti-inflammatory, with increased activity on COX 2 pathways.
+        </p>
+
+        <p>
+          THCA has studies showing powerful anti-inflammatory, immune modulating and anti-nausea effects. THCA also looks like it is a positive allosteric modulator of the cannabinoid receptors, this means it increases the activity of the body's natural endocannabinoids and THC itself when present.
+        </p>
+
+        <p>
+          Furthermore, due to the water soluble nature of acidic cannabinoids, they are generally much better absorbed and can be accessed through simple administration methods such as decoction (tea).
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Intro to Terpenes -->
+      <section id="intro-terpenes" class="wp-section">
+        <h2 class="wp-section-heading">Intro to Terpenes</h2>
+
+        <p>
+          Terpenes are the aromatic compounds that give plants their rich, complex aromas. The unique combination of terpenes within different cannabis strains can greatly influence the experience of each plant. Terpenes work with each other and cannabinoids (like CBD and THC) and are key contributors to each plant's medicinal profile, helping to establish the 'mood' of the medicine. Terpenes are one of the primary reasons that different cannabis strains can have such vastly different effects.
+        </p>
+
+        <p>
+          For example, terpenes like limonene and terpinolene are associated with creative, uplifting effects, whereas terpenes like linalool and myrcene are associated with analgesic or sedating effects.
+        </p>
+
+        <p>
+          Unlike THC and CBD, which are specific to cannabis, terpenes are shared throughout the plant world. The same terpenes found in cannabis can be found in the fruit we eat, the flowers we smell and the trees that shade us.
+        </p>
+
+        <!-- Linalool -->
+        <h3 id="terpene-linalool" class="wp-subsection-heading">Linalool</h3>
+
+        <p><em>Found in: Lavender, Citrus, Laurel, Birch, Rosewood, Cannabis</em></p>
+
+        <p>
+          Linalool is known for its sedative and calming effects, used for combating insomnia, stress, anxiety, pain and convulsions. If you've ever fallen asleep with lavender drops on your pillow, you've experienced linalool.
+        </p>
+
+        <!-- Myrcene -->
+        <h3 id="terpene-myrcene" class="wp-subsection-heading">Myrcene</h3>
+
+        <p><em>Found in: Mango, Thyme, Citrus, Lemongrass, Bayleaves, Cannabis</em></p>
+
+        <p>
+          Myrcene is an incredibly diverse terpene, with properties including antiseptic, antibacterial, anti-fungal, anti-inflammatory and analgesic. It enhances THC bioavailability by bringing it across the blood-brain-barrier.
+        </p>
+
+        <!-- D-Limonene -->
+        <h3 id="terpene-limonene" class="wp-subsection-heading">D-Limonene</h3>
+
+        <p><em>Found in: Citrus, Lemon, Orange, Cannabis</em></p>
+
+        <p>
+          Limonene fights bacterial infections, stimulates the immune system, treats gastric reflux (GORD) and ulcers. Limonene is a proven mood elevator and stress reliever. It can also reduce THC-induced memory issues. Cannabis chemovars such as 'Lemon Diesel' are rich in limonene, and are known for their creative and euphoric effects.
+        </p>
+
+        <!-- Pinene -->
+        <h3 id="terpene-pinene" class="wp-subsection-heading">Pinene</h3>
+
+        <p><em>Found in: Dill, Rosemary, Parsley, Coniferous trees</em></p>
+
+        <p>
+          Pinene is referred to in the scientific community as 'Nature's Miracle Gift' and for good reason. Some of pinene's properties include antibacterial, anti-viral, antimalarial, anti-inflammatory and analgesic. Pinene is known for its ability to mitigate short-term memory deficits associated with prolonged THC consumption. Pinene can also act as a bronchodilator, making it a favourite terpene for individuals with restrictive lung conditions such as asthma.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Intro to Flavonoids -->
+      <section id="intro-flavonoids" class="wp-section">
+        <h2 class="wp-section-heading">Intro to Flavonoids</h2>
+
+        <p>
+          Flavonoids are a diverse group of phytonutrients found in almost all fruits, vegetables, and plants &mdash; including cannabis. In the cannabis plant, flavonoids contribute to the pigmentation, flavour, and overall sensory experience. They also play a role in the plant's protection against UV radiation, pathogens, and pests.
+        </p>
+
+        <p>
+          Cannabis contains a unique class of flavonoids called <strong>cannflavins</strong>, which are found exclusively in the cannabis plant. Research has identified Cannflavin A, B, and C, each with distinct pharmacological properties. Cannflavin A, for example, has been shown to possess anti-inflammatory activity approximately thirty times more potent than aspirin, operating through inhibition of prostaglandin E2 (PGE2) production.
+        </p>
+
+        <p>
+          Like terpenes, flavonoids contribute to the entourage effect, working synergistically with cannabinoids and terpenes to modulate and enhance the therapeutic profile of cannabis preparations. Flavonoids also contribute antioxidant and neuroprotective properties, adding further layers of therapeutic potential to whole-plant cannabis medicine.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Indica vs Sativa -->
+      <section id="indica-vs-sativa" class="wp-section">
+        <h2 class="wp-section-heading">Indica vs Sativa</h2>
+
+        <p>
+          Due to cross-breeding of cannabis cultivars throughout history, the classifications of indica and sativa have lost much of their relevance.
+        </p>
+
+        <p>
+          Classical indica strains are in appearance short, bushy and broad-leafed, likely originating in Afghanistan and the Middle-East and parts of India. The tall, narrow-leafed sativas likely originated in India and other parts of Asia. The classical terpene associated with sativas is terpinolene, whereas traditional indicas have high levels of myrcene.
+        </p>
+
+        <p>
+          The short and bushy stature of indica varieties saw this branch of cannabis thrive during prohibition due to its ability to be grown rather inconspicuously indoors. This has led to classical indica plants being the foundational genetics of recreational and medicinal markets. It is also why the terpene myrcene is found in most cannabis products.
+        </p>
+
+        <p>
+          Although indica varieties have historically been associated with more sedating, 'couch lock' effects and sativas associated with energising, cerebral and creative effects, the cross-breeding of plants over the years has resulted in a hybridisation that renders previous genetic distinctions largely irrelevant.
+        </p>
+
+        <p>
+          Although indica and sativa are commonly used to describe effects, the terpene profile is the strongest indicator of the effects of that plant. By assessing the dominant terpenes found within cannabis chemovars, we can, with some accuracy, determine if that plant will be sedating, uplifting, anxiolytic or pain relieving.
+        </p>
+
+        <p>
+          Furthermore, whilst the recreational market has associated indica and sativa with plants bred for THC, plants bred for CBD or balanced cannabinoid profiles can display 'classical' traits of indica or sativa origins.
+        </p>
+
+        <!-- Type I, II & III Classification -->
+        <h3 id="type-classification" class="wp-subsection-heading">Better Classification Than Indica vs Sativa: Type I, II &amp; III</h3>
+
+        <p><strong>Type I:</strong> THC predominant</p>
+        <p><strong>Type II:</strong> Balanced profile</p>
+        <p><strong>Type III:</strong> CBD predominant</p>
+
+        <p>
+          This classification system paired with an assessment of the dominant terpenes will allow for a more accurate assessment of the therapeutic (and psychoactive) effects of a particular product.
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Hemp vs Cannabis -->
+      <section id="hemp-vs-cannabis" class="wp-section">
+        <h2 class="wp-section-heading">Hemp vs Cannabis</h2>
+
+        <p>
+          Hemp is the same plant <em>Cannabis Sativa</em> but with very low levels of THC. The level of THC which defines whether a plant is hemp or not is a human classification and varies between regions and countries. In Australia this level varies between 0.35% and 1% THC depending on the state.
+        </p>
+
+        <p>
+          Hemp has traditionally been cultivated for food and fibre, while cannabis has traditionally been cultivated for medicine and ceremony. This makes traditional hemp a poor medicine with low quantities of cannabinoids.
+        </p>
+
+        <p>
+          With the rise in use of CBD and the legalities around THC, new hemp varieties are being specifically cultivated for medicine increasing the amount of oil producing glands these plants have. Despite striving to meet the guidelines for negligible levels of THC, it is impossible to grow a cannabis variety without THC. THC or more correctly THCA protects the plant from UV damage and sunburn making it essential for its survival.
+        </p>
+
+        <!-- Medicinal vs Black Market Cannabis -->
+        <h3 id="medicinal-vs-black-market" class="wp-subsection-heading">Medicinal vs Black Market Cannabis</h3>
+
+        <p>
+          Cannabis is a bio accumulator, meaning its long tap roots will suck up potential toxins and contaminants in the soil and sequester them in the plant. Cannabis from unregulated sources can be contaminated with heavy metals, pesticides, bacteria and fungal elements which can have negative health impacts.
+        </p>
+
+        <p>
+          Strict manufacturing and agricultural standards are adhered to when going through legal routes and good quality, clean medicine is the finished product. As cannabis is such a complex medicine it is important to be able to achieve reproducible results, this is better able to be achieved through a regulated market.
+        </p>
+
+        <p>
+          As products on the black/green aren't regulated there are unscrupulous product manufacturers who mislabel even legitimate seeming products. Therefore, you can never be certain what you are getting.
+        </p>
+
+        <!-- Schedule 4 vs Schedule 8 -->
+        <h3 id="schedule-4-vs-8" class="wp-subsection-heading">Schedule 4 vs Schedule 8</h3>
+
+        <p>
+          In Australia there are both schedule 4 and schedule 8 cannabis medicines. This is due to the percentage of the product which is CBD.
+        </p>
+
+        <p>
+          Products &gt; 98% CBD are considered schedule 4.
+        </p>
+
+        <p>
+          Products &lt; 98% CBD are schedule 8 (this includes products with nil THC which may have a percentage of other non intoxicating cannabinoids like CBG).
+        </p>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Condition-Specific Cannabis Evidence -->
+      <section id="condition-specific-evidence" class="wp-section">
+        <h2 class="wp-section-heading">Condition-Specific Cannabis Evidence</h2>
+
+        <p>
+          The journey towards utilising cannabis as a main-stream medicine has been fraught with challenge. Integrating a complex herbal medicine with over 700 potentially active compounds into a medical paradigm largely focused on isolated compounds with clear, singular mechanisms of actions was never going to be easy!
+        </p>
+
+        <p><strong>Some of the challenges in studying cannabis come down to some irrefutable factors:</strong></p>
+
+        <ol class="wp-research-list">
+          <li>
+            <strong>Biochemical uniformity and herbal synergy.</strong>
+            Due to the complex, nuanced and highly adaptable biochemical nature of cannabis, finding and acquiring medicinal products with the consistency required for gold-standard clinical trials is a challenge in itself. To account for this, many of the studies conducted in this field have been done using cannabis isolates &ndash; that is, cannabis products consisting of one single isolated compound such as THC or CBD. This discounts the fact that much of the therapeutic potential of cannabis comes down to its properties as a whole; the synergistic effects of phytocannabinoids (both major and minor), terpenoids and their potential interactions with the body's own endocannabinoid system require a level of botanical-pharmacokinetic understanding that conventional research protocols are yet to understand or utilise.
+          </li>
+          <li>
+            <strong>Non-standardised dosing.</strong>
+            Oral phytocannabinoid preparations, their lipid solubility and slow, potentially erratic oral absorption present challenges in standardising dosages. Furthermore, due to complex and highly individualistic nature of the body's own endocannabinoid system, dosing must be tailored to the individual in most cases. Clearly, this is not a possibility within the strict parameters of clinical trials. When providing cannabis care, you will certainly come across men weighing 120kgs that require a small fraction of the dose that an elderly woman weighing 56kgs may need. This may come down to individual symptom severity, endocannabinoid 'tone', the density of CB1 and CB2 receptors located around the body, or previous cannabis experience.
+
+            <p>
+              When providing dosage and titration advice to your patients, it's not uncommon to encourage safe 'experimentation'. This is done by providing an initial dose that isn't necessarily aimed towards achieving optimal therapeutic results, but to avoid side effects. Alongside the initial dose is a 'dosing range'. This is the window you have decided the patient may experiment within, with the goal of finding their personal therapeutic dose. For example, when initiating a CBD treatment, you may start your patient on a dose of 20mg per day, with their dosing range being 20mg &ndash; 100mg. Over the course of several weeks, your patient titrates up in a slow and mindful manner, increasing in small increments until therapeutic dose is achieved or side effects occur.
+            </p>
+            <p>
+              This nuanced approach to medicine is a rarity in pharmaceutical practices, one that current study designs have yet to grasp.
+            </p>
+          </li>
+          <li>
+            <strong>Regulatory hurdles.</strong>
+            Although cannabis as a medicine has been utilised for far longer than it's been vilified, the intense and deliberate stigmatisation and criminalisation of the cannabis plant have lead to certain dominant perspectives being integrated into law (see Henry D. Anslinger). The laws enacted by the United States essentially prohibited all study of the cannabis plant, hence the rapid and significant emergence of findings from Israeli researchers who were permitted more freedom in their studies. These laws found their way into almost every country in what would be one of the most effective propagandic programs this world would ever see.
+
+            <p>
+              Moreover, clinical trials require that all compounds within a medicinal preparation be 'Generally Recognised as Safe' (GRAS). Unless all compounds within a preparation are GRAS, safety-extension studies and rigorous quality control requirements must be met. Due to the unique representation of botanical compounds within cannabis preparations, many contain compounds that have not yet been deemed GRAS, thus are not suitable for clinical trials.
+            </p>
+          </li>
+          <li>
+            <strong>Driving safety.</strong>
+            Whilst it is scientifically and socially accepted that alcohol impairs driving performance and that blood-ethanol levels provide fairly accurate representations of risk, applying the same correlations and protocols to cannabis are not appropriate. The black and white laws surrounding cannabis and driving (in Australia specifically) mean that few people are willing to partake in a study that essentially prohibits them from driving.
+
+            <p>
+              In Australia, there are over 100k active medicinal cannabis patients. 70% of those patients are using a cannabis therapy containing THC, and therefore cannot drive. There are approximately 600k roadside tests for cannabis each year in Australia. It remains the only prescription medicine that is completely illegal to drive upon, a law not founded upon any scientific or medical reasoning.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <!-- Long Term Effects of Cannabis -->
+      <section id="long-term-effects" class="wp-section">
+        <h2 class="wp-section-heading">Long Term Effects of Cannabis</h2>
+
+        <p>
+          The long term health effects of cannabis use are favourable with many studies trying to elucidate the harm caused by cannabis but without showing a strong level of harm. In most cases the harmful effects that have been found can be mitigated with appropriate dosing and delivery methods.
+        </p>
+
+        <p>
+          However, just because it is likely safe to use for long periods of time we need to consider whether our treatment is supporting a dysfunctional ECS or is excessive use of THC leading to a downregulated ECS. If the ECS is being negatively impacted by ones cannabis use it stands to reason that there could be many potential health consequences from this reduced function.
+        </p>
+
+        <p>
+          It is important to treat cannabis as a functional medicine, giving patients relief from their distressing symptoms so they can engage in other health promoting activities. By doing this it means we can often use much lower doses of cannabis and my naturally activating ones inner pharmacy we can hopefully negate the need for any exogenous medicines including cannabis.
+        </p>
+
+        <!-- Respiratory Concerns -->
+        <h3 id="respiratory-concerns" class="wp-subsection-heading">Respiratory Concerns</h3>
+
+        <p>
+          The main issue identified with cannabis consumption comes from smoking cannabis. Smoke of any variety is harmful with lots of potential irritants and carcinogens. These effects are mainly felt by the lungs. Smoking cannabis can cause bronchitis with inflammation of airways, chronic cough and increase in mucous production. As this affects the hosts normal immune response this can lead to higher number of infections. This is increased in patients using contaminated cannabis products.
+        </p>
+
+        <p>
+          Most studies show that the damage to the airways reverses once someone stops smoking cannabis and cannabis doesn't cause COPD. However there can be other irreversible changes caused by heavy cannabis use like hyperinflation and bullous emphysema.
+        </p>
+
+        <p>
+          There also hasn't been any strong link to an increase in lung cancer with cannabis smoke alone, however, many people especially in Australia and Europe "spin" their cannabis with Tobacco which can cause significant harm.
+        </p>
+
+        <!-- Psychosis and Schizophrenia -->
+        <h3 id="psychosis-schizophrenia" class="wp-subsection-heading">Psychosis and Schizophrenia</h3>
+
+        <p>
+          There is strong evidence that use of high potency THC can bring on psychosis in those who are predisposed to psychotic disorders however there doesn't seem to be a causal relationship between cannabis use and the development of schizophrenia.
+        </p>
+
+        <p>
+          This is confirmed when looking at population based studies that show that increasing cannabis consumption within the population does not increase the incidence of psychotic disorders.
+        </p>
+
+        <p>
+          There is growing evidence that those with psychotic disorders have a dysfunctional endocannabinoid system. Genetic liability for cannabis use disorder appears to be strongly associated with schizophrenia. It is my belief that many patients with prodromal illness start to self medicate with cannabis, find it helpful, overuse it and by doing so cause worsening of their ECS dysfunction.
+        </p>
+
+        <p>
+          I have heard reports that even though cannabis can increase or induce positive symptoms of schizophrenia it can be protective against the negative symptoms of schizophrenia like low mood, reduced cognition and social withdrawal.
+        </p>
+
+        <p>
+          Like many things with cannabis there is likely a bidirectional relationship and the answer is not black and white.
+        </p>
+
+        <div class="wp-callout">
+          <div class="wp-callout-title">Clinical Note</div>
+          <p>The current evidence base around cannabis and schizophrenia suggests a complex, bidirectional relationship that warrants careful clinical consideration and individualised risk assessment.</p>
+        </div>
+
+        <!-- Cognitive Impairment -->
+        <h3 id="cognitive-impairment" class="wp-subsection-heading">Cognitive Impairment</h3>
+
+        <p>
+          Can cannabis use result in long term detrimental effects on cognitive function?
+        </p>
+
+        <p>
+          While individuals who are acutely intoxicated tend to demonstrate deficits in cognitive performance, primarily in memory and new information consolidation, these effects subside as psychoactivity subsides. Several studies have suggested a relationship between cannabis use and slight drops in IQ and cognitive function, particularly in adolescents, however the question remains; causation or correlation?
+        </p>
+
+        <p>
+          These studies have thus far relied on tracking long-term outcomes of early cannabis adopters to observe whether there exist statistically significant discrepancies between those who use cannabis and those that don't. However, recent research proposes that methodological limitations may have led to a misinterpretation of the data &ndash; that instead, individuals genetically predisposed to cognitive decline may be more likely to use cannabis in the first place.
+        </p>
+
+        <p>
+          Researchers in the aforementioned study hypothesised that if cannabis contributes to cognitive decline, it would be apparent when observing the ultimate control group; twins.
+        </p>
+
+        <p>
+          While researchers did record a drop in adulthood IQ and executive functioning correlated with adolescent cannabis use, both twins held the same scores, suggesting that factors such as genetics or environment predisposed some adolescents to both cannabis use and IQ drops.
+        </p>
+
+        <p>
+          Of course, as with most cannabis questions, the answer is not black and white. In fact, a 2017 study suggests that infrequent cannabis use may actually improve cognitive functioning in teenagers. The study involved observing 14&ndash;21 year olds who were non-users, occasional users (two or less times per week) or frequent users (three or more times per week).
+        </p>
+
+        <p>
+          In line with previous research, frequent adolescent users displayed slightly lower scores on executive functioning measures than non-users. What surprised researchers is that adolescents who used cannabis infrequently scored better than non-users on measures such as executive control and function, memory consolidation and recall and social-cognitive capacity.
+        </p>
+
+        <!-- Cannabis Use Disorder -->
+        <h3 id="cannabis-use-disorder" class="wp-subsection-heading">Cannabis Use Disorder</h3>
+
+        <p>
+          Many of us know people who have used cannabis regularly and it has led to a detrimental impact on their life, where they have avoided responsibility, had minimal engagement in the world around them, have become apathetic and most of their activities are around seeking or consuming cannabis. This is because they are likely using cannabis as a crutch, which allows them to block out strong feelings and emotions and protect them from the volatile world.
+        </p>
+
+        <p>
+          When something is broken, using a crutch for a period of time is OK to allow passive healing and repair to occur but after a period of time that crutch will hold you back and stop your capacity to run, walk and dance once more.
+        </p>
+
+        <p>
+          Cannabis use disorder needs to be recognised as a potential risk especially in adolescents, but with the right mindset, setting of intentions, counselling, education and ongoing support the chance of cannabis use disorder is much less likely as the psychological addictive potential is much stronger than the physical addictive potential nature of cannabis.
+        </p>
+
+        <!-- Effects on the Developing Brain -->
+        <h3 id="developing-brain" class="wp-subsection-heading">Effects on the Developing Brain</h3>
+
+        <p>
+          As cannabis continues to experience global de-regulation through decriminalisation and legalisation, the question of its potential impacts on the developing adolescent brain is more important than ever. This topic has gained further credence as understanding of the human endocannabinoid system has expanded; particularly its role in neurodevelopment.
+        </p>
+
+        <p>
+          A growing number of new studies and seminal papers are substantiating the belief that prenatal, perinatal and adolescent cannabis exposure (particularly exposure to THC) may enhance the risk of that person experiencing brain and behavioural alterations in adulthood. These alterations appear to originate as a result of THC interfering with the endocannabinoid system's role within multiple neurobiological systems in the brain regions associated with psychotic and affective disorders.
+        </p>
+
+        <p>
+          Whether these interactions result in psychiatric or substance use disorders will of course depend on a multitude of factors such as genetics, sex, environment and socioeconomic conditions. Still, definitive answers are yet to be established.
+        </p>
+      </section>
+
+    </div>
+  </article>
+</PortalLayout>
+
+<style>
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar-track {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #A53D2E, #8E2A22);
+    transition: width 0.1s linear;
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* ===== GLOBAL WHITEPAPER STYLES ===== */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .whitepaper {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 1.25rem 6rem;
+    font-family: 'Manrope', sans-serif;
+    color: #3d3229;
+    line-height: 1.75;
+  }
+
+  /* ===== ARTICLE HEADER ===== */
+  @keyframes swirlA {
+    0%, 100% { transform: translate(0%, 0%) scale(1); }
+    33% { transform: translate(30%, -20%) scale(1.1); }
+    66% { transform: translate(-20%, 15%) scale(0.95); }
+  }
+
+  @keyframes swirlB {
+    0%, 100% { transform: translate(0%, 0%) scale(1); }
+    33% { transform: translate(-25%, 25%) scale(1.05); }
+    66% { transform: translate(20%, -10%) scale(1.1); }
+  }
+
+  @keyframes swirlC {
+    0%, 100% { transform: translate(0%, 0%) scale(1.05); }
+    33% { transform: translate(15%, 20%) scale(0.95); }
+    66% { transform: translate(-30%, -15%) scale(1.1); }
+  }
+
+  .wp-header {
+    max-width: none;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: 2.5rem;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    background: #f3f1ee;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wp-header::before,
+  .wp-header::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(60px);
+  }
+
+  .wp-header::before {
+    width: 500px;
+    height: 500px;
+    top: -120px;
+    left: -50px;
+    background: rgba(0, 0, 0, 0.07);
+    animation: swirlA 18s ease-in-out infinite;
+  }
+
+  .wp-header::after {
+    width: 450px;
+    height: 450px;
+    bottom: -100px;
+    right: -30px;
+    background: rgba(0, 0, 0, 0.06);
+    animation: swirlB 22s ease-in-out infinite;
+  }
+
+  .wp-header-blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    filter: blur(50px);
+    pointer-events: none;
+    animation: swirlC 25s ease-in-out infinite;
+  }
+
+  .wp-header > *:not(.wp-header-blob) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .wp-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .wp-breadcrumbs a {
+    color: #8a7e74;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .wp-breadcrumbs a:hover {
+    color: #A53D2E;
+  }
+
+  .wp-breadcrumb-sep {
+    color: #c4bdb6;
+    font-size: 0.875rem;
+  }
+
+  .wp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #3d3229;
+    line-height: 1.1;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.01em;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .wp-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #6b5e52;
+    line-height: 1.4;
+    margin: 0 0 0.25rem;
+    max-width: 580px;
+    letter-spacing: 0.01em;
+  }
+
+  .wp-subtitle-secondary {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9375rem;
+    font-style: italic;
+    color: #8a7e74;
+    line-height: 1.55;
+    margin: 0 0 1.125rem;
+  }
+
+  .wp-byline {
+    margin-top: 2.5rem;
+  }
+
+  .wp-byline-rule {
+    width: 40px;
+    height: 1px;
+    background: rgba(196, 90, 66, 0.4);
+    margin-bottom: 1rem;
+  }
+
+  .wp-byline-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .wp-author-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: none;
+  }
+
+  .wp-author-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .wp-author-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #3d3229;
+    margin: 0 0 -0.25rem;
+  }
+
+  .wp-author-role {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    color: #8a7e74;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  /* ===== BODY ===== */
+  .wp-body {
+    font-size: 1rem;
+    color: rgba(18, 18, 18, 0.75);
+  }
+
+  .wp-body p {
+    margin: 0 0 1.125rem;
+    line-height: 1.95;
+  }
+
+  .wp-body ul,
+  .wp-body ol {
+    margin: 0 0 1.125rem;
+    padding-left: 1.5rem;
+  }
+
+  .wp-body ul li,
+  .wp-body ol li {
+    margin-bottom: 0.375rem;
+    line-height: 1.8;
+  }
+
+  .wp-body ul ul,
+  .wp-body ol ul {
+    margin-top: 0.375rem;
+    margin-bottom: 0.375rem;
+  }
+
+  /* ===== SECTION HEADINGS ===== */
+  .wp-section {
+    margin-bottom: 1rem;
+  }
+
+  .wp-section-number {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #A53D2E;
+    margin-bottom: 1.25rem;
+    white-space: nowrap;
+  }
+
+  .wp-section-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(165, 61, 46, 0.1);
+    margin-right: calc(-50vw + 50%);
+  }
+
+  .wp-section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.375rem;
+    font-weight: 400;
+    color: #3d3229;
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 2rem;
+  }
+
+  .wp-subsection-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: #5a4d42;
+    line-height: 1.3;
+    margin: 2.5rem 0 1.25rem;
+    scroll-margin-top: 2rem;
+  }
+
+  /* ===== SECTION DIVIDER ===== */
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; background: #687C57; }
+    25% { transform: scale(1.4); opacity: 0.7; background: #576943; }
+    50% { transform: scale(1); opacity: 0.5; background: #A53D2E; }
+    75% { transform: scale(1.4); opacity: 0.7; background: #8E2A22; }
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 2.5rem 0;
+  }
+
+  .section-divider span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c45a42;
+    opacity: 0.3;
+    animation: dotPulse 3s ease-in-out infinite;
+  }
+
+  .section-divider span:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .section-divider span:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  /* ===== BLOCKQUOTE / CALLOUT ===== */
+  .wp-callout {
+    background: rgba(196, 90, 66, 0.04);
+    border-left: 3px solid #c45a42;
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .wp-callout-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #c45a42;
+    margin-bottom: 0.75rem;
+  }
+
+  .wp-callout p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #4a3f35;
+    margin: 0 0 0.75rem;
+  }
+
+  .wp-callout p:last-child {
+    margin-bottom: 0;
+  }
+
+  .wp-callout ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .wp-callout ul li {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #4a3f35;
+    margin-bottom: 0.25rem;
+  }
+
+  .wp-callout strong {
+    color: #c45a42;
+    font-weight: 700;
+  }
+
+  /* ===== RESEARCH LIST ===== */
+  .wp-research-list {
+    padding-left: 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .wp-research-list li {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+    padding-left: 0.25rem;
+  }
+
+  .wp-research-list li strong {
+    color: #3d3229;
+    font-weight: 700;
+  }
+
+  /* ===== REFERENCES ===== */
+  .wp-references-section {
+    margin-top: 1rem;
+  }
+
+  .wp-references {
+    padding-left: 2rem;
+    margin: 0;
+  }
+
+  .wp-references li {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: #5a4d42;
+    margin-bottom: 0.875rem;
+    padding-left: 0.5rem;
+    text-indent: -0.5rem;
+  }
+
+  .wp-references li em {
+    color: #6b5e52;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .wp-section-heading,
+    .wp-subsection-heading {
+      scroll-margin-top: 4.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .whitepaper {
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .wp-title {
+      font-size: 2rem;
+    }
+
+    .wp-subtitle {
+      font-size: 0.9375rem;
+    }
+
+    .wp-subtitle-secondary {
+      font-size: 0.875rem;
+    }
+
+    .wp-section-heading {
+      font-size: 1.625rem;
+    }
+
+    .wp-subsection-heading {
+      font-size: 1.3125rem;
+    }
+
+    .wp-body {
+      font-size: 0.9375rem;
+    }
+
+    .wp-header {
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .whitepaper {
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .wp-title {
+      font-size: 1.75rem;
+    }
+
+    .wp-section-heading {
+      font-size: 1.375rem;
+    }
+
+    .wp-subsection-heading {
+      font-size: 1.125rem;
+    }
+
+    .wp-body {
+      font-size: 0.875rem;
+    }
+
+    .wp-callout {
+      padding: 1rem 1.25rem;
+    }
+
+    .section-divider {
+      padding: 2rem 0;
+    }
+
+    .wp-references li {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .progress-bar-track {
+      top: 56px;
+    }
+  }
+</style>
+
+<script>
+  function initProgressBar() {
+    const bar = document.getElementById('reading-progress')
+    if (!bar) return
+
+    function update() {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
+      bar.style.width = progress + '%'
+    }
+
+    window.addEventListener('scroll', update, { passive: true })
+    update()
+  }
+
+  document.addEventListener('DOMContentLoaded', initProgressBar)
+  document.addEventListener('astro:page-load', initProgressBar)
+</script>
