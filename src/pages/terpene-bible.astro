@@ -1,5 +1,5 @@
 ---
-import PortalLayout from '../layouts/PortalLayout.astro'
+import ArticleLayout from '../layouts/ArticleLayout.astro'
 
 const toc = [
   { id: 'introduction', label: 'Introduction', level: 1 },
@@ -31,41 +31,7 @@ const toc = [
 ]
 ---
 
-<PortalLayout
-  title="The Terpene Bible — Sohma Institute"
-  description="A Complete Reference to Cannabis Terpenes — comprehensive guide to therapeutic terpenes, pharmacological profiles, synergistic effects, and clinical applications."
-  toc={toc}
-  activeArticle="terpene-bible"
->
-  <div class="progress-bar-track">
-    <div class="progress-bar-fill" id="reading-progress"></div>
-  </div>
-
-  <article class="whitepaper">
-    <header class="wp-header">
-      <div class="wp-header-blob"></div>
-      <nav class="wp-breadcrumbs">
-        <a href="/">Home</a>
-        <span class="wp-breadcrumb-sep">&rsaquo;</span>
-        <a href="/category/clinical-reference">Clinical Reference</a>
-      </nav>
-      <h1 class="wp-title">The Terpene Bible</h1>
-      <p class="wp-subtitle">A Complete Reference to Cannabis Terpenes</p>
-
-      <div class="wp-byline">
-        <div class="wp-byline-row">
-          <div class="wp-author-photo">
-            <img src="/images/team/cam-rosin-portrait.jpg" alt="Cameron Rosin" width="92" height="92" loading="eager" decoding="async" />
-          </div>
-          <div class="wp-author-info">
-            <p class="wp-author-name">Cameron Rosin, RN</p>
-            <p class="wp-author-role">Specialist Cannabis Nurse Educator</p>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <div class="wp-body">
+<ArticleLayout slug="terpene-bible" toc={toc}>
 
       <!-- ═══════════════════════════════════════════ -->
       <!-- INTRODUCTION                                -->
@@ -217,17 +183,17 @@ const toc = [
           Terpenes influence the &ldquo;entourage effect&rdquo; by modulating <strong>membrane fluidity</strong>, <strong>enzyme activity</strong>, and <strong>receptor conformation</strong>.
         </p>
 
-        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.375rem; font-weight: 400; color: #5a4d42; margin: 2rem 0 1rem;">1. Membrane Fluidity</h4>
+        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.375rem; font-weight: 400; color: var(--text-secondary); margin: 2rem 0 1rem;">1. Membrane Fluidity</h4>
         <p>
           Every cell in the body has a <strong>lipid bilayer membrane</strong> &mdash; a flexible, semi-permeable structure that houses receptors, ion channels, and enzymes. Terpenes are <strong>lipophilic (fat-loving)</strong> molecules that embed themselves into the membrane, making it more fluid or more rigid. This alters how embedded proteins (e.g., cannabinoid receptors like CB<sub>1</sub>, CB<sub>2</sub>) behave &mdash; potentially <strong>enhancing or inhibiting their responsiveness</strong>.
         </p>
 
-        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.375rem; font-weight: 400; color: #5a4d42; margin: 2rem 0 1rem;">2. Enzyme Activity</h4>
+        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.375rem; font-weight: 400; color: var(--text-secondary); margin: 2rem 0 1rem;">2. Enzyme Activity</h4>
         <p>
           Terpenes can influence <strong>enzymes that break down neurotransmitters, cannabinoids, or other molecules</strong>. For example, <strong>pinene inhibits acetylcholinesterase</strong>, letting acetylcholine (a memory-linked neurotransmitter) persist longer. Some terpenes may <strong>inhibit or induce CYP450 enzymes</strong>, subtly changing how fast THC or CBD is metabolised.
         </p>
 
-        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.375rem; font-weight: 400; color: #5a4d42; margin: 2rem 0 1rem;">3. Receptor Conformation</h4>
+        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.375rem; font-weight: 400; color: var(--text-secondary); margin: 2rem 0 1rem;">3. Receptor Conformation</h4>
         <p>
           Receptors are not static; they change shape. Terpenes can act as <strong>allosteric modulators</strong> &mdash; they don&rsquo;t bind the active site, but they change the <strong>shape or tone</strong> of the receptor. This can <strong>enhance, dampen, or change the kind of signal</strong> that gets passed downstream.
         </p>
@@ -1030,604 +996,43 @@ const toc = [
         </p>
       </section>
 
-    </div>
-  </article>
-</PortalLayout>
+
+</ArticleLayout>
 
 <style>
-  /* ===== PROGRESS BAR ===== */
-  .progress-bar-track {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    height: 5px;
-    background: rgba(0, 0, 0, 0.04);
-  }
-
-  .progress-bar-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(to right, #A53D2E, #8E2A22);
-    transition: width 0.1s linear;
-    border-radius: 0 2px 2px 0;
-  }
-
-  /* ===== GLOBAL WHITEPAPER STYLES ===== */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  .whitepaper {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 0 1.25rem 6rem;
-    font-family: 'Manrope', sans-serif;
-    color: #3d3229;
-    line-height: 1.75;
-  }
-
-  /* ===== ARTICLE HEADER ===== */
-  @keyframes swirlA {
-    0%, 100% { transform: translate(0%, 0%) scale(1); }
-    33% { transform: translate(30%, -20%) scale(1.1); }
-    66% { transform: translate(-20%, 15%) scale(0.95); }
-  }
-
-  @keyframes swirlB {
-    0%, 100% { transform: translate(0%, 0%) scale(1); }
-    33% { transform: translate(-25%, 25%) scale(1.05); }
-    66% { transform: translate(20%, -10%) scale(1.1); }
-  }
-
-  @keyframes swirlC {
-    0%, 100% { transform: translate(0%, 0%) scale(1.05); }
-    33% { transform: translate(15%, 20%) scale(0.95); }
-    66% { transform: translate(-30%, -15%) scale(1.1); }
-  }
-
-  .wp-header {
-    max-width: none;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    margin-bottom: 2.5rem;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    padding-left: calc(50vw - 50%);
-    padding-right: calc(50vw - 50%);
-    background: #f3f1ee;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .wp-header::before,
-  .wp-header::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    filter: blur(60px);
-  }
-
-  .wp-header::before {
-    width: 500px;
-    height: 500px;
-    top: -120px;
-    left: -50px;
-    background: rgba(0, 0, 0, 0.07);
-    animation: swirlA 18s ease-in-out infinite;
-  }
-
-  .wp-header::after {
-    width: 450px;
-    height: 450px;
-    bottom: -100px;
-    right: -30px;
-    background: rgba(0, 0, 0, 0.06);
-    animation: swirlB 22s ease-in-out infinite;
-  }
-
-  .wp-header-blob {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 50%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.05);
-    filter: blur(50px);
-    pointer-events: none;
-    animation: swirlC 25s ease-in-out infinite;
-  }
-
-  .wp-header > *:not(.wp-header-blob) {
-    position: relative;
-    z-index: 1;
-  }
-
-  .wp-breadcrumbs {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.8125rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .wp-breadcrumbs a {
-    color: #8a7e74;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .wp-breadcrumbs a:hover {
-    color: #A53D2E;
-  }
-
-  .wp-breadcrumb-sep {
-    color: #c4bdb6;
-    font-size: 0.875rem;
-  }
-
-  .wp-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 400;
-    color: #3d3229;
-    line-height: 1.1;
-    margin: 0 0 1.25rem;
-    letter-spacing: -0.01em;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  }
-
-  .wp-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 500;
-    font-style: italic;
-    color: #6b5e52;
-    line-height: 1.4;
-    margin: 0 0 0.25rem;
-    max-width: 580px;
-    letter-spacing: 0.01em;
-  }
-
-  .wp-subtitle-secondary {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.9375rem;
-    font-style: italic;
-    color: #8a7e74;
-    line-height: 1.55;
-    margin: 0 0 1.125rem;
-  }
-
-  .wp-byline {
-    margin-top: 2.5rem;
-  }
-
-  .wp-byline-rule {
-    width: 40px;
-    height: 1px;
-    background: rgba(196, 90, 66, 0.4);
-    margin-bottom: 1rem;
-  }
-
-  .wp-byline-row {
-    display: flex;
-    align-items: center;
-    gap: 0.875rem;
-  }
-
-  .wp-author-photo {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-    border: none;
-  }
-
-  .wp-author-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .wp-author-name {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #3d3229;
-    margin: 0 0 -0.25rem;
-  }
-
-  .wp-author-role {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.8125rem;
-    color: #8a7e74;
-    margin: 0;
-    letter-spacing: 0.01em;
-  }
-
-  /* ===== BODY ===== */
-  .wp-body {
-    font-size: 1rem;
-    color: rgba(18, 18, 18, 0.75);
-  }
-
-  .wp-body p {
-    margin: 0 0 1.125rem;
-    line-height: 1.95;
-  }
-
-  .wp-body ul,
-  .wp-body ol {
-    margin: 0 0 1.125rem;
-    padding-left: 1.5rem;
-  }
-
-  .wp-body ul li,
-  .wp-body ol li {
-    margin-bottom: 0.375rem;
-    line-height: 1.8;
-  }
-
-  .wp-body ul ul,
-  .wp-body ol ul {
-    margin-top: 0.375rem;
-    margin-bottom: 0.375rem;
-  }
-
-  /* ===== SECTION HEADINGS ===== */
-  .wp-section {
-    margin-bottom: 1rem;
-  }
-
-  .wp-section-number {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: #A53D2E;
-    margin-bottom: 1.25rem;
-    white-space: nowrap;
-  }
-
-  .wp-section-number::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(165, 61, 46, 0.1);
-    margin-right: calc(-50vw + 50%);
-  }
-
-  .wp-section-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.375rem;
-    font-weight: 400;
-    color: #3d3229;
-    line-height: 1.2;
-    margin: 0 0 1.5rem;
-    letter-spacing: -0.01em;
-    scroll-margin-top: 2rem;
-  }
-
-  .wp-subsection-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
-    font-weight: 400;
-    color: #5a4d42;
-    line-height: 1.3;
-    margin: 2.5rem 0 1.25rem;
-    scroll-margin-top: 2rem;
-  }
-
-  /* ===== SECTION DIVIDER ===== */
-  @keyframes dotPulse {
-    0%, 100% { transform: scale(1); opacity: 0.3; background: #687C57; }
-    25% { transform: scale(1.4); opacity: 0.7; background: #576943; }
-    50% { transform: scale(1); opacity: 0.5; background: #A53D2E; }
-    75% { transform: scale(1.4); opacity: 0.7; background: #8E2A22; }
-  }
-
-  .section-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 2.5rem 0;
-  }
-
-  .section-divider span {
-    display: block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #c45a42;
-    opacity: 0.3;
-    animation: dotPulse 3s ease-in-out infinite;
-  }
-
-  .section-divider span:nth-child(2) {
-    animation-delay: 0.4s;
-  }
-
-  .section-divider span:nth-child(3) {
-    animation-delay: 0.8s;
-  }
-
-  /* ===== BLOCKQUOTE / CALLOUT ===== */
-  .wp-callout {
-    background: rgba(196, 90, 66, 0.04);
-    border-left: 3px solid #c45a42;
-    border-radius: 0 8px 8px 0;
-    padding: 1.25rem 1.5rem;
-    margin: 2rem 0;
-  }
-
-  .wp-callout-title {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #c45a42;
-    margin-bottom: 0.75rem;
-  }
-
-  .wp-callout p {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: #4a3f35;
-    margin: 0 0 0.75rem;
-  }
-
-  .wp-callout p:last-child {
-    margin-bottom: 0;
-  }
-
-  .wp-callout ul {
-    margin: 0.5rem 0 0;
-    padding-left: 1.25rem;
-  }
-
-  .wp-callout ul li {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: #4a3f35;
-    margin-bottom: 0.25rem;
-  }
-
-  .wp-callout strong {
-    color: #c45a42;
-    font-weight: 700;
-  }
-
-  /* ===== TABLES (Pentads & Reference) ===== */
-  .wp-table-wrapper {
-    overflow-x: auto;
-    margin: 1.5rem 0;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .wp-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9375rem;
-    line-height: 1.65;
-  }
-
-  .wp-table th {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #5a4d42;
-    background: rgba(196, 90, 66, 0.06);
-    padding: 0.75rem 1rem;
-    text-align: left;
-    border-bottom: 2px solid rgba(196, 90, 66, 0.15);
-  }
-
-  .wp-table td {
-    padding: 0.75rem 1rem;
-    color: #4a3f35;
-    border-bottom: 1px solid rgba(196, 90, 66, 0.08);
-    vertical-align: top;
-  }
-
-  .wp-table tr:last-child td {
-    border-bottom: none;
-  }
-
-  .wp-table tbody tr:hover {
-    background: rgba(196, 90, 66, 0.02);
-  }
-
   .wp-pentad-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: #A53D2E;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-warm);
     margin: 2rem 0 0.5rem;
     line-height: 1.3;
   }
 
   .wp-pentad-meta {
     font-size: 0.9375rem;
-    color: #5a4d42;
+    color: var(--text-secondary);
     margin: 0.25rem 0 1rem;
     line-height: 1.7;
   }
 
-  /* ===== TERPENE PROFILE CARD ===== */
   .wp-terpene-profile {
     font-size: 0.9375rem;
-    color: #5a4d42;
-    background: rgba(104, 124, 87, 0.04);
-    border-radius: 8px;
+    color: var(--text-secondary);
+    background: rgba(139, 115, 85, 0.04);
+    border-radius: 6px;
     padding: 1rem 1.25rem;
     margin: 0.75rem 0 1.5rem;
     line-height: 1.7;
   }
 
-  /* ===== RESEARCH LIST ===== */
-  .wp-research-list {
-    padding-left: 1.5rem;
-    margin: 1rem 0 1.5rem;
-  }
-
-  .wp-research-list li {
-    margin-bottom: 1.25rem;
-    line-height: 1.8;
-    padding-left: 0.25rem;
-  }
-
-  .wp-research-list li strong {
-    color: #3d3229;
-    font-weight: 700;
-  }
-
-  /* ===== REFERENCES ===== */
-  .wp-references-section {
-    margin-top: 1rem;
-  }
-
-  .wp-references {
-    padding-left: 2rem;
-    margin: 0;
-  }
-
-  .wp-references li {
-    font-size: 0.9375rem;
-    line-height: 1.65;
-    color: #5a4d42;
-    margin-bottom: 0.875rem;
-    padding-left: 0.5rem;
-    text-indent: -0.5rem;
-  }
-
-  .wp-references li em {
-    color: #6b5e52;
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 1024px) {
-    .wp-section-heading,
-    .wp-subsection-heading {
-      scroll-margin-top: 4.5rem;
-    }
-  }
-
   @media (max-width: 768px) {
-    .whitepaper {
-      padding: 0 1.25rem 4rem;
-    }
-
-    .wp-title {
-      font-size: 2.5rem;
-    }
-
-    .wp-subtitle {
-      font-size: 1.0625rem;
-    }
-
-    .wp-subtitle-secondary {
-      font-size: 0.875rem;
-    }
-
-    .wp-section-heading {
-      font-size: 2rem;
-    }
-
-    .wp-subsection-heading {
-      font-size: 1.5rem;
-    }
-
-    .wp-body {
-      font-size: 0.9375rem;
-    }
-
-    .wp-header {
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-    }
-
     .wp-table {
       font-size: 0.8125rem;
     }
-
     .wp-table th,
     .wp-table td {
       padding: 0.5rem 0.75rem;
     }
   }
-
-  @media (max-width: 480px) {
-    .whitepaper {
-      padding: 0 1rem 3rem;
-    }
-
-    .wp-title {
-      font-size: 2.125rem;
-    }
-
-    .wp-section-heading {
-      font-size: 1.75rem;
-    }
-
-    .wp-subsection-heading {
-      font-size: 1.3125rem;
-    }
-
-    .wp-body {
-      font-size: 0.875rem;
-    }
-
-    .wp-callout {
-      padding: 1rem 1.25rem;
-    }
-
-    .section-divider {
-      padding: 2rem 0;
-    }
-
-    .wp-references li {
-      font-size: 0.875rem;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .progress-bar-track {
-      top: 56px;
-    }
-  }
 </style>
-
-<script>
-  function initProgressBar() {
-    const bar = document.getElementById('reading-progress')
-    if (!bar) return
-
-    function update() {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0
-      bar.style.width = progress + '%'
-    }
-
-    window.addEventListener('scroll', update, { passive: true })
-    update()
-  }
-
-  document.addEventListener('DOMContentLoaded', initProgressBar)
-  document.addEventListener('astro:page-load', initProgressBar)
-</script>

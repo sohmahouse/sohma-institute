@@ -1,0 +1,540 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro'
+import { articles, categoryMeta, getArticlesByCategory } from '../data/articles'
+
+const groups = getArticlesByCategory()
+const totalArticles = articles.length
+
+// Build category counts
+const categoryCounts = new Map<string, number>()
+groups.forEach(g => categoryCounts.set(g.meta.name, g.articles.length))
+
+// Global article index for numbering
+let articleIndex = 0
+---
+
+<PortalLayout
+  title="Whitepapers — Sohma Institute"
+  description="Evidence-informed whitepapers for cannabis medicine practitioners."
+>
+  <div class="hub-page">
+
+    <!-- HERO HEADER -->
+    <header class="hub-header">
+      <div class="hub-hero-content">
+        <nav class="hub-breadcrumbs">
+          <a href="/">Home</a>
+          <span class="hub-breadcrumb-sep">|</span>
+          <span class="hub-breadcrumb-current">Whitepapers</span>
+        </nav>
+
+        <h1 class="hub-title">Whitepapers</h1>
+        <p class="hub-excerpt">Evidence-informed clinical whitepapers spanning cannabis pharmacology, integrative care, adaptive prescribing, and practitioner philosophy.</p>
+
+      </div>
+    </header>
+
+    <!-- FILTER BAR -->
+    <div class="hub-body">
+      <div class="hub-filters" id="hub-filters">
+        <button class="hub-filter active" data-category="All" type="button">
+          All
+          <span class="hub-filter-count">{totalArticles}</span>
+        </button>
+        {groups.map(group => (
+          <button class="hub-filter" data-category={group.meta.name} type="button">
+            {group.meta.name}
+            <span class="hub-filter-count">{group.articles.length}</span>
+          </button>
+        ))}
+      </div>
+
+      <!-- CATEGORY CONTEXT (shows when a category is active) -->
+      {groups.map(group => (
+        <div class="hub-category-context" data-context={group.meta.name} aria-hidden="true">
+          <div class="hub-context-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d={group.meta.icon} />
+            </svg>
+          </div>
+          <p class="hub-context-desc">{group.meta.description}</p>
+        </div>
+      ))}
+
+      <!-- ARTICLE GRID -->
+      <div class="hub-grid" id="hub-grid">
+        {groups.map(group => (
+          group.articles.map((article) => {
+            articleIndex++
+            return (
+              <a href={`/${article.slug}`} class="hub-card" data-category={group.meta.name}>
+                <span class="hub-card-number">{String(articleIndex).padStart(2, '0')}</span>
+                <h2 class="hub-card-title">{article.title}</h2>
+                <p class="hub-card-subtitle">{article.subtitle}</p>
+                <p class="hub-card-summary">{article.summary}</p>
+                <div class="hub-card-footer">
+                  <span class="hub-card-category">{group.meta.name}</span>
+                  {article.readingTime && (
+                    <span class="hub-card-time">{article.readingTime}</span>
+                  )}
+                </div>
+              </a>
+            )
+          })
+        ))}
+      </div>
+    </div>
+
+  </div>
+</PortalLayout>
+
+<script>
+  function initFilters() {
+    const filters = document.getElementById('hub-filters')
+    const grid = document.getElementById('hub-grid')
+    if (!filters || !grid) return
+
+    const cards = Array.from(grid.querySelectorAll('.hub-card')) as HTMLElement[]
+    const contexts = Array.from(document.querySelectorAll('.hub-category-context')) as HTMLElement[]
+
+    filters.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest('.hub-filter') as HTMLButtonElement
+      if (!btn) return
+
+      const category = btn.dataset.category!
+
+      // Update active filter
+      filters.querySelectorAll('.hub-filter').forEach(f => f.classList.remove('active'))
+      btn.classList.add('active')
+
+      // Show/hide category context
+      contexts.forEach(ctx => {
+        if (category !== 'All' && ctx.dataset.context === category) {
+          ctx.classList.add('visible')
+          ctx.setAttribute('aria-hidden', 'false')
+        } else {
+          ctx.classList.remove('visible')
+          ctx.setAttribute('aria-hidden', 'true')
+        }
+      })
+
+      // Filter cards
+      let visibleIndex = 0
+      cards.forEach(card => {
+        const match = category === 'All' || card.dataset.category === category
+        if (match) {
+          card.classList.remove('hub-card-hidden')
+          visibleIndex++
+          const num = card.querySelector('.hub-card-number')
+          if (num) num.textContent = String(visibleIndex).padStart(2, '0')
+          // Show/hide category tag in footer
+          const catTag = card.querySelector('.hub-card-category') as HTMLElement
+          if (catTag) catTag.style.display = category === 'All' ? '' : 'none'
+        } else {
+          card.classList.add('hub-card-hidden')
+        }
+      })
+    })
+  }
+
+  document.addEventListener('DOMContentLoaded', initFilters)
+  document.addEventListener('astro:page-load', initFilters)
+</script>
+
+<style>
+  .hub-page {
+    min-height: 100vh;
+    min-width: 0;
+    font-family: 'Manrope', sans-serif;
+    color: var(--text-heading);
+    line-height: 1.75;
+  }
+
+  /* ===== HERO HEADER ===== */
+  .hub-header {
+    position: relative;
+    max-width: none;
+    margin: 0 -40px;
+    padding: 0;
+    text-align: left;
+    background: var(--bg-hero);
+    overflow: visible;
+  }
+
+  .hub-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 96px calc(2rem + 40px) 48px calc(1rem + 40px);
+  }
+
+  /* Breadcrumbs */
+  .hub-breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.625rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-tertiary);
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+
+  .hub-breadcrumbs::after {
+    content: '';
+    height: 1px;
+    background: var(--text-tertiary);
+    margin-left: 0.5rem;
+    opacity: 0.15;
+    flex: 1 0 0%;
+    min-width: 60px;
+  }
+
+  .hub-breadcrumbs a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.15s;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .hub-breadcrumbs a:hover {
+    color: var(--text-heading);
+  }
+
+  .hub-breadcrumb-sep {
+    color: var(--text-dim);
+    font-size: 0.6rem;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  .hub-breadcrumb-current {
+    color: var(--text-secondary);
+    font-weight: 600;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Title */
+  .hub-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.25rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    line-height: 1.1;
+    margin: 0 0 16px;
+    max-width: 800px;
+    letter-spacing: -0.01em;
+  }
+
+  .hub-excerpt {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 640px;
+    padding-left: 1.5rem;
+  }
+
+  /* ===== BODY ===== */
+  .hub-body {
+    max-width: none;
+    margin: 0;
+    padding: 0 0 96px;
+  }
+
+  /* ===== FILTER BAR ===== */
+  .hub-filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 32px 0 0;
+    margin-right: -40px;
+    padding-right: 40px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .hub-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hub-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border-medium);
+    border-radius: 4px;
+    padding: 8px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+
+  .hub-filter:hover {
+    color: var(--text-heading);
+    border-color: var(--accent-border-20);
+    background: var(--accent-bg-02);
+  }
+
+  .hub-filter.active {
+    color: var(--accent-dark);
+    background: var(--accent-bg-04);
+    border-color: var(--accent-border-25);
+    font-weight: 600;
+  }
+
+  .hub-filter-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: var(--bg-card);
+    padding: 1px 6px;
+    border-radius: 3px;
+    line-height: 1.4;
+  }
+
+  .hub-filter.active .hub-filter-count {
+    color: var(--accent-dark);
+    background: var(--accent-bg-08);
+  }
+
+  /* ===== CATEGORY CONTEXT ===== */
+  .hub-category-context {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease;
+    padding: 0;
+  }
+
+  .hub-category-context.visible {
+    max-height: 80px;
+    opacity: 1;
+    padding: 24px 0 0;
+  }
+
+  .hub-context-icon {
+    color: var(--accent);
+    opacity: 0.6;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .hub-context-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ===== ARTICLE GRID ===== */
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding-top: 32px;
+  }
+
+  /* ===== ARTICLE CARD ===== */
+  .hub-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 24px;
+    transition: border-color 0.2s, background 0.2s, opacity 0.25s, transform 0.25s;
+  }
+
+  .hub-card:hover {
+    border-color: var(--accent-border-15);
+  }
+
+  .hub-card-hidden {
+    display: none;
+  }
+
+  .hub-card-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+
+  .hub-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    line-height: 1.25;
+    margin: 0 0 8px;
+    transition: color 0.15s;
+  }
+
+  .hub-card:hover .hub-card-title {
+    color: var(--accent);
+  }
+
+  .hub-card-subtitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.875rem;
+    font-style: italic;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+    margin: 0 0 12px;
+  }
+
+  .hub-card-summary {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.875rem;
+    color: var(--text-body-65);
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hub-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .hub-card-category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    background: var(--bg-card);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+
+  .hub-card-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: var(--bg-card);
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .hub-header {
+      margin: 0 -20px;
+    }
+
+    .hub-hero-content {
+      padding: 64px calc(1.5rem + 20px) 48px calc(1rem + 20px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hub-hero-content {
+      padding: 48px 1.25rem 36px;
+    }
+
+    .hub-title {
+      font-size: 2.5rem;
+    }
+
+    .hub-body {
+      padding: 0 0.75rem 64px;
+    }
+
+    .hub-grid {
+      gap: 1rem;
+    }
+
+    .hub-card {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hub-header {
+      margin: 0 -20px;
+    }
+
+    .hub-hero-content {
+      padding: 48px 1.25rem 0;
+    }
+
+    .hub-title {
+      font-size: 2rem;
+    }
+
+    .hub-body {
+      padding: 0 0.5rem 48px;
+    }
+
+    .hub-filters {
+      padding-top: 32px;
+    }
+
+    .hub-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hub-card-title {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* ===== DARK MODE ===== */
+  :global([data-theme="dark"]) .hub-card-category {
+    color: var(--accent);
+    background: var(--accent-bg-08);
+  }
+
+  :global([data-theme="dark"]) .hub-card-time {
+    color: var(--accent);
+    background: var(--accent-bg-08);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hub-category-context {
+      transition: none;
+    }
+
+    .hub-card {
+      transition: none;
+    }
+  }
+</style>

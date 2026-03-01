@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions'
+
 interface Props {
   title: string
   description?: string
@@ -17,10 +19,68 @@ const { title, description = 'Sohma Institute — Practitioner knowledge base fo
     <link rel="preload" href="/fonts/Manrope-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/CormorantGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <title>{title} | Sohma Institute</title>
+    <script is:inline>
+      // Restore theme before render to prevent flash (initial load)
+      (function() {
+        const stored = localStorage.getItem('sohma-theme')
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        }
+      })()
+      // Preserve theme across View Transitions (before DOM swap)
+      document.addEventListener('astro:before-swap', function(e) {
+        const stored = localStorage.getItem('sohma-theme')
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          e.newDocument.documentElement.setAttribute('data-theme', 'dark')
+        }
+      })
+    </script>
+    <ViewTransitions />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <canvas id="grain-canvas" aria-hidden="true" style="position:fixed;inset:0;z-index:9999;pointer-events:none;width:100%;height:100%;opacity:0.06;"></canvas>
     <slot />
+    <script is:inline>
+      (function() {
+        const canvas = document.getElementById('grain-canvas')
+        if (!canvas) return
+        const ctx = canvas.getContext('2d')
+        if (!ctx) return
+
+        let w, h
+
+        function resize() {
+          w = canvas.width = window.innerWidth
+          h = canvas.height = window.innerHeight
+        }
+        resize()
+        window.addEventListener('resize', resize)
+
+        function noise() {
+          const imgData = ctx.createImageData(w, h)
+          const data = imgData.data
+          for (let i = 0; i < data.length; i += 4) {
+            const v = (Math.random() * 255) | 0
+            data[i] = v
+            data[i + 1] = v
+            data[i + 2] = v
+            data[i + 3] = 140
+          }
+          ctx.putImageData(imgData, 0, 0)
+        }
+
+        let lastTime = 0
+        function loop(time) {
+          if (time - lastTime > 83) {
+            lastTime = time
+            noise()
+          }
+          requestAnimationFrame(loop)
+        }
+        requestAnimationFrame(loop)
+      })()
+    </script>
   </body>
 </html>
 

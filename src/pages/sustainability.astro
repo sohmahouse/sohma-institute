@@ -1,0 +1,494 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro'
+---
+
+<PortalLayout
+  title="Revenue Architecture — Sohma Institute"
+  description="Financial sustainability model for the Sohma Institute of Traditional Medicines. Five revenue streams and cross-ecology flows."
+>
+  <article class="sustainability-page">
+
+    <!-- HERO -->
+    <header class="sustainability-hero">
+      <div class="section-label">Financial Transparency</div>
+      <h1 class="hero-title">How the Institute is Funded</h1>
+      <p class="hero-lead">Five revenue streams designed for institutional independence. No single funding source exceeds 50%. Cross-ecology flows connect the Institute to the clinical core and consulting arm.</p>
+    </header>
+
+
+    <!-- REVENUE DONUT — SCROLL FOCUS MODE -->
+    <section class="revenue-section" id="streams">
+      <div class="focus-layout">
+        <div class="focus-sticky">
+          <div class="donut-chart" id="donut-chart"></div>
+          <div class="focus-counter">
+            <span class="focus-current" id="focus-current">1</span>
+            <span class="focus-sep">/</span>
+            <span class="focus-total">5</span>
+          </div>
+        </div>
+
+        <div class="focus-steps" id="focus-steps">
+          <div class="focus-step" data-index="0" data-stream="education">
+            <div class="focus-step-inner">
+              <span class="focus-pct">45%</span>
+              <h3 class="focus-name">Education & Credentialing</h3>
+              <div class="focus-bar"><div class="focus-bar-fill" style="--bar-width:45%"></div></div>
+              <p>Tuition across four credential tiers — Foundation Certificate through Fellowship. VET Student Loans eligible. Corporate training packages for organisations integrating traditional medicine frameworks. Continuing professional development subscriptions for network practitioners.</p>
+            </div>
+          </div>
+          <div class="focus-step" data-index="1" data-stream="network">
+            <div class="focus-step-inner">
+              <span class="focus-pct">20%</span>
+              <h3 class="focus-name">Network Licensing & Registry</h3>
+              <div class="focus-bar"><div class="focus-bar-fill" style="--bar-width:20%"></div></div>
+              <p>Annual practitioner membership fees tiered by credential level. Clinical registry access and data submission tools. Protocol licensing for external clinical sites operating under Institute frameworks.</p>
+            </div>
+          </div>
+          <div class="focus-step" data-index="2" data-stream="research">
+            <div class="focus-step-inner">
+              <span class="focus-pct">15%</span>
+              <h3 class="focus-name">Research Grants & Partnerships</h3>
+              <div class="focus-bar"><div class="focus-bar-fill" style="--bar-width:15%"></div></div>
+              <p>NHMRC, MRFF, and ARC competitive grants. JCU collaborative research programs. International whole-systems research consortia. Industry partnerships with ethical pharmaceutical and botanical companies.</p>
+            </div>
+          </div>
+          <div class="focus-step" data-index="3" data-stream="publishing">
+            <div class="focus-step-inner">
+              <span class="focus-pct">12%</span>
+              <h3 class="focus-name">Publishing & IP</h3>
+              <div class="focus-bar"><div class="focus-bar-fill" style="--bar-width:12%"></div></div>
+              <p>Division-specific textbook series. Journal article processing charges at cost recovery. Protocol monograph subscriptions for network practitioners. Conference proceedings and working paper series.</p>
+            </div>
+          </div>
+          <div class="focus-step" data-index="4" data-stream="consulting">
+            <div class="focus-step-inner">
+              <span class="focus-pct">8%</span>
+              <h3 class="focus-name">Consulting & Advisory</h3>
+              <div class="focus-bar"><div class="focus-bar-fill" style="--bar-width:8%"></div></div>
+              <p>TGA regulatory pathway consulting. Government policy advisory on traditional medicine integration. Curriculum consulting for other education providers seeking to incorporate convergence thesis frameworks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CROSS-ECOLOGY FLOWS -->
+    <section class="flows-section" id="flows">
+      <h2 class="section-heading">Cross-Ecology Revenue Flows</h2>
+      <p class="section-intro">Revenue doesn't stay inside the Institute. It circulates through the ecology — funding clinical infrastructure and feeding the consulting arm.</p>
+
+      <div class="flows-grid">
+        <div class="flow-card">
+          <div class="flow-direction inbound">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            <span>From Clinical Core</span>
+          </div>
+          <h3>Sohma House</h3>
+          <p>Sohma House provides clinical training sites, research participants, and outcome data. Net revenue flow is Institute &rarr; Clinical Core — an investment in education infrastructure that sustains the clinical pipeline.</p>
+        </div>
+        <div class="flow-card">
+          <div class="flow-direction outbound">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            <span>To Consulting Arm</span>
+          </div>
+          <h3>Advisory Services</h3>
+          <p>Institute research and credentialing feed the Consulting Arm's regulatory, curriculum, and policy advisory services. Revenue sharing model between Institute and Consulting Arm.</p>
+        </div>
+      </div>
+    </section>
+
+  </article>
+</PortalLayout>
+
+<style>
+  .sustainability-page {
+    font-family: 'Manrope', sans-serif;
+    color: var(--text-heading);
+    padding: 0;
+  }
+  .sustainability-page p { line-height: 1.8; margin: 0 0 1rem; }
+  .sustainability-page p:last-child { margin-bottom: 0; }
+  .sustainability-page h2, .sustainability-page h3 { margin: 0; }
+
+  /* ═══════════ HERO ═══════════ */
+  .sustainability-hero {
+    padding: 6rem 0 5rem;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent-dark);
+    margin-bottom: 1.25rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--accent-line);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--text-heading);
+    max-width: 800px;
+    margin: 0 0 2rem;
+    padding-left: 2rem;
+  }
+
+  .hero-lead {
+    font-size: 0.9375rem;
+    color: var(--text-body-65);
+    line-height: 1.85;
+    max-width: 600px;
+    padding-left: 2rem;
+  }
+
+  /* ═══════════ SECTION HEADINGS ═══════════ */
+  .sustainability-page .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    margin: 0 0 0.75rem;
+  }
+
+  .sustainability-page .section-intro {
+    font-size: 0.875rem;
+    color: var(--text-body-55);
+    line-height: 1.8;
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ═══════════ FOCUS MODE — SCROLL-DRIVEN DONUT ═══════════ */
+  .revenue-section {
+    padding-bottom: 0;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .focus-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .focus-sticky {
+    position: sticky;
+    top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 4rem 0 2rem;
+  }
+
+  .donut-chart {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: conic-gradient(
+      #687C57 0% 45%,
+      #9e7a4a 45% 65%,
+      #A53D2E 65% 80%,
+      #5a8aad 80% 92%,
+      #9a6eb5 92% 100%
+    );
+    -webkit-mask: radial-gradient(circle, transparent 49.9%, black 50%);
+    mask: radial-gradient(circle, transparent 49.9%, black 50%);
+    flex-shrink: 0;
+    transition: background 0.5s ease;
+    filter: drop-shadow(0 4px 16px var(--border-medium));
+  }
+
+  /* Highlighted segment states — dim non-active segments */
+  .donut-chart.seg-0 { background: conic-gradient(#687C57 0% 45%, rgba(158,122,74,0.15) 45% 65%, rgba(165,61,46,0.15) 65% 80%, rgba(90,138,173,0.15) 80% 92%, rgba(154,110,181,0.15) 92% 100%); }
+  .donut-chart.seg-1 { background: conic-gradient(rgba(104,124,87,0.15) 0% 45%, #9e7a4a 45% 65%, rgba(165,61,46,0.15) 65% 80%, rgba(90,138,173,0.15) 80% 92%, rgba(154,110,181,0.15) 92% 100%); }
+  .donut-chart.seg-2 { background: conic-gradient(rgba(104,124,87,0.15) 0% 45%, rgba(158,122,74,0.15) 45% 65%, #A53D2E 65% 80%, rgba(90,138,173,0.15) 80% 92%, rgba(154,110,181,0.15) 92% 100%); }
+  .donut-chart.seg-3 { background: conic-gradient(rgba(104,124,87,0.15) 0% 45%, rgba(158,122,74,0.15) 45% 65%, rgba(165,61,46,0.15) 65% 80%, #5a8aad 80% 92%, rgba(154,110,181,0.15) 92% 100%); }
+  .donut-chart.seg-4 { background: conic-gradient(rgba(104,124,87,0.15) 0% 45%, rgba(158,122,74,0.15) 45% 65%, rgba(165,61,46,0.15) 65% 80%, rgba(90,138,173,0.15) 80% 92%, #9a6eb5 92% 100%); }
+
+  .focus-counter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    opacity: 0.6;
+  }
+
+  .focus-current {
+    font-weight: 700;
+    color: var(--text-heading);
+    opacity: 1;
+  }
+
+  .focus-sep {
+    margin: 0 2px;
+  }
+
+  .focus-steps {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .focus-step {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+  }
+
+  .focus-step:first-child {
+    padding-top: 4rem;
+  }
+
+  .focus-step:last-child {
+    min-height: 50vh;
+  }
+
+  .focus-step-inner {
+    opacity: 0.2;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    max-width: 420px;
+  }
+
+  .focus-step.active .focus-step-inner {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stream accent colors — light mode */
+  [data-stream="education"] { --stream-color: #687C57; }
+  [data-stream="network"] { --stream-color: #9e7a4a; }
+  [data-stream="research"] { --stream-color: #A53D2E; }
+  [data-stream="publishing"] { --stream-color: #5a8aad; }
+  [data-stream="consulting"] { --stream-color: #9a6eb5; }
+
+  /* Stream accent colors — dark mode (lightened for contrast) */
+  :global([data-theme="dark"]) [data-stream="education"] { --stream-color: #8fa87a; }
+  :global([data-theme="dark"]) [data-stream="network"] { --stream-color: #c9a46e; }
+  :global([data-theme="dark"]) [data-stream="research"] { --stream-color: #d4634a; }
+  :global([data-theme="dark"]) [data-stream="publishing"] { --stream-color: #7db3d4; }
+  :global([data-theme="dark"]) [data-stream="consulting"] { --stream-color: #b994d4; }
+
+  .focus-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--stream-color);
+  }
+
+  .focus-bar-fill {
+    background: var(--stream-color);
+  }
+
+  .focus-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+
+  .focus-bar {
+    height: 4px;
+    background: var(--bg-card);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+
+  .focus-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    width: var(--bar-width);
+    transition: width 0.6s ease;
+  }
+
+  .focus-step p {
+    font-size: 0.9375rem;
+    color: var(--text-body-65);
+    line-height: 1.75;
+  }
+
+  /* ═══════════ CROSS-ECOLOGY FLOWS ═══════════ */
+  .flows-section {
+    padding-bottom: 4rem;
+  }
+
+  .flows-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .flow-card {
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 2rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .flow-card:hover {
+    border-color: var(--accent-border-15);
+    box-shadow: 0 2px 12px var(--bg-card);
+  }
+
+  .flow-direction {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .flow-direction.inbound {
+    color: var(--accent-green);
+  }
+
+  .flow-direction.outbound {
+    color: var(--accent-dark);
+  }
+
+  .flow-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    margin-bottom: 0.75rem;
+  }
+
+  .flow-card p {
+    font-size: 0.8125rem;
+    color: var(--text-body-60);
+    line-height: 1.75;
+  }
+
+  /* ═══════════ RESPONSIVE ═══════════ */
+  @media (max-width: 768px) {
+    .focus-layout {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .focus-sticky {
+      position: relative;
+      top: auto;
+      transform: none;
+      padding: 2rem 0;
+    }
+
+    .donut-chart {
+      width: 200px;
+      height: 200px;
+    }
+
+    .focus-step {
+      min-height: auto;
+      padding: 1.5rem 0;
+    }
+
+    .focus-step:first-child {
+      padding-top: 0;
+    }
+
+    .focus-step-inner {
+      opacity: 1;
+      transform: none;
+    }
+
+    .flows-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+      padding-left: 0;
+    }
+
+    .hero-lead {
+      padding-left: 0;
+    }
+  }
+</style>
+
+<script>
+  function initFocusScroll() {
+    const donut = document.getElementById('donut-chart')
+    const steps = document.querySelectorAll('.focus-step')
+    const counter = document.getElementById('focus-current')
+    if (!donut || !steps.length) return
+
+    // Mobile: skip scroll behavior
+    if (window.innerWidth <= 768) {
+      steps.forEach(s => s.classList.add('active'))
+      return
+    }
+
+    let activeIndex = 0
+
+    function setActive(index: number) {
+      if (index === activeIndex) return
+      activeIndex = index
+
+      // Update donut highlight
+      donut.className = 'donut-chart seg-' + index
+
+      // Update step active states
+      steps.forEach((step, i) => {
+        step.classList.toggle('active', i === index)
+      })
+
+      // Update counter
+      if (counter) counter.textContent = String(index + 1)
+    }
+
+    // Set first step active initially
+    setActive(0)
+
+    const observer = new IntersectionObserver((entries) => {
+      // Find the most visible step
+      let best: { index: number; ratio: number } | null = null
+      entries.forEach(entry => {
+        const idx = Number((entry.target as HTMLElement).dataset.index)
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.ratio) {
+            best = { index: idx, ratio: entry.intersectionRatio }
+          }
+        }
+      })
+      if (best) setActive(best.index)
+    }, {
+      rootMargin: '-35% 0px -35% 0px',
+      threshold: [0, 0.25, 0.5, 0.75, 1]
+    })
+
+    steps.forEach(step => observer.observe(step))
+  }
+
+  document.addEventListener('DOMContentLoaded', initFocusScroll)
+  document.addEventListener('astro:page-load', initFocusScroll)
+</script>

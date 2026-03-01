@@ -2,23 +2,15 @@
 @font-face {
   font-family: 'Manrope';
   src: url('/fonts/Manrope-Variable.woff2') format('woff2');
-  font-weight: 400;
+  font-weight: 200 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Variable.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Variable.woff2') format('woff2');
-  font-weight: 600;
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Variable.woff2') format('woff2');
+  font-weight: 100 800;
   font-style: normal;
   font-display: swap;
 }
@@ -39,6 +31,182 @@
   font-display: swap;
 }
 
+/* ===== CSS VARIABLES — LIGHT (DEFAULT) ===== */
+:root {
+  --bg-base: #f1ece4;
+  --bg-sidebar: #ddd8cf;
+  --bg-sidebar-right: #e8e3db;
+  --bg-surface: #fff;
+  --bg-card: rgba(0, 0, 0, 0.04);
+  --bg-card-hover: rgba(0, 0, 0, 0.06);
+  --border-light: rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.08);
+  --border-toc: #e8e4e0;
+  --text-heading: #3d3229;
+  --text-body: #4a3f35;
+  --text-secondary: #5a4d42;
+  --text-link: #6b5e52;
+  --text-tertiary: #8a7e74;
+  --text-muted: #a89e94;
+  --text-faint: #b8afa7;
+  --text-dim: #c4bdb6;
+  --accent: #c45a42;
+  --accent-dark: #A53D2E;
+  --accent-darker: #9e3a2e;
+  --accent-green: #687C57;
+  --accent-green-dark: #576943;
+  --accent-warm: #8b7355;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.1);
+  --scrollbar-thumb-light: rgba(0, 0, 0, 0.08);
+  --overlay-bg: rgba(0, 0, 0, 0.3);
+  --bg-callout: rgba(139, 115, 85, 0.04);
+  --border-callout: rgba(139, 115, 85, 0.3);
+  --bg-table-header: rgba(139, 115, 85, 0.06);
+  --border-table-header: rgba(139, 115, 85, 0.15);
+  --bg-table-hover: rgba(139, 115, 85, 0.03);
+  --bg-hero: #f1ece4;
+  --glass-10: rgba(0, 0, 0, 0.1);
+  --glass-12: rgba(0, 0, 0, 0.12);
+  --glass-15: rgba(0, 0, 0, 0.15);
+  --accent-active-bg: rgba(165, 61, 46, 0.06);
+  --accent-hover-bg: rgba(196, 90, 66, 0.04);
+  --accent-resize-bg: rgba(196, 90, 66, 0.15);
+
+  /* Text at various opacities — warm brown base */
+  --text-body-50: rgba(61, 50, 41, 0.5);
+  --text-body-55: rgba(61, 50, 41, 0.55);
+  --text-body-60: rgba(61, 50, 41, 0.6);
+  --text-body-65: rgba(61, 50, 41, 0.65);
+  --text-body-70: rgba(61, 50, 41, 0.7);
+
+  /* Accent (terracotta) at various opacities */
+  --accent-line: rgba(165, 61, 46, 0.12);
+  --accent-border-15: rgba(165, 61, 46, 0.15);
+  --accent-border-20: rgba(165, 61, 46, 0.2);
+  --accent-border-25: rgba(165, 61, 46, 0.25);
+  --accent-border-30: rgba(165, 61, 46, 0.3);
+  --accent-bg-02: rgba(165, 61, 46, 0.02);
+  --accent-bg-04: rgba(165, 61, 46, 0.04);
+  --accent-bg-08: rgba(165, 61, 46, 0.08);
+  --accent-bg-10: rgba(165, 61, 46, 0.1);
+  --accent-text-80: rgba(165, 61, 46, 0.8);
+
+  /* Soft accent (lighter terracotta) at various opacities */
+  --accent-soft-02: rgba(196, 90, 66, 0.02);
+  --accent-soft-06: rgba(196, 90, 66, 0.06);
+  --accent-soft-08: rgba(196, 90, 66, 0.08);
+  --accent-soft-10: rgba(196, 90, 66, 0.1);
+  --accent-soft-12: rgba(196, 90, 66, 0.12);
+  --accent-soft-20: rgba(196, 90, 66, 0.2);
+  --accent-soft-25: rgba(196, 90, 66, 0.25);
+  --accent-soft-60: rgba(196, 90, 66, 0.6);
+  --accent-soft-70: rgba(196, 90, 66, 0.7);
+  --accent-soft-75: rgba(196, 90, 66, 0.75);
+
+  /* Chart / data visualization colors */
+  --chart-warm: #9e7a4a;
+  --chart-warm-bg: rgba(158, 122, 74, 0.08);
+  --chart-warm-bg-subtle: rgba(158, 122, 74, 0.06);
+  --chart-blue: #5a8aad;
+  --chart-blue-bg: rgba(90, 138, 173, 0.08);
+  --chart-teal: #4a9e7a;
+  --chart-purple: #9a6eb5;
+
+  /* Dark section backgrounds */
+  --bg-dark-start: #1e1c19;
+  --bg-dark-end: #2a2520;
+  --text-on-dark: #f0ebe5;
+
+  /* Additional */
+  --accent-darker-hover: #8E2A22;
+  --accent-green-deep: #4a6b3a;
+}
+
+/* ===== DARK MODE ===== */
+[data-theme="dark"] {
+  --bg-base: #141210;
+  --bg-sidebar: #1c1a17;
+  --bg-sidebar-right: #1a1816;
+  --bg-surface: #1e1c19;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.08);
+  --border-toc: rgba(255, 255, 255, 0.08);
+  --text-heading: #e8dfd0;
+  --text-body: #d0c8bc;
+  --text-secondary: #b5ad9f;
+  --text-link: #c8bfb2;
+  --text-tertiary: #8a8078;
+  --text-muted: #6b6258;
+  --text-faint: #5a524a;
+  --text-dim: #4a4238;
+  --accent: #d4704e;
+  --accent-dark: #c45a42;
+  --accent-darker: #b84a32;
+  --accent-green: #7a9465;
+  --accent-green-dark: #6b8356;
+  --accent-warm: #a89070;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.1);
+  --scrollbar-thumb-light: rgba(255, 255, 255, 0.08);
+  --overlay-bg: rgba(0, 0, 0, 0.6);
+  --bg-callout: rgba(168, 144, 112, 0.08);
+  --border-callout: rgba(168, 144, 112, 0.3);
+  --bg-table-header: rgba(168, 144, 112, 0.08);
+  --border-table-header: rgba(168, 144, 112, 0.15);
+  --bg-table-hover: rgba(168, 144, 112, 0.04);
+  --bg-hero: #141210;
+  --glass-10: rgba(255, 255, 255, 0.1);
+  --glass-12: rgba(255, 255, 255, 0.12);
+  --glass-15: rgba(255, 255, 255, 0.15);
+  --accent-active-bg: rgba(212, 112, 78, 0.1);
+  --accent-hover-bg: rgba(212, 112, 78, 0.06);
+  --accent-resize-bg: rgba(212, 112, 78, 0.15);
+
+  --text-body-50: rgba(208, 200, 188, 0.6);
+  --text-body-55: rgba(208, 200, 188, 0.65);
+  --text-body-60: rgba(208, 200, 188, 0.7);
+  --text-body-65: rgba(208, 200, 188, 0.75);
+  --text-body-70: rgba(208, 200, 188, 0.8);
+
+  --accent-line: rgba(212, 112, 78, 0.18);
+  --accent-border-15: rgba(212, 112, 78, 0.2);
+  --accent-border-20: rgba(212, 112, 78, 0.25);
+  --accent-border-25: rgba(212, 112, 78, 0.3);
+  --accent-border-30: rgba(212, 112, 78, 0.35);
+  --accent-bg-02: rgba(212, 112, 78, 0.03);
+  --accent-bg-04: rgba(212, 112, 78, 0.06);
+  --accent-bg-08: rgba(212, 112, 78, 0.1);
+  --accent-bg-10: rgba(212, 112, 78, 0.12);
+  --accent-text-80: rgba(212, 112, 78, 0.85);
+
+  --accent-soft-02: rgba(212, 112, 78, 0.03);
+  --accent-soft-06: rgba(212, 112, 78, 0.08);
+  --accent-soft-08: rgba(212, 112, 78, 0.1);
+  --accent-soft-10: rgba(212, 112, 78, 0.12);
+  --accent-soft-12: rgba(212, 112, 78, 0.15);
+  --accent-soft-20: rgba(212, 112, 78, 0.22);
+  --accent-soft-25: rgba(212, 112, 78, 0.28);
+  --accent-soft-60: rgba(212, 112, 78, 0.65);
+  --accent-soft-70: rgba(212, 112, 78, 0.75);
+  --accent-soft-75: rgba(212, 112, 78, 0.8);
+
+  --chart-warm: #b89060;
+  --chart-warm-bg: rgba(184, 144, 96, 0.1);
+  --chart-warm-bg-subtle: rgba(184, 144, 96, 0.08);
+  --chart-blue: #6e9bbe;
+  --chart-blue-bg: rgba(110, 155, 190, 0.1);
+  --chart-teal: #5cb48e;
+  --chart-purple: #ae82c9;
+
+  --bg-dark-start: #0e0d0b;
+  --bg-dark-end: #141210;
+  --text-on-dark: #e8dfd0;
+
+  --accent-darker-hover: #a83020;
+  --accent-green-deep: #6b9858;
+}
+
 /* ===== RESET ===== */
 *,
 *::before,
@@ -55,10 +223,16 @@ html, body {
 body {
   overflow-x: clip;
   font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #f8f6f3;
-  color: #3d3229;
+  background: var(--bg-base);
+  color: var(--text-heading);
   min-height: 100vh;
   line-height: 1.5;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Smooth transitions for theme switch */
+[data-theme-transitioning] * {
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
 }
 
 img {

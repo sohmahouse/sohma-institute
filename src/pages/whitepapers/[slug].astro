@@ -1,0 +1,180 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro'
+import { categoryMeta, articles } from '../../data/articles'
+import '../../styles/article.css'
+
+export function getStaticPaths() {
+  return categoryMeta.map(meta => ({
+    params: { slug: meta.slug },
+    props: { meta },
+  }))
+}
+
+const { meta } = Astro.props
+const categoryArticles = articles.filter(a => a.category === meta.name)
+---
+
+<PortalLayout
+  title={`${meta.name} — Sohma Institute`}
+  description={meta.description}
+>
+  <article class="whitepaper">
+    <header class="wp-header">
+      <div class="wp-hero-content">
+        <nav class="wp-breadcrumbs">
+          <a href="/">Home</a>
+          <span class="wp-breadcrumb-sep">|</span>
+          <a href="/whitepapers">Whitepapers</a>
+          <span class="wp-breadcrumb-sep">|</span>
+          <span class="wp-breadcrumb-current">{meta.name}</span>
+        </nav>
+
+        <h1 class="wp-title">{meta.name}</h1>
+        <p class="wp-excerpt">{meta.description}</p>
+
+        <div class="wp-meta-row">
+          <div class="wp-meta-items">
+            <span class="wp-meta-item">{categoryArticles.length} {categoryArticles.length === 1 ? 'Article' : 'Articles'}</span>
+            <span class="wp-meta-divider">|</span>
+            <span class="wp-meta-item">Sohma Institute</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wp-body">
+      <div class="cat-grid">
+        {categoryArticles.map((article, i) => (
+          <a href={`/${article.slug}`} class="cat-card">
+            <span class="cat-card-number">{String(i + 1).padStart(2, '0')}</span>
+            <h2 class="cat-card-title">{article.title}</h2>
+            <p class="cat-card-subtitle">{article.subtitle}</p>
+            <p class="cat-card-summary">{article.summary}</p>
+            <div class="cat-card-footer">
+              <span class="cat-card-author">{article.author}</span>
+              {article.readingTime && (
+                <span class="cat-card-time">{article.readingTime}</span>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </article>
+</PortalLayout>
+
+<style>
+  .wp-breadcrumb-current {
+    color: var(--text-secondary);
+    font-weight: 600;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding-top: 3rem;
+  }
+
+  .cat-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .cat-card:hover {
+    border-color: var(--accent-border-15);
+  }
+
+  .cat-card-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .cat-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    line-height: 1.25;
+    margin: 0 0 0.375rem;
+    transition: color 0.15s;
+  }
+
+  .cat-card:hover .cat-card-title {
+    color: var(--accent);
+  }
+
+  .cat-card-subtitle {
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+    margin: 0 0 0.75rem;
+  }
+
+  .cat-card-summary {
+    font-size: 0.8125rem;
+    color: var(--text-body-65);
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .cat-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .cat-card-author {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+  }
+
+  .cat-card-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: var(--bg-card);
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .cat-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cat-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

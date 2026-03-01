@@ -1,0 +1,163 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro'
+---
+
+<PortalLayout
+  title="Contact — Sohma Institute"
+  description="Get in touch with the Sohma Institute of Traditional Medicines. Enquiries for practitioners, researchers, and institutional partners."
+>
+  <article class="contact-page">
+
+    <header class="contact-hero">
+      <div class="section-label">Contact</div>
+      <h1 class="hero-title">Get in touch.</h1>
+      <p class="hero-lead">For practitioner enquiries, research collaboration, institutional partnerships, or general questions about the Institute.</p>
+    </header>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>Email</h3>
+        <a href="mailto:hello@sohma.house" class="contact-link">hello@sohma.house</a>
+        <p>General enquiries. We aim to respond within 2 business days.</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Location</h3>
+        <p class="contact-address">Cairns, Far North Queensland<br/>Australia</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        </div>
+        <h3>Partnerships</h3>
+        <p>For research collaboration, institutional articulation, or consulting enquiries — reach out via email with your proposal.</p>
+      </div>
+    </div>
+
+  </article>
+</PortalLayout>
+
+<style>
+  .contact-page {
+    font-family: 'Manrope', sans-serif;
+    color: var(--text-heading);
+    padding: 0;
+  }
+  .contact-page p { line-height: 1.8; margin: 0 0 1rem; }
+  .contact-page p:last-child { margin-bottom: 0; }
+  .contact-page h2, .contact-page h3 { margin: 0; }
+
+  .contact-hero {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent-dark);
+    margin-bottom: 1.25rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--accent-line);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--text-heading);
+    margin: 0 0 2rem;
+  }
+
+  .hero-lead {
+    font-size: 0.9375rem;
+    color: var(--text-body-65);
+    line-height: 1.85;
+    max-width: 560px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    padding-bottom: 4rem;
+  }
+
+  .contact-card {
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 1.75rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .contact-card:hover {
+    border-color: var(--accent-border-15);
+    box-shadow: 0 2px 12px var(--bg-card);
+  }
+
+  .contact-icon {
+    color: var(--accent-dark);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .contact-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-link {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    transition: color 0.15s;
+  }
+
+  .contact-link:hover {
+    color: var(--accent-darker-hover);
+  }
+
+  .contact-card p {
+    font-size: 0.8125rem;
+    color: var(--text-body-60);
+    line-height: 1.75;
+  }
+
+  .contact-address {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-heading);
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

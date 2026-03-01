@@ -1,0 +1,69 @@
+---
+import PortalLayout from './PortalLayout.astro'
+import { articles, categoryMeta } from '../data/articles'
+import '../styles/article.css'
+
+interface TocItem {
+  id: string
+  label: string
+  level: number
+}
+
+interface Props {
+  slug: string
+  toc: TocItem[]
+}
+
+const { slug, toc } = Astro.props
+const article = articles.find(a => a.slug === slug)!
+const category = categoryMeta.find(c => c.name === article.category)!
+---
+
+<PortalLayout
+  title={article.title}
+  description={article.subtitle}
+  toc={toc}
+  activeArticle={slug}
+>
+  <article class="whitepaper">
+    <header class="wp-header">
+      <div class="wp-hero-content">
+        <nav class="wp-breadcrumbs">
+          <a href="/">Home</a>
+          <span class="wp-breadcrumb-sep">|</span>
+          <a href={`/whitepapers/${category.slug}`}>{category.name}</a>
+        </nav>
+        <h1 class="wp-title">{article.title}</h1>
+        <p class="wp-excerpt">{article.summary}</p>
+        <div class="wp-meta-row">
+          <div class="wp-meta-items">
+            <span class="wp-meta-item">
+              {article.author}
+              <span class="wp-meta-role">{article.authorRole}</span>
+            </span>
+            <span class="wp-meta-divider">|</span>
+            <span class="wp-meta-item">{article.date}</span>
+          </div>
+          <div class="wp-actions">
+            <button class="wp-action-btn" data-action="share" type="button" title="Copy article as formatted text">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+            <button class="wp-action-btn" data-action="cite" type="button" title="Copy formatted citation">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+              <span>Cite</span>
+            </button>
+            <button class="wp-action-btn" data-action="pdf" type="button" title="Download as PDF">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>PDF</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wp-body">
+      <slot />
+    </div>
+  </article>
+</PortalLayout>

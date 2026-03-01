@@ -1,308 +1,696 @@
 ---
 import PortalLayout from '../layouts/PortalLayout.astro'
-import { articles, getArticlesByCategory } from '../data/articles'
 
-const groups = getArticlesByCategory()
-const featured = articles.find(a => a.featured)
-
-// Group categories into sections
-const sections = [
-  {
-    heading: 'Foundations',
-    slugs: ['fundamentals', 'clinical-practice'],
-  },
-  {
-    heading: 'Advanced Clinical Education',
-    slugs: ['research-synthesis', 'womens-health'],
-  },
-  {
-    heading: 'Reference & Philosophy',
-    slugs: ['clinical-reference', 'practice-philosophy'],
-  },
-]
 ---
 
-<PortalLayout title="Clinical Knowledge Base — Sohma Institute" description="Evidence-informed clinical education for cannabis medicine practitioners.">
-  <div class="kb">
+<PortalLayout
+  title="Institute of Traditional Medicines"
+  description="A post-reductionist institution advancing traditional pharmacological systems as sophisticated predecessors to network medicine, complex adaptive systems theory, and precision therapeutics."
+>
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="reading-progress"></div>
+  </div>
 
-    <!-- Hero -->
-    <div class="kb-hero">
-      <div class="kb-hero-inner">
-        <h1 class="kb-hero-title">Sohma Institute</h1>
-        <p class="kb-hero-sub">Evidence-informed clinical education for cannabis medicine practitioners.</p>
+  <article class="institute-home">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ZONE A — IDENTITY
+         ═══════════════════════════════════════════════════════════ -->
+
+    <!-- HERO — Dark full-bleed -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">Node III &mdash; Regenerative Health Ecology</div>
+        <h1 class="hero-title"><span class="hero-title-top">Sohma Institute</span><br/><span class="hero-title-bottom">of Traditional Medicines</span></h1>
+        <p class="hero-subtitle">A post-reductionist institution advancing traditional pharmacological systems as sophisticated predecessors to network medicine, complex adaptive systems theory, and precision therapeutics.</p>
       </div>
-    </div>
+    </header>
 
-    <div class="kb-body">
+    <!-- OVERVIEW — Stat strip -->
+    <section id="overview" class="stat-strip">
+      <div class="stat-strip-inner">
+        <div class="stat-item">
+          <div class="stat-numeral">III</div>
+          <div class="stat-label">Node Position</div>
+          <p class="stat-desc">Third arm of the Regenerative Health Ecology. Sits between clinical application and public dissemination.</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-numeral">RTO</div>
+          <div class="stat-label">Institutional Class</div>
+          <p class="stat-desc">Registered Training Organisation with articulation to university postgraduate programs.</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-numeral">QLD</div>
+          <div class="stat-label">Jurisdictional Anchor</div>
+          <p class="stat-desc">Headquartered in Cairns. Tropical and Indigenous medicine specialisations.</p>
+        </div>
+      </div>
+    </section>
 
-      <!-- Featured Banner -->
-      {featured && (
-        <a href={`/${featured.slug}`} class="kb-banner">
-          <div class="kb-banner-icon" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-            </svg>
+    <!-- EPISTEMOLOGY — Tinted contrast band -->
+    <section id="epistemology" class="epist-band">
+      <div class="epist-inner">
+        <div class="section-label">Foundational Intellectual Position</div>
+        <h2 class="section-title">The Post-Reductionist Correction</h2>
+
+        <p class="epist-lead">The dominant framing positions traditional medicines as "complementary" or "alternative" to evidence-based practice. This framing is intellectually bankrupt. The Institute inverts it.</p>
+
+        <div class="epist-panels">
+          <div class="epist-panel reject">
+            <div class="epist-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <h3>What We Reject</h3>
+            <div class="epist-items">
+              <div class="epist-item struck"><span>CAM framing</span></div>
+              <div class="epist-item struck"><span>Integrative apologetics</span></div>
+              <div class="epist-item struck"><span>Vitalism without mechanism</span></div>
+            </div>
+            <p>The "complementary and alternative" paradigm forces traditional systems into a subordinate epistemological position where they must prove themselves against criteria designed for isolated molecular entities.</p>
           </div>
-          <div class="kb-banner-content">
-            <span class="kb-banner-label">Featured</span>
-            <span class="kb-banner-title">{featured.title}</span>
-            <span class="kb-banner-desc">{featured.subtitle}</span>
+          <div class="epist-panel advance">
+            <div class="epist-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>What We Advance</h3>
+            <div class="epist-items">
+              <div class="epist-item lit"><span>Network pharmacology</span></div>
+              <div class="epist-item lit"><span>Systems biology</span></div>
+              <div class="epist-item lit"><span>Complexity therapeutics</span></div>
+            </div>
+            <p>Traditional systems as sophisticated predecessors to network medicine. Ayurveda, TCM, Unani, Kampo, and Indigenous pharmacopoeia as mature therapeutic architectures.</p>
           </div>
-          <span class="kb-banner-cta">Read &rarr;</span>
-        </a>
-      )}
+        </div>
 
-      <!-- Sections -->
-      {sections.map(section => {
-        const sectionGroups = section.slugs
-          .map(s => groups.find(g => g.meta.slug === s))
-          .filter(Boolean) as typeof groups
-        if (sectionGroups.length === 0) return null
-        return (
-          <div class="kb-section">
-            <h2 class="kb-section-heading">{section.heading}</h2>
-            <div class="kb-card-grid">
-              {sectionGroups.map(group => (
-                <a href={`/category/${group.meta.slug}`} class="kb-card">
-                  <div class="kb-card-icon" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d={group.meta.icon} />
-                    </svg>
-                  </div>
-                  <h3 class="kb-card-name">{group.meta.name}</h3>
-                  <p class="kb-card-desc">{group.meta.description}</p>
-                </a>
-              ))}
+        <div class="convergence-callout">
+          <div class="convergence-title">The Convergence Thesis</div>
+          <div class="convergence-cols">
+            <div>
+              <div class="convergence-label">Traditional Logic</div>
+              <p>Constitutional classification &rarr; personalised formula &rarr; multi-constituent preparation &rarr; whole-system response assessment over time</p>
+            </div>
+            <div>
+              <div class="convergence-label">Modern Equivalent</div>
+              <p>Pharmacogenomic profiling &rarr; precision therapeutics &rarr; polypharmacology &rarr; systems biology outcome measurement via multi-omics</p>
+            </div>
+            <div>
+              <div class="convergence-label">Institute Position</div>
+              <p>These are not analogies. They are convergent descriptions of the same therapeutic reality, arrived at through different investigative methodologies.</p>
             </div>
           </div>
-        )
-      })}
+        </div>
+      </div>
+    </section>
 
-    </div>
-  </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ZONE B — STRUCTURE
+         ═══════════════════════════════════════════════════════════ -->
+
+    <!-- DIVISIONS — Dark horizontal grid -->
+    <section id="divisions" class="divisions-dark">
+      <div class="divisions-inner">
+        <div class="section-label light">Five Academic Divisions</div>
+        <h2 class="section-title light">Institute Divisions</h2>
+        <p class="divisions-intro">Each division operates as a semi-autonomous academic unit with its own research agenda, credentialing pathway, and clinical translation pipeline.</p>
+
+        <div class="divisions-grid">
+          <div class="division-col" data-accent="terracotta">
+            <div class="division-dot"></div>
+            <span class="division-num">I</span>
+            <h3>Complex Herbal Medicines</h3>
+            <p>Multi-constituent botanical therapeutics, phytochemical synergy, traditional pharmacopoeia systems, and clinical herbal prescribing.</p>
+            <div class="division-pills">
+              <span>Phytopharmacology</span>
+              <span>Ethnobotany</span>
+              <span>Pharmacognosy</span>
+            </div>
+          </div>
+
+          <div class="division-col" data-accent="warm">
+            <div class="division-dot"></div>
+            <span class="division-num">II</span>
+            <h3>Emergent & Entheogenic Modalities</h3>
+            <p>Cannabis medicine, psilocybin-assisted therapy, psychedelic integration, and novel consciousness-based therapeutic frameworks.</p>
+            <div class="division-pills">
+              <span>Cannabis Therapeutics</span>
+              <span>Psychedelic Therapy</span>
+              <span>Harm Reduction</span>
+            </div>
+          </div>
+
+          <div class="division-col" data-accent="blue">
+            <div class="division-dot"></div>
+            <span class="division-num">III</span>
+            <h3>Systems & Functional Medicine</h3>
+            <p>Systems biology approaches to chronic complex illness, functional diagnostics, metabolomic and genomic interpretation.</p>
+            <div class="division-pills">
+              <span>Functional Diagnostics</span>
+              <span>Metabolomics</span>
+              <span>Genomics</span>
+            </div>
+          </div>
+
+          <div class="division-col" data-accent="teal">
+            <div class="division-dot"></div>
+            <span class="division-num">IV</span>
+            <h3>Environmental & Nutritional Medicine</h3>
+            <p>Toxicant exposure assessment, environmental determinants, clinical nutrition, microbiome therapeutics.</p>
+            <div class="division-pills">
+              <span>Clinical Nutrition</span>
+              <span>Toxicology</span>
+              <span>Microbiome</span>
+            </div>
+          </div>
+
+          <div class="division-col" data-accent="purple">
+            <div class="division-dot"></div>
+            <span class="division-num">V</span>
+            <h3>Lifestyle & Relational Medicine</h3>
+            <p>Somatic therapy, contemplative practice, movement medicine, sleep architecture, and relational health.</p>
+            <div class="division-pills">
+              <span>Somatic Therapy</span>
+              <span>Movement Medicine</span>
+              <span>Sleep Science</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PUBLISHING — Compact list -->
+    <section id="publishing" class="publishing-section">
+      <div class="section-label">Knowledge Dissemination</div>
+      <h2 class="section-title">Publishing Arm</h2>
+
+      <div class="publishing-list">
+        <div class="publishing-item">
+          <span class="publishing-tag green">Flagship</span>
+          <div class="publishing-content">
+            <h3>Journal of Traditional & Network Medicine</h3>
+            <p>Peer-reviewed, open-access. Original research, systematic reviews, case series. Editorial commitment to whole-systems research design. Indexed target: DOAJ, Scopus within 3 years.</p>
+          </div>
+        </div>
+        <div class="publishing-item">
+          <span class="publishing-tag warm">Clinical Resource</span>
+          <div class="publishing-content">
+            <h3>Protocol Monograph Series</h3>
+            <p>Detailed clinical protocol documents for network practitioners. Full evidence summary, prescribing guidelines, outcome measures, contraindications. Living documents updated as registry data accumulates.</p>
+          </div>
+        </div>
+        <div class="publishing-item">
+          <span class="publishing-tag terracotta">Public Scholarship</span>
+          <div class="publishing-content">
+            <h3>Institute Working Papers</h3>
+            <p>Pre-publication working papers on emerging research, policy analysis, and theoretical contributions. Rapid publication cycle for timely commentary on regulatory developments.</p>
+          </div>
+        </div>
+        <div class="publishing-item">
+          <span class="publishing-tag blue">Education</span>
+          <div class="publishing-content">
+            <h3>Textbook Series</h3>
+            <p>Division-specific textbooks authored by Institute faculty. Written for the Institute's pedagogical framework. Incorporate the convergence thesis throughout.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </article>
 </PortalLayout>
 
 <style>
-  .kb {
-    min-height: 100vh;
-  }
-
-  /* ── Hero ── */
-  .kb-hero {
-    position: relative;
-    text-align: center;
-    padding: 3.5rem 2rem 2.5rem;
-    overflow: hidden;
-  }
-
-  .kb-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(196,90,66,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .kb-hero-inner {
-    position: relative;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
-  .kb-hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.75rem;
-    font-weight: 500;
-    color: #2c2520;
-    line-height: 1.15;
-    margin: 0 0 0.625rem;
-    letter-spacing: -0.01em;
-  }
-
-  .kb-hero-sub {
+  /* ═══════════ GLOBAL RESETS ═══════════ */
+  .institute-home {
     font-family: 'Manrope', sans-serif;
-    font-size: 0.9375rem;
-    color: #7a6e63;
-    line-height: 1.6;
-    margin: 0;
+    color: var(--text-heading);
+    padding: 0;
   }
+  .institute-home p { line-height: 1.8; margin: 0 0 1rem; }
+  .institute-home p:last-child { margin-bottom: 0; }
+  .institute-home h2, .institute-home h3 { margin: 0; }
 
-  /* ── Body ── */
-  .kb-body {
-    max-width: 740px;
-    margin: 0 auto;
-    padding: 0 2rem 2.5rem;
-  }
-
-  /* ── Banner ── */
-  .kb-banner {
+  /* Section labels (reused across zones) */
+  .section-label {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1.125rem 1.5rem;
-    margin-bottom: 2.5rem;
-    background: linear-gradient(135deg, rgba(196,90,66,0.06) 0%, rgba(196,90,66,0.02) 100%);
-    border: 1px solid rgba(196,90,66,0.12);
-    border-radius: 10px;
-    text-decoration: none;
-    transition: border-color 0.2s;
-  }
-
-  .kb-banner:hover {
-    border-color: rgba(196,90,66,0.25);
-  }
-
-  .kb-banner-icon {
-    flex-shrink: 0;
-    color: #c45a42;
-    opacity: 0.7;
-  }
-
-  .kb-banner-content {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .kb-banner-label {
-    display: block;
+    gap: 1.25rem;
     font-family: 'Manrope', sans-serif;
-    font-size: 0.5625rem;
-    font-weight: 800;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent-dark);
+    margin-bottom: 1rem;
+    white-space: nowrap;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--accent-line);
+  }
+  .section-label.light { color: rgba(255,255,255,0.5); }
+  .section-label.light::after { background: rgba(255,255,255,0.08); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    line-height: 1.15;
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.01em;
+  }
+  .section-title.light { color: var(--text-on-dark); }
+
+  .section-intro {
+    font-size: 0.9375rem;
+    color: var(--text-body-65);
+    line-height: 1.85;
+    max-width: 680px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ═══════════ PROGRESS BAR ═══════════ */
+  .progress-bar-track { position: sticky; top: 0; z-index: 10; height: 3px; background: var(--bg-card); }
+  .progress-bar-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent-dark), var(--accent)); transition: width 0.1s; }
+
+
+  /* ═══════════ HERO ═══════════ */
+  .hero {
+    margin-left: -40px;
+    margin-right: -40px;
+    padding: 5rem 40px 3.5rem;
+    background: var(--bg-base);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: none;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-border-20) 30%, var(--accent-soft-20) 70%, transparent);
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 700px; }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-dark);
+    border: 1px solid var(--accent-border-25);
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    color: var(--text-heading);
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-title-top {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+  }
+  .hero-title-bottom {
+    font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+  }
+  .institute-home .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-body-55);
+    line-height: 1.4;
+    margin: 0 0 2.5rem;
+    max-width: 600px;
+  }
+  /* ═══════════ STAT STRIP ═══════════ */
+  .stat-strip {
+    padding: 4rem 0;
+  }
+  .stat-strip-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+  }
+  .stat-item {
+    flex: 1;
+    text-align: center;
+    padding: 0 2rem;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 80px;
+    background: var(--border-medium);
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .stat-numeral {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--accent-dark);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: #c45a42;
-    margin-bottom: 0.125rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.75rem;
   }
-
-  .kb-banner-title {
-    display: block;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: #2c2520;
-    line-height: 1.35;
-  }
-
-  .kb-banner-desc {
-    display: block;
-    font-family: 'Manrope', sans-serif;
+  .stat-desc {
     font-size: 0.8125rem;
-    color: #7a6e63;
-    line-height: 1.4;
-    margin-top: 0.125rem;
-  }
-
-  .kb-banner-cta {
-    flex-shrink: 0;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: #fff;
-    background: #c45a42;
-    padding: 0.5em 1.125em;
-    border-radius: 6px;
-    white-space: nowrap;
-    transition: opacity 0.15s;
-  }
-
-  .kb-banner:hover .kb-banner-cta {
-    opacity: 0.9;
-  }
-
-  /* ── Sections ── */
-  .kb-section {
-    margin-bottom: 2.25rem;
-  }
-
-  .kb-section-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: #2c2520;
+    color: var(--text-body-55);
+    line-height: 1.6;
+    max-width: 240px;
+    margin: 0 auto;
     text-align: center;
-    margin: 0 0 1.125rem;
-    letter-spacing: -0.005em;
   }
 
-  /* ── Card Grid ── */
-  .kb-card-grid {
+
+  /* ═══════════ EPISTEMOLOGY BAND ═══════════ */
+  .epist-band {
+    margin-left: -40px;
+    margin-right: -40px;
+    padding: 4rem 80px;
+    background: var(--text-on-dark);
+    border-top: 1px solid var(--bg-card);
+    border-bottom: 1px solid var(--bg-card);
+  }
+  .epist-inner { max-width: 100%; }
+  .epist-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.35;
+    max-width: 640px;
+    margin-bottom: 3.5rem;
+  }
+  .epist-panels {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.875rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .epist-panel {
+    padding: 2.25rem 2rem;
+    position: relative;
+  }
+  .epist-panel.reject {
+    background: var(--accent-hover-bg);
+    border-radius: 6px;
+    border: 1px solid var(--accent-soft-10);
+  }
+  .epist-panel.advance {
+    background: rgba(104,124,87,0.05);
+    border-radius: 6px;
+    border: 1px solid rgba(104,124,87,0.12);
+  }
+  .epist-icon {
+    margin-bottom: 1.25rem;
+  }
+  .epist-panel.reject .epist-icon { color: var(--accent-soft-60); }
+  .epist-panel.advance .epist-icon { color: var(--accent-green); }
+  .epist-panel h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 1.25rem;
+  }
+  .epist-panel.reject h3 { color: var(--accent-soft-75); }
+  .epist-panel.advance h3 { color: var(--accent-green); }
+  .epist-panel p {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
   }
 
-  .kb-card {
+  /* Reject items — struck through */
+  .epist-items {
     display: flex;
     flex-direction: column;
-    padding: 1.375rem 1.25rem;
-    background: #fff;
-    border: 1px solid #e8e4e0;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    gap: 0.625rem;
+    margin-bottom: 1.25rem;
   }
-
-  .kb-card:hover {
-    border-color: #d1c9c1;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  .epist-item {
+    position: relative;
+    padding: 8px 14px;
+    border-radius: 4px;
   }
-
-  .kb-card-icon {
-    color: #3d3229;
-    margin-bottom: 0.875rem;
-    opacity: 0.55;
-  }
-
-  .kb-card:hover .kb-card-icon {
-    opacity: 0.75;
-  }
-
-  .kb-card-name {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: #2c2520;
-    margin: 0 0 0.3rem;
-    line-height: 1.3;
-  }
-
-  .kb-card-desc {
+  .epist-item span {
     font-family: 'Manrope', sans-serif;
     font-size: 0.8125rem;
-    color: #7a6e63;
-    line-height: 1.5;
-    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .epist-item.struck {
+    background: var(--accent-hover-bg);
+    border: 1px solid var(--accent-soft-08);
+  }
+  .epist-item.struck span {
+    color: var(--accent-text-80);
+    text-decoration: none;
   }
 
-  /* ── Responsive ── */
-  @media (max-width: 640px) {
-    .kb-hero {
-      padding: 2.5rem 1.25rem 2rem;
-    }
+  /* Advance items — glowing / highlighted */
+  .epist-item.lit {
+    background: rgba(104,124,87,0.08);
+    border: 1px solid rgba(104,124,87,0.18);
+    box-shadow: 0 0 12px rgba(104,124,87,0.06);
+  }
+  .epist-item.lit span {
+    color: var(--accent-green-deep);
+  }
 
-    .kb-hero-title {
-      font-size: 2.125rem;
-    }
+  /* Convergence callout */
+  .convergence-callout {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 2rem;
+  }
+  .convergence-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-dark);
+    margin-bottom: 1.25rem;
+  }
+  .convergence-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .convergence-label {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin-bottom: 0.5rem;
+  }
+  .convergence-cols p {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
 
-    .kb-body {
-      padding: 0 1.25rem 2rem;
-    }
 
-    .kb-banner {
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
+  /* ═══════════ DIVISIONS DARK BAND ═══════════ */
+  .divisions-dark {
+    margin-left: -40px;
+    margin-right: -40px;
+    padding: 4.5rem 40px;
+    background: linear-gradient(180deg, var(--bg-dark-start) 0%, var(--bg-dark-end) 100%);
+  }
+  .divisions-inner { max-width: 100%; }
+  .divisions-intro {
+    font-size: 0.9375rem;
+    color: rgba(240,235,229,0.4);
+    line-height: 1.75;
+    max-width: 620px;
+    margin-bottom: 2.5rem;
+  }
+  .divisions-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+  }
+  .division-col {
+    padding: 1.75rem 1.25rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 4px;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .division-col:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.08);
+  }
+  .division-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  [data-accent="terracotta"] .division-dot { background: var(--accent-dark); }
+  [data-accent="warm"] .division-dot { background: var(--chart-warm); }
+  [data-accent="blue"] .division-dot { background: var(--chart-blue); }
+  [data-accent="teal"] .division-dot { background: var(--chart-teal); }
+  [data-accent="purple"] .division-dot { background: var(--chart-purple); }
 
-    .kb-banner-cta {
-      width: 100%;
-      text-align: center;
-    }
+  .division-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: rgba(240,235,229,0.2);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .division-col h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-on-dark);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+  .division-col p {
+    font-size: 0.75rem;
+    color: rgba(240,235,229,0.4);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .division-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .division-pills span {
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(240,235,229,0.3);
+    border: 1px solid rgba(240,235,229,0.08);
+    border-radius: 2px;
+    padding: 2px 6px;
+  }
+
+
+  /* ═══════════ PUBLISHING LIST ═══════════ */
+  .publishing-section {
+    padding: 3rem 0 2rem;
+  }
+  .publishing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .publishing-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--bg-card);
+    transition: background 0.15s;
+  }
+  .publishing-item:last-child { border-bottom: none; }
+  .publishing-item:hover { background: var(--bg-card); }
+
+  .publishing-tag {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .publishing-tag.green { color: var(--accent-green); background: rgba(104,124,87,0.08); }
+  .publishing-tag.warm { color: var(--chart-warm); background: var(--chart-warm-bg); }
+  .publishing-tag.terracotta { color: var(--accent-dark); background: var(--accent-active-bg); }
+  .publishing-tag.blue { color: var(--chart-blue); background: var(--chart-blue-bg); }
+
+  .publishing-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    margin-bottom: 0.375rem;
+    line-height: 1.3;
+  }
+  .publishing-content p {
+    font-size: 0.8125rem;
+    color: var(--text-body-60);
+    line-height: 1.65;
+  }
+
+
+  /* ═══════════ RESPONSIVE ═══════════ */
+  @media (max-width: 1024px) {
+    .divisions-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 3.5rem 40px 2.5rem; }
+    .hero-title { font-size: 2.25rem; }
+
+    .stat-strip-inner { flex-direction: column; align-items: center; gap: 2rem; }
+    .stat-divider { width: 60px; height: 1px; }
+    .stat-item { padding: 0; }
+
+    .epist-panels { grid-template-columns: 1fr; }
+    .convergence-cols { grid-template-columns: 1fr; }
+
+    .divisions-grid { grid-template-columns: 1fr 1fr; }
+
+    .section-title { font-size: 1.75rem; }
   }
 
   @media (max-width: 480px) {
-    .kb-card-grid {
-      grid-template-columns: 1fr;
-    }
+    .divisions-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 1.85rem; }
+    .stat-numeral { font-size: 2.5rem; }
   }
 </style>
+

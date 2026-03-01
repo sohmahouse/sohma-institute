@@ -22,6 +22,8 @@ const articleGroups = getArticlesByCategory()
 const activeCategory = activeArticle
   ? articles.find(a => a.slug === activeArticle)?.category
   : null
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
 ---
 
 <BaseLayout title={title} description={description}>
@@ -47,7 +49,7 @@ const activeCategory = activeArticle
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <!-- LEFT SIDEBAR — Articles -->
-    <aside class="portal-sidebar-left" id="portal-sidebar">
+    <aside class="portal-sidebar-left" id="portal-sidebar" transition:animate="none">
       <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
           <path d="M18 6L6 18M6 6l12 12" />
@@ -63,46 +65,60 @@ const activeCategory = activeArticle
           <span class="sidebar-subtitle">FOR PRACTITIONERS</span>
         </div>
 
-        <!-- Home link -->
-        <a href="/" class:list={['sidebar-home-link', { active: !activeArticle }]}>
-          <span class="sidebar-home-name">All Resources</span>
-        </a>
-
-        <!-- Article nav grouped by category -->
-        <nav class="sidebar-nav" aria-label="Articles">
-          {articleGroups.map(group => (
-            <div
-              class="sidebar-category-group"
-              data-category={group.meta.name}
-              data-expanded={activeCategory === group.meta.name ? 'true' : 'false'}
-            >
-              <button class="sidebar-category-header" type="button" aria-expanded={activeCategory === group.meta.name ? 'true' : 'false'}>
-                <span class="sidebar-category-name">{group.meta.name}</span>
-                <span class="sidebar-category-count">{group.articles.length}</span>
-                <svg class="sidebar-category-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </button>
-              <div class="sidebar-category-articles">
-                {group.articles.map(article => (
-                  <a
-                    href={`/${article.slug}`}
-                    class:list={['sidebar-article-link', { active: activeArticle === article.slug }]}
-                  >
-                    <svg class="sidebar-article-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                      <polyline points="14 2 14 8 20 8" />
-                    </svg>
-                    <span class="sidebar-article-title">{article.title}</span>
-                  </a>
-                ))}
-              </div>
+        <!-- Section nav -->
+        <nav class="sidebar-nav" aria-label="Navigation">
+          <div class="sidebar-dropdown" id="sidebar-education">
+            <a href="/education" class:list={['sidebar-nav-link sidebar-dropdown-toggle-link', { active: currentPath.startsWith('/education') }]}>Education</a>
+            <div class="sidebar-dropdown-items">
+              <a href="/education/foundation-certificate" class:list={['sidebar-sub-link', { active: currentPath === '/education/foundation-certificate' }]}>Foundation Certificate</a>
+              <a href="/education/advanced-diploma" class:list={['sidebar-sub-link', { active: currentPath === '/education/advanced-diploma' }]}>Advanced Diploma</a>
+              <a href="/education/graduate-diploma" class:list={['sidebar-sub-link', { active: currentPath === '/education/graduate-diploma' }]}>Graduate Diploma</a>
+              <a href="/education/fellowship" class:list={['sidebar-sub-link', { active: currentPath === '/education/fellowship' }]}>Fellowship</a>
+              <a href="/education/pedagogy" class:list={['sidebar-sub-link', { active: currentPath === '/education/pedagogy' }]}>Pedagogy</a>
             </div>
-          ))}
+          </div>
+          <a href="/research" class:list={['sidebar-nav-link', { active: currentPath === '/research' }]}>Research</a>
+
+          <a href="/whitepapers" class:list={['sidebar-nav-link', { active: !!activeArticle || currentPath.startsWith('/whitepapers') }]}>Whitepapers</a>
+
+          <a href="/network" class:list={['sidebar-nav-link', { active: currentPath === '/network' }]}>Network</a>
+          <a href="/publishing" class:list={['sidebar-nav-link', { active: currentPath === '/publishing' }]}>Publishing</a>
+
+          <div class="sidebar-dropdown" id="sidebar-about">
+            <a href="/about" class:list={['sidebar-nav-link sidebar-dropdown-toggle-link', { active: currentPath === '/about' || currentPath === '/sustainability' }]}>About</a>
+            <div class="sidebar-dropdown-items">
+              <a href="/sustainability" class:list={['sidebar-sub-link', { active: currentPath === '/sustainability' }]}>Financial Transparency</a>
+            </div>
+          </div>
         </nav>
+
+        <!-- Footer with theme toggle -->
+        <div class="sidebar-footer">
+          <div class="sidebar-footer-row">
+            <a href="https://sohma.house" target="_blank" rel="noopener noreferrer" class="sidebar-home-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>sohma.house</span>
+            </a>
+            <div class="sidebar-footer-icons">
+              <a href="https://www.linkedin.com/company/sohma-house" target="_blank" rel="noopener noreferrer" class="sidebar-icon-btn" aria-label="LinkedIn" title="LinkedIn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle nightshift mode" title="Toggle nightshift mode">
+                <svg class="theme-icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="theme-icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="resize-handle resize-handle-left" id="resize-left"></div>
     </aside>
+
+    <!-- READING PROGRESS -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true">
+      <div class="reading-progress-h" id="reading-progress-h"></div>
+      <div class="reading-progress-v" id="reading-progress-v"></div>
+    </div>
 
     <!-- MAIN CONTENT -->
     <main class="portal-main" id="portal-main">
@@ -169,14 +185,14 @@ const activeCategory = activeArticle
   /* ===== LAYOUT SHELL ===== */
   :global(html),
   :global(body) {
-    background: #f8f6f3;
+    background: var(--bg-base);
   }
 
   .portal-layout {
     display: flex;
     min-height: 100vh;
-    background: #f8f6f3;
-    color: #3d3229;
+    background: var(--bg-base);
+    color: var(--text-heading);
   }
 
   /* ===== MOBILE HEADER ===== */
@@ -188,8 +204,8 @@ const activeCategory = activeArticle
     right: 0;
     z-index: 50;
     height: 56px;
-    background: #fff;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-medium);
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;
@@ -199,7 +215,7 @@ const activeCategory = activeArticle
   .sidebar-toggle {
     background: none;
     border: none;
-    color: #c45a42;
+    color: var(--accent);
     order: 1;
     cursor: pointer;
     padding: 4px;
@@ -226,8 +242,8 @@ const activeCategory = activeArticle
     font-size: 10px;
     font-weight: 900;
     letter-spacing: 0.12em;
-    color: #9e3a2e;
-    -webkit-text-stroke: 0.4px #9e3a2e;
+    color: var(--accent-darker);
+    -webkit-text-stroke: 0.4px var(--accent-darker);
   }
 
   .mobile-logo {
@@ -244,7 +260,7 @@ const activeCategory = activeArticle
 
   .mobile-logo :global(svg path),
   .mobile-logo :global(svg *) {
-    fill: #c45a42;
+    fill: var(--accent);
   }
 
   .mobile-institute {
@@ -253,7 +269,7 @@ const activeCategory = activeArticle
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #b8afa7;
+    color: var(--text-faint);
     line-height: 1;
     margin-bottom: -1px;
   }
@@ -264,15 +280,15 @@ const activeCategory = activeArticle
     top: 0;
     left: 0;
     bottom: 0;
-    width: 300px;
-    background: #fff;
-    border-right: 1px solid rgba(0,0,0,0.08);
+    width: 260px;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border-light);
     z-index: 100;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0,0,0,0.1) transparent;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
   }
 
   .portal-sidebar-left::-webkit-scrollbar {
@@ -280,7 +296,7 @@ const activeCategory = activeArticle
   }
 
   .portal-sidebar-left::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.1);
+    background: var(--scrollbar-thumb);
     border-radius: 2px;
   }
 
@@ -292,7 +308,7 @@ const activeCategory = activeArticle
     z-index: 10;
     background: none;
     border: none;
-    color: #c45a42;
+    color: var(--text-secondary);
     cursor: pointer;
     padding: 4px;
     align-items: center;
@@ -312,7 +328,7 @@ const activeCategory = activeArticle
     flex-direction: column;
     gap: 6px;
     padding: 0 20px 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid var(--border-medium);
     margin-bottom: 20px;
   }
 
@@ -324,11 +340,10 @@ const activeCategory = activeArticle
 
   .sidebar-subtitle {
     font-family: 'Manrope', sans-serif;
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    color: #9e3a2e;
-    -webkit-text-stroke: 0.4px #9e3a2e;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--text-link);
   }
 
   .sidebar-logo {
@@ -339,23 +354,23 @@ const activeCategory = activeArticle
   }
 
   .sidebar-logo :global(svg) {
-    height: 16px;
+    height: 18px;
     width: auto;
-    fill: #c45a42;
+    fill: var(--text-heading);
   }
 
   .sidebar-logo :global(svg path),
   .sidebar-logo :global(svg *) {
-    fill: #c45a42;
+    fill: var(--text-heading);
   }
 
   .sidebar-title {
     font-family: 'Manrope', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #b8afa7;
+    color: var(--text-heading);
     line-height: 1;
     margin-bottom: -1px;
     text-decoration: none;
@@ -364,166 +379,120 @@ const activeCategory = activeArticle
   }
 
   .sidebar-title:hover {
-    color: #c45a42;
+    color: var(--text-link);
   }
 
-  /* Home link — styled like category header */
-  .sidebar-home-link {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 7px 20px;
-    margin-bottom: 2px;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-
-  .sidebar-home-link:hover {
-    background: rgba(0,0,0,0.02);
-  }
-
-  .sidebar-home-link.active .sidebar-home-name {
-    color: #c45a42;
-  }
-
-  .sidebar-home-name {
-    font-family: 'Manrope', sans-serif;
-    font-size: 11.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #8a7e74;
-  }
-
-  /* Article nav */
+  /* Section nav */
   .sidebar-nav {
     margin-bottom: 24px;
   }
 
-  /* Category groups */
-  .sidebar-category-group {
-    margin-bottom: 2px;
+  .sidebar-nav-link {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: color 0.15s, background 0.15s;
   }
 
-  .sidebar-category-header {
+  .sidebar-nav-link:hover {
+    color: var(--text-heading);
+    background: var(--bg-card);
+  }
+
+  .sidebar-nav-link.active {
+    color: var(--accent-dark);
+    background: var(--accent-active-bg);
+    border-left: 3px solid var(--accent-dark);
+    padding-left: 17px;
+  }
+
+  /* Dropdown */
+  .sidebar-dropdown-title {
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+  }
+
+  .sidebar-dropdown {
+    position: relative;
+  }
+
+  .sidebar-dropdown-toggle {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
-    padding: 7px 20px;
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
-    transition: background 0.15s;
-    gap: 6px;
   }
 
-  .sidebar-category-header:hover {
-    background: rgba(0,0,0,0.02);
+  .sidebar-dropdown-toggle-link {
+    display: block;
+    cursor: pointer;
+  }
+  .sidebar-dropdown-toggle-link.active {
+    color: var(--text-heading);
   }
 
-  .sidebar-category-name {
-    font-family: 'Manrope', sans-serif;
-    font-size: 11.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #8a7e74;
-    flex: 1;
-  }
-
-  .sidebar-category-count {
-    font-family: 'Manrope', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    color: #b8afa7;
-    background: rgba(0,0,0,0.04);
-    padding: 2px 7px;
-    border-radius: 10px;
-    min-width: 20px;
-    text-align: center;
-  }
-
-  .sidebar-category-chevron {
+  .sidebar-dropdown-chevron {
+    color: var(--text-tertiary);
     flex-shrink: 0;
-    color: #b8afa7;
     transition: transform 0.2s;
   }
 
-  .sidebar-category-group[data-expanded="true"] .sidebar-category-chevron {
-    transform: rotate(0deg);
+  .sidebar-dropdown.open .sidebar-dropdown-chevron {
+    transform: rotate(180deg);
   }
 
-  .sidebar-category-group[data-expanded="false"] .sidebar-category-chevron {
-    transform: rotate(-90deg);
-  }
-
-  .sidebar-category-articles {
-    overflow: hidden;
-    transition: max-height 0.25s ease, opacity 0.2s ease;
-  }
-
-  .sidebar-category-group[data-expanded="false"] .sidebar-category-articles {
+  .sidebar-dropdown-items {
     max-height: 0;
-    opacity: 0;
-    pointer-events: none;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
-  .sidebar-category-group[data-expanded="true"] .sidebar-category-articles {
-    max-height: 500px;
-    opacity: 1;
+  .sidebar-dropdown.open .sidebar-dropdown-items {
+    padding-top: 8px;
+    padding-bottom: 12px;
   }
 
-  .sidebar-article-link {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 20px 5px 28px;
-    text-decoration: none;
-    border-left: 2px solid transparent;
-    transition: all 0.15s;
+  .sidebar-dropdown.open .sidebar-dropdown-items {
+    max-height: 400px;
   }
 
-  .sidebar-article-link:hover {
-    background: rgba(196, 90, 66, 0.04);
-  }
-
-  .sidebar-article-link.active {
-    border-left-color: #c45a42;
-    background: rgba(196, 90, 66, 0.06);
-  }
-
-  .sidebar-article-icon {
-    flex-shrink: 0;
-    color: #b8afa7;
-    opacity: 0.7;
-  }
-
-  .sidebar-article-link.active .sidebar-article-icon,
-  .sidebar-article-link:hover .sidebar-article-icon {
-    color: #c45a42;
-    opacity: 1;
-  }
-
-  .sidebar-article-title {
+  .sidebar-sub-link {
     display: block;
     font-family: 'Manrope', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
-    color: #8a7e74;
-    line-height: 1.4;
+    color: var(--text-link);
+    text-decoration: none;
+    padding: 6px 20px 6px 32px;
+    transition: color 0.15s, background 0.15s;
   }
 
-  .sidebar-article-link.active .sidebar-article-title {
+  .sidebar-sub-link:hover {
+    color: var(--text-heading);
+    background: var(--bg-card);
+  }
+
+  .sidebar-sub-link.active {
+    color: var(--text-heading);
     font-weight: 600;
-    color: #c45a42;
   }
 
   /* Sidebar footer */
   .sidebar-footer {
     margin-top: auto;
     padding: 20px;
-    border-top: 1px solid rgba(0,0,0,0.06);
+    border-top: 1px solid var(--border-medium);
   }
 
   .sidebar-back {
@@ -533,38 +502,114 @@ const activeCategory = activeArticle
     font-family: 'Manrope', sans-serif;
     font-size: 12px;
     font-weight: 500;
-    color: #8a7e74;
+    color: var(--text-tertiary);
     text-decoration: none;
     transition: color 0.2s;
   }
 
   .sidebar-back:hover {
-    color: #c45a42;
+    color: var(--accent);
   }
+
+  .sidebar-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sidebar-footer-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sidebar-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+    text-decoration: none;
+  }
+
+  .sidebar-icon-btn:hover {
+    color: var(--text-heading);
+    background: var(--bg-card-hover);
+    border-color: var(--border-medium);
+  }
+
+  .sidebar-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .sidebar-home-link:hover {
+    color: var(--accent);
+  }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+  }
+
+  .theme-toggle:hover {
+    color: var(--text-heading);
+    background: var(--bg-card-hover);
+    border-color: var(--border-medium);
+  }
+
+  /* Show sun in dark mode, moon in light mode */
+  .theme-icon-sun { display: none; }
+  .theme-icon-moon { display: block; }
+  :global([data-theme="dark"]) .theme-icon-sun { display: block; }
+  :global([data-theme="dark"]) .theme-icon-moon { display: none; }
 
   /* Left sidebar overlay (mobile) */
   .sidebar-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.3);
+    background: var(--overlay-bg);
     z-index: 90;
   }
 
   /* ===== RIGHT SIDEBAR — TOC ===== */
   .portal-sidebar-right {
-    position: fixed;
+    position: sticky;
     top: 0;
-    right: 0;
-    bottom: 0;
+    align-self: flex-start;
     width: 260px;
-    background: #f5f2ef;
-    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    height: 100vh;
+    background: var(--bg-sidebar-right);
+    border-left: 1px solid var(--border-light);
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0,0,0,0.08) transparent;
+    scrollbar-color: var(--scrollbar-thumb-light) transparent;
     z-index: 10;
   }
 
@@ -573,7 +618,7 @@ const activeCategory = activeArticle
   }
 
   .portal-sidebar-right::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.08);
+    background: var(--scrollbar-thumb-light);
     border-radius: 2px;
   }
 
@@ -596,7 +641,7 @@ const activeCategory = activeArticle
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #a89e94;
+    color: var(--text-muted);
     padding-left: 12px;
     margin-bottom: 12px;
   }
@@ -620,12 +665,24 @@ const activeCategory = activeArticle
     margin-top: 2px;
   }
 
+  .toc-level-2 {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+  }
+
+  .toc-level-2.toc-sub-visible {
+    max-height: 2.5rem;
+    opacity: 1;
+  }
+
   .toc-link {
     display: block;
     font-family: 'Manrope', sans-serif;
     font-size: 13px;
     font-weight: 400;
-    color: #8a7e74;
+    color: var(--text-tertiary);
     text-decoration: none;
     padding: 5px 8px 5px 12px;
     border-left: 2px solid transparent;
@@ -634,23 +691,23 @@ const activeCategory = activeArticle
   }
 
   .toc-link:hover {
-    color: #c45a42;
+    color: var(--accent);
   }
 
   .toc-link.active {
-    color: #c45a42;
+    color: var(--accent);
     font-weight: 600;
-    border-left-color: #c45a42;
+    border-left-color: var(--accent);
   }
 
   .toc-level-2 .toc-link {
     padding-left: 22px;
     font-size: 12.5px;
-    color: #a89e94;
+    color: var(--text-muted);
   }
 
   .toc-level-2 .toc-link.active {
-    color: #c45a42;
+    color: var(--accent);
   }
 
   /* ===== MOBILE TOC ===== */
@@ -680,26 +737,26 @@ const activeCategory = activeArticle
     width: 100%;
     padding: 12px 16px;
     background: transparent;
-    border: 1px solid #e8e4e0;
+    border: 1px solid var(--border-toc);
     border-radius: 8px;
     cursor: pointer;
     font-family: 'Manrope', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    color: #3d3229;
+    color: var(--text-heading);
     transition: border-color 0.2s;
   }
 
   .mobile-toc-toggle:hover,
   .mobile-toc-toggle:focus,
   .mobile-toc-toggle:active {
-    border-color: #e8e4e0;
+    border-color: var(--border-toc);
     outline: none;
     -webkit-tap-highlight-color: transparent;
   }
 
   .mobile-toc-toggle svg:first-child {
-    color: #8a7e74;
+    color: var(--text-tertiary);
     flex-shrink: 0;
   }
 
@@ -710,7 +767,7 @@ const activeCategory = activeArticle
 
   .mobile-toc-chevron {
     flex-shrink: 0;
-    color: #b8afa7;
+    color: var(--text-faint);
     transition: transform 0.2s;
   }
 
@@ -723,7 +780,7 @@ const activeCategory = activeArticle
     overflow: hidden;
     transition: max-height 0.3s ease;
     background: transparent;
-    border: 1px solid #e8e4e0;
+    border: 1px solid var(--border-toc);
     border-top: none;
     border-radius: 0 0 8px 8px;
     margin-top: -1px;
@@ -749,21 +806,21 @@ const activeCategory = activeArticle
     font-family: 'Manrope', sans-serif;
     font-size: 13px;
     font-weight: 400;
-    color: #8a7e74;
+    color: var(--text-tertiary);
     text-decoration: none;
     padding: 8px 16px;
     transition: color 0.15s, background 0.15s;
   }
 
   .mobile-toc-link:hover {
-    color: #c45a42;
-    background: rgba(196, 90, 66, 0.04);
+    color: var(--accent);
+    background: var(--accent-hover-bg);
   }
 
   .mobile-toc-level-2 .mobile-toc-link {
     padding-left: 28px;
     font-size: 12.5px;
-    color: #a89e94;
+    color: var(--text-muted);
   }
 
   /* ===== MOBILE TOC DOTS ===== */
@@ -786,7 +843,7 @@ const activeCategory = activeArticle
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #c45a42;
+    background: var(--accent);
     opacity: 0.3;
     animation: mobileDotPulse 3s ease-in-out infinite;
   }
@@ -800,10 +857,95 @@ const activeCategory = activeArticle
   }
 
   @keyframes mobileDotPulse {
-    0%, 100% { transform: scale(1); opacity: 0.3; background: #687C57; }
-    25% { transform: scale(1.4); opacity: 0.7; background: #576943; }
-    50% { transform: scale(1); opacity: 0.5; background: #A53D2E; }
-    75% { transform: scale(1.4); opacity: 0.7; background: #8E2A22; }
+    0%, 100% { transform: scale(1); opacity: 0.3; background: var(--accent-green); }
+    25% { transform: scale(1.4); opacity: 0.7; background: var(--accent-green-dark); }
+    50% { transform: scale(1); opacity: 0.5; background: var(--accent-dark); }
+    75% { transform: scale(1.4); opacity: 0.7; background: var(--accent-darker); }
+  }
+
+  /* ===== READING PROGRESS ===== */
+  .reading-progress {
+    position: fixed;
+    z-index: 101;
+    pointer-events: none;
+  }
+
+  /* Horizontal bar — top edge, from sidebar right edge across */
+  .reading-progress-h {
+    position: fixed;
+    top: 0;
+    left: 260px;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(
+      90deg,
+      #9e3a2e 0%,
+      #c45a42 12%,
+      #A53D2E 25%,
+      #d4634a 38%,
+      #8b3325 50%,
+      #c45a42 62%,
+      #A53D2E 75%,
+      #d4634a 88%,
+      #9e3a2e 100%
+    );
+    background-size: 300% 100%;
+    animation: progressSwirl 4s ease-in-out infinite;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.15s ease-out;
+  }
+
+  /* Vertical bar — right edge of sidebar, downward */
+  .reading-progress-v {
+    position: fixed;
+    top: 0;
+    left: 260px;
+    width: 6px;
+    height: 100vh;
+    background: linear-gradient(
+      180deg,
+      #9e3a2e 0%,
+      #d4634a 15%,
+      #A53D2E 28%,
+      #c45a42 42%,
+      #8b3325 55%,
+      #d4634a 68%,
+      #A53D2E 80%,
+      #c45a42 92%,
+      #9e3a2e 100%
+    );
+    background-size: 100% 300%;
+    animation: progressSwirlV 4s ease-in-out infinite;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.15s ease-out;
+  }
+
+  @keyframes progressSwirl {
+    0% { background-position: 0% 0; }
+    33% { background-position: 100% 0; }
+    66% { background-position: 50% 0; }
+    100% { background-position: 0% 0; }
+  }
+
+  @keyframes progressSwirlV {
+    0% { background-position: 0 0%; }
+    33% { background-position: 0 100%; }
+    66% { background-position: 0 50%; }
+    100% { background-position: 0 0%; }
+  }
+
+
+  @media (max-width: 1024px) {
+    .reading-progress-h {
+      left: 0;
+      top: 56px;
+    }
+    .reading-progress-v,
+    .reading-progress-dot {
+      display: none;
+    }
   }
 
   /* ===== RESIZE HANDLES ===== */
@@ -819,7 +961,7 @@ const activeCategory = activeArticle
 
   .resize-handle:hover,
   .resize-handle.dragging {
-    background: rgba(196, 90, 66, 0.15);
+    background: var(--accent-resize-bg);
   }
 
   .resize-handle-left {
@@ -833,14 +975,11 @@ const activeCategory = activeArticle
   /* ===== MAIN CONTENT ===== */
   .portal-main {
     flex: 1;
-    margin-left: 300px;
-    margin-right: 220px;
+    min-width: 0;
+    margin-left: 260px;
+    padding-left: 40px;
+    padding-right: 40px;
     min-height: 100vh;
-  }
-
-  /* When no TOC (e.g. index page) — content uses full width after left sidebar */
-  .portal-main:last-child {
-    margin-right: 0;
   }
 
   /* ===== RESPONSIVE ===== */
@@ -849,10 +988,6 @@ const activeCategory = activeArticle
   @media (max-width: 1280px) {
     .portal-sidebar-right {
       display: none;
-    }
-
-    .portal-main {
-      margin-right: 0;
     }
   }
 
@@ -883,6 +1018,8 @@ const activeCategory = activeArticle
 
     .portal-main {
       margin-left: 0;
+      padding-left: 20px;
+      padding-right: 20px;
       padding-top: 56px;
     }
   }
@@ -892,28 +1029,8 @@ const activeCategory = activeArticle
       width: 100%;
     }
 
-    .sidebar-category-header {
-      padding: 16px 20px;
-    }
-
-    .sidebar-home-link {
-      padding: 16px 20px;
-    }
-
-    .sidebar-article-link {
-      padding: 12px 20px 12px 28px;
-    }
-
-    .sidebar-category-group {
-      margin-bottom: 6px;
-    }
-
-    .sidebar-category-name {
-      font-size: 14px;
-    }
-
-    .sidebar-home-name {
-      font-size: 14px;
+    .sidebar-nav-link {
+      padding: 8px 20px;
     }
 
     .sidebar-article-title {
@@ -956,23 +1073,39 @@ const activeCategory = activeArticle
       })
     })
 
-    // Category group collapsible toggle — accordion (one open at a time)
-    const allGroups = sidebar.querySelectorAll('.sidebar-category-group')
-    sidebar.querySelectorAll('.sidebar-category-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const group = header.closest('.sidebar-category-group') as HTMLElement
-        if (!group) return
-        const isExpanded = group.dataset.expanded === 'true'
-        // Close all other groups
-        allGroups.forEach(g => {
-          if (g !== group) {
-            (g as HTMLElement).dataset.expanded = 'false'
-            g.querySelector('.sidebar-category-header')?.setAttribute('aria-expanded', 'false')
-          }
-        })
-        group.dataset.expanded = isExpanded ? 'false' : 'true'
-        header.setAttribute('aria-expanded', isExpanded ? 'false' : 'true')
+    // Dropdown toggles
+    sidebar.querySelectorAll('.sidebar-dropdown').forEach(dropdown => {
+      const toggleBtn = dropdown.querySelector('.sidebar-dropdown-toggle')
+      const toggleLink = dropdown.querySelector('.sidebar-dropdown-toggle-link')
+
+      // Auto-open if current URL matches any sub-link href or the toggle-link href
+      const currentPath = window.location.pathname.replace(/\/$/, '')
+      const allLinks = dropdown.querySelectorAll('.sidebar-sub-link')
+      const linkHref = toggleLink?.getAttribute('href')?.replace(/\/$/, '')
+      let shouldOpen = false
+
+      if (linkHref && currentPath.startsWith(linkHref)) {
+        shouldOpen = true
+      }
+      allLinks.forEach(link => {
+        const href = link.getAttribute('href')?.replace(/\/$/, '')
+        if (href && currentPath === href) {
+          shouldOpen = true
+          link.classList.add('active')
+        }
       })
+      if (dropdown.querySelector('.sidebar-sub-link.active')) {
+        shouldOpen = true
+      }
+
+      if (shouldOpen) {
+        dropdown.classList.add('open')
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true')
+        if (toggleLink) toggleLink.classList.add('active')
+      }
+
+      // Button-style toggles (Whitepapers) handled by document-level event delegation below
+      // Link-style toggles (Education) — auto-open handles it
     })
   }
 
@@ -981,11 +1114,28 @@ const activeCategory = activeArticle
     const tocLinks = document.querySelectorAll('.toc-link[data-toc-id]')
     if (tocLinks.length === 0) return
 
+    const tocItems = Array.from(document.querySelectorAll('.toc-list > li'))
     const ids = Array.from(tocLinks).map(el => (el as HTMLElement).dataset.tocId!)
     const sections = ids.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[]
     if (sections.length === 0) return
 
+    // Build group map: each toc id maps to its parent level-1 id
+    const groups = new Map<string, string>()
+    let currentL1Id = ''
+    tocItems.forEach(li => {
+      const link = li.querySelector('.toc-link') as HTMLElement
+      if (!link) return
+      const id = link.dataset.tocId!
+      if (li.classList.contains('toc-level-1')) {
+        currentL1Id = id
+        groups.set(id, id)
+      } else {
+        groups.set(id, currentL1Id)
+      }
+    })
+
     let activeId = ''
+    let activeL1Id = ''
 
     function updateActive() {
       const scrollTop = window.scrollY + 120
@@ -999,6 +1149,9 @@ const activeCategory = activeArticle
 
       if (currentId !== activeId) {
         activeId = currentId
+        const newL1Id = groups.get(activeId) || ''
+
+        // Highlight active link
         tocLinks.forEach(link => {
           const el = link as HTMLElement
           if (el.dataset.tocId === activeId) {
@@ -1007,6 +1160,22 @@ const activeCategory = activeArticle
             el.classList.remove('active')
           }
         })
+
+        // Show/hide level-2 items for active section
+        if (newL1Id !== activeL1Id) {
+          activeL1Id = newL1Id
+          tocItems.forEach(li => {
+            if (li.classList.contains('toc-level-2')) {
+              const link = li.querySelector('.toc-link') as HTMLElement
+              if (!link) return
+              if (groups.get(link.dataset.tocId!) === activeL1Id) {
+                li.classList.add('toc-sub-visible')
+              } else {
+                li.classList.remove('toc-sub-visible')
+              }
+            }
+          })
+        }
       }
     }
 
@@ -1043,10 +1212,10 @@ const activeCategory = activeArticle
         const delta = side === 'left' ? e.clientX - startX : startX - e.clientX
         const newWidth = Math.max(180, Math.min(400, startWidth + delta))
         sidebar.style.width = newWidth + 'px'
-        if (main) {
-          if (side === 'left') main.style.marginLeft = newWidth + 'px'
-          else main.style.marginRight = newWidth + 'px'
+        if (main && side === 'left') {
+          main.style.marginLeft = newWidth + 'px'
         }
+        if (side === 'left') updateProgressPosition(newWidth)
       }
 
       function onMouseUp() {
@@ -1090,17 +1259,168 @@ const activeCategory = activeArticle
     })
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    initPortalSidebar()
-    initScrollSpy()
-    initResize()
-    initMobileToc()
+  // Event delegation — survives View Transitions, no double-binding
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement
+
+    // Dropdown toggles
+    const dropdownBtn = target.closest('.sidebar-dropdown-toggle')
+    if (dropdownBtn) {
+      const dropdown = dropdownBtn.closest('.sidebar-dropdown')
+      if (!dropdown) return
+      const isOpen = dropdown.classList.contains('open')
+      dropdown.classList.toggle('open')
+      dropdownBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true')
+      return
+    }
+
+    // Theme toggle
+    const themeBtn = target.closest('.theme-toggle')
+    if (themeBtn) {
+      const html = document.documentElement
+      html.setAttribute('data-theme-transitioning', '')
+      const current = html.getAttribute('data-theme')
+      const next = current === 'dark' ? 'light' : 'dark'
+
+      if (next === 'dark') {
+        html.setAttribute('data-theme', 'dark')
+        localStorage.setItem('sohma-theme', 'dark')
+      } else {
+        html.removeAttribute('data-theme')
+        localStorage.setItem('sohma-theme', 'light')
+      }
+
+      setTimeout(() => html.removeAttribute('data-theme-transitioning'), 500)
+      return
+    }
+
+    // Action buttons (Copy, Cite, PDF)
+    const actionBtn = target.closest('.wp-action-btn') as HTMLButtonElement | null
+    if (actionBtn) {
+      const action = actionBtn.dataset.action
+      if (action === 'share') {
+        const titleEl = document.querySelector('.wp-title')
+        const authorEl = document.querySelector('.wp-meta-item')
+        const bodyEl = document.querySelector('.wp-body')
+        const title = titleEl?.textContent?.trim() || document.title
+        const author = authorEl?.textContent?.trim().replace(/\s+/g, ' ') || 'Sohma Institute'
+        const url = window.location.href
+
+        // Extract formatted text from the article body
+        function extractText(el: Element): string {
+          const lines: string[] = []
+          el.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, blockquote, figcaption, .callout-body, .ref-item').forEach(node => {
+            const tag = node.tagName.toLowerCase()
+            const text = node.textContent?.trim()
+            if (!text) return
+            if (tag === 'h1') lines.push('\n' + text.toUpperCase() + '\n')
+            else if (tag === 'h2') lines.push('\n## ' + text + '\n')
+            else if (tag === 'h3') lines.push('\n### ' + text + '\n')
+            else if (tag === 'h4' || tag === 'h5' || tag === 'h6') lines.push('\n#### ' + text + '\n')
+            else if (tag === 'li') lines.push('  - ' + text)
+            else if (tag === 'blockquote') lines.push('\n> ' + text + '\n')
+            else lines.push(text)
+          })
+          return lines.join('\n')
+        }
+
+        const bodyText = bodyEl ? extractText(bodyEl) : ''
+        const fullText = `${title}\n${author}\n${url}\n${'—'.repeat(40)}\n${bodyText}`
+
+        navigator.clipboard.writeText(fullText).then(() => {
+          const span = actionBtn.querySelector('span')
+          const orig = span?.textContent
+          actionBtn.classList.add('copied')
+          if (span) span.textContent = 'Copied'
+          setTimeout(() => {
+            actionBtn.classList.remove('copied')
+            if (span && orig) span.textContent = orig
+          }, 1500)
+        })
+      } else if (action === 'cite') {
+        const titleEl = document.querySelector('.wp-title')
+        const authorEl = document.querySelector('.wp-meta-item')
+        const title = titleEl?.textContent?.trim() || document.title
+        const author = authorEl?.textContent?.trim() || 'Sohma Institute'
+        const year = new Date().getFullYear()
+        const citation = `${author} (${year}). ${title}. Sohma Institute. ${window.location.href}`
+        navigator.clipboard.writeText(citation).then(() => {
+          const span = actionBtn.querySelector('span')
+          const orig = span?.textContent
+          actionBtn.classList.add('copied')
+          if (span) span.textContent = 'Copied'
+          setTimeout(() => {
+            actionBtn.classList.remove('copied')
+            if (span && orig) span.textContent = orig
+          }, 1500)
+        })
+      } else if (action === 'pdf') {
+        window.print()
+      }
+      return
+    }
   })
 
-  document.addEventListener('astro:page-load', () => {
+  function updateProgressPosition(sidebarWidth: number) {
+    const hBar = document.getElementById('reading-progress-h')
+    const vBar = document.getElementById('reading-progress-v')
+    if (hBar) hBar.style.left = sidebarWidth + 'px'
+    if (vBar) vBar.style.left = sidebarWidth + 'px'
+  }
+
+  function initReadingProgress() {
+    const hBar = document.getElementById('reading-progress-h')
+    const vBar = document.getElementById('reading-progress-v')
+    const wrapper = document.getElementById('reading-progress')
+    const sidebar = document.getElementById('portal-sidebar')
+    if (!hBar || !vBar || !wrapper) return
+
+    // Set initial position from sidebar width
+    if (sidebar) {
+      const w = sidebar.getBoundingClientRect().width
+      updateProgressPosition(w)
+    }
+
+    function update() {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      if (docHeight <= 0) return
+
+      const progress = Math.min(scrollTop / docHeight, 1)
+
+      hBar.style.transform = `scaleX(${progress})`
+      vBar.style.transform = `scaleY(${progress})`
+
+      if (progress > 0.01) {
+        wrapper.classList.add('active')
+      } else {
+        wrapper.classList.remove('active')
+      }
+    }
+
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update, { passive: true })
+    update()
+  }
+
+  function initTocOffset() {
+    const toc = document.getElementById('portal-toc') as HTMLElement
+    const metaRow = document.querySelector('.wp-meta-row') as HTMLElement
+    if (!toc || !metaRow) return
+
+    const offset = metaRow.offsetTop + metaRow.offsetHeight
+    toc.style.marginTop = offset + 'px'
+  }
+
+  function initPage() {
     initPortalSidebar()
     initScrollSpy()
     initResize()
     initMobileToc()
-  })
+    initReadingProgress()
+    initTocOffset()
+  }
+
+  document.addEventListener('DOMContentLoaded', initPage)
+  document.addEventListener('astro:page-load', initPage)
 </script>
