@@ -11,13 +11,46 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     <!-- HERO -->
     <header class="research-hero">
       <div class="hero-inner">
-        <div class="section-label">Research Programs</div>
-        <h1 class="hero-title">Knowledge Generation</h1>
-        <p class="hero-lead">The Institute's research agenda operates on the principle that the most valuable contribution is not proving that traditional medicines "work" by reductionist criteria, but developing methodologies appropriate to the complexity of the interventions themselves. Whole-systems research design, n-of-1 trials with adaptive protocols, and practice-based evidence networks form the methodological core.</p>
-
-        <div class="hero-cta-row">
-          <a href="/contact" class="hero-cta-primary">Research Collaboration Enquiry</a>
-          <a href="/publishing" class="hero-cta-secondary">View Publications</a>
+        <div class="hero-columns">
+          <div class="hero-left">
+            <div class="section-label">Research Programs</div>
+            <h1 class="hero-title">Research That Preserves What It Studies</h1>
+            <p class="hero-lead">Developing research methodologies appropriate to the complexity of traditional medicine interventions — whole-systems design, adaptive protocols, and practice-based evidence networks.</p>
+            <div class="hero-cta-row">
+              <a href="/contact" class="hero-cta-primary">Research Collaboration Enquiry</a>
+              <a href="/publishing" class="hero-cta-secondary">View Publications</a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-partner">
+              <div class="hero-partner-header">
+                <span class="hero-partner-label">Research Partnership</span>
+                <div class="hero-partner-line"></div>
+              </div>
+              <img src="/images/jcu-logo.svg" alt="James Cook University" class="hero-partner-logo" />
+              <div class="hero-partner-pillars">
+                <div class="hero-partner-pillar">
+                  <span class="pillar-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </span>
+                  <span>Applied Research Pipelines</span>
+                </div>
+                <div class="hero-partner-pillar">
+                  <span class="pillar-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  </span>
+                  <span>CPD Pathways</span>
+                </div>
+                <div class="hero-partner-pillar">
+                  <span class="pillar-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </span>
+                  <span>Clinical Governance</span>
+                </div>
+              </div>
+              <p class="hero-partner-desc">Anchored in Tropical North Queensland — embedding clinical research and practitioner training within a living healthcare model.</p>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -25,74 +58,118 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
     <!-- RESEARCH PROGRAMS -->
     <section class="programs-section" id="programs">
-      <h2 class="section-heading">Research Programs</h2>
+      <div class="programs-filters" id="programs-filters">
+        <button class="program-filter active" data-division="All" type="button">
+          All
+          <span class="program-filter-count">6</span>
+        </button>
+        <button class="program-filter" data-division="Division I" type="button">
+          Division I
+          <span class="program-filter-count">2</span>
+        </button>
+        <button class="program-filter" data-division="Division II" type="button">
+          Division II
+          <span class="program-filter-count">1</span>
+        </button>
+        <button class="program-filter" data-division="Division V" type="button">
+          Division V
+          <span class="program-filter-count">1</span>
+        </button>
+        <button class="program-filter" data-division="Cross-Divisional" type="button">
+          Cross-Divisional
+          <span class="program-filter-count">2</span>
+        </button>
+      </div>
 
-      <div class="programs-grid">
-        <div class="program-card">
-          <span class="program-num">01</span>
-          <h3 class="program-title">Phytochemical Synergy Mapping</h3>
-          <p class="program-subtitle">Network pharmacology analysis of traditional formulae to identify synergistic mechanisms that single-compound analysis cannot detect.</p>
-          <p class="program-summary">Computational and empirical investigation of multi-constituent botanical preparations. The signature deliverable is the first open-access database mapping traditional herbal combinations to validated network pharmacology profiles.</p>
-          <div class="program-footer">
-            <span class="program-division">Division I</span>
-            <span class="program-status active">Active</span>
+      <div class="programs-wrap">
+        <div class="programs-grid">
+          <div class="program-card" data-division="Division I">
+            <span class="program-num">01</span>
+            <h3 class="program-title">Phytochemical Synergy Mapping</h3>
+            <p class="program-subtitle">Network pharmacology analysis of traditional formulae to identify synergistic mechanisms that single-compound analysis cannot detect.</p>
+            <button class="program-details-toggle" type="button">See more details</button>
+            <div class="program-footer">
+              <span class="program-division">Division I</span>
+              <span class="program-status active">Active</span>
+              <a href="/contact?program=phytochemical-synergy" class="program-cta">Collaborate on This Program</a>
+            </div>
+            <div class="program-detail-data" hidden>Computational and empirical investigation of multi-constituent botanical preparations. The signature deliverable is the first open-access database mapping traditional herbal combinations to validated network pharmacology profiles.</div>
+          </div>
+
+          <div class="program-card" data-division="Division II">
+            <span class="program-num">02</span>
+            <h3 class="program-title">Cannabis Clinical Outcomes Registry</h3>
+            <p class="program-subtitle">Practice-based evidence network aggregating clinical outcomes from Sohma House and partner prescriber sites.</p>
+            <button class="program-details-toggle" type="button">See more details</button>
+            <div class="program-footer">
+              <span class="program-division">Division II</span>
+              <span class="program-status active">Active</span>
+              <a href="/contact?program=clinical-outcomes-registry" class="program-cta">View Outcomes</a>
+            </div>
+            <div class="program-detail-data" hidden>Standardised outcome measures across condition categories. Real-world evidence generation at scale — the kind of data the TGA needs for regulatory pathway development. Feeds directly into TGA submissions and clinical protocol refinement.</div>
+          </div>
+
+          <div class="program-card" data-division="Cross-Divisional">
+            <span class="program-num">03</span>
+            <h3 class="program-title">Whole-Systems Research Design</h3>
+            <p class="program-subtitle">Research about how to do research. Methodological innovation for complex, multi-component interventions.</p>
+            <button class="program-details-toggle" type="button">See more details</button>
+            <div class="program-footer">
+              <span class="program-division">Cross-Divisional</span>
+              <span class="program-status design">In Design</span>
+              <a href="/contact?program=whole-systems-research" class="program-cta">Research Collaboration Enquiry</a>
+            </div>
+            <div class="program-detail-data" hidden>Preserve intervention complexity rather than reducing it to fit existing trial designs. The contribution is a published methodology framework that other institutions can adopt — proof that rigorous evidence doesn't require destroying the thing you're studying.</div>
+          </div>
+
+          <div class="program-card" data-division="Division I">
+            <span class="program-num">04</span>
+            <h3 class="program-title">Tropical &amp; Indigenous Pharmacopoeia</h3>
+            <p class="program-subtitle">Documentation and clinical validation of Far North Queensland botanical resources under Indigenous Data Sovereignty.</p>
+            <button class="program-details-toggle" type="button">See more details</button>
+            <div class="program-footer">
+              <span class="program-division">Division I</span>
+              <span class="program-status design">In Design</span>
+              <a href="/contact?program=indigenous-pharmacopoeia" class="program-cta">Research Collaboration Enquiry</a>
+            </div>
+            <div class="program-detail-data" hidden>Supporting communities to document and validate their own traditions using modern analytical tools, with community ownership of all data and outputs. Operates under AIATSIS guidelines and community-controlled data governance.</div>
+          </div>
+
+          <div class="program-card" data-division="Division V">
+            <span class="program-num">05</span>
+            <h3 class="program-title">Consciousness &amp; Somatic Therapeutics</h3>
+            <p class="program-subtitle">Clinical investigation of meditation, breathwork, and somatic practices as measurable interventions.</p>
+            <button class="program-details-toggle" type="button">See more details</button>
+            <div class="program-footer">
+              <span class="program-division">Division V</span>
+              <span class="program-status seeking">Seeking Funding</span>
+              <a href="/contact?program=consciousness-somatic&enquiry=funding" class="program-cta">Funding Enquiry</a>
+            </div>
+            <div class="program-detail-data" hidden>Standardised dosing for practices historically treated as unmeasurable. Neuroimaging partnerships to establish biomarker correlates. Moving these interventions from "wellness" into the same evidentiary category as pharmacological treatments.</div>
+          </div>
+
+          <div class="program-card" data-division="Cross-Divisional">
+            <span class="program-num">06</span>
+            <h3 class="program-title">AI-Augmented Clinical Decision Support</h3>
+            <p class="program-subtitle">Machine learning models trained on traditional medicine diagnostic frameworks.</p>
+            <button class="program-details-toggle" type="button">See more details</button>
+            <div class="program-footer">
+              <span class="program-division">Cross-Divisional</span>
+              <span class="program-status design">In Design</span>
+              <a href="/contact?program=ai-clinical-decision-support" class="program-cta">Research Collaboration Enquiry</a>
+            </div>
+            <div class="program-detail-data" hidden>Constitutional classification systems, pattern recognition methodologies, and multi-target therapeutic logic. Augmenting clinical reasoning, not replacing it — surfacing pattern matches a human clinician might miss.</div>
           </div>
         </div>
 
-        <div class="program-card">
-          <span class="program-num">02</span>
-          <h3 class="program-title">Cannabis Clinical Outcomes Registry</h3>
-          <p class="program-subtitle">Practice-based evidence network aggregating clinical outcomes from Sohma House and partner prescriber sites.</p>
-          <p class="program-summary">Standardised outcome measures across condition categories. Real-world evidence generation at scale — the kind of data the TGA needs for regulatory pathway development. Feeds directly into TGA submissions and clinical protocol refinement.</p>
-          <div class="program-footer">
-            <span class="program-division">Division II</span>
-            <span class="program-status active">Active</span>
-          </div>
-        </div>
-
-        <div class="program-card">
-          <span class="program-num">03</span>
-          <h3 class="program-title">Whole-Systems Research Design</h3>
-          <p class="program-subtitle">Research about how to do research. Methodological innovation for complex, multi-component interventions.</p>
-          <p class="program-summary">Preserve intervention complexity rather than reducing it to fit existing trial designs. The contribution is a published methodology framework that other institutions can adopt — proof that rigorous evidence doesn't require destroying the thing you're studying.</p>
-          <div class="program-footer">
-            <span class="program-division">Cross-Divisional</span>
-            <span class="program-status design">In Design</span>
-          </div>
-        </div>
-
-        <div class="program-card">
-          <span class="program-num">04</span>
-          <h3 class="program-title">Tropical & Indigenous Pharmacopoeia</h3>
-          <p class="program-subtitle">Documentation and clinical validation of Far North Queensland botanical resources under Indigenous Data Sovereignty.</p>
-          <p class="program-summary">Supporting communities to document and validate their own traditions using modern analytical tools, with community ownership of all data and outputs. Operates under AIATSIS guidelines and community-controlled data governance.</p>
-          <div class="program-footer">
-            <span class="program-division">Division I</span>
-            <span class="program-status design">In Design</span>
-          </div>
-        </div>
-
-        <div class="program-card">
-          <span class="program-num">05</span>
-          <h3 class="program-title">Consciousness & Somatic Therapeutics</h3>
-          <p class="program-subtitle">Clinical investigation of meditation, breathwork, and somatic practices as measurable interventions.</p>
-          <p class="program-summary">Standardised dosing for practices historically treated as unmeasurable. Neuroimaging partnerships to establish biomarker correlates. Moving these interventions from "wellness" into the same evidentiary category as pharmacological treatments.</p>
-          <div class="program-footer">
-            <span class="program-division">Division V</span>
-            <span class="program-status seeking">Seeking Funding</span>
-          </div>
-        </div>
-
-        <div class="program-card">
-          <span class="program-num">06</span>
-          <h3 class="program-title">AI-Augmented Clinical Decision Support</h3>
-          <p class="program-subtitle">Machine learning models trained on traditional medicine diagnostic frameworks.</p>
-          <p class="program-summary">Constitutional classification systems, pattern recognition methodologies, and multi-target therapeutic logic. Augmenting clinical reasoning, not replacing it — surfacing pattern matches a human clinician might miss.</p>
-          <div class="program-footer">
-            <span class="program-division">Cross-Divisional</span>
-            <span class="program-status design">In Design</span>
-          </div>
-        </div>
+        <aside class="program-panel" id="program-panel" aria-hidden="true">
+          <button class="program-panel-close" id="program-panel-close" type="button" aria-label="Close details">&times;</button>
+          <span class="program-panel-num" id="panel-num"></span>
+          <h3 class="program-panel-title" id="panel-title"></h3>
+          <p class="program-panel-subtitle" id="panel-subtitle"></p>
+          <p class="program-panel-body" id="panel-body"></p>
+          <div class="program-panel-footer" id="panel-footer"></div>
+        </aside>
       </div>
     </section>
 
@@ -101,6 +178,8 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     <section class="pipeline-section" id="pipeline">
       <h2 class="section-heading">Clinical Translation Pipeline</h2>
       <p class="section-intro">Every funder and reviewer asks the same question: <em>so what happens with the research?</em> It goes straight into clinical practice through Sohma House and the practitioner network. Clinical data flows back into research refinement. The loop is closed by design.</p>
+
+      <canvas id="pipeline-canvas" class="pipeline-canvas" aria-hidden="true"></canvas>
 
       <div class="pipeline-timeline">
         <div class="pl-step left">
@@ -230,11 +309,21 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     <!-- CTA -->
     <section class="collab-cta">
       <div class="collab-inner">
-        <h2>Collaborate with us</h2>
-        <p>The Institute actively seeks research partnerships with universities, clinical networks, funding bodies, and Indigenous communities. If your work aligns with any of our six research programs, we want to hear from you.</p>
-        <div class="cta-buttons">
-          <a href="/contact" class="cta-primary">Research Collaboration Enquiry</a>
-          <a href="/publishing" class="cta-secondary">View Publications</a>
+        <div class="cta-primary-block">
+          <span class="cta-eyebrow">Collaborate</span>
+          <h2>Work with us</h2>
+          <p>The Institute actively seeks research partnerships with universities, clinical networks, funding bodies, and Indigenous communities.</p>
+          <a href="/contact" class="cta-primary-btn">Research Collaboration Enquiry &rarr;</a>
+        </div>
+        <div class="cta-secondary-block">
+          <a href="/publishing" class="cta-alt">
+            <span class="cta-alt-label">Read our work</span>
+            <span class="cta-alt-action">View Publications &rarr;</span>
+          </a>
+          <a href="/education" class="cta-alt">
+            <span class="cta-alt-label">Train with us</span>
+            <span class="cta-alt-action">Education Programs &rarr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -246,11 +335,11 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   .research-page {
     font-family: 'Manrope', sans-serif;
     color: var(--text-heading);
-    padding: 0 clamp(20px, 3vw, 40px);
+    padding: 0;
   }
   .research-page p { line-height: 1.8; margin: 0 0 1rem; }
   .research-page p:last-child { margin-bottom: 0; }
-  .research-page h2, .research-page h3 { margin: 0; }
+  .research-page h2, .research-page h3 { margin: 0 0 14px; }
   .research-page a { color: var(--accent-dark); text-decoration: none; }
   .research-page a:hover { color: var(--accent-darker-hover); }
 
@@ -259,7 +348,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   .research-hero {
     position: relative;
     max-width: none;
-    margin: 0 calc(-40px - clamp(20px, 3vw, 40px));
+    margin: 0 -40px;
     padding: 0;
     background: var(--bg-hero);
   }
@@ -267,8 +356,105 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   .hero-inner {
     position: relative;
     z-index: 1;
-    padding: 96px calc(2rem + 40px + clamp(20px, 3vw, 40px)) 64px calc(1rem + 40px + clamp(20px, 3vw, 40px));
-    border-bottom: 1px solid var(--border-light);
+    padding: 96px calc(2rem + 40px) 64px calc(1rem + 40px);
+  }
+
+  .hero-columns {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .hero-left {
+    min-width: 0;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-top: 0.25rem;
+  }
+
+  .hero-partner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 24px;
+    background: var(--bg-card);
+  }
+
+  .hero-partner-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-partner-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .hero-partner-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-light);
+  }
+
+  .hero-partner-logo {
+    width: 120px;
+    height: auto;
+    opacity: 0.6;
+    filter: invert(1);
+    align-self: center;
+  }
+
+  :global([data-theme="dark"]) .hero-partner-logo {
+    filter: none;
+  }
+
+  .hero-partner-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .hero-partner-pillar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .pillar-icon {
+    color: var(--accent);
+    opacity: 0.6;
+    flex-shrink: 0;
+    display: flex;
+  }
+
+  .hero-partner-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+    margin: 0;
+    padding-top: 14px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border-light);
   }
 
   .section-label {
@@ -292,12 +478,12 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 5vw, 4.25rem);
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.01em;
     color: var(--text-heading);
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 0 24px;
   }
 
@@ -305,7 +491,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     font-size: 1.0625rem;
     color: var(--text-secondary);
     line-height: 1.65;
-    max-width: 640px;
+    max-width: none;
     padding-left: 1.5rem;
     margin-bottom: 2rem;
   }
@@ -314,7 +500,8 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding-left: 1.5rem;
+    padding-left: 0;
+    margin-top: 3rem;
   }
 
   .research-page .hero-cta-primary {
@@ -323,12 +510,12 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.02em;
-    color: #fff;
+    color: var(--text-heading);
     background: var(--accent-dark);
     padding: 12px 28px;
     transition: background 0.15s;
   }
-  .research-page .hero-cta-primary:hover { background: var(--accent-darker-hover); color: #fff; }
+  .research-page .hero-cta-primary:hover { background: var(--accent-darker-hover); color: var(--text-heading); }
 
   .research-page .hero-cta-secondary {
     display: inline-block;
@@ -368,14 +555,48 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   }
 
   .programs-section .section-heading {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
 
   /* ═══════════ PIPELINE ═══════════ */
   .pipeline-section {
+    position: relative;
     padding: 4rem 0;
     border-bottom: 1px solid var(--border-light);
+  }
+
+  .pipeline-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .pipeline-animated .pipeline-timeline::before { display: none; }
+  .pipeline-animated .pl-node { opacity: 0; }
+
+  .pipeline-animated .pipeline-timeline,
+  .pipeline-animated .tiers-row,
+  .pipeline-animated .pipeline-note {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pipeline-animated .pl-content p {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s, max-height 0.3s;
+    margin: 0;
+  }
+
+  .pipeline-animated .pl-step:hover .pl-content p {
+    opacity: 1;
+    max-height: 120px;
+    margin-top: 0.25rem;
   }
 
   .pipeline-timeline {
@@ -518,6 +739,73 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     border-bottom: 1px solid var(--border-light);
   }
 
+  /* Filter bar */
+  .programs-filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    margin-bottom: 2.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .programs-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .program-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border-medium);
+    border-radius: 4px;
+    padding: 8px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+
+  .program-filter:hover {
+    color: var(--text-heading);
+    border-color: var(--accent-border-20);
+    background: var(--accent-bg-02);
+  }
+
+  .program-filter.active {
+    color: var(--accent-dark);
+    background: var(--accent-bg-04);
+    border-color: var(--accent-border-25);
+    font-weight: 600;
+  }
+
+  .program-filter-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: var(--bg-card);
+    padding: 1px 6px;
+    border-radius: 3px;
+    line-height: 1.4;
+  }
+
+  .program-filter.active .program-filter-count {
+    color: var(--accent-dark);
+    background: var(--accent-bg-08);
+  }
+
+  .program-card.program-card-hidden {
+    display: none;
+  }
+
   .programs-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -554,7 +842,6 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     font-weight: 500;
     color: var(--text-heading);
     line-height: 1.25;
-    margin-bottom: 8px;
     transition: color 0.15s;
   }
 
@@ -566,54 +853,181 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     font-size: 0.875rem;
     font-style: italic;
     color: var(--text-tertiary);
-    line-height: 1.5;
+    line-height: 1.25;
     margin: 0 0 12px;
   }
 
-  .program-summary {
+  .program-details-toggle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s;
+  }
+
+  .program-details-toggle::before {
+    content: '+';
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .program-details-toggle:hover {
+    color: var(--text-heading);
+  }
+
+  .program-card.program-card-active {
+    border-color: var(--accent-border-25);
+    background: var(--accent-bg-02);
+  }
+
+  .program-card.program-card-active .program-details-toggle::before {
+    content: '−';
+  }
+
+  /* Panel wrapper */
+  .programs-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .programs-wrap.panel-open {
+    grid-template-columns: 1fr 340px;
+    gap: 1.5rem;
+  }
+
+  /* Detail panel */
+  .program-panel {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 28px 24px;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+
+  .programs-wrap.panel-open .program-panel {
+    display: flex;
+  }
+
+  .program-panel-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--text-tertiary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.15s;
+  }
+
+  .program-panel-close:hover {
+    color: var(--text-heading);
+  }
+
+  .program-panel-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    opacity: 0.7;
+  }
+
+  .program-panel-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.375rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .program-panel-subtitle {
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .program-panel-body {
     font-size: 0.875rem;
     color: var(--text-body-65);
     line-height: 1.7;
     margin: 0;
-    flex: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    padding-top: 4px;
+  }
+
+  .program-panel-footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
   }
 
   .program-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 8px;
     margin-top: 16px;
     padding-top: 12px;
     border-top: 1px solid var(--border-light);
   }
 
-  .program-division {
-    font-family: 'JetBrains Mono', monospace;
+  .program-cta {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    text-decoration: none;
+    margin-left: auto;
+    white-space: nowrap;
+    transition: color 0.15s;
+  }
+
+  .program-cta:hover {
+    color: var(--accent-darker-hover);
+  }
+
+  .program-division,
+  .program-status {
+    font-family: 'Manrope', sans-serif;
     font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--text-tertiary);
-  }
-
-  .program-status {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6875rem;
-    font-weight: 500;
-    color: var(--text-tertiary);
-    background: var(--bg-card);
+    background: var(--bg-card-hover);
     padding: 2px 8px;
     border-radius: 3px;
     white-space: nowrap;
   }
-  .program-status.active { color: var(--accent-green); }
-  .program-status.design { color: var(--chart-blue); }
-  .program-status.seeking { color: var(--chart-warm); }
+  .program-status.active { color: var(--text-tertiary); }
+  .program-status.design { color: var(--text-tertiary); }
+  .program-status.seeking { color: var(--text-tertiary); }
 
 
   /* ═══════════ ETHICS ═══════════ */
@@ -680,67 +1094,137 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   /* ═══════════ CTA ═══════════ */
   .collab-cta {
-    padding: 4rem 0;
+    margin: 0 -40px;
+    padding: 0;
+    background: #141210;
+    border-bottom: none;
   }
 
   .collab-inner {
-    text-align: center;
-    max-width: 540px;
+    max-width: 640px;
     margin: 0 auto;
+    padding: 6rem 2rem;
+    text-align: center;
   }
 
-  .collab-inner h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.75rem;
-    font-weight: 400;
-    color: var(--text-heading);
+  .cta-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(196, 110, 66, 0.7);
     margin-bottom: 1rem;
   }
 
-  .collab-inner p {
-    font-size: 0.875rem;
-    color: var(--text-body-60);
-    line-height: 1.75;
-    margin-bottom: 2rem;
+  .cta-primary-block h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #e8dfd0;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
   }
 
-  .cta-buttons {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    flex-wrap: wrap;
+  .cta-primary-block p {
+    font-size: 1rem;
+    color: rgba(208, 200, 188, 0.55);
+    line-height: 1.7;
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
   }
 
-  .research-page .cta-primary {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #fff;
-    background: var(--accent-dark);
-    padding: 12px 28px;
-    transition: background 0.2s;
-  }
-  .research-page .cta-primary:hover { background: var(--accent-darker-hover); color: #fff; }
-
-  .research-page .cta-secondary {
+  .cta-primary-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.8125rem;
     font-weight: 600;
-    color: var(--text-secondary);
-    border: 1px solid var(--glass-12);
-    padding: 12px 28px;
-    transition: border-color 0.2s, color 0.2s;
+    letter-spacing: 0.03em;
+    color: #141210;
+    background: var(--accent-dark);
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
   }
-  .research-page .cta-secondary:hover { border-color: var(--accent-border-30); color: var(--accent-dark); }
 
+  .cta-primary-btn:hover {
+    background: #d4773a;
+    transform: translateY(-1px);
+  }
+
+  .cta-secondary-block {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .cta-alt {
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .cta-alt-label {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(208, 200, 188, 0.35);
+    margin-bottom: 0.375rem;
+  }
+
+  .cta-alt-action {
+    display: block;
+    font-size: 0.8125rem;
+    color: rgba(208, 200, 188, 0.6);
+    transition: color 0.2s;
+  }
+
+  .cta-alt:hover .cta-alt-action {
+    color: #e8dfd0;
+  }
+
+
+  /* ═══════════ DARK MODE ═══════════ */
+  :global([data-theme="dark"]) .research-page .hero-cta-primary {
+    color: #000;
+  }
+  :global([data-theme="dark"]) .research-page .hero-cta-primary:hover {
+    color: #000;
+  }
+
+  :global([data-theme="dark"]) .cta-primary-btn {
+    color: #141210;
+  }
+  :global([data-theme="dark"]) .cta-primary-btn:hover {
+    color: #141210;
+  }
+
+  :global([data-theme="dark"]) .program-division {
+    color: var(--accent);
+    background: var(--accent-bg-08);
+  }
+
+  :global([data-theme="dark"]) .program-status {
+    background: var(--accent-bg-08);
+  }
 
   /* ═══════════ RESPONSIVE ═══════════ */
   @media (max-width: 1024px) {
     .research-hero {
-      margin: 0 calc(-20px - clamp(20px, 3vw, 40px));
+      margin: 0 -20px;
     }
     .hero-inner {
-      padding: 64px calc(1.5rem + 20px + clamp(20px, 3vw, 40px)) 48px calc(1rem + 20px + clamp(20px, 3vw, 40px));
+      padding: 64px calc(1.5rem + 20px) 48px calc(1rem + 20px);
     }
+    .collab-cta { margin: 0 -20px; }
   }
 
   @media (max-width: 768px) {
@@ -748,12 +1232,21 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       padding: 48px 1.25rem 36px;
     }
     .research-hero {
-      margin: 0 calc(-1 * clamp(20px, 3vw, 40px));
+      margin: 0 -20px;
     }
     .hero-title { font-size: 2.5rem; }
     .hero-lead { padding-left: 0; }
     .hero-cta-row { padding-left: 0; }
+    .hero-columns { grid-template-columns: 1fr; }
+    .hero-right { order: -1; gap: 1.5rem; }
     .section-heading { font-size: 2rem; }
+
+    .pipeline-canvas { display: none; }
+    .pipeline-animated .pl-node { opacity: 1; }
+    .pipeline-animated .pipeline-timeline::before { display: block; }
+    .pipeline-animated .pl-content p {
+      opacity: 1; max-height: none; overflow: visible; margin: 0 0 1rem;
+    }
 
     .pipeline-timeline { max-width: none; }
     .pipeline-timeline::before { left: 20px; }
@@ -765,8 +1258,873 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     .pl-content { padding: 0 0 0 1.5rem; }
 
     .tiers-row { grid-template-columns: 1fr; }
+    .collab-cta { margin: 0 -20px; }
+    .cta-secondary-block { flex-direction: column; gap: 1.5rem; }
     .programs-grid { grid-template-columns: 1fr; }
     .program-card { padding: 20px; }
+    .programs-wrap.panel-open { grid-template-columns: 1fr; }
+    .program-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 340px;
+      max-height: none;
+      border-radius: 0;
+      border: none;
+      border-left: 1px solid var(--border-light);
+      z-index: 100;
+      box-shadow: -4px 0 24px rgba(0,0,0,0.08);
+    }
     .ethics-grid { grid-template-columns: 1fr; }
   }
 </style>
+
+<script is:inline>
+  function initProgramFilters() {
+    var filters = document.getElementById('programs-filters')
+    var grid = document.querySelector('.programs-grid')
+    if (!filters || !grid) return
+
+    var cards = Array.from(grid.querySelectorAll('.program-card'))
+
+    filters.addEventListener('click', function(e) {
+      var btn = e.target.closest('.program-filter')
+      if (!btn) return
+
+      var division = btn.dataset.division
+
+      filters.querySelectorAll('.program-filter').forEach(function(f) { f.classList.remove('active') })
+      btn.classList.add('active')
+
+      var visibleIndex = 0
+      cards.forEach(function(card) {
+        var match = division === 'All' || card.dataset.division === division
+        if (match) {
+          card.classList.remove('program-card-hidden')
+          visibleIndex++
+          var num = card.querySelector('.program-num')
+          if (num) num.textContent = String(visibleIndex).padStart(2, '0')
+          var divTag = card.querySelector('.program-division')
+          if (divTag) divTag.style.display = division === 'All' ? '' : 'none'
+        } else {
+          card.classList.add('program-card-hidden')
+        }
+      })
+    })
+  }
+
+  function initProgramPanel() {
+    var wrap = document.querySelector('.programs-wrap')
+    var panel = document.getElementById('program-panel')
+    var closeBtn = document.getElementById('program-panel-close')
+    if (!wrap || !panel || !closeBtn) return
+
+    var panelNum = document.getElementById('panel-num')
+    var panelTitle = document.getElementById('panel-title')
+    var panelSubtitle = document.getElementById('panel-subtitle')
+    var panelBody = document.getElementById('panel-body')
+    var panelFooter = document.getElementById('panel-footer')
+
+    function openPanel(card) {
+      // Clear previous active
+      document.querySelectorAll('.program-card-active').forEach(function(c) {
+        c.classList.remove('program-card-active')
+      })
+      card.classList.add('program-card-active')
+
+      // Populate panel
+      panelNum.textContent = card.querySelector('.program-num').textContent
+      panelTitle.textContent = card.querySelector('.program-title').textContent
+      panelSubtitle.textContent = card.querySelector('.program-subtitle').textContent
+      panelBody.textContent = card.querySelector('.program-detail-data').textContent
+
+      // Clone footer content
+      var footer = card.querySelector('.program-footer')
+      panelFooter.innerHTML = footer.innerHTML
+
+      wrap.classList.add('panel-open')
+      panel.setAttribute('aria-hidden', 'false')
+    }
+
+    function closePanel() {
+      wrap.classList.remove('panel-open')
+      panel.setAttribute('aria-hidden', 'true')
+      document.querySelectorAll('.program-card-active').forEach(function(c) {
+        c.classList.remove('program-card-active')
+      })
+    }
+
+    // Toggle buttons
+    var toggles = document.querySelectorAll('.program-details-toggle')
+    toggles.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault()
+        var card = btn.closest('.program-card')
+        if (!card) return
+        if (card.classList.contains('program-card-active')) {
+          closePanel()
+        } else {
+          openPanel(card)
+        }
+      })
+    })
+
+    closeBtn.addEventListener('click', closePanel)
+  }
+
+  // Run immediately (script is at bottom of page, DOM is ready)
+  initProgramFilters()
+  initProgramPanel()
+  // Also handle view transitions re-navigation
+  document.addEventListener('astro:page-load', function() { initProgramFilters(); initProgramPanel(); })
+</script>
+
+<script is:inline>
+;(function pipelineViz() {
+  /* ── Preflight ── */
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  var section = document.getElementById('pipeline')
+  var canvas = document.getElementById('pipeline-canvas')
+  if (!section || !canvas) return
+  var ctx = canvas.getContext('2d')
+  if (!ctx) return
+  if (reducedMotion) return // static HTML fallback
+
+  section.classList.add('pipeline-animated')
+
+  /* ── Theme ── */
+  function isDark() { return document.documentElement.dataset.theme === 'dark' }
+
+  var COLORS_LIGHT = {
+    fwdStart: [125, 179, 212],  // #7db3d4
+    fwdEnd:   [104, 124, 87],   // #687C57
+    ret:      [196, 90, 66],    // #c45a42
+    tierA:    [104, 124, 87],   // #687C57
+    tierB:    [158, 122, 74],   // #9e7a4a
+    tierC:    [90, 138, 173]    // #5a8aad
+  }
+  var COLORS_DARK = {
+    fwdStart: [110, 155, 190],  // #6e9bbe
+    fwdEnd:   [122, 148, 101],  // #7a9465
+    ret:      [212, 112, 78],   // #d4704e
+    tierA:    [122, 148, 101],  // #7a9465
+    tierB:    [184, 144, 96],   // #b89060
+    tierC:    [110, 155, 190]   // #6e9bbe
+  }
+
+  function getColors() { return isDark() ? COLORS_DARK : COLORS_LIGHT }
+  function baseAlpha() { return isDark() ? 0.5 : 0.35 }
+
+  function lerpColor(a, b, t) {
+    return [
+      a[0] + (b[0] - a[0]) * t,
+      a[1] + (b[1] - a[1]) * t,
+      a[2] + (b[2] - a[2]) * t
+    ]
+  }
+
+  function rgbStr(c, a) {
+    return 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' + a + ')'
+  }
+
+  /* ── Canvas setup ── */
+  var W = 0, H = 0, dpr = 1
+  var animId = 0, visible = false, time = 0
+  var phase = 0 // 0=idle 1=forward 2=return 3=tiers 4=ambient
+  var phaseStart = 0
+  var hoveredNode = -1
+
+  var pipeNodes = [] // {x,y} for 7 pipeline nodes
+  var tierCenters = [] // {x,y} for 3 tier letters
+  var resizeTimer = 0
+
+  function resize() {
+    var rect = section.getBoundingClientRect()
+    dpr = Math.min(window.devicePixelRatio || 1, 2)
+    W = rect.width
+    H = rect.height
+    canvas.width = W * dpr
+    canvas.height = H * dpr
+    canvas.style.width = W + 'px'
+    canvas.style.height = H + 'px'
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    computeNodePositions()
+  }
+
+  function debouncedResize() {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(resize, 200)
+  }
+  window.addEventListener('resize', debouncedResize)
+
+  function computeNodePositions() {
+    var sRect = section.getBoundingClientRect()
+    var nodes = section.querySelectorAll('.pl-node')
+    var tiers = section.querySelectorAll('.tier-letter')
+
+    pipeNodes = []
+    for (var i = 0; i < nodes.length; i++) {
+      var r = nodes[i].getBoundingClientRect()
+      pipeNodes.push({
+        x: r.left + r.width / 2 - sRect.left,
+        y: r.top + r.height / 2 - sRect.top
+      })
+    }
+
+    tierCenters = []
+    for (var j = 0; j < tiers.length; j++) {
+      var t = tiers[j].getBoundingClientRect()
+      tierCenters.push({
+        x: t.left + t.width / 2 - sRect.left,
+        y: t.top + t.height / 2 - sRect.top
+      })
+    }
+  }
+
+  resize()
+
+  /* ── Path helpers ── */
+  function getSegmentPath(fromIdx, toIdx) {
+    var a = pipeNodes[fromIdx], b = pipeNodes[toIdx]
+    if (!a || !b) return null
+    // Slight S-curve: offset control point based on step side
+    var side = fromIdx % 2 === 0 ? 1 : -1
+    var cx = (a.x + b.x) / 2 + side * 20
+    var cy = (a.y + b.y) / 2
+    return { fx: a.x, fy: a.y, cx: cx, cy: cy, tx: b.x, ty: b.y }
+  }
+
+  function getBranchPath(pipeIdx, tierIdx) {
+    var a = pipeNodes[pipeIdx], b = tierCenters[tierIdx]
+    if (!a || !b) return null
+    var cx = (a.x + b.x) / 2
+    var cy = a.y + (b.y - a.y) * 0.3
+    return { fx: a.x, fy: a.y, cx: cx, cy: cy, tx: b.x, ty: b.y }
+  }
+
+  function bezAt(p, t) {
+    var mt = 1 - t
+    return {
+      x: mt * mt * p.fx + 2 * mt * t * p.cx + t * t * p.tx,
+      y: mt * mt * p.fy + 2 * mt * t * p.cy + t * t * p.ty
+    }
+  }
+
+  function tangentAt(p, t) {
+    var mt = 1 - t
+    return {
+      x: 2 * (mt * (p.cx - p.fx) + t * (p.tx - p.cx)),
+      y: 2 * (mt * (p.cy - p.fy) + t * (p.ty - p.cy))
+    }
+  }
+
+  /* ── Forward flow particles ── */
+  var FWD_COUNT = 200
+  var FWD_STRIDE = 8 // progress(0-1 over full pipeline), speed, active, jitter, sinePhase, gatherTimer, state(0=travel,1=gather,2=release), gatherThreshold
+  var fwdPool = new Float32Array(FWD_COUNT * FWD_STRIDE)
+
+  function initForward() {
+    for (var i = 0; i < FWD_COUNT; i++) {
+      var b = i * FWD_STRIDE
+      fwdPool[b] = Math.random()
+      fwdPool[b + 1] = 0.0004 + Math.random() * 0.0006
+      fwdPool[b + 2] = 0 // inactive until phase triggers
+      fwdPool[b + 3] = (Math.random() - 0.5) * 2
+      fwdPool[b + 4] = Math.random() * Math.PI * 2
+      fwdPool[b + 5] = 0
+      fwdPool[b + 6] = 0
+      fwdPool[b + 7] = 40 + Math.random() * 40
+    }
+  }
+  initForward()
+
+  /* ── Return flow particles ── */
+  var RET_COUNT = 80
+  var RET_STRIDE = 6 // progress, speed, active, jitter, sinePhase, dummy
+  var retPool = new Float32Array(RET_COUNT * RET_STRIDE)
+
+  function initReturn() {
+    for (var i = 0; i < RET_COUNT; i++) {
+      var b = i * RET_STRIDE
+      retPool[b] = Math.random()
+      retPool[b + 1] = 0.0007 + Math.random() * 0.0005
+      retPool[b + 2] = 0
+      retPool[b + 3] = (Math.random() - 0.5) * 2
+      retPool[b + 4] = Math.random() * Math.PI * 2
+      retPool[b + 5] = 0
+    }
+  }
+  initReturn()
+
+  /* ── Tier orbital particles ── */
+  var TIER_COUNT = 120
+  var TIER_STRIDE = 7 // angle, angularSpeed, orbitRadius, active, tier(0-2), radOscPhase, alpha
+  var tierPool = new Float32Array(TIER_COUNT * TIER_STRIDE)
+
+  function initTierOrbitals() {
+    var idx = 0
+    // Tier A: 50 particles, dense, slow
+    for (var a = 0; a < 50; a++) {
+      var b = idx * TIER_STRIDE
+      tierPool[b] = Math.random() * Math.PI * 2
+      tierPool[b + 1] = 0.003 + Math.random() * 0.004
+      tierPool[b + 2] = 12 + Math.random() * 16
+      tierPool[b + 3] = 0
+      tierPool[b + 4] = 0
+      tierPool[b + 5] = Math.random() * Math.PI * 2
+      tierPool[b + 6] = 0.3 + Math.random() * 0.3
+      idx++
+    }
+    // Tier B: 40 particles, medium
+    for (var c = 0; c < 40; c++) {
+      var b2 = idx * TIER_STRIDE
+      tierPool[b2] = Math.random() * Math.PI * 2
+      tierPool[b2 + 1] = 0.006 + Math.random() * 0.008
+      tierPool[b2 + 2] = 16 + Math.random() * 22
+      tierPool[b2 + 3] = 0
+      tierPool[b2 + 4] = 1
+      tierPool[b2 + 5] = Math.random() * Math.PI * 2
+      tierPool[b2 + 6] = 0.25 + Math.random() * 0.3
+      idx++
+    }
+    // Tier C: 30 particles, sparse, fast
+    for (var d = 0; d < 30; d++) {
+      var b3 = idx * TIER_STRIDE
+      tierPool[b3] = Math.random() * Math.PI * 2
+      tierPool[b3 + 1] = 0.012 + Math.random() * 0.015
+      tierPool[b3 + 2] = 20 + Math.random() * 28
+      tierPool[b3 + 3] = 0
+      tierPool[b3 + 4] = 2
+      tierPool[b3 + 5] = Math.random() * Math.PI * 2
+      tierPool[b3 + 6] = 0.2 + Math.random() * 0.25
+      idx++
+    }
+  }
+  initTierOrbitals()
+
+  /* ── Branch particles (pipeline→tiers) ── */
+  var BRANCH_COUNT = 60
+  var BRANCH_STRIDE = 6 // progress, speed, active, jitter, sinePhase, branchIdx(0=C,1=B,2=A)
+  var branchPool = new Float32Array(BRANCH_COUNT * BRANCH_STRIDE)
+
+  // Branch definitions: [pipeNodeIdx, tierIdx]
+  var BRANCHES = [
+    [1, 2],  // early stage → Tier C
+    [3, 1],  // mid stage → Tier B
+    [6, 0]   // endpoint → Tier A
+  ]
+
+  function initBranches() {
+    for (var i = 0; i < BRANCH_COUNT; i++) {
+      var b = i * BRANCH_STRIDE
+      branchPool[b] = Math.random()
+      branchPool[b + 1] = 0.002 + Math.random() * 0.003
+      branchPool[b + 2] = 0
+      branchPool[b + 3] = (Math.random() - 0.5) * 2
+      branchPool[b + 4] = Math.random() * Math.PI * 2
+      branchPool[b + 5] = Math.floor(i / 20) // 0,1,2
+    }
+  }
+  initBranches()
+
+  /* ── Spawn control ── */
+  var fwdSpawned = 0, retSpawned = 0, tierSpawned = 0, branchSpawned = 0
+
+  function spawnForward(count) {
+    var toSpawn = Math.min(count, FWD_COUNT - fwdSpawned)
+    for (var i = 0; i < toSpawn; i++) {
+      var b = fwdSpawned * FWD_STRIDE
+      fwdPool[b + 2] = 1 // activate
+      fwdPool[b] = i / toSpawn // stagger along path
+      fwdSpawned++
+    }
+  }
+
+  function spawnReturn(count) {
+    var toSpawn = Math.min(count, RET_COUNT - retSpawned)
+    for (var i = 0; i < toSpawn; i++) {
+      var b = retSpawned * RET_STRIDE
+      retPool[b + 2] = 1
+      retPool[b] = i / toSpawn
+      retSpawned++
+    }
+  }
+
+  function spawnTiers(count) {
+    var toSpawn = Math.min(count, TIER_COUNT - tierSpawned)
+    for (var i = 0; i < toSpawn; i++) {
+      tierPool[tierSpawned * TIER_STRIDE + 3] = 1
+      tierSpawned++
+    }
+  }
+
+  function spawnBranches(count) {
+    var toSpawn = Math.min(count, BRANCH_COUNT - branchSpawned)
+    for (var i = 0; i < toSpawn; i++) {
+      branchPool[branchSpawned * BRANCH_STRIDE + 2] = 1
+      branchSpawned++
+    }
+  }
+
+  /* ── Node glow tracking ── */
+  var nodeGlow = new Float32Array(7) // intensity per pipeline node
+
+  /* ── Intersection Observer ── */
+  var observer = new IntersectionObserver(function(entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        visible = true
+        if (phase === 0) {
+          phase = 1
+          phaseStart = performance.now()
+        }
+        if (!animId) tick()
+      } else {
+        visible = false
+      }
+    }
+  }, { threshold: 0.15 })
+  observer.observe(section)
+
+  /* ── Hover detection ── */
+  section.addEventListener('mousemove', function(e) {
+    var rect = section.getBoundingClientRect()
+    var mx = e.clientX - rect.left
+    var my = e.clientY - rect.top
+    hoveredNode = -1
+    for (var i = 0; i < pipeNodes.length; i++) {
+      var dx = mx - pipeNodes[i].x
+      var dy = my - pipeNodes[i].y
+      if (Math.sqrt(dx * dx + dy * dy) < 40) {
+        hoveredNode = i
+        break
+      }
+    }
+  })
+  section.addEventListener('mouseleave', function() { hoveredNode = -1 })
+
+  /* ── Main tick ── */
+  function tick() {
+    if (!visible) { animId = 0; return }
+    animId = requestAnimationFrame(tick)
+    time += 0.016
+
+    var elapsed = (performance.now() - phaseStart) / 1000
+
+    // Phase management
+    if (phase === 1) {
+      // Beat 1: spawn forward particles gradually
+      var fwdTarget = Math.min(FWD_COUNT, Math.floor(elapsed / 3 * FWD_COUNT))
+      if (fwdSpawned < fwdTarget) spawnForward(fwdTarget - fwdSpawned)
+      if (elapsed > 3) phase = 2
+    }
+    if (phase === 2) {
+      // Beat 2: spawn return particles
+      if (fwdSpawned < FWD_COUNT) spawnForward(FWD_COUNT - fwdSpawned)
+      var retTarget = Math.min(RET_COUNT, Math.floor((elapsed - 3) / 1 * RET_COUNT))
+      if (retSpawned < retTarget) spawnReturn(retTarget - retSpawned)
+      if (elapsed > 4) phase = 3
+    }
+    if (phase === 3) {
+      // Beat 3: spawn tiers + branches
+      if (retSpawned < RET_COUNT) spawnReturn(RET_COUNT - retSpawned)
+      var tierTarget = Math.min(TIER_COUNT, Math.floor((elapsed - 4) / 1.5 * TIER_COUNT))
+      if (tierSpawned < tierTarget) spawnTiers(tierTarget - tierSpawned)
+      var brTarget = Math.min(BRANCH_COUNT, Math.floor((elapsed - 4) / 1.5 * BRANCH_COUNT))
+      if (branchSpawned < brTarget) spawnBranches(brTarget - branchSpawned)
+      if (elapsed > 5.5) phase = 4
+    }
+    if (phase === 4) {
+      // Ambient: ensure everything spawned
+      if (fwdSpawned < FWD_COUNT) spawnForward(FWD_COUNT)
+      if (retSpawned < RET_COUNT) spawnReturn(RET_COUNT)
+      if (tierSpawned < TIER_COUNT) spawnTiers(TIER_COUNT)
+      if (branchSpawned < BRANCH_COUNT) spawnBranches(BRANCH_COUNT)
+    }
+
+    ctx.clearRect(0, 0, W, H)
+
+    // Decay node glow
+    for (var g = 0; g < 7; g++) {
+      nodeGlow[g] *= 0.96
+    }
+
+    drawFlowPaths()
+    updateAndDrawForward()
+    updateAndDrawReturn()
+    if (phase >= 3) {
+      drawBranchPaths()
+      updateAndDrawBranches()
+      updateAndDrawTierOrbitals()
+    }
+    drawNodes()
+  }
+
+  /* ── Draw faint flow paths ── */
+  function drawFlowPaths() {
+    var cols = getColors()
+    var alpha = baseAlpha() * 0.2
+
+    // Forward paths
+    for (var i = 0; i < 6; i++) {
+      var p = getSegmentPath(i, i + 1)
+      if (!p) continue
+      var t = (i + 0.5) / 6
+      var c = lerpColor(cols.fwdStart, cols.fwdEnd, t)
+      ctx.beginPath()
+      ctx.moveTo(p.fx, p.fy)
+      ctx.quadraticCurveTo(p.cx, p.cy, p.tx, p.ty)
+      ctx.strokeStyle = rgbStr(c, alpha)
+      ctx.lineWidth = 2
+      ctx.stroke()
+    }
+
+    // Return path (offset slightly)
+    if (phase >= 2) {
+      var retAlpha = alpha * 0.6
+      for (var j = 5; j >= 0; j--) {
+        var pr = getSegmentPath(j + 1, j)
+        if (!pr) continue
+        // Offset slightly to the right of forward flow
+        pr.cx += 8
+        ctx.beginPath()
+        ctx.moveTo(pr.fx + 4, pr.fy)
+        ctx.quadraticCurveTo(pr.cx, pr.cy, pr.tx + 4, pr.ty)
+        ctx.strokeStyle = rgbStr(cols.ret, retAlpha)
+        ctx.lineWidth = 1
+        ctx.stroke()
+      }
+    }
+  }
+
+  /* ── Draw branch paths to tiers ── */
+  function drawBranchPaths() {
+    var cols = getColors()
+    var alpha = baseAlpha() * 0.12
+    var tierColors = [cols.tierC, cols.tierB, cols.tierA]
+    for (var i = 0; i < BRANCHES.length; i++) {
+      var bp = getBranchPath(BRANCHES[i][0], BRANCHES[i][1])
+      if (!bp) continue
+      ctx.beginPath()
+      ctx.moveTo(bp.fx, bp.fy)
+      ctx.quadraticCurveTo(bp.cx, bp.cy, bp.tx, bp.ty)
+      ctx.strokeStyle = rgbStr(tierColors[i], alpha)
+      ctx.lineWidth = 1
+      ctx.stroke()
+    }
+  }
+
+  /* ── Update + draw forward particles ── */
+  function updateAndDrawForward() {
+    if (pipeNodes.length < 7) return
+    var cols = getColors()
+    var bAlpha = baseAlpha()
+    var REFINEMENT = 4 / 6 // progress position of Refinement node
+
+    for (var i = 0; i < FWD_COUNT; i++) {
+      var b = i * FWD_STRIDE
+      if (!fwdPool[b + 2]) continue
+
+      var progress = fwdPool[b]
+      var speed = fwdPool[b + 1]
+      var state = fwdPool[b + 6]
+      var gatherTimer = fwdPool[b + 5]
+      var gatherThreshold = fwdPool[b + 7]
+
+      // Determine current segment
+      var seg = Math.min(Math.floor(progress * 6), 5)
+      var segT = (progress * 6) - seg
+
+      // Speed modulation near nodes
+      var effectiveSpeed = speed
+      var distToNextNode = 1 - segT
+      var distToPrevNode = segT
+      var nearestDist = Math.min(distToNextNode, distToPrevNode)
+
+      if (state === 0) { // traveling
+        if (nearestDist < 0.15) {
+          effectiveSpeed = speed * (0.3 + 0.7 * (nearestDist / 0.15))
+        }
+        // Check if at a node boundary
+        if (distToNextNode < 0.02) {
+          fwdPool[b + 6] = 1 // gather
+          fwdPool[b + 5] = 0
+          // Boost node glow
+          var nodeIdx = seg + 1
+          if (nodeIdx < 7) nodeGlow[nodeIdx] = Math.min(nodeGlow[nodeIdx] + 0.15, 1)
+        }
+      } else if (state === 1) { // gathering
+        fwdPool[b + 5] = gatherTimer + 1
+        effectiveSpeed = speed * 0.05
+        if (gatherTimer + 1 > gatherThreshold) {
+          fwdPool[b + 6] = 2 // release
+        }
+      } else if (state === 2) { // releasing
+        var releaseT = Math.min((gatherTimer - gatherThreshold) / 20, 1)
+        effectiveSpeed = speed * (0.5 + 1.5 * releaseT * releaseT)
+        fwdPool[b + 5] = gatherTimer + 1
+        if (releaseT >= 1) fwdPool[b + 6] = 0
+      }
+
+      // Post-refinement boost
+      if (progress > REFINEMENT + 0.04) {
+        effectiveSpeed *= 1.25
+      }
+
+      // Turbulence at refinement
+      var distToRef = Math.abs(progress - REFINEMENT)
+      var turbulence = 0
+      if (distToRef < 0.06) {
+        turbulence = 1 - (distToRef / 0.06)
+      }
+
+      // Advance
+      progress += effectiveSpeed
+      if (progress > 1) progress -= 1
+      fwdPool[b] = progress
+
+      // Recalculate segment for drawing
+      seg = Math.min(Math.floor(progress * 6), 5)
+      segT = (progress * 6) - seg
+
+      var path = getSegmentPath(seg, seg + 1)
+      if (!path) continue
+      var pos = bezAt(path, segT)
+
+      // Perpendicular jitter
+      var jitterAmp = 3 + turbulence * 6
+      var jitter = Math.sin(progress * Math.PI * 6 + fwdPool[b + 4]) * jitterAmp * fwdPool[b + 3]
+      var tan = tangentAt(path, segT)
+      var tlen = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
+      pos.x += (-tan.y / tlen) * jitter
+      pos.y += (tan.x / tlen) * jitter
+
+      // Turbulence swirl
+      if (turbulence > 0) {
+        var swirlAngle = turbulence * Math.sin(time * 4 + fwdPool[b + 4]) * 0.8
+        var sx = pos.x - pipeNodes[4].x
+        var sy = pos.y - pipeNodes[4].y
+        var cos = Math.cos(swirlAngle), sin = Math.sin(swirlAngle)
+        pos.x = pipeNodes[4].x + sx * cos - sy * sin
+        pos.y = pipeNodes[4].y + sx * sin + sy * cos
+      }
+
+      // Gravitational pull toward nearest node
+      if (nearestDist < 0.1 && state !== 2) {
+        var pullNode = distToPrevNode < distToNextNode ? seg : Math.min(seg + 1, 6)
+        var pullStrength = (1 - nearestDist / 0.1) * 0.3
+        pos.x += (pipeNodes[pullNode].x - pos.x) * pullStrength
+        pos.y += (pipeNodes[pullNode].y - pos.y) * pullStrength
+      }
+
+      // Color
+      var colorT = progress
+      var c = lerpColor(cols.fwdStart, cols.fwdEnd, colorT)
+      var alpha = bAlpha * (0.6 + fwdPool[b + 3] * 0.15)
+      if (progress > REFINEMENT + 0.04) alpha *= 1.15
+
+      ctx.fillStyle = rgbStr(c, alpha)
+      ctx.fillRect(pos.x - 1, pos.y - 1, 2, 2)
+    }
+  }
+
+  /* ── Update + draw return particles ── */
+  function updateAndDrawReturn() {
+    if (pipeNodes.length < 7 || phase < 2) return
+    var cols = getColors()
+    var bAlpha = baseAlpha() * 0.6
+
+    for (var i = 0; i < RET_COUNT; i++) {
+      var b = i * RET_STRIDE
+      if (!retPool[b + 2]) continue
+
+      var progress = retPool[b]
+      var speed = retPool[b + 1]
+
+      // Advance (reverse direction: high progress = near start)
+      progress += speed
+      if (progress > 1) progress -= 1
+      retPool[b] = progress
+
+      // Map to pipeline position (reverse: progress 0 = node 6, progress 1 = node 0)
+      var pipeProgress = 1 - progress
+      var seg = Math.min(Math.floor(pipeProgress * 6), 5)
+      var segT = (pipeProgress * 6) - seg
+
+      var path = getSegmentPath(seg, seg + 1)
+      if (!path) continue
+      var pos = bezAt(path, segT)
+
+      // Offset to the side of forward flow
+      var tan = tangentAt(path, segT)
+      var tlen = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
+      var perpX = -tan.y / tlen
+      var perpY = tan.x / tlen
+
+      // Constant offset + smaller jitter
+      pos.x += perpX * 6
+      pos.y += perpY * 6
+      var jitter = Math.sin(progress * Math.PI * 5 + retPool[b + 4]) * 1.5 * retPool[b + 3]
+      pos.x += perpX * jitter
+      pos.y += perpY * jitter
+
+      // Turbulence near refinement
+      var refProg = 4 / 6
+      var distToRef = Math.abs(pipeProgress - refProg)
+      if (distToRef < 0.06) {
+        var turb = 1 - distToRef / 0.06
+        var swirlAngle = turb * Math.sin(time * 5 + retPool[b + 4]) * 0.6
+        var sx = pos.x - pipeNodes[4].x
+        var sy = pos.y - pipeNodes[4].y
+        pos.x = pipeNodes[4].x + sx * Math.cos(swirlAngle) - sy * Math.sin(swirlAngle)
+        pos.y = pipeNodes[4].y + sx * Math.sin(swirlAngle) + sy * Math.cos(swirlAngle)
+      }
+
+      ctx.fillStyle = rgbStr(cols.ret, bAlpha * (0.5 + retPool[b + 3] * 0.15))
+      ctx.fillRect(pos.x - 0.75, pos.y - 0.75, 1.5, 1.5)
+    }
+  }
+
+  /* ── Update + draw branch particles ── */
+  function updateAndDrawBranches() {
+    if (tierCenters.length < 3) return
+    var cols = getColors()
+    var bAlpha = baseAlpha() * 0.5
+    var tierColors = [cols.tierC, cols.tierB, cols.tierA]
+
+    for (var i = 0; i < BRANCH_COUNT; i++) {
+      var b = i * BRANCH_STRIDE
+      if (!branchPool[b + 2]) continue
+
+      var progress = branchPool[b]
+      var speed = branchPool[b + 1]
+      var brIdx = branchPool[b + 5]
+
+      progress += speed
+      if (progress > 1) progress -= 1
+      branchPool[b] = progress
+
+      var br = BRANCHES[brIdx]
+      if (!br) continue
+      var path = getBranchPath(br[0], br[1])
+      if (!path) continue
+
+      var pos = bezAt(path, progress)
+      var jitter = Math.sin(progress * Math.PI * 3 + branchPool[b + 4]) * 2 * branchPool[b + 3]
+      var tan = tangentAt(path, progress)
+      var tlen = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
+      pos.x += (-tan.y / tlen) * jitter
+      pos.y += (tan.x / tlen) * jitter
+
+      ctx.fillStyle = rgbStr(tierColors[brIdx], bAlpha * (0.4 + Math.abs(branchPool[b + 3]) * 0.2))
+      ctx.fillRect(pos.x - 0.75, pos.y - 0.75, 1.5, 1.5)
+    }
+  }
+
+  /* ── Update + draw tier orbital particles ── */
+  function updateAndDrawTierOrbitals() {
+    if (tierCenters.length < 3) return
+    var cols = getColors()
+    var bAlpha = baseAlpha()
+    var tierColors = [cols.tierA, cols.tierB, cols.tierC]
+
+    for (var i = 0; i < TIER_COUNT; i++) {
+      var b = i * TIER_STRIDE
+      if (!tierPool[b + 3]) continue
+
+      var angle = tierPool[b]
+      var angSpeed = tierPool[b + 1]
+      var radius = tierPool[b + 2]
+      var tier = tierPool[b + 4]
+      var radOsc = tierPool[b + 5]
+      var pAlpha = tierPool[b + 6]
+
+      // Update angle
+      angle += angSpeed
+      if (angle > Math.PI * 2) angle -= Math.PI * 2
+      tierPool[b] = angle
+
+      // Oscillate radius
+      var oscRadius = radius + Math.sin(time * 0.8 + radOsc) * radius * 0.15
+
+      // Tier C: occasional drift (wider oscillation)
+      if (tier === 2) {
+        oscRadius += Math.sin(time * 0.3 + radOsc * 2) * 8
+      }
+      // Tier B: occasional escape-and-return
+      if (tier === 1) {
+        var escape = Math.sin(time * 0.2 + radOsc * 3)
+        if (escape > 0.85) oscRadius += (escape - 0.85) * 40
+      }
+
+      var center = tierCenters[tier]
+      if (!center) continue
+
+      var px = center.x + Math.cos(angle) * oscRadius
+      var py = center.y + Math.sin(angle) * oscRadius
+
+      ctx.fillStyle = rgbStr(tierColors[tier], bAlpha * pAlpha)
+      ctx.fillRect(px - 1, py - 1, 2, 2)
+    }
+  }
+
+  /* ── Draw pipeline nodes (radial glow) ── */
+  function drawNodes() {
+    for (var i = 0; i < pipeNodes.length; i++) {
+      var n = pipeNodes[i]
+      var isHovered = hoveredNode === i
+      var glowIntensity = nodeGlow[i]
+
+      var breathe = 1 + Math.sin(time * 0.5 + i * 0.7) * 0.04
+      var baseR = isHovered ? 22 : 14
+      var r = baseR * breathe + glowIntensity * 10
+
+      var isRefinement = (i === 4)
+      if (isRefinement && phase >= 2) {
+        r += 4 // Refinement glows wider when return flow active
+        glowIntensity += 0.15
+      }
+
+      var cols = getColors()
+      var colorT = i / 6
+      var c = lerpColor(cols.fwdStart, cols.fwdEnd, colorT)
+
+      var centerAlpha = isHovered ? 0.3 : (0.12 + glowIntensity * 0.2)
+      var grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r)
+      grad.addColorStop(0, rgbStr(c, centerAlpha))
+      grad.addColorStop(0.5, rgbStr(c, centerAlpha * 0.4))
+      grad.addColorStop(1, rgbStr(c, 0))
+
+      ctx.beginPath()
+      ctx.arc(n.x, n.y, r, 0, Math.PI * 2)
+      ctx.fillStyle = grad
+      ctx.fill()
+
+      // Core dot
+      ctx.beginPath()
+      ctx.arc(n.x, n.y, 2.5, 0, Math.PI * 2)
+      ctx.fillStyle = rgbStr(c, isHovered ? 0.5 : 0.25)
+      ctx.fill()
+    }
+
+    // Tier node glows (when active)
+    if (phase >= 3) {
+      var cols2 = getColors()
+      var tierColors = [cols2.tierA, cols2.tierB, cols2.tierC]
+      for (var j = 0; j < tierCenters.length; j++) {
+        var tc = tierCenters[j]
+        var tr = 20 + Math.sin(time * 0.4 + j * 1.2) * 2
+        var grad2 = ctx.createRadialGradient(tc.x, tc.y, 0, tc.x, tc.y, tr)
+        grad2.addColorStop(0, rgbStr(tierColors[j], 0.1))
+        grad2.addColorStop(1, rgbStr(tierColors[j], 0))
+        ctx.beginPath()
+        ctx.arc(tc.x, tc.y, tr, 0, Math.PI * 2)
+        ctx.fillStyle = grad2
+        ctx.fill()
+      }
+    }
+  }
+})()
+</script>
+

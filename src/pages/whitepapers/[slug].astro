@@ -38,6 +38,18 @@ const categoryArticles = articles.filter(a => a.category === meta.name)
             <span class="wp-meta-divider">|</span>
             <span class="wp-meta-item">Sohma Institute</span>
           </div>
+          <div class="wp-credits">
+            <div class="wp-credit">
+              <span class="wp-credit-name">Cameron Rosin</span>
+              <span class="wp-credit-function">Author</span>
+              <span class="wp-credit-title">Head of Clinical Education</span>
+            </div>
+            <div class="wp-credit">
+              <span class="wp-credit-name">Rhys McKay</span>
+              <span class="wp-credit-function">Editor</span>
+              <span class="wp-credit-title">Director of Research Technology</span>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -69,6 +81,41 @@ const categoryArticles = articles.filter(a => a.category === meta.name)
     font-weight: 600;
     flex-shrink: 0;
     white-space: nowrap;
+  }
+
+  .wp-credits {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.25rem;
+  }
+
+  .wp-credit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .wp-credit-name {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    line-height: 1.3;
+  }
+
+  .wp-credit-function {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    opacity: 0.65;
+  }
+
+  .wp-credit-title {
+    font-size: 0.6875rem;
+    color: var(--text-tertiary);
+    line-height: 1.3;
   }
 
   .cat-grid {

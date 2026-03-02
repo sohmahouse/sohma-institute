@@ -1,0 +1,701 @@
+---
+import PortalLayout from '../layouts/PortalLayout.astro'
+import sohmaLogo from '../assets/images/sohma_practitioners_logo.svg?raw'
+---
+
+<PortalLayout
+  title="Transparency — Sohma Institute"
+  description="Financial transparency for the Sohma Institute of Traditional Medicines. Five revenue streams and cross-ecology flows."
+>
+  <article class="sustainability-page">
+
+    <!-- HERO -->
+    <header class="sustainability-hero">
+      <div class="section-label">Financial Transparency</div>
+      <h1 class="hero-title">How the Institute is Funded</h1>
+      <p class="hero-lead">Five revenue streams designed for institutional independence. No single funding source exceeds 50%. Cross-ecology flows connect the Institute to the clinical core and consulting arm.</p>
+    </header>
+
+    <!-- ANIMATED REVENUE FLOW -->
+    <section class="sankey-section" id="streams">
+      <div class="sankey-wrap">
+        <!-- TOP: Source cards -->
+        <div class="sankey-row sankey-sources" id="sankey-sources">
+          <div class="stream-card" data-stream="education">
+            <span class="stream-pct">45%</span>
+            <h3 class="stream-name">Education</h3>
+            <p>Tuition across four credential tiers — Foundation Certificate through Fellowship. VET Student Loans eligible. Corporate training packages and CPD subscriptions.</p>
+            <a href="/education" class="stream-link">See Education</a>
+          </div>
+          <div class="stream-card" data-stream="network">
+            <span class="stream-pct">20%</span>
+            <h3 class="stream-name">Network</h3>
+            <p>Annual practitioner membership fees tiered by credential level. Clinical registry access and protocol licensing for external sites.</p>
+            <a href="/network" class="stream-link">See Network</a>
+          </div>
+          <div class="stream-card" data-stream="research">
+            <span class="stream-pct">15%</span>
+            <h3 class="stream-name">Research</h3>
+            <p>NHMRC, MRFF, and ARC competitive grants. JCU collaborative programs. International whole-systems research consortia.</p>
+            <a href="/research" class="stream-link">See Research</a>
+          </div>
+          <div class="stream-card" data-stream="publishing">
+            <span class="stream-pct">12%</span>
+            <h3 class="stream-name">Publishing</h3>
+            <p>Division-specific textbook series. Journal article processing charges. Protocol monograph subscriptions and working paper series.</p>
+            <a href="/publishing" class="stream-link">See Publishing</a>
+          </div>
+          <div class="stream-card" data-stream="consulting">
+            <span class="stream-pct">8%</span>
+            <h3 class="stream-name">Consulting</h3>
+            <p>TGA regulatory pathway consulting. Government policy advisory. Curriculum consulting for convergence thesis frameworks.</p>
+            <a href="/contact" class="stream-link">See Consulting</a>
+          </div>
+        </div>
+
+        <!-- MIDDLE: Animated canvas -->
+        <div class="sankey-canvas-row">
+          <canvas id="sankey-canvas" aria-hidden="true"></canvas>
+        </div>
+
+        <!-- BOTTOM: Destination cards -->
+        <div class="sankey-row sankey-destinations" id="sankey-destinations">
+          <div class="stream-card dest-card">
+            <div class="dest-logo" set:html={sohmaLogo} />
+            <h3 class="stream-name">Institute</h3>
+            <p>Staff, facilities, technology, administration, and governance. The operational backbone that enables all five revenue streams to function.</p>
+            <a href="/about" class="stream-link">See Institute</a>
+          </div>
+          <div class="stream-card dest-card">
+            <div class="dest-logo" set:html={sohmaLogo} />
+            <h3 class="stream-name">House</h3>
+            <p>Clinical training sites, research participants, and outcome data. Net revenue flow is Institute to Clinical Core — an investment in education infrastructure.</p>
+            <a href="https://sohma.house" class="stream-link">See House</a>
+          </div>
+          <div class="stream-card dest-card">
+            <div class="dest-logo" set:html={sohmaLogo} />
+            <h3 class="stream-name">Consulting</h3>
+            <p>Regulatory, curriculum, and policy advisory services. Revenue sharing model between Institute and Consulting Arm.</p>
+            <a href="/contact" class="stream-link">See Consulting</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </article>
+</PortalLayout>
+
+<style>
+  .sustainability-page {
+    font-family: 'Manrope', sans-serif;
+    color: var(--text-heading);
+    padding: 0;
+  }
+  :global(.reading-progress) { display: none !important; }
+  .sustainability-page p { line-height: 1.8; margin: 0 0 1rem; }
+  .sustainability-page p:last-child { margin-bottom: 0; }
+  .sustainability-page h2, .sustainability-page h3 { margin: 0; }
+
+  /* ═══════════ HERO ═══════════ */
+  .sustainability-hero {
+    padding: 6rem 0 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent-dark);
+    margin-bottom: 1.25rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--accent-line);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--text-heading);
+    max-width: 800px;
+    margin: 0 0 2rem;
+    padding-left: 2rem;
+  }
+
+  .hero-lead {
+    font-size: 0.9375rem;
+    color: var(--text-body-65);
+    line-height: 1.85;
+    max-width: 600px;
+    padding-left: 2rem;
+  }
+
+  /* Stream accent colors */
+  [data-stream="education"] { --stream-color: #687C57; }
+  [data-stream="network"] { --stream-color: #9e7a4a; }
+  [data-stream="research"] { --stream-color: #A53D2E; }
+  [data-stream="publishing"] { --stream-color: #5a8aad; }
+  [data-stream="consulting"] { --stream-color: #9a6eb5; }
+
+  /* ═══════════ VERTICAL SANKEY ═══════════ */
+  .sankey-section {
+    position: relative;
+    padding-bottom: 8rem;
+  }
+
+  .sankey-wrap {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0;
+    height: 85vh;
+    padding: 1.5rem 0;
+  }
+
+  /* Horizontal card rows */
+  .sankey-row {
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .sankey-sources {
+    justify-content: center;
+  }
+
+  .sankey-destinations {
+    justify-content: center;
+  }
+
+  /* Stream cards */
+  .stream-card {
+    border: 1px solid var(--border-light);
+    border-radius: 0;
+    padding: 1rem 0.85rem;
+    transition: border-color 0.3s, opacity 0.35s ease, transform 0.35s ease;
+    opacity: 1;
+    flex: 1;
+    max-width: 220px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* When any source card is hovered, dim all siblings */
+  .sankey-sources:hover .stream-card {
+    opacity: 0.2;
+    transform: translateY(2px);
+  }
+  .sankey-sources:hover .stream-card:hover {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* No hover dim on destination cards */
+
+  .sankey-sources .stream-card {
+    border-top: 3px solid var(--stream-color, var(--border-light));
+  }
+
+  .sankey-destinations .stream-card {
+    border-bottom: 3px solid var(--accent-line, var(--border-light));
+  }
+
+  .stream-pct {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--stream-color);
+    margin-bottom: 0.75rem;
+  }
+
+  .stream-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    line-height: 1.25;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .stream-card p {
+    font-size: 0.8125rem;
+    color: var(--text-body-60);
+    line-height: 1.65;
+  }
+
+  .stream-link {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-body-60);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+  }
+  .stream-card:hover .stream-link {
+    color: #000;
+    background: var(--stream-color, var(--accent-dark));
+    border-color: var(--stream-color, var(--accent-dark));
+  }
+
+  .dest-logo {
+    width: 36px;
+    margin-bottom: 0.4rem;
+    opacity: 0.7;
+  }
+  .dest-logo :global(svg) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .dest-logo :global(path) {
+    fill: #fff !important;
+  }
+
+  .dest-card p {
+    font-size: 0.8125rem;
+    color: var(--text-body-60);
+    line-height: 1.65;
+  }
+
+  .dest-card:hover .stream-link {
+    color: #000;
+    background: var(--accent-line, var(--accent-dark));
+    border-color: var(--accent-line, var(--accent-dark));
+  }
+
+  /* Canvas row */
+  .sankey-canvas-row {
+    position: relative;
+  }
+
+  #sankey-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* ═══════════ RESPONSIVE ═══════════ */
+  @media (max-width: 1024px) {
+    .stream-card {
+      max-width: 180px;
+    }
+    .stream-card p,
+    .dest-card p {
+      display: none;
+    }
+    .stream-link {
+      margin-top: 0.25rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sankey-section {
+      height: auto;
+    }
+    .sankey-wrap {
+      position: relative;
+      height: auto;
+      grid-template-rows: auto auto auto;
+      gap: 2rem;
+    }
+    .sankey-row {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .sankey-canvas-row {
+      display: none;
+    }
+    .stream-card {
+      max-width: 100%;
+      flex-basis: 100%;
+    }
+    .stream-card p,
+    .dest-card p {
+      display: block;
+    }
+    .hero-title {
+      padding-left: 0;
+    }
+    .hero-lead {
+      padding-left: 0;
+    }
+  }
+</style>
+
+<script>
+  function initSankey() {
+    const canvas = document.getElementById('sankey-canvas') as HTMLCanvasElement
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    // Skip on mobile or reduced motion
+    if (window.innerWidth <= 768) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    // Source percentages — used to compute per-source particle budgets
+    const SRC_PCT = [45, 20, 15, 12, 8]  // Education, Network, Research, Publishing, Consulting
+
+    // Flow data: src (top) → dst (bottom), weight = relative share within that source
+    const FLOWS = [
+      { src: 0, dst: 0, w: 30 },  // Education → Operations
+      { src: 0, dst: 1, w: 10 },  // Education → Clinical Core
+      { src: 0, dst: 2, w: 5 },   // Education → Consulting Arm
+      { src: 1, dst: 0, w: 12 },  // Network → Operations
+      { src: 1, dst: 1, w: 5 },   // Network → Clinical Core
+      { src: 1, dst: 2, w: 3 },   // Network → Consulting Arm
+      { src: 2, dst: 0, w: 5 },   // Research → Operations
+      { src: 2, dst: 1, w: 8 },   // Research → Clinical Core
+      { src: 2, dst: 2, w: 2 },   // Research → Consulting Arm
+      { src: 3, dst: 0, w: 8 },   // Publishing → Operations
+      { src: 3, dst: 2, w: 4 },   // Publishing → Consulting Arm
+      { src: 4, dst: 0, w: 3 },   // Consulting → Operations
+      { src: 4, dst: 2, w: 5 },   // Consulting → Consulting Arm
+    ]
+
+    // Per-flow particle budget: 20 particles per source-percent, split across flows by weight
+    // Education 45% → 900, Network 20% → 400, Research 15% → 300, Publishing 12% → 240, Consulting 8% → 160
+    const PER_PCT = 20
+    const flowBudgets: number[] = []
+    for (const flow of FLOWS) {
+      const srcTotal = FLOWS.filter(f => f.src === flow.src).reduce((s, f) => s + f.w, 0)
+      const srcParticles = SRC_PCT[flow.src] * PER_PCT
+      flowBudgets.push(Math.max(20, Math.round(srcParticles * (flow.w / srcTotal))))
+    }
+
+    // Emission rhythm accumulators — fractional particles carried between frames
+    const emitAccum = new Float32Array(FLOWS.length)
+
+    // Per-flow emission rate (particles/frame at 60fps)
+    // Higher % sources emit in denser bursts, lower ones emit steadily
+    const emitRates: number[] = FLOWS.map((flow, i) => {
+      const budget = flowBudgets[i]
+      // Target: fill budget over ~3 seconds (180 frames) with variance
+      const base = budget / 180
+      // Education gets burst multiplier, smaller streams get steadier emission
+      const burstFactor = SRC_PCT[flow.src] >= 20 ? 1.4 : 1.0
+      return Math.max(0.15, base * burstFactor)
+    })
+
+    const MAX = flowBudgets.reduce((s, b) => s + b, 0)  // ~2000
+    // Particle pool — stride 6: [progress, speed, flowIdx, active, xJitter, flowSlot]
+    const pool = new Float32Array(MAX * 6)
+
+    // Spark pool — stride 8: [x, y, vx, vy, life, r, g, b]
+    const SPARK_MAX = 4000
+    const sparks = new Float32Array(SPARK_MAX * 8)
+
+    // Spatial grid for cross-stream collision detection
+    const CELL = 18
+    let gridCols = 0, gridRows = 0
+    let grid: Int8Array
+
+    // Path geometry
+    interface PathData { x0: number; y0: number; x1: number; y1: number; x2: number; y2: number; x3: number; y3: number; color: string; weight: number }
+    let paths: PathData[] = []
+    let cw = 0, ch = 0
+    let dpr = window.devicePixelRatio || 1
+
+    // Color parse cache
+    const cc = new Map<string, [number, number, number]>()
+    function rgb(hex: string): [number, number, number] {
+      if (cc.has(hex)) return cc.get(hex)!
+      const h = hex.replace('#', '')
+      const v: [number, number, number] = [
+        parseInt(h.substring(0, 2), 16),
+        parseInt(h.substring(2, 4), 16),
+        parseInt(h.substring(4, 6), 16)
+      ]
+      cc.set(hex, v)
+      return v
+    }
+
+    // Cubic bezier
+    function bez(t: number, a: number, b: number, c: number, d: number): number {
+      const u = 1 - t
+      return u * u * u * a + 3 * u * u * t * b + 3 * u * t * t * c + t * t * t * d
+    }
+
+    // DOM refs
+    const srcCards = document.querySelectorAll('#sankey-sources .stream-card')
+    const dstCards = document.querySelectorAll('#sankey-destinations .stream-card')
+    let colors: string[] = []
+
+    function layout() {
+      const rect = canvas.getBoundingClientRect()
+      dpr = window.devicePixelRatio || 1
+      cw = rect.width
+      ch = rect.height
+      canvas.width = cw * dpr
+      canvas.height = ch * dpr
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+      gridCols = Math.ceil(cw / CELL)
+      gridRows = Math.ceil(ch / CELL)
+      grid = new Int8Array(gridCols * gridRows).fill(-1)
+
+      colors = []
+      srcCards.forEach(el => {
+        const c = getComputedStyle(el).getPropertyValue('--stream-color').trim()
+        colors.push(c || '#888')
+      })
+      cc.clear()
+
+      computePaths()
+    }
+
+    // Vertical paths: source X positions at top → destination X positions at bottom
+    function computePaths() {
+      const rect = canvas.getBoundingClientRect()
+
+      const srcX = Array.from(srcCards).map(card => {
+        const r = (card as HTMLElement).getBoundingClientRect()
+        return r.left + r.width / 2 - rect.left
+      })
+
+      const dstX = Array.from(dstCards).map(card => {
+        const r = (card as HTMLElement).getBoundingClientRect()
+        return r.left + r.width / 2 - rect.left
+      })
+
+      paths = FLOWS.map(flow => {
+        const x0 = srcX[flow.src]
+        const y0 = 0
+        const x3 = dstX[flow.dst]
+        const y3 = ch
+        const dy = y3 - y0
+        return {
+          x0, y0,
+          x1: x0, y1: y0 + dy * 0.4,
+          x2: x3, y2: y3 - dy * 0.4,
+          x3, y3,
+          color: colors[flow.src] || '#888',
+          weight: flow.w
+        }
+      })
+    }
+
+    // Track per-flow slot ranges for budget enforcement
+    const flowSlotStart: number[] = []
+    let slotOffset = 0
+    for (let f = 0; f < FLOWS.length; f++) {
+      flowSlotStart.push(slotOffset)
+      slotOffset += flowBudgets[f]
+    }
+
+    // Spawn particles with emission rhythm — accumulator ensures fractional rates work
+    function spawn() {
+      if (!paths.length) return
+      for (let f = 0; f < FLOWS.length; f++) {
+        // Burst rhythm: Education pulses, smaller streams are steady
+        const burstNoise = SRC_PCT[FLOWS[f].src] >= 20
+          ? (0.6 + Math.random() * 0.8)  // pulsing 60-140%
+          : (0.85 + Math.random() * 0.3)  // steady 85-115%
+        emitAccum[f] += emitRates[f] * burstNoise
+
+        const toSpawn = Math.floor(emitAccum[f])
+        if (toSpawn <= 0) continue
+        emitAccum[f] -= toSpawn
+
+        const start = flowSlotStart[f]
+        const end = start + flowBudgets[f]
+        let spawned = 0
+
+        for (let i = start; i < end && spawned < toSpawn; i++) {
+          const b = i * 6
+          if (pool[b + 3] === 0) {
+            pool[b]     = 0                                         // progress
+            pool[b + 1] = 0.002 + Math.random() * 0.003            // speed
+            pool[b + 2] = f                                         // flow index
+            pool[b + 3] = 1                                         // active
+            pool[b + 4] = (Math.random() - 0.5) * (10 + paths[f].weight * 0.5)  // x jitter
+            pool[b + 5] = i                                         // slot
+            spawned++
+          }
+        }
+      }
+    }
+
+    // Spawn sparks at collision point
+    function spawnSparks(sx: number, sy: number, color: string) {
+      const [sr, sg, sb] = rgb(color)
+      const count = 2 + Math.floor(Math.random() * 3)
+      for (let s = 0; s < count; s++) {
+        for (let i = 0; i < SPARK_MAX; i++) {
+          const k = i * 8
+          if (sparks[k + 4] <= 0) {
+            const angle = Math.random() * 6.2832
+            const speed = 0.8 + Math.random() * 2.5
+            sparks[k]     = sx
+            sparks[k + 1] = sy
+            sparks[k + 2] = Math.cos(angle) * speed
+            sparks[k + 3] = Math.sin(angle) * speed
+            sparks[k + 4] = 12 + Math.random() * 18
+            sparks[k + 5] = sr
+            sparks[k + 6] = sg
+            sparks[k + 7] = sb
+            break
+          }
+        }
+      }
+    }
+
+    // Animation loop
+    let running = false
+    let raf = 0
+    let activeSource = -1  // -1 = no focus, all streams active
+    let activeDest = -1    // -1 = no focus on destinations
+
+    function frame() {
+      if (!running || !paths.length) return
+      spawn()
+
+      ctx.clearRect(0, 0, cw, ch)
+      if (grid) grid.fill(-1)
+
+      // Update & draw particles
+      for (let i = 0; i < MAX; i++) {
+        const b = i * 6
+        if (pool[b + 3] === 0) continue
+
+        pool[b] += pool[b + 1]
+        const t = pool[b]
+
+        if (t >= 1) { pool[b + 3] = 0; continue }
+
+        const p = paths[pool[b + 2]]
+        if (!p) continue
+
+        // Vertical flow: jitter is on X axis
+        const x = bez(t, p.x0, p.x1, p.x2, p.x3) + pool[b + 4]
+        const y = bez(t, p.y0, p.y1, p.y2, p.y3)
+
+        const focused = activeSource === -1 || FLOWS[pool[b + 2]].src === activeSource
+
+        // Spatial grid collision
+        const cx = Math.floor(x / CELL)
+        const cy = Math.floor(y / CELL)
+        if (grid && cx >= 0 && cx < gridCols && cy >= 0 && cy < gridRows) {
+          const ci = cy * gridCols + cx
+          const srcIdx = FLOWS[pool[b + 2]].src
+          const prev = grid[ci]
+          if (prev >= 0 && prev !== srcIdx && Math.random() < 0.015) {
+            spawnSparks(x, y, p.color)
+          }
+          grid[ci] = srcIdx
+        }
+
+        // Fade in/out
+        let a = 0.85
+        if (t < 0.06) a = (t / 0.06) * 0.85
+        else if (t > 0.9) a = ((1 - t) / 0.1) * 0.85
+
+        // Default grey (#333), stream color when source or destination is hovered
+        const flowIdx = pool[b + 2]
+        const isFocused = activeSource >= 0 || activeDest >= 0
+        const showColor = isFocused && (
+          (activeSource >= 0 && FLOWS[flowIdx].src === activeSource) ||
+          (activeDest >= 0 && FLOWS[flowIdx].dst === activeDest)
+        )
+        const [r, g, bl] = showColor ? rgb(p.color) : [51, 51, 51]
+        const fa = (isFocused && !showColor) ? a * 0.08 : a
+        const px = Math.round(x)
+        const py = Math.round(y)
+
+        ctx.fillStyle = `rgba(${r},${g},${bl},${fa * 0.15})`
+        ctx.fillRect(px - 2, py - 2, 5, 5)
+
+        ctx.fillStyle = `rgba(${r},${g},${bl},${fa})`
+        ctx.fillRect(px, py, 2, 2)
+      }
+
+      // Update & draw sparks
+      for (let i = 0; i < SPARK_MAX; i++) {
+        const k = i * 8
+        if (sparks[k + 4] <= 0) continue
+        sparks[k + 4] -= 1
+        sparks[k]     += sparks[k + 2]
+        sparks[k + 1] += sparks[k + 3]
+        sparks[k + 2] *= 0.91
+        sparks[k + 3] *= 0.91
+
+        const life = sparks[k + 4]
+        const sa = Math.min(life / 4, 1) * 0.95
+        const sx = Math.round(sparks[k])
+        const sy = Math.round(sparks[k + 1])
+
+        ctx.fillStyle = `rgba(${sparks[k + 5]},${sparks[k + 6]},${sparks[k + 7]},${sa})`
+        ctx.fillRect(sx, sy, 1, 1)
+      }
+
+      raf = requestAnimationFrame(frame)
+    }
+
+    // Visibility gating
+    const section = document.querySelector('.sankey-section')
+    if (section) {
+      new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !running) {
+            running = true
+            layout()
+            raf = requestAnimationFrame(frame)
+          } else if (!entry.isIntersecting && running) {
+            running = false
+            cancelAnimationFrame(raf)
+          }
+        })
+      }, { threshold: 0.05 }).observe(section)
+    }
+
+    // Resize handler
+    let rt: ReturnType<typeof setTimeout>
+    window.addEventListener('resize', () => {
+      clearTimeout(rt)
+      rt = setTimeout(() => {
+        if (window.innerWidth <= 768) { running = false; cancelAnimationFrame(raf); return }
+        layout()
+      }, 200)
+    })
+
+    // Theme change
+    new MutationObserver(() => {
+      cc.clear()
+      if (running) layout()
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+
+    // Hover-driven focus: highlight streams on hover
+    srcCards.forEach((card, i) => {
+      card.addEventListener('mouseenter', () => { activeSource = i })
+      card.addEventListener('mouseleave', () => { activeSource = -1 })
+    })
+    dstCards.forEach((card, i) => {
+      card.addEventListener('mouseenter', () => { activeDest = i })
+      card.addEventListener('mouseleave', () => { activeDest = -1 })
+    })
+  }
+
+  document.addEventListener('DOMContentLoaded', initSankey)
+  document.addEventListener('astro:page-load', initSankey)
+</script>

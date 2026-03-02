@@ -5,215 +5,172 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
 <PortalLayout
   title="Institute of Traditional Medicines"
-  description="A post-reductionist institution advancing traditional pharmacological systems as sophisticated predecessors to network medicine, complex adaptive systems theory, and precision therapeutics."
+  description="An Australian training institution advancing traditional pharmacological systems through clinical education, a practitioner network, and research programs across five divisions."
 >
-  <div class="progress-bar-track">
-    <div class="progress-bar-fill" id="reading-progress"></div>
-  </div>
+  <article class="home-page">
 
-  <article class="institute-home">
-
-    <!-- ═══════════════════════════════════════════════════════════
-         ZONE A — IDENTITY
-         ═══════════════════════════════════════════════════════════ -->
-
-    <!-- HERO — Dark full-bleed -->
-    <header class="hero">
+    <!-- HERO -->
+    <header class="home-hero">
       <div class="hero-inner">
-        <div class="hero-badge">Node III &mdash; Regenerative Health Ecology</div>
-        <h1 class="hero-title"><span class="hero-title-top">Sohma Institute</span><br/><span class="hero-title-bottom">of Traditional Medicines</span></h1>
-        <p class="hero-subtitle">A post-reductionist institution advancing traditional pharmacological systems as sophisticated predecessors to network medicine, complex adaptive systems theory, and precision therapeutics.</p>
+        <div class="section-label">Sohma Institute of Traditional Medicines</div>
+        <h1 class="hero-title">Training practitioners for the medicine <span class="hero-accent">that already exists.</span></h1>
+        <p class="hero-lead">An Australian training institution advancing traditional pharmacological systems as sophisticated therapeutic architectures — not alternatives to modern medicine, but its predecessors. Five clinical divisions. A credential ladder from foundation to fellowship. A practitioner network that gets smarter because you participate.</p>
+        <div class="hero-cta-row">
+          <a href="/education" class="hero-cta-primary">Explore education programs &rarr;</a>
+          <a href="/network" class="hero-cta-secondary">Enter The Field</a>
+        </div>
       </div>
     </header>
 
-    <!-- OVERVIEW — Stat strip -->
-    <section id="overview" class="stat-strip">
-      <div class="stat-strip-inner">
-        <div class="stat-item">
-          <div class="stat-numeral">III</div>
-          <div class="stat-label">Node Position</div>
-          <p class="stat-desc">Third arm of the Regenerative Health Ecology. Sits between clinical application and public dissemination.</p>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-numeral">RTO</div>
-          <div class="stat-label">Institutional Class</div>
-          <p class="stat-desc">Registered Training Organisation with articulation to university postgraduate programs.</p>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-numeral">QLD</div>
-          <div class="stat-label">Jurisdictional Anchor</div>
-          <p class="stat-desc">Headquartered in Cairns. Tropical and Indigenous medicine specialisations.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- EPISTEMOLOGY — Tinted contrast band -->
-    <section id="epistemology" class="epist-band">
-      <div class="epist-inner">
-        <div class="section-label">Foundational Intellectual Position</div>
-        <h2 class="section-title">The Post-Reductionist Correction</h2>
-
-        <p class="epist-lead">The dominant framing positions traditional medicines as "complementary" or "alternative" to evidence-based practice. This framing is intellectually bankrupt. The Institute inverts it.</p>
-
-        <div class="epist-panels">
-          <div class="epist-panel reject">
-            <div class="epist-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </div>
-            <h3>What We Reject</h3>
-            <div class="epist-items">
-              <div class="epist-item struck"><span>CAM framing</span></div>
-              <div class="epist-item struck"><span>Integrative apologetics</span></div>
-              <div class="epist-item struck"><span>Vitalism without mechanism</span></div>
-            </div>
-            <p>The "complementary and alternative" paradigm forces traditional systems into a subordinate epistemological position where they must prove themselves against criteria designed for isolated molecular entities.</p>
-          </div>
-          <div class="epist-panel advance">
-            <div class="epist-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <h3>What We Advance</h3>
-            <div class="epist-items">
-              <div class="epist-item lit"><span>Network pharmacology</span></div>
-              <div class="epist-item lit"><span>Systems biology</span></div>
-              <div class="epist-item lit"><span>Complexity therapeutics</span></div>
-            </div>
-            <p>Traditional systems as sophisticated predecessors to network medicine. Ayurveda, TCM, Unani, Kampo, and Indigenous pharmacopoeia as mature therapeutic architectures.</p>
-          </div>
-        </div>
-
-        <div class="convergence-callout">
-          <div class="convergence-title">The Convergence Thesis</div>
-          <div class="convergence-cols">
-            <div>
-              <div class="convergence-label">Traditional Logic</div>
-              <p>Constitutional classification &rarr; personalised formula &rarr; multi-constituent preparation &rarr; whole-system response assessment over time</p>
-            </div>
-            <div>
-              <div class="convergence-label">Modern Equivalent</div>
-              <p>Pharmacogenomic profiling &rarr; precision therapeutics &rarr; polypharmacology &rarr; systems biology outcome measurement via multi-omics</p>
-            </div>
-            <div>
-              <div class="convergence-label">Institute Position</div>
-              <p>These are not analogies. They are convergent descriptions of the same therapeutic reality, arrived at through different investigative methodologies.</p>
-            </div>
-          </div>
-        </div>
+    <!-- THREE PILLARS -->
+    <section class="pillars-section">
+      <span class="pillars-eyebrow">What We Do</span>
+      <h2 class="section-heading">Three interconnected systems</h2>
+      <div class="pillars-grid">
+        <a href="/education" class="pillar-card">
+          <h3>Education</h3>
+          <p>Four credential tiers from foundation to fellowship. Case-based clinical mentorship, not lecture-hall reproduction. Every qualification is built on supervised practice within real patient populations.</p>
+          <span class="pillar-link">Explore programs &rarr;</span>
+        </a>
+        <a href="/network" class="pillar-card">
+          <h3>The Field</h3>
+          <p>A distributed clinical intelligence network. Credentialed practitioners running shared protocols, contributing outcome data, and conferencing on complex cases across divisional boundaries.</p>
+          <span class="pillar-link">Enter The Field &rarr;</span>
+        </a>
+        <a href="/research" class="pillar-card">
+          <h3>Research</h3>
+          <p>Six research programs developing methodologies appropriate to the complexity of traditional medicine interventions. Whole-systems design, adaptive protocols, and practice-based evidence networks.</p>
+          <span class="pillar-link">View programs &rarr;</span>
+        </a>
       </div>
     </section>
 
 
-    <!-- ═══════════════════════════════════════════════════════════
-         ZONE B — STRUCTURE
-         ═══════════════════════════════════════════════════════════ -->
+    <!-- POSITIONING STATEMENT -->
+    <section class="position-band">
+      <div class="position-inner">
+        <span class="position-eyebrow">Foundational Position</span>
+        <h2 class="position-heading">The Post-Reductionist Correction</h2>
+        <p class="position-statement">The dominant framing positions traditional medicines as "complementary" or "alternative." The Institute rejects this. Ayurveda, TCM, Unani, Kampo, and Indigenous pharmacopoeia are sophisticated therapeutic architectures that anticipated network pharmacology, systems biology, and precision therapeutics by centuries. These are not analogies. They are convergent descriptions of the same therapeutic reality.</p>
+        <a href="/about" class="position-link">Read our full position &rarr;</a>
+      </div>
+    </section>
 
-    <!-- DIVISIONS — Dark horizontal grid -->
-    <section id="divisions" class="divisions-dark">
+
+    <!-- DIVISIONS -->
+    <section id="divisions" class="divisions-section">
       <div class="divisions-inner">
-        <div class="section-label light">Five Academic Divisions</div>
-        <h2 class="section-title light">Institute Divisions</h2>
+        <span class="divisions-eyebrow">Academic Divisions</span>
+        <h2 class="divisions-heading">Institute Divisions</h2>
         <p class="divisions-intro">Each division operates as a semi-autonomous academic unit with its own research agenda, credentialing pathway, and clinical translation pipeline.</p>
 
         <div class="divisions-grid">
-          <div class="division-col" data-accent="terracotta">
-            <div class="division-dot"></div>
+          <a href="/education" class="division-card" data-accent="terracotta">
+            <span class="division-dot"></span>
             <span class="division-num">I</span>
             <h3>Complex Herbal Medicines</h3>
             <p>Multi-constituent botanical therapeutics, phytochemical synergy, traditional pharmacopoeia systems, and clinical herbal prescribing.</p>
-            <div class="division-pills">
-              <span>Phytopharmacology</span>
-              <span>Ethnobotany</span>
-              <span>Pharmacognosy</span>
-            </div>
-          </div>
+          </a>
 
-          <div class="division-col" data-accent="warm">
-            <div class="division-dot"></div>
+          <a href="/education" class="division-card" data-accent="warm">
+            <span class="division-dot"></span>
             <span class="division-num">II</span>
-            <h3>Emergent & Entheogenic Modalities</h3>
+            <h3>Emergent &amp; Entheogenic Modalities</h3>
             <p>Cannabis medicine, psilocybin-assisted therapy, psychedelic integration, and novel consciousness-based therapeutic frameworks.</p>
-            <div class="division-pills">
-              <span>Cannabis Therapeutics</span>
-              <span>Psychedelic Therapy</span>
-              <span>Harm Reduction</span>
-            </div>
-          </div>
+          </a>
 
-          <div class="division-col" data-accent="blue">
-            <div class="division-dot"></div>
+          <a href="/education" class="division-card" data-accent="blue">
+            <span class="division-dot"></span>
             <span class="division-num">III</span>
-            <h3>Systems & Functional Medicine</h3>
+            <h3>Systems &amp; Functional Medicine</h3>
             <p>Systems biology approaches to chronic complex illness, functional diagnostics, metabolomic and genomic interpretation.</p>
-            <div class="division-pills">
-              <span>Functional Diagnostics</span>
-              <span>Metabolomics</span>
-              <span>Genomics</span>
-            </div>
-          </div>
+          </a>
 
-          <div class="division-col" data-accent="teal">
-            <div class="division-dot"></div>
+          <a href="/education" class="division-card" data-accent="teal">
+            <span class="division-dot"></span>
             <span class="division-num">IV</span>
-            <h3>Environmental & Nutritional Medicine</h3>
+            <h3>Environmental &amp; Nutritional Medicine</h3>
             <p>Toxicant exposure assessment, environmental determinants, clinical nutrition, microbiome therapeutics.</p>
-            <div class="division-pills">
-              <span>Clinical Nutrition</span>
-              <span>Toxicology</span>
-              <span>Microbiome</span>
-            </div>
-          </div>
+          </a>
 
-          <div class="division-col" data-accent="purple">
-            <div class="division-dot"></div>
+          <a href="/education" class="division-card" data-accent="purple">
+            <span class="division-dot"></span>
             <span class="division-num">V</span>
-            <h3>Lifestyle & Relational Medicine</h3>
+            <h3>Lifestyle &amp; Relational Medicine</h3>
             <p>Somatic therapy, contemplative practice, movement medicine, sleep architecture, and relational health.</p>
-            <div class="division-pills">
-              <span>Somatic Therapy</span>
-              <span>Movement Medicine</span>
-              <span>Sleep Science</span>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
 
 
-    <!-- PUBLISHING — Compact list -->
-    <section id="publishing" class="publishing-section">
-      <div class="section-label">Knowledge Dissemination</div>
-      <h2 class="section-title">Publishing Arm</h2>
+    <!-- ENTRY PATHWAY -->
+    <section class="pathway-section">
+      <span class="pathway-eyebrow">Your Entry Point</span>
+      <h2 class="section-heading">Four tiers. One credential ladder.</h2>
+      <p class="section-intro">Every practitioner enters through the Foundation Certificate. From there, the ladder builds — each tier expanding your clinical autonomy, supervisory responsibilities, and depth of access to the Institute's protocol library.</p>
+      <div class="pathway-grid">
+        <div class="pathway-tiers">
+          <a href="/education/foundation-certificate" class="pathway-tier">
+            <span class="pathway-num">1</span>
+            <div class="pathway-tier-content">
+              <h3>Foundation Certificate</h3>
+              <span class="pathway-meta">12 weeks &middot; Online + Clinical Intensive</span>
+            </div>
+          </a>
+          <a href="/education/advanced-diploma" class="pathway-tier">
+            <span class="pathway-num">2</span>
+            <div class="pathway-tier-content">
+              <h3>Advanced Diploma</h3>
+              <span class="pathway-meta">12 months &middot; Hybrid Clinical Mentorship</span>
+            </div>
+          </a>
+          <a href="/education/graduate-diploma" class="pathway-tier">
+            <span class="pathway-num">3</span>
+            <div class="pathway-tier-content">
+              <h3>Graduate Diploma</h3>
+              <span class="pathway-meta">18 months &middot; Research + Clinical Integration</span>
+            </div>
+          </a>
+          <a href="/education/fellowship" class="pathway-tier">
+            <span class="pathway-num">4</span>
+            <div class="pathway-tier-content">
+              <h3>Fellowship</h3>
+              <span class="pathway-meta">2 years &middot; Clinical Leadership + Research</span>
+            </div>
+          </a>
+        </div>
+        <div class="pathway-cta-col">
+          <p>Your credential determines your tier in The Field — the practitioner network. The network gets stronger with every practitioner who joins.</p>
+          <a href="/education" class="pathway-btn">View all programs &rarr;</a>
+        </div>
+      </div>
+    </section>
 
-      <div class="publishing-list">
-        <div class="publishing-item">
-          <span class="publishing-tag green">Flagship</span>
-          <div class="publishing-content">
-            <h3>Journal of Traditional & Network Medicine</h3>
-            <p>Peer-reviewed, open-access. Original research, systematic reviews, case series. Editorial commitment to whole-systems research design. Indexed target: DOAJ, Scopus within 3 years.</p>
-          </div>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-inner">
+        <div class="cta-primary-block">
+          <span class="cta-eyebrow">Get Started</span>
+          <h2>The Foundation Certificate is your entry point.</h2>
+          <p>12 weeks. One division. The beginning of a credential that changes how you practise.</p>
+          <a href="/contact" class="cta-primary-btn">Express interest &rarr;</a>
         </div>
-        <div class="publishing-item">
-          <span class="publishing-tag warm">Clinical Resource</span>
-          <div class="publishing-content">
-            <h3>Protocol Monograph Series</h3>
-            <p>Detailed clinical protocol documents for network practitioners. Full evidence summary, prescribing guidelines, outcome measures, contraindications. Living documents updated as registry data accumulates.</p>
-          </div>
-        </div>
-        <div class="publishing-item">
-          <span class="publishing-tag terracotta">Public Scholarship</span>
-          <div class="publishing-content">
-            <h3>Institute Working Papers</h3>
-            <p>Pre-publication working papers on emerging research, policy analysis, and theoretical contributions. Rapid publication cycle for timely commentary on regulatory developments.</p>
-          </div>
-        </div>
-        <div class="publishing-item">
-          <span class="publishing-tag blue">Education</span>
-          <div class="publishing-content">
-            <h3>Textbook Series</h3>
-            <p>Division-specific textbooks authored by Institute faculty. Written for the Institute's pedagogical framework. Incorporate the convergence thesis throughout.</p>
-          </div>
+        <div class="cta-secondary-block">
+          <a href="/education" class="cta-alt">
+            <span class="cta-alt-label">Want details first?</span>
+            <span class="cta-alt-action">View education programs &rarr;</span>
+          </a>
+          <a href="/network" class="cta-alt">
+            <span class="cta-alt-label">Already credentialed?</span>
+            <span class="cta-alt-action">Enter The Field &rarr;</span>
+          </a>
+          <a href="/whitepapers" class="cta-alt">
+            <span class="cta-alt-label">Read the evidence</span>
+            <span class="cta-alt-action">Browse whitepapers &rarr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -222,29 +179,29 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 </PortalLayout>
 
 <style>
-  /* ═══════════ GLOBAL RESETS ═══════════ */
-  .institute-home {
+  /* ═══════════ BASE ═══════════ */
+  .home-page {
     font-family: 'Manrope', sans-serif;
     color: var(--text-heading);
     padding: 0;
   }
-  .institute-home p { line-height: 1.8; margin: 0 0 1rem; }
-  .institute-home p:last-child { margin-bottom: 0; }
-  .institute-home h2, .institute-home h3 { margin: 0; }
+  .home-page p { line-height: 1.8; margin: 0 0 1rem; }
+  .home-page p:last-child { margin-bottom: 0; }
+  .home-page h2, .home-page h3 { margin: 0; }
 
-  /* Section labels (reused across zones) */
+  :global(.reading-progress) { display: none !important; }
+
   .section-label {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 12px;
     font-family: 'Manrope', sans-serif;
     font-size: 0.6875rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     color: var(--accent-dark);
-    margin-bottom: 1rem;
-    white-space: nowrap;
+    margin-bottom: 1.25rem;
   }
   .section-label::after {
     content: '';
@@ -252,320 +209,303 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     height: 1px;
     background: var(--accent-line);
   }
-  .section-label.light { color: rgba(255,255,255,0.5); }
-  .section-label.light::after { background: rgba(255,255,255,0.08); }
 
-  .section-title {
+  .section-heading {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-weight: 400;
     color: var(--text-heading);
-    line-height: 1.15;
-    margin-bottom: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.01em;
   }
-  .section-title.light { color: var(--text-on-dark); }
-
   .section-intro {
     font-size: 0.9375rem;
-    color: var(--text-body-65);
-    line-height: 1.85;
-    max-width: 680px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 640px;
     margin-bottom: 2.5rem;
   }
 
-  /* ═══════════ PROGRESS BAR ═══════════ */
-  .progress-bar-track { position: sticky; top: 0; z-index: 10; height: 3px; background: var(--bg-card); }
-  .progress-bar-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent-dark), var(--accent)); transition: width 0.1s; }
-
 
   /* ═══════════ HERO ═══════════ */
-  .hero {
-    margin-left: -40px;
-    margin-right: -40px;
-    padding: 5rem 40px 3.5rem;
-    background: var(--bg-base);
+  .home-hero {
     position: relative;
-    overflow: hidden;
+    max-width: none;
+    margin: 0 -40px;
+    padding: 0;
+    background: var(--bg-hero);
+    overflow: visible;
   }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: none;
-    pointer-events: none;
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    padding: 96px calc(2rem + 40px) 64px calc(1rem + 40px);
+    border-bottom: 1px solid var(--border-light);
   }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--accent-border-20) 30%, var(--accent-soft-20) 70%, transparent);
-  }
-  .hero-inner { position: relative; z-index: 1; max-width: 700px; }
-  .hero-badge {
-    display: inline-block;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.625rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--accent-dark);
-    border: 1px solid var(--accent-border-25);
-    padding: 5px 14px;
-    border-radius: 2px;
-    margin-bottom: 2rem;
-  }
+
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    color: var(--text-heading);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 500;
     line-height: 1.1;
-    margin: 0 0 1.5rem;
     letter-spacing: -0.01em;
+    color: var(--text-heading);
+    max-width: 800px;
+    margin: 0 0 24px;
   }
-  .hero-title-top {
-    font-size: clamp(2rem, 4vw, 2.75rem);
-  }
-  .hero-title-bottom {
-    font-size: clamp(2.5rem, 5.5vw, 3.75rem);
-  }
-  .institute-home .hero-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 400;
+
+  .hero-accent {
     font-style: italic;
-    color: var(--text-body-55);
-    line-height: 1.4;
-    margin: 0 0 2.5rem;
-    max-width: 600px;
-  }
-  /* ═══════════ STAT STRIP ═══════════ */
-  .stat-strip {
-    padding: 4rem 0;
-  }
-  .stat-strip-inner {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 0;
-  }
-  .stat-item {
-    flex: 1;
-    text-align: center;
-    padding: 0 2rem;
-  }
-  .stat-divider {
-    width: 1px;
-    height: 80px;
-    background: var(--border-medium);
-    flex-shrink: 0;
-    align-self: center;
-  }
-  .stat-numeral {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
     color: var(--accent-dark);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-  .stat-label {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.625rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--text-tertiary);
-    margin-bottom: 0.75rem;
-  }
-  .stat-desc {
-    font-size: 0.8125rem;
-    color: var(--text-body-55);
-    line-height: 1.6;
-    max-width: 240px;
-    margin: 0 auto;
-    text-align: center;
   }
 
-
-  /* ═══════════ EPISTEMOLOGY BAND ═══════════ */
-  .epist-band {
-    margin-left: -40px;
-    margin-right: -40px;
-    padding: 4rem 80px;
-    background: var(--text-on-dark);
-    border-top: 1px solid var(--bg-card);
-    border-bottom: 1px solid var(--bg-card);
-  }
-  .epist-inner { max-width: 100%; }
-  .epist-lead {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
-    font-weight: 400;
-    font-style: italic;
+  .hero-lead {
+    font-size: 1.0625rem;
     color: var(--text-secondary);
-    line-height: 1.35;
+    line-height: 1.65;
     max-width: 640px;
-    margin-bottom: 3.5rem;
-  }
-  .epist-panels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  .epist-panel {
-    padding: 2.25rem 2rem;
-    position: relative;
-  }
-  .epist-panel.reject {
-    background: var(--accent-hover-bg);
-    border-radius: 6px;
-    border: 1px solid var(--accent-soft-10);
-  }
-  .epist-panel.advance {
-    background: rgba(104,124,87,0.05);
-    border-radius: 6px;
-    border: 1px solid rgba(104,124,87,0.12);
-  }
-  .epist-icon {
-    margin-bottom: 1.25rem;
-  }
-  .epist-panel.reject .epist-icon { color: var(--accent-soft-60); }
-  .epist-panel.advance .epist-icon { color: var(--accent-green); }
-  .epist-panel h3 {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin-bottom: 1.25rem;
-  }
-  .epist-panel.reject h3 { color: var(--accent-soft-75); }
-  .epist-panel.advance h3 { color: var(--accent-green); }
-  .epist-panel p {
-    font-size: 0.8125rem;
-    color: var(--text-secondary);
-    line-height: 1.75;
+    padding-left: 1.5rem;
+    margin-bottom: 0;
   }
 
-  /* Reject items — struck through */
-  .epist-items {
+  .hero-cta-row {
+    margin-top: 3rem;
     display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-    margin-bottom: 1.25rem;
+    align-items: center;
+    gap: 2rem;
+    padding-left: 1.5rem;
   }
-  .epist-item {
-    position: relative;
-    padding: 8px 14px;
+
+  .hero-cta-primary {
+    display: inline-block;
+    padding: 12px 28px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #fff;
+    background: var(--accent-dark);
     border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
   }
-  .epist-item span {
+
+  .hero-cta-primary:hover {
+    background: var(--accent-darker-hover);
+    transform: translateY(-1px);
+  }
+
+  .hero-cta-secondary {
     font-family: 'Manrope', sans-serif;
     font-size: 0.8125rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-  }
-  .epist-item.struck {
-    background: var(--accent-hover-bg);
-    border: 1px solid var(--accent-soft-08);
-  }
-  .epist-item.struck span {
-    color: var(--accent-text-80);
+    color: var(--text-tertiary);
     text-decoration: none;
+    transition: color 0.15s;
   }
 
-  /* Advance items — glowing / highlighted */
-  .epist-item.lit {
-    background: rgba(104,124,87,0.08);
-    border: 1px solid rgba(104,124,87,0.18);
-    box-shadow: 0 0 12px rgba(104,124,87,0.06);
-  }
-  .epist-item.lit span {
-    color: var(--accent-green-deep);
+  .hero-cta-secondary:hover {
+    color: var(--accent-dark);
   }
 
-  /* Convergence callout */
-  .convergence-callout {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    padding: 2rem;
+
+  /* ═══════════ THREE PILLARS ═══════════ */
+  .pillars-section {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border-light);
   }
-  .convergence-title {
+
+  .pillars-eyebrow {
+    display: block;
     font-family: 'Manrope', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     color: var(--accent-dark);
-    margin-bottom: 1.25rem;
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
   }
-  .convergence-cols {
+
+  .pillars-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 0 2.5rem;
+    margin-top: 2.5rem;
   }
-  .convergence-label {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    font-size: 0.625rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent-dark);
-    margin-bottom: 0.5rem;
+
+  .pillar-card {
+    display: block;
+    padding: 1.75rem 0 0;
+    border-top: 1px solid var(--border-light);
+    text-decoration: none;
+    transition: border-color 0.2s;
   }
-  .convergence-cols p {
+
+  .pillar-card:hover {
+    border-color: var(--accent-dark);
+  }
+
+  .pillar-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    margin-bottom: 0.875rem;
+  }
+
+  .pillar-card p {
     font-size: 0.8125rem;
+    color: var(--text-body-60);
+    line-height: 1.75;
+    margin-bottom: 0;
+  }
+
+  .pillar-link {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent-dark);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .pillar-card:hover .pillar-link {
+    opacity: 1;
+  }
+
+
+  /* ═══════════ POSITIONING STATEMENT ═══════════ */
+  .position-band {
+    margin: 0 -40px;
+    padding: 5rem 40px;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    text-align: center;
+  }
+
+  .position-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .position-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-dark);
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .home-page .position-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    letter-spacing: -0.01em;
+    margin: 0 0 1.5rem;
+  }
+
+  .position-statement {
+    font-size: 1.0625rem;
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.85;
+  }
+
+  .position-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent-dark);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .position-link:hover {
+    color: var(--accent-darker-hover);
   }
 
 
-  /* ═══════════ DIVISIONS DARK BAND ═══════════ */
-  .divisions-dark {
-    margin-left: -40px;
-    margin-right: -40px;
-    padding: 4.5rem 40px;
-    background: linear-gradient(180deg, var(--bg-dark-start) 0%, var(--bg-dark-end) 100%);
+  /* ═══════════ DIVISIONS ═══════════ */
+  .divisions-section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border-light);
   }
+
   .divisions-inner { max-width: 100%; }
+
+  .divisions-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-dark);
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .home-page .divisions-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
+  }
+
   .divisions-intro {
     font-size: 0.9375rem;
-    color: rgba(240,235,229,0.4);
+    color: var(--text-secondary);
     line-height: 1.75;
     max-width: 620px;
     margin-bottom: 2.5rem;
   }
+
   .divisions-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1px;
+    gap: 0 2rem;
   }
-  .division-col {
-    padding: 1.75rem 1.25rem;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.04);
-    border-radius: 4px;
-    transition: background 0.25s, border-color 0.25s;
+
+  .division-card {
+    display: block;
+    padding: 1.75rem 0;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--border-light);
+    border-radius: 0;
+    text-decoration: none;
+    transition: opacity 0.2s;
   }
-  .division-col:hover {
-    background: rgba(255,255,255,0.05);
-    border-color: rgba(255,255,255,0.08);
+
+  .division-card:hover {
+    opacity: 0.8;
   }
+
   .division-dot {
+    display: block;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     margin-bottom: 1rem;
   }
+
   [data-accent="terracotta"] .division-dot { background: var(--accent-dark); }
   [data-accent="warm"] .division-dot { background: var(--chart-warm); }
   [data-accent="blue"] .division-dot { background: var(--chart-blue); }
@@ -573,124 +513,342 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   [data-accent="purple"] .division-dot { background: var(--chart-purple); }
 
   .division-num {
+    display: block;
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
-    color: rgba(240,235,229,0.2);
+    color: var(--text-heading);
+    opacity: 0.35;
     line-height: 1;
     margin-bottom: 0.75rem;
   }
-  .division-col h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--text-on-dark);
-    line-height: 1.3;
-    margin-bottom: 0.75rem;
-  }
-  .division-col p {
-    font-size: 0.75rem;
-    color: rgba(240,235,229,0.4);
-    line-height: 1.65;
-    margin-bottom: 1rem;
-  }
-  .division-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-  }
-  .division-pills span {
-    font-size: 0.5625rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: rgba(240,235,229,0.3);
-    border: 1px solid rgba(240,235,229,0.08);
-    border-radius: 2px;
-    padding: 2px 6px;
-  }
 
-
-  /* ═══════════ PUBLISHING LIST ═══════════ */
-  .publishing-section {
-    padding: 3rem 0 2rem;
-  }
-  .publishing-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 2rem;
-  }
-  .publishing-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
-    padding: 1.25rem 1.5rem;
-    background: var(--bg-surface);
-    border-bottom: 1px solid var(--bg-card);
-    transition: background 0.15s;
-  }
-  .publishing-item:last-child { border-bottom: none; }
-  .publishing-item:hover { background: var(--bg-card); }
-
-  .publishing-tag {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.5625rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 3px 8px;
-    border-radius: 2px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-top: 4px;
-  }
-  .publishing-tag.green { color: var(--accent-green); background: rgba(104,124,87,0.08); }
-  .publishing-tag.warm { color: var(--chart-warm); background: var(--chart-warm-bg); }
-  .publishing-tag.terracotta { color: var(--accent-dark); background: var(--accent-active-bg); }
-  .publishing-tag.blue { color: var(--chart-blue); background: var(--chart-blue-bg); }
-
-  .publishing-content h3 {
+  .division-card h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--text-heading);
-    margin-bottom: 0.375rem;
     line-height: 1.3;
+    margin-bottom: 0.75rem;
   }
-  .publishing-content p {
-    font-size: 0.8125rem;
+
+  .division-card p {
+    font-size: 0.75rem;
     color: var(--text-body-60);
     line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+
+  /* ═══════════ ENTRY PATHWAY ═══════════ */
+  .pathway-section {
+    padding: 7rem 0 5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .pathway-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-dark);
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .pathway-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 4rem;
+    margin-top: 2.5rem;
+  }
+
+  .pathway-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pathway-tier {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border-light);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+
+  .pathway-tier:hover {
+    border-color: var(--accent-dark);
+  }
+
+  .pathway-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    flex-shrink: 0;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .pathway-tier:hover .pathway-num,
+  .pathway-tier.active .pathway-num {
+    border-color: var(--accent-dark);
+    color: var(--accent-dark);
+  }
+
+  .pathway-tier.active {
+    border-color: var(--accent-dark);
+  }
+
+  .pathway-tier-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    margin-bottom: 0.25rem;
+  }
+
+  .pathway-meta {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-tertiary);
+  }
+
+  .pathway-cta-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .pathway-cta-col p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .pathway-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #fff;
+    background: var(--accent-dark);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+  }
+
+  .pathway-btn:hover {
+    background: var(--accent-darker-hover);
+    transform: translateY(-1px);
+  }
+
+
+  /* ═══════════ CTA ═══════════ */
+  .cta-section {
+    margin: 0 -40px;
+    padding: 0;
+    background: #141210;
+    border-bottom: none;
+  }
+
+  .cta-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(196, 110, 66, 0.7);
+    margin-bottom: 1rem;
+  }
+
+  .cta-primary-block h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #e8dfd0;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+  }
+
+  .cta-primary-block p {
+    font-size: 1rem;
+    color: rgba(208, 200, 188, 0.55);
+    line-height: 1.7;
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .cta-primary-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #141210;
+    background: var(--accent-dark);
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .cta-primary-btn:hover {
+    background: #d4773a;
+    transform: translateY(-1px);
+  }
+
+  .cta-secondary-block {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .cta-alt {
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .cta-alt-label {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(208, 200, 188, 0.35);
+    margin-bottom: 0.375rem;
+  }
+
+  .cta-alt-action {
+    display: block;
+    font-size: 0.8125rem;
+    color: rgba(208, 200, 188, 0.6);
+    transition: color 0.2s;
+  }
+
+  .cta-alt:hover .cta-alt-action {
+    color: #e8dfd0;
   }
 
 
   /* ═══════════ RESPONSIVE ═══════════ */
   @media (max-width: 1024px) {
+    .home-hero { margin: 0 -20px; }
+    .hero-inner { padding: 64px calc(1.5rem + 20px) 48px calc(1rem + 20px); }
+    .position-band { margin: 0 -20px; padding: 5rem 20px; }
     .divisions-grid { grid-template-columns: repeat(3, 1fr); }
+    .pathway-grid { grid-template-columns: 1fr; }
+    .cta-section { margin: 0 -20px; }
   }
 
   @media (max-width: 768px) {
-    .hero { padding: 3.5rem 40px 2.5rem; }
+    .hero-inner { padding: 48px 1.25rem 36px; }
     .hero-title { font-size: 2.25rem; }
-
-    .stat-strip-inner { flex-direction: column; align-items: center; gap: 2rem; }
-    .stat-divider { width: 60px; height: 1px; }
-    .stat-item { padding: 0; }
-
-    .epist-panels { grid-template-columns: 1fr; }
-    .convergence-cols { grid-template-columns: 1fr; }
-
+    .hero-lead { padding-left: 0; }
+    .hero-cta-row { padding-left: 0; flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .home-page .position-heading { font-size: 2rem; }
     .divisions-grid { grid-template-columns: 1fr 1fr; }
-
-    .section-title { font-size: 1.75rem; }
+    .pathway-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .cta-inner { padding: 4rem 1.25rem; }
+    .cta-primary-block h2 { font-size: 2.25rem; }
+    .cta-secondary-block { flex-direction: column; gap: 1.5rem; }
   }
 
   @media (max-width: 480px) {
     .divisions-grid { grid-template-columns: 1fr; }
-    .hero-title { font-size: 1.85rem; }
-    .stat-numeral { font-size: 2.5rem; }
+    .hero-title { font-size: 2rem; }
   }
 </style>
 
+<script>
+  function initHomeReveal() {
+    const targets = document.querySelectorAll('.pillar-card, .pathway-tier')
+    if (!targets.length) return
+
+    targets.forEach(el => {
+      const htmlEl = el as HTMLElement
+      htmlEl.style.opacity = '0'
+      htmlEl.style.transform = 'translateY(12px)'
+      htmlEl.style.transition = 'opacity 0.5s ease, transform 0.5s ease'
+    })
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement
+          el.style.opacity = '1'
+          el.style.transform = 'translateY(0)'
+          observer.unobserve(el)
+        }
+      })
+    }, { threshold: 0.15 })
+
+    targets.forEach(el => observer.observe(el))
+  }
+
+  function initPathwayActive() {
+    const tiers = document.querySelectorAll('.pathway-tier')
+    if (!tiers.length) return
+
+    function updateActive() {
+      const midY = window.innerHeight / 2
+      let closest: Element | null = null
+      let closestDist = Infinity
+
+      tiers.forEach(tier => {
+        const rect = tier.getBoundingClientRect()
+        const center = rect.top + rect.height / 2
+        const dist = Math.abs(center - midY)
+        if (dist < closestDist && rect.top < window.innerHeight && rect.bottom > 0) {
+          closestDist = dist
+          closest = tier
+        }
+      })
+
+      tiers.forEach(tier => {
+        if (tier === closest && closestDist < 200) {
+          tier.classList.add('active')
+        } else {
+          tier.classList.remove('active')
+        }
+      })
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true })
+    updateActive()
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { initHomeReveal(); initPathwayActive(); })
+  document.addEventListener('astro:page-load', () => { initHomeReveal(); initPathwayActive(); })
+</script>

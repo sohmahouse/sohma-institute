@@ -67,29 +67,17 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
 
         <!-- Section nav -->
         <nav class="sidebar-nav" aria-label="Navigation">
-          <div class="sidebar-dropdown" id="sidebar-education">
-            <a href="/education" class:list={['sidebar-nav-link sidebar-dropdown-toggle-link', { active: currentPath.startsWith('/education') }]}>Education</a>
-            <div class="sidebar-dropdown-items">
-              <a href="/education/foundation-certificate" class:list={['sidebar-sub-link', { active: currentPath === '/education/foundation-certificate' }]}>Foundation Certificate</a>
-              <a href="/education/advanced-diploma" class:list={['sidebar-sub-link', { active: currentPath === '/education/advanced-diploma' }]}>Advanced Diploma</a>
-              <a href="/education/graduate-diploma" class:list={['sidebar-sub-link', { active: currentPath === '/education/graduate-diploma' }]}>Graduate Diploma</a>
-              <a href="/education/fellowship" class:list={['sidebar-sub-link', { active: currentPath === '/education/fellowship' }]}>Fellowship</a>
-              <a href="/education/pedagogy" class:list={['sidebar-sub-link', { active: currentPath === '/education/pedagogy' }]}>Pedagogy</a>
-            </div>
-          </div>
+          <a href="/" class:list={['sidebar-nav-link', { active: currentPath === '/' }]}>Home</a>
+          <a href="/education" class:list={['sidebar-nav-link', { active: currentPath.startsWith('/education') }]}>Education</a>
           <a href="/research" class:list={['sidebar-nav-link', { active: currentPath === '/research' }]}>Research</a>
 
           <a href="/whitepapers" class:list={['sidebar-nav-link', { active: !!activeArticle || currentPath.startsWith('/whitepapers') }]}>Whitepapers</a>
 
           <a href="/network" class:list={['sidebar-nav-link', { active: currentPath === '/network' }]}>Network</a>
           <a href="/publishing" class:list={['sidebar-nav-link', { active: currentPath === '/publishing' }]}>Publishing</a>
-
-          <div class="sidebar-dropdown" id="sidebar-about">
-            <a href="/about" class:list={['sidebar-nav-link sidebar-dropdown-toggle-link', { active: currentPath === '/about' || currentPath === '/sustainability' }]}>About</a>
-            <div class="sidebar-dropdown-items">
-              <a href="/sustainability" class:list={['sidebar-sub-link', { active: currentPath === '/sustainability' }]}>Financial Transparency</a>
-            </div>
-          </div>
+          <a href="/transparency" class:list={['sidebar-nav-link', { active: currentPath === '/transparency' }]}>Transparency</a>
+          <a href="/about" class:list={['sidebar-nav-link', { active: currentPath === '/about' }]}>About</a>
+          <a href="/contact" class:list={['sidebar-nav-link', { active: currentPath === '/contact' }]}>Contact</a>
         </nav>
 
         <!-- Footer with theme toggle -->
@@ -175,6 +163,20 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
               ))}
             </ul>
           </nav>
+          <div class="toc-actions" id="toc-actions">
+            <button class="wp-action-btn" data-action="share" type="button" title="Copy article as formatted text">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+            <button class="wp-action-btn" data-action="cite" type="button" title="Copy formatted citation (APA, Harvard, BibTeX)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+              <span>Cite</span>
+            </button>
+            <button class="wp-action-btn" data-action="pdf" type="button" title="Download as PDF">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>PDF</span>
+            </button>
+          </div>
         </div>
       </aside>
     )}
@@ -603,8 +605,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
     width: 260px;
     flex-shrink: 0;
     height: 100vh;
-    background: var(--bg-sidebar-right);
-    border-left: 1px solid var(--border-light);
+    background: var(--bg-card);
+    border-left: none;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -623,7 +625,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
   }
 
   .toc-inner {
-    padding: 32px 16px 32px 0;
+    padding: 32px 40px 32px 0;
     display: flex;
     flex-direction: column;
     min-height: 100%;
@@ -633,6 +635,31 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
     flex: 1;
   }
 
+  .toc-actions {
+    display: flex;
+    gap: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+    margin-top: 1rem;
+    padding-left: 6px;
+    padding-right: 6px;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+  }
+
+  .toc-actions .wp-action-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 4px;
+  }
+
+  .toc-actions.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 
   .toc-heading {
     display: block;
@@ -653,11 +680,11 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
   }
 
   .toc-list li {
-    margin: 0 0 1px;
+    margin: 0 0 3px;
   }
 
   .toc-level-1 + .toc-level-1 {
-    margin-top: 4px;
+    margin-top: 6px;
   }
 
   .toc-level-2:first-child,
@@ -680,11 +707,11 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
   .toc-link {
     display: block;
     font-family: 'Manrope', sans-serif;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 400;
     color: var(--text-tertiary);
     text-decoration: none;
-    padding: 5px 8px 5px 12px;
+    padding: 5px 20px 5px 12px;
     border-left: 2px solid transparent;
     transition: all 0.15s;
     line-height: 1.45;
@@ -1037,6 +1064,88 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
       font-size: 14px;
     }
   }
+
+  /* ===== PRINT / PDF ===== */
+  @media print {
+    /* Hide chrome */
+    .portal-sidebar-left,
+    .sidebar-overlay,
+    .portal-mobile-header,
+    .reading-progress,
+    .mobile-toc,
+    .portal-sidebar-right,
+    :global(.wp-actions),
+    :global(.wp-breadcrumbs),
+    :global(.wp-meta-row) {
+      display: none !important;
+    }
+
+    /* Full-width content */
+    .portal-layout {
+      display: block !important;
+    }
+
+    .portal-main {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* Zero page margins — background fills entire page */
+    @page {
+      margin: 0;
+    }
+
+    /* Preserve theme colours — background fills entire page */
+    :global(html), :global(body) {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+      background: var(--bg-surface) !important;
+    }
+
+    /* All-sides padding so text never touches edges */
+    :global(.whitepaper) {
+      padding: 1.5cm 3cm !important;
+    }
+
+    /* Article header */
+    :global(.wp-header) {
+      margin: 0 !important;
+      break-after: avoid;
+    }
+
+    :global(.wp-hero-content) {
+      padding: 1.5cm 0 30px !important;
+    }
+
+    /* Print-only author block */
+    :global(.wp-print-author) {
+      display: block !important;
+    }
+
+    /* Body typography for print */
+    :global(.wp-body) {
+      max-width: 100% !important;
+      padding: 0 0 1.5cm !important;
+    }
+
+    /* Avoid orphaned headings */
+    :global(h1), :global(h2), :global(h3), :global(h4) {
+      break-after: avoid;
+    }
+
+    /* Keep callouts together */
+    :global(.wp-callout) {
+      break-inside: avoid;
+    }
+
+    /* Keep tables together where possible */
+    :global(.wp-table-wrapper), :global(.wp-table-wrap) {
+      break-inside: avoid;
+    }
+  }
 </style>
 
 <script>
@@ -1299,35 +1408,131 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
     if (actionBtn) {
       const action = actionBtn.dataset.action
       if (action === 'share') {
+        const wp = document.querySelector('.whitepaper') as HTMLElement | null
         const titleEl = document.querySelector('.wp-title')
-        const authorEl = document.querySelector('.wp-meta-item')
         const bodyEl = document.querySelector('.wp-body')
         const title = titleEl?.textContent?.trim() || document.title
-        const author = authorEl?.textContent?.trim().replace(/\s+/g, ' ') || 'Sohma Institute'
         const url = window.location.href
 
-        // Extract formatted text from the article body
-        function extractText(el: Element): string {
-          const lines: string[] = []
-          el.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, blockquote, figcaption, .callout-body, .ref-item').forEach(node => {
+        // Pull metadata from data attributes
+        const subtitle = wp?.dataset.subtitle || ''
+        const category = wp?.dataset.category || ''
+        const date = wp?.dataset.date || ''
+        const readingTime = wp?.dataset.readingTime || ''
+        const summary = wp?.dataset.summary || ''
+
+        // Author info
+        const creditEls = document.querySelectorAll('.wp-credit')
+        const authorCredit = creditEls[0]
+        const authorName = authorCredit?.querySelector('.wp-credit-name')?.textContent?.trim() || 'Cameron Rosin'
+        const authorRole = authorCredit?.querySelector('.wp-credit-title')?.textContent?.trim() || 'Head of Clinical Education'
+        const institution = 'Sohma Institute of Traditional Medicines, Cairns QLD'
+        const editor = wp?.dataset.editor || ''
+        const editorRole = wp?.dataset.editorRole || ''
+
+        // Meta line: date | category | reading time
+        const metaParts = [date, category, readingTime ? readingTime + ' read' : ''].filter(Boolean)
+        const metaLine = metaParts.join('  |  ')
+
+        // Extract surname for citation: "Cameron Rosin" → "Rosin, C."
+        const nameParts = authorName.trim().split(/\s+/)
+        const surname = nameParts.length > 1 ? nameParts[nameParts.length - 1] : nameParts[0]
+        const initial = nameParts[0] ? nameParts[0][0] + '.' : ''
+        const yearMatch = date.match(/\d{4}/)
+        const year = yearMatch ? yearMatch[0] : String(new Date().getFullYear())
+        const permalink = url.replace(/^https?:\/\/localhost:\d+/, 'https://sohma.institute')
+
+        // Build rich HTML body
+        function buildHtml(el: Element): string {
+          const parts: string[] = []
+          for (const node of el.children) {
             const tag = node.tagName.toLowerCase()
-            const text = node.textContent?.trim()
-            if (!text) return
-            if (tag === 'h1') lines.push('\n' + text.toUpperCase() + '\n')
-            else if (tag === 'h2') lines.push('\n## ' + text + '\n')
-            else if (tag === 'h3') lines.push('\n### ' + text + '\n')
-            else if (tag === 'h4' || tag === 'h5' || tag === 'h6') lines.push('\n#### ' + text + '\n')
-            else if (tag === 'li') lines.push('  - ' + text)
-            else if (tag === 'blockquote') lines.push('\n> ' + text + '\n')
-            else lines.push(text)
+            if (['h2','h3','h4','h5','h6'].includes(tag)) {
+              parts.push(`<${tag}>${node.innerHTML}</${tag}>`)
+            } else if (tag === 'p') {
+              parts.push(`<p>${node.innerHTML}</p>`)
+            } else if (tag === 'ul' || tag === 'ol') {
+              parts.push(`<${tag}>${node.innerHTML}</${tag}>`)
+            } else if (tag === 'blockquote') {
+              parts.push(`<blockquote>${node.innerHTML}</blockquote>`)
+            } else if (tag === 'table') {
+              parts.push(`<table>${node.innerHTML}</table>`)
+            } else if (tag === 'section' || tag === 'div') {
+              parts.push(buildHtml(node))
+            } else if (tag === 'figure') {
+              const cap = node.querySelector('figcaption')
+              if (cap) parts.push(`<p><em>${cap.innerHTML}</em></p>`)
+            }
+          }
+          return parts.join('')
+        }
+
+        const bodyHtml = bodyEl ? buildHtml(bodyEl) : ''
+
+        // Assemble full HTML document
+        const htmlContent = [
+          `<h1>${title}</h1>`,
+          subtitle ? `<p><em>${subtitle}</em></p>` : '',
+          `<p><strong>${authorName}</strong><br>${authorRole}<br>${institution}</p>`,
+          editor ? `<p><em>Editor:</em> ${editor}${editorRole ? ', ' + editorRole : ''}</p>` : '',
+          `<p>${metaLine}</p>`,
+          `<h2>Abstract</h2>`,
+          `<p>${summary}</p>`,
+          `<hr>`,
+          bodyHtml,
+          `<hr>`,
+          `<h2>Suggested Citation</h2>`,
+          `<p>${surname}, ${initial} (${year}). ${title}${subtitle ? ': ' + subtitle : ''}. <em>Sohma Institute of Traditional Medicines</em>. ${permalink}</p>`,
+          `<h2>Disclosure</h2>`,
+          `<p>This material is produced for clinical education purposes and does not constitute medical advice. Content is reviewed by the Sohma Institute Academic Board.</p>`,
+        ].join('')
+
+        // Plain text fallback
+        function extractPlain(el: Element): string {
+          const lines: string[] = []
+          el.querySelectorAll('h2, h3, h4, h5, h6, p, li, blockquote').forEach(node => {
+            const t = node.textContent?.trim()
+            if (!t) return
+            const tg = node.tagName.toLowerCase()
+            if (tg.startsWith('h')) lines.push('\n' + t + '\n')
+            else if (tg === 'li') lines.push('  - ' + t)
+            else lines.push(t)
           })
           return lines.join('\n')
         }
 
-        const bodyText = bodyEl ? extractText(bodyEl) : ''
-        const fullText = `${title}\n${author}\n${url}\n${'—'.repeat(40)}\n${bodyText}`
+        const sep = '—'.repeat(40)
+        const plainText = [
+          title.toUpperCase(),
+          subtitle ? subtitle : '',
+          '',
+          authorName,
+          authorRole,
+          institution,
+          editor ? `Editor: ${editor}${editorRole ? ', ' + editorRole : ''}` : '',
+          '',
+          metaLine,
+          '',
+          'Abstract',
+          summary,
+          '',
+          sep,
+          bodyEl ? extractPlain(bodyEl) : '',
+          sep,
+          '',
+          'Suggested Citation',
+          `${surname}, ${initial} (${year}). ${title}${subtitle ? ': ' + subtitle : ''}. Sohma Institute of Traditional Medicines. ${permalink}`,
+          '',
+          'Disclosure',
+          'This material is produced for clinical education purposes and does not constitute medical advice. Content is reviewed by the Sohma Institute Academic Board.',
+        ].filter(l => l !== undefined).join('\n')
 
-        navigator.clipboard.writeText(fullText).then(() => {
+        // Copy as rich HTML with plain text fallback
+        const htmlBlob = new Blob([htmlContent], { type: 'text/html' })
+        const textBlob = new Blob([plainText], { type: 'text/plain' })
+        navigator.clipboard.write([
+          new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob })
+        ]).then(() => {
           const span = actionBtn.querySelector('span')
           const orig = span?.textContent
           actionBtn.classList.add('copied')
@@ -1338,13 +1543,66 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
           }, 1500)
         })
       } else if (action === 'cite') {
+        const wp = document.querySelector('.whitepaper') as HTMLElement | null
         const titleEl = document.querySelector('.wp-title')
-        const authorEl = document.querySelector('.wp-meta-item')
         const title = titleEl?.textContent?.trim() || document.title
-        const author = authorEl?.textContent?.trim() || 'Sohma Institute'
-        const year = new Date().getFullYear()
-        const citation = `${author} (${year}). ${title}. Sohma Institute. ${window.location.href}`
-        navigator.clipboard.writeText(citation).then(() => {
+        const subtitle = wp?.dataset.subtitle || ''
+        const date = wp?.dataset.date || ''
+        const url = window.location.href
+
+        // Author from credit structure
+        const creditEls = document.querySelectorAll('.wp-credit')
+        const authorCredit = creditEls[0]
+        const authorName = authorCredit?.querySelector('.wp-credit-name')?.textContent?.trim() || 'Cameron Rosin'
+        const nameParts = authorName.trim().split(/\s+/)
+        const surname = nameParts.length > 1 ? nameParts[nameParts.length - 1] : nameParts[0]
+        const firstName = nameParts[0] || ''
+        const initial = firstName ? firstName[0] + '.' : ''
+        const yearMatch = date.match(/\d{4}/)
+        const year = yearMatch ? yearMatch[0] : String(new Date().getFullYear())
+        const permalink = url.replace(/^https?:\/\/localhost:\d+/, 'https://sohma.institute')
+        const fullTitle = title + (subtitle ? ': ' + subtitle : '')
+        const slug = permalink.split('/').filter(Boolean).pop() || ''
+
+        // APA 7th edition
+        const apa = `${surname}, ${initial} (${year}). ${fullTitle}. Sohma Institute of Traditional Medicines. ${permalink}`
+
+        // Harvard
+        const harvard = `${surname}, ${initial} ${year}, '${fullTitle}', Sohma Institute of Traditional Medicines, viewed ${new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}, <${permalink}>.`
+
+        // BibTeX
+        const bibtex = `@article{${surname.toLowerCase()}${year}${slug.replace(/-/g, '')},
+  author    = {${surname}, ${firstName}},
+  title     = {${fullTitle}},
+  year      = {${year}},
+  publisher = {Sohma Institute of Traditional Medicines},
+  url       = {${permalink}}
+}`
+
+        // Combined plain text with all three formats
+        const citePlain = [
+          'APA',
+          apa,
+          '',
+          'Harvard',
+          harvard,
+          '',
+          'BibTeX',
+          bibtex,
+        ].join('\n')
+
+        // Rich HTML version
+        const citeHtml = [
+          `<p><strong>APA</strong><br>${surname}, ${initial} (${year}). ${fullTitle}. <em>Sohma Institute of Traditional Medicines</em>. <a href="${permalink}">${permalink}</a></p>`,
+          `<p><strong>Harvard</strong><br>${surname}, ${initial} ${year}, '${fullTitle}', <em>Sohma Institute of Traditional Medicines</em>, viewed ${new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}, &lt;${permalink}&gt;.</p>`,
+          `<p><strong>BibTeX</strong><br><code>${bibtex.replace(/\n/g, '<br>')}</code></p>`,
+        ].join('')
+
+        const htmlBlob = new Blob([citeHtml], { type: 'text/html' })
+        const textBlob = new Blob([citePlain], { type: 'text/plain' })
+        navigator.clipboard.write([
+          new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob })
+        ]).then(() => {
           const span = actionBtn.querySelector('span')
           const orig = span?.textContent
           actionBtn.classList.add('copied')
@@ -1412,6 +1670,22 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
     toc.style.marginTop = offset + 'px'
   }
 
+  function initTocActions() {
+    const metaRow = document.querySelector('.wp-meta-row') as HTMLElement
+    const tocActions = document.getElementById('toc-actions')
+    if (!metaRow || !tocActions) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        tocActions.classList.remove('visible')
+      } else {
+        tocActions.classList.add('visible')
+      }
+    }, { threshold: 0 })
+
+    observer.observe(metaRow)
+  }
+
   function initPage() {
     initPortalSidebar()
     initScrollSpy()
@@ -1419,6 +1693,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
     initMobileToc()
     initReadingProgress()
     initTocOffset()
+    initTocActions()
   }
 
   document.addEventListener('DOMContentLoaded', initPage)

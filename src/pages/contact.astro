@@ -8,38 +8,176 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 >
   <article class="contact-page">
 
+    <!-- HERO -->
     <header class="contact-hero">
-      <div class="section-label">Contact</div>
-      <h1 class="hero-title">Get in touch.</h1>
-      <p class="hero-lead">For practitioner enquiries, research collaboration, institutional partnerships, or general questions about the Institute.</p>
+      <div class="hero-inner">
+        <div class="section-label">Contact</div>
+        <h1 class="hero-title">Every programme, every collaboration, every credential — <span class="hero-accent">started with a conversation.</span></h1>
+        <p class="hero-lead">Whether you're exploring credentials, proposing research, joining the practitioner network, or have a question we haven't anticipated — we'd like to hear from you. We respond within two business days.</p>
+      </div>
     </header>
 
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-        <h3>Email</h3>
-        <a href="mailto:hello@sohma.house" class="contact-link">hello@sohma.house</a>
-        <p>General enquiries. We aim to respond within 2 business days.</p>
+
+    <!-- PATHWAY BANDS -->
+    <section class="pathways-section" id="pathways">
+      <div class="section-header">
+        <h2 class="section-heading">What brings you here?</h2>
       </div>
 
-      <div class="contact-card">
-        <div class="contact-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div class="pathway-band" data-pathway="education">
+        <div class="pathway-band-accent"></div>
+        <div class="pathway-band-inner">
+          <div class="pathway-band-left">
+            <div class="pathway-band-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3 class="pathway-band-title">Prospective Student</h3>
+          </div>
+          <div class="pathway-band-right">
+            <p>Interested in credentials — Foundation Certificate through Fellowship. VET Student Loans eligible. Intensive and distance modes available.</p>
+            <div class="pathway-actions">
+              <a href="/education" class="pathway-link">View education programmes &rarr;</a>
+              <button type="button" class="pathway-cta" data-type="education">Send an education enquiry</button>
+            </div>
+          </div>
         </div>
-        <h3>Location</h3>
-        <p class="contact-address">Cairns, Far North Queensland<br/>Australia</p>
       </div>
 
-      <div class="contact-card">
-        <div class="contact-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+      <div class="pathway-band" data-pathway="research">
+        <div class="pathway-band-accent"></div>
+        <div class="pathway-band-inner">
+          <div class="pathway-band-left">
+            <div class="pathway-band-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v4H9z"/><path d="M12 7v5"/><path d="M8 12h8"/><path d="M10 12v4a2 2 0 0 0 4 0v-4"/><path d="M7 21h10"/><path d="M8 21v-3"/><path d="M16 21v-3"/></svg>
+            </div>
+            <h3 class="pathway-band-title">Researcher or Institution</h3>
+          </div>
+          <div class="pathway-band-right">
+            <p>Collaboration proposals, data access requests, funding partnerships, and institutional articulation agreements. Six active research programs across five divisions.</p>
+            <div class="pathway-actions">
+              <a href="/research" class="pathway-link">View research programmes &rarr;</a>
+              <button type="button" class="pathway-cta" data-type="research">Send a research enquiry</button>
+            </div>
+          </div>
         </div>
-        <h3>Partnerships</h3>
-        <p>For research collaboration, institutional articulation, or consulting enquiries — reach out via email with your proposal.</p>
       </div>
-    </div>
+
+      <div class="pathway-band" data-pathway="network">
+        <div class="pathway-band-accent"></div>
+        <div class="pathway-band-inner">
+          <div class="pathway-band-left">
+            <div class="pathway-band-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M5 8v2a4 4 0 0 0 4 4h2"/><path d="M19 8v2a4 4 0 0 1-4 4h-2"/></svg>
+            </div>
+            <h3 class="pathway-band-title">Practitioner</h3>
+          </div>
+          <div class="pathway-band-right">
+            <p>Joining The Field — the distributed practitioner network. CPD pathways, clinical protocol access, registry participation, and case conferencing.</p>
+            <div class="pathway-actions">
+              <a href="/network" class="pathway-link">Learn about The Field &rarr;</a>
+              <button type="button" class="pathway-cta" data-type="network">Send a network enquiry</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pathway-band" data-pathway="general">
+        <div class="pathway-band-accent"></div>
+        <div class="pathway-band-inner">
+          <div class="pathway-band-left">
+            <div class="pathway-band-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <h3 class="pathway-band-title">Consulting or General</h3>
+          </div>
+          <div class="pathway-band-right">
+            <p>TGA regulatory pathway consulting, government policy advisory, curriculum consulting, media enquiries, or anything else entirely.</p>
+            <div class="pathway-actions">
+              <button type="button" class="pathway-cta" data-type="general">Send an enquiry</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ENQUIRY FORM -->
+    <section class="enquiry-section" id="enquiry">
+      <div class="section-header">
+        <h2 class="section-heading">Send an Enquiry</h2>
+        <p class="section-intro">All fields marked * are required.</p>
+      </div>
+
+      <form class="enquiry-form" id="enquiry-form" novalidate>
+        <div class="enquiry-row">
+          <div class="enquiry-field">
+            <label for="eq-name">Full Name *</label>
+            <input type="text" id="eq-name" name="name" required autocomplete="name" />
+          </div>
+          <div class="enquiry-field">
+            <label for="eq-email">Email *</label>
+            <input type="email" id="eq-email" name="email" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="enquiry-row">
+          <div class="enquiry-field">
+            <label for="eq-organisation">Organisation</label>
+            <input type="text" id="eq-organisation" name="organisation" />
+          </div>
+          <div class="enquiry-field">
+            <label for="eq-role">Your Role</label>
+            <input type="text" id="eq-role" name="role" placeholder="e.g. Practitioner, Researcher" />
+          </div>
+        </div>
+
+        <div class="enquiry-field">
+          <label for="eq-type">Enquiry Type *</label>
+          <select id="eq-type" name="type" required>
+            <option value="" disabled selected>Select...</option>
+            <option value="education">Education</option>
+            <option value="research">Research Collaboration</option>
+            <option value="network">Network Membership</option>
+            <option value="consulting">Consulting</option>
+            <option value="publishing">Publishing</option>
+            <option value="general">General Enquiry</option>
+          </select>
+        </div>
+
+        <div class="enquiry-field">
+          <label for="eq-message">Message *</label>
+          <textarea id="eq-message" name="message" rows="5" required placeholder="Tell us how we can help."></textarea>
+        </div>
+
+        <button type="submit" class="enquiry-submit">Send Enquiry</button>
+        <p class="enquiry-note">Your enquiry will be sent to hello@sohma.house</p>
+      </form>
+
+      <div class="enquiry-success" id="enquiry-success" hidden>
+        <div class="success-check">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Enquiry Sent</h3>
+        <p>Thank you. We'll review your enquiry and respond within 2 business days.</p>
+        <button type="button" class="enquiry-reset" id="enquiry-reset">Send Another</button>
+      </div>
+    </section>
+
+
+    <!-- DARK CLOSING BAND -->
+    <section class="contact-cta">
+      <div class="contact-cta-inner">
+        <span class="contact-cta-eyebrow">Direct</span>
+        <a href="mailto:hello@sohma.house" class="contact-cta-email">hello@sohma.house</a>
+        <p class="contact-cta-detail">Cairns, Far North Queensland &mdash; We respond within 2 business days.</p>
+        <div class="contact-cta-social">
+          <a href="https://www.linkedin.com/company/sohma-house" target="_blank" rel="noopener noreferrer" class="contact-cta-social-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
   </article>
 </PortalLayout>
@@ -54,10 +192,17 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   .contact-page p:last-child { margin-bottom: 0; }
   .contact-page h2, .contact-page h3 { margin: 0; }
 
+  :global(.reading-progress) { display: none !important; }
+
+  /* ═══════════ HERO ═══════════ */
   .contact-hero {
-    padding: 4rem 0 3rem;
+    margin: 0 -40px;
+    padding: 0 40px;
     border-bottom: 1px solid var(--border-light);
-    margin-bottom: 3rem;
+  }
+
+  .hero-inner {
+    padding: 6rem 0 4rem;
   }
 
   .section-label {
@@ -81,83 +226,554 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 400;
-    line-height: 1.25;
+    line-height: 1.15;
     letter-spacing: -0.01em;
     color: var(--text-heading);
+    max-width: 720px;
     margin: 0 0 2rem;
+  }
+
+  .hero-accent {
+    font-style: italic;
   }
 
   .hero-lead {
     font-size: 0.9375rem;
     color: var(--text-body-65);
     line-height: 1.85;
-    max-width: 560px;
+    max-width: 600px;
   }
 
-  .contact-grid {
+
+  /* ═══════════ SECTION HEADERS ═══════════ */
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-intro {
+    font-size: 0.8125rem;
+    color: var(--text-body-60);
+  }
+
+
+  /* ═══════════ PATHWAY BANDS ═══════════ */
+  .pathways-section {
+    padding: 5rem 0 2rem;
+  }
+
+  .pathway-band {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    padding-bottom: 4rem;
+    grid-template-columns: 4px 1fr;
+    gap: 0;
+    margin-bottom: 1px;
+    transition: background 0.3s;
   }
 
-  .contact-card {
+  .pathway-band-accent {
+    background: var(--border-light);
+    transition: background 0.3s;
+    border-radius: 2px 0 0 2px;
+  }
+
+  .pathway-band.active .pathway-band-accent {
+    background: var(--accent-dark);
+  }
+
+  .pathway-band.active {
+    background: var(--bg-card, rgba(255, 255, 255, 0.02));
+  }
+
+  .pathway-band-inner {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 2rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .pathway-band-left {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+
+  .pathway-band-icon {
+    color: var(--text-body-60);
+    margin-bottom: 0.75rem;
+    transition: color 0.3s;
+  }
+
+  .pathway-band.active .pathway-band-icon {
+    color: var(--accent-dark);
+  }
+
+  .pathway-band-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    line-height: 1.25;
+  }
+
+  .pathway-band-right p {
+    font-size: 0.875rem;
+    color: var(--text-body-65);
+    line-height: 1.85;
+    max-width: 480px;
+    margin-bottom: 1.25rem;
+  }
+
+  .pathway-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .pathway-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .pathway-link:hover { color: var(--accent-darker-hover); }
+
+  .pathway-cta {
+    padding: 0.45rem 1rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-body-60);
+    background: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .pathway-cta:hover {
+    border-color: var(--accent-dark);
+    color: var(--accent-dark);
+  }
+
+
+  /* ═══════════ ENQUIRY FORM ═══════════ */
+  .enquiry-section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .enquiry-form {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .enquiry-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .enquiry-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .enquiry-field label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-body-60);
+  }
+
+  .enquiry-field input,
+  .enquiry-field select,
+  .enquiry-field textarea {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.875rem;
+    color: var(--text-heading);
+    background: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 0.7rem 0.9rem;
+    transition: border-color 0.2s;
+  }
+
+  .enquiry-field input:focus,
+  .enquiry-field select:focus,
+  .enquiry-field textarea:focus {
+    outline: none;
+    border-color: var(--accent-dark);
+  }
+
+  .enquiry-field input::placeholder,
+  .enquiry-field textarea::placeholder {
+    color: var(--text-body-40);
+    font-style: italic;
+  }
+
+  .enquiry-field textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .enquiry-field select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
+  }
+
+  .enquiry-field.has-error input,
+  .enquiry-field.has-error select,
+  .enquiry-field.has-error textarea {
+    border-color: #A53D2E;
+  }
+
+  .enquiry-submit {
+    align-self: flex-start;
+    padding: 0.75rem 2.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #fff;
+    background: var(--accent-dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .enquiry-submit:hover {
+    background: var(--accent-darker-hover);
+    transform: translateY(-1px);
+  }
+
+  .enquiry-note {
+    font-size: 0.75rem;
+    color: var(--text-body-40);
+    margin-top: -0.5rem;
+  }
+
+
+  /* ═══════════ SUCCESS STATE ═══════════ */
+  .enquiry-success {
+    max-width: 640px;
+    text-align: center;
+    padding: 4rem 2rem;
     border: 1px solid var(--border-light);
     border-radius: 6px;
-    padding: 1.75rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
   }
 
-  .contact-card:hover {
-    border-color: var(--accent-border-15);
-    box-shadow: 0 2px 12px var(--bg-card);
+  .success-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent-dark);
+    color: #fff;
+    margin-bottom: 1.25rem;
   }
 
-  .contact-icon {
-    color: var(--accent-dark);
-    opacity: 0.6;
-    margin-bottom: 1rem;
-  }
-
-  .contact-card h3 {
+  .enquiry-success h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 400;
     color: var(--text-heading);
     margin-bottom: 0.75rem;
   }
 
-  .contact-link {
-    display: block;
+  .enquiry-success p {
     font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--accent-dark);
-    text-decoration: none;
-    margin-bottom: 0.75rem;
-    transition: color 0.15s;
-  }
-
-  .contact-link:hover {
-    color: var(--accent-darker-hover);
-  }
-
-  .contact-card p {
-    font-size: 0.8125rem;
     color: var(--text-body-60);
-    line-height: 1.75;
+    max-width: 400px;
+    margin: 0 auto 1.75rem;
   }
 
-  .contact-address {
+  .enquiry-reset {
+    padding: 0.55rem 1.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-body-60);
+    background: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .enquiry-reset:hover { border-color: var(--accent-dark); color: var(--accent-dark); }
+
+
+  /* ═══════════ DARK CLOSING BAND ═══════════ */
+  .contact-cta {
+    margin: 0 -40px;
+    padding: 0;
+    background: #141210;
+  }
+
+  .contact-cta-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .contact-cta-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(196, 110, 66, 0.7);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-cta-email {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 400;
+    color: #e8dfd0;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+    margin-bottom: 1.25rem;
+  }
+  .contact-cta-email:hover { color: var(--accent-dark); }
+
+  .contact-cta-detail {
     font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-heading);
+    color: rgba(208, 200, 188, 0.5);
+    line-height: 1.7;
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .contact-cta-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .contact-cta-social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(208, 200, 188, 0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-cta-social-link:hover { color: rgba(208, 200, 188, 0.8); }
+
+
+  /* ═══════════ DARK MODE ═══════════ */
+  :global([data-theme="dark"]) .enquiry-field input,
+  :global([data-theme="dark"]) .enquiry-field select,
+  :global([data-theme="dark"]) .enquiry-field textarea {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+
+  /* ═══════════ RESPONSIVE ═══════════ */
+  @media (max-width: 1024px) {
+    .pathway-band-inner {
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+    }
   }
 
   @media (max-width: 768px) {
-    .contact-grid {
+    .contact-hero {
+      margin: 0 -20px;
+      padding: 0 20px;
+    }
+
+    .pathway-band-inner {
       grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2rem 1.5rem;
+    }
+
+    .pathway-band-left {
+      position: static;
+    }
+
+    .enquiry-row {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-cta {
+      margin: 0 -20px;
     }
   }
 </style>
+
+<script>
+  function initContact() {
+    var form = document.getElementById('enquiry-form') as HTMLFormElement
+    var successEl = document.getElementById('enquiry-success')
+    var resetBtn = document.getElementById('enquiry-reset')
+    var typeSelect = document.getElementById('eq-type') as HTMLSelectElement
+    var bands = document.querySelectorAll('.pathway-band')
+
+    if (!form || !successEl) return
+
+    // ── Scroll-activated pathway bands ──
+    function updateActiveBand() {
+      var midY = window.innerHeight * 0.5
+      var closest: Element | null = null
+      var closestDist = Infinity
+
+      bands.forEach(function(band) {
+        var rect = band.getBoundingClientRect()
+        var bandMid = rect.top + rect.height / 2
+        var dist = Math.abs(bandMid - midY)
+        if (dist < closestDist) {
+          closestDist = dist
+          closest = band
+        }
+      })
+
+      bands.forEach(function(band) {
+        band.classList.toggle('active', band === closest)
+      })
+    }
+
+    var scrollTick = false
+    window.addEventListener('scroll', function() {
+      if (!scrollTick) {
+        scrollTick = true
+        requestAnimationFrame(function() {
+          updateActiveBand()
+          scrollTick = false
+        })
+      }
+    }, { passive: true })
+    updateActiveBand()
+
+    // ── Pathway CTA buttons → scroll to form + pre-select type ──
+    document.querySelectorAll('.pathway-cta').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var type = (btn as HTMLElement).dataset.type || ''
+
+        // Pre-select enquiry type
+        if (typeSelect && type) {
+          // Map pathway type to select option value
+          var valueMap: Record<string, string> = {
+            'education': 'education',
+            'research': 'research',
+            'network': 'network',
+            'general': 'general'
+          }
+          var val = valueMap[type] || 'general'
+          typeSelect.value = val
+        }
+
+        // Scroll to form
+        var section = document.getElementById('enquiry')
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          // Focus first empty required field after scroll
+          setTimeout(function() {
+            var first = form.querySelector('input[required]') as HTMLInputElement
+            if (first && !first.value) first.focus()
+          }, 600)
+        }
+      })
+    })
+
+    // ── Form submission ──
+    form.addEventListener('submit', function(e) {
+      e.preventDefault()
+
+      var hasError = false
+      var required = form.querySelectorAll('[required]')
+      required.forEach(function(field) {
+        var parent = (field as HTMLElement).closest('.enquiry-field')
+        if (!(field as HTMLInputElement).value.trim()) {
+          parent?.classList.add('has-error')
+          hasError = true
+        } else {
+          parent?.classList.remove('has-error')
+        }
+      })
+
+      if (hasError) return
+
+      var name = (form.querySelector('[name="name"]') as HTMLInputElement).value.trim()
+      var email = (form.querySelector('[name="email"]') as HTMLInputElement).value.trim()
+      var organisation = (form.querySelector('[name="organisation"]') as HTMLInputElement).value.trim()
+      var role = (form.querySelector('[name="role"]') as HTMLInputElement).value.trim()
+      var type = (form.querySelector('[name="type"]') as HTMLSelectElement)
+      var typeText = type.options[type.selectedIndex]?.text || ''
+      var message = (form.querySelector('[name="message"]') as HTMLTextAreaElement).value.trim()
+
+      var subject = 'Sohma Institute Enquiry — ' + typeText
+      var body = 'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        (organisation ? 'Organisation: ' + organisation + '\n' : '') +
+        (role ? 'Role: ' + role + '\n' : '') +
+        'Enquiry Type: ' + typeText + '\n\n' +
+        message
+
+      window.location.href = 'mailto:hello@sohma.house?subject=' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body)
+
+      form.style.display = 'none'
+      successEl.hidden = false
+    })
+
+    // ── Clear field errors on input ──
+    form.addEventListener('input', function(e) {
+      var parent = (e.target as HTMLElement).closest('.enquiry-field')
+      parent?.classList.remove('has-error')
+    })
+
+    // ── Reset button ──
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        form.reset()
+        form.style.display = ''
+        successEl.hidden = true
+        form.querySelectorAll('.enquiry-field').forEach(function(f) {
+          f.classList.remove('has-error')
+        })
+      })
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initContact)
+  document.addEventListener('astro:page-load', initContact)
+</script>

@@ -25,44 +25,65 @@ const category = categoryMeta.find(c => c.name === article.category)!
   toc={toc}
   activeArticle={slug}
 >
-  <article class="whitepaper">
+  <article
+    class="whitepaper"
+    data-subtitle={article.subtitle}
+    data-category={article.category}
+    data-date={article.date}
+    data-reading-time={article.readingTime || ''}
+    data-summary={article.summary}
+    data-editor={article.editor || ''}
+    data-editor-role={article.editorRole || ''}
+  >
     <header class="wp-header">
       <div class="wp-hero-content">
         <nav class="wp-breadcrumbs">
           <a href="/">Home</a>
           <span class="wp-breadcrumb-sep">|</span>
-          <a href={`/whitepapers/${category.slug}`}>{category.name}</a>
+          <a href={`/whitepapers#${category.slug}`}>{category.name}</a>
         </nav>
         <h1 class="wp-title">{article.title}</h1>
+        <div class="wp-date-line">
+          <span>{article.date}</span>
+          {article.readingTime && (
+            <span class="wp-date-sep">|</span>
+            <span>{article.readingTime} read</span>
+          )}
+        </div>
         <p class="wp-excerpt">{article.summary}</p>
+
+        <!-- Print-only author block (hidden on screen) -->
+        <div class="wp-print-author">
+          <p class="wp-print-author-name">{article.author}</p>
+          <p class="wp-print-author-role">{article.authorRole}</p>
+          <p class="wp-print-author-institution">Sohma Institute of Traditional Medicines, Cairns QLD</p>
+          {article.editor && (
+            <p class="wp-print-editor">Editor: {article.editor}{article.editorRole ? `, ${article.editorRole}` : ''}</p>
+          )}
+          <p class="wp-print-meta">{article.date}{article.readingTime ? `  |  ${article.category}  |  ${article.readingTime} read` : `  |  ${article.category}`}</p>
+        </div>
+
         <div class="wp-meta-row">
-          <div class="wp-meta-items">
-            <span class="wp-meta-item">
-              {article.author}
-              <span class="wp-meta-role">{article.authorRole}</span>
-            </span>
-            <span class="wp-meta-divider">|</span>
-            <span class="wp-meta-item">{article.date}</span>
-          </div>
-          <div class="wp-actions">
-            <button class="wp-action-btn" data-action="share" type="button" title="Copy article as formatted text">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              <span>Copy</span>
-            </button>
-            <button class="wp-action-btn" data-action="cite" type="button" title="Copy formatted citation">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
-              <span>Cite</span>
-            </button>
-            <button class="wp-action-btn" data-action="pdf" type="button" title="Download as PDF">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              <span>PDF</span>
-            </button>
+          <div class="wp-credits wp-credits-right">
+            <div class="wp-credit">
+              <span class="wp-credit-function">Author</span>
+              <span class="wp-credit-name">{article.author}</span>
+              <span class="wp-credit-title">{article.authorRole}</span>
+            </div>
+            {article.editor && (
+              <div class="wp-credit">
+                <span class="wp-credit-function">Editor</span>
+                <span class="wp-credit-name">{article.editor}</span>
+                {article.editorRole && <span class="wp-credit-title">{article.editorRole}</span>}
+              </div>
+            )}
           </div>
         </div>
       </div>
     </header>
 
     <div class="wp-body">
+      <div class="wp-body-fade" aria-hidden="true"></div>
       <slot />
     </div>
   </article>

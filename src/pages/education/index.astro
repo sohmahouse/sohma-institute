@@ -21,23 +21,21 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
 
     <!-- PEDAGOGICAL COMMITMENTS -->
     <section class="pillars-section">
+      <span class="pillars-eyebrow">How We Teach</span>
       <h2 class="section-heading">Pedagogical Commitments</h2>
       <div class="pillars-grid">
-        <div class="pillar-card">
+        <a href="/education/pedagogy" class="pillar-card">
           <h3>Case-Based Architecture</h3>
           <p>Every unit of competency is assessed through real clinical cases, not simulated scenarios. Students work within the Sohma House patient population from Tier 1 onward, with supervision intensity calibrated to credential level.</p>
-          <a href="/education/pedagogy" class="pillar-link">Read more &rarr;</a>
-        </div>
-        <div class="pillar-card">
+        </a>
+        <a href="/education/pedagogy" class="pillar-card">
           <h3>Inverse Classroom</h3>
-          <p>Didactic content is asynchronous. All synchronous contact hours are dedicated to clinical reasoning, case presentation, supervised practice, and peer conferencing. The Institute does not pay clinicians to lecture. It pays them to mentor.</p>
-          <a href="/education/pedagogy" class="pillar-link">Read more &rarr;</a>
-        </div>
-        <div class="pillar-card">
+          <p>Didactic content is asynchronous. All synchronous contact hours are dedicated to clinical reasoning, case presentation, supervised practice, and peer conferencing. We don't pay clinicians to lecture. We pay them to mentor.</p>
+        </a>
+        <a href="/education/pedagogy" class="pillar-card">
           <h3>Portfolio Assessment</h3>
           <p>No written examinations. Competency is demonstrated through clinical portfolios containing case documentation, reflective practice records, supervisor evaluations, and peer review. The portfolio becomes the practitioner's ongoing professional development record.</p>
-          <a href="/education/pedagogy" class="pillar-link">Read more &rarr;</a>
-        </div>
+        </a>
       </div>
     </section>
 
@@ -45,73 +43,111 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     <!-- CREDENTIAL LADDER -->
     <section class="ladder-section">
       <h2 class="section-heading">Credential Ladder</h2>
+      <p class="section-intro">Four credential tiers, each building on the last. Your tier determines your clinical autonomy, supervisory responsibilities, and depth of access to the Institute's protocol library.</p>
 
       <div class="ladder">
-        <div class="ladder-progress" id="ladder-progress"></div>
-        <div class="ladder-tier" data-accent="neutral">
-          <span class="ladder-num">1<span class="wave-layer wave-1"></span><span class="wave-layer wave-2"></span><span class="wave-layer wave-3"></span></span>
-          <div class="ladder-body">
-            <div class="ladder-meta">
-              <span class="ladder-duration">12 weeks</span>
-              <span class="ladder-mode">Online + Clinical Intensive</span>
-            </div>
+        <div class="ladder-track">
+          <div class="track-bg"></div>
+          <div class="track-fill"></div>
+        </div>
+
+        <div class="ladder-tier tier-1">
+          <div class="ladder-left">
+            <span class="ladder-letter">1</span>
             <h3>Foundation Certificate</h3>
-            <p>Foundational literacy in one division. Systems biology primer, clinical reasoning methodology, regulatory and ethical frameworks. Entry point for registered health practitioners seeking to add traditional medicine competencies. Prerequisite: current AHPRA registration or equivalent.</p>
-            <a href="/education/foundation-certificate" class="ladder-cta">View program &rarr;</a>
+          </div>
+          <div class="ladder-right">
+            <span class="ladder-badge">12 weeks &middot; Online + Clinical Intensive</span>
+            <p class="ladder-summary">Entry point for registered health practitioners seeking to add traditional medicine competencies.</p>
+            <p class="ladder-detail">Foundational literacy in one division. Systems biology primer, clinical reasoning methodology, regulatory and ethical frameworks. Prerequisite: current AHPRA registration or equivalent.</p>
+
           </div>
         </div>
 
-        <div class="ladder-tier" data-accent="green">
-          <span class="ladder-num">2<span class="wave-layer wave-1"></span><span class="wave-layer wave-2"></span><span class="wave-layer wave-3"></span></span>
-          <div class="ladder-body">
-            <div class="ladder-meta">
-              <span class="ladder-duration">12 months</span>
-              <span class="ladder-mode">Hybrid Clinical Mentorship</span>
-            </div>
+        <div class="ladder-tier tier-2">
+          <div class="ladder-left">
+            <span class="ladder-letter">2</span>
             <h3>Advanced Diploma</h3>
-            <p>Deep specialisation in one division with mandatory cross-divisional elective. 200 hours supervised clinical practice within Sohma House or partner sites. Clinical portfolio assessment rather than examination. Produces competent clinical practitioners in their chosen division.</p>
-            <a href="/education/advanced-diploma" class="ladder-cta">View program &rarr;</a>
+          </div>
+          <div class="ladder-right">
+            <span class="ladder-badge">12 months &middot; Hybrid Clinical Mentorship</span>
+            <p class="ladder-summary">Deep specialisation with mandatory cross-divisional elective and 200 hours supervised clinical practice.</p>
+            <p class="ladder-detail">Deep specialisation in one division with mandatory cross-divisional elective. 200 hours supervised clinical practice within Sohma House or partner sites. Clinical portfolio assessment rather than examination. Produces competent clinical practitioners in their chosen division.</p>
+
           </div>
         </div>
 
-        <div class="ladder-tier" data-accent="warm">
-          <span class="ladder-num">3<span class="wave-layer wave-1"></span><span class="wave-layer wave-2"></span><span class="wave-layer wave-3"></span></span>
-          <div class="ladder-body">
-            <div class="ladder-meta">
-              <span class="ladder-duration">18 months</span>
-              <span class="ladder-mode">Research + Clinical Integration</span>
-            </div>
+        <div class="ladder-tier tier-3">
+          <div class="ladder-left">
+            <span class="ladder-letter">3</span>
             <h3>Graduate Diploma</h3>
-            <p>Cross-divisional clinical reasoning at complexity. Requires integration of minimum two divisional frameworks. Original research contribution (case series, systematic review, or protocol validation). Articulation pathway to university Master's programs through partner institutions.</p>
-            <a href="/education/graduate-diploma" class="ladder-cta">View program &rarr;</a>
+          </div>
+          <div class="ladder-right">
+            <span class="ladder-badge">18 months &middot; Research + Clinical Integration</span>
+            <p class="ladder-summary">Cross-divisional clinical reasoning at complexity with original research contribution.</p>
+            <p class="ladder-detail">Requires integration of minimum two divisional frameworks. Original research contribution (case series, systematic review, or protocol validation). Articulation pathway to university Master's programs through partner institutions.</p>
+
           </div>
         </div>
 
-        <div class="ladder-tier" data-accent="terracotta">
-          <span class="ladder-num">4<span class="wave-layer wave-1"></span><span class="wave-layer wave-2"></span><span class="wave-layer wave-3"></span></span>
-          <div class="ladder-body">
-            <div class="ladder-meta">
-              <span class="ladder-duration">2 years</span>
-              <span class="ladder-mode">Clinical Leadership + Research</span>
-            </div>
+        <div class="ladder-tier tier-4">
+          <div class="ladder-left">
+            <span class="ladder-letter">4</span>
             <h3>Fellowship</h3>
-            <p>The Institute's highest credential. Fellows produce original research, supervise clinical trainees, and contribute to protocol development. Fellowship requires demonstrated capacity to operate across three or more divisions simultaneously. Produces clinical leaders and future Institute faculty.</p>
-            <a href="/education/fellowship" class="ladder-cta">View program &rarr;</a>
+          </div>
+          <div class="ladder-right">
+            <span class="ladder-badge">2 years &middot; Clinical Leadership + Research</span>
+            <p class="ladder-summary">The Institute's highest credential. Produces clinical leaders and future faculty.</p>
+            <p class="ladder-detail">Fellows produce original research, supervise clinical trainees, and contribute to protocol development. Fellowship requires demonstrated capacity to operate across three or more divisions simultaneously. Produces clinical leaders and future Institute faculty.</p>
+
           </div>
         </div>
       </div>
     </section>
 
 
-    <!-- DIVISION CONNECTION -->
-    <section class="division-section">
-      <div class="division-callout">
-        <div class="division-callout-inner">
-          <div>
-            <h2>Every tier is studied within a Division</h2>
-            <p>When you enrol, you choose both a <strong>credential tier</strong> and a <strong>division</strong>. The tier determines your level of training and autonomy. The division determines your clinical specialisation. A Tier 2 student in Complex Herbal Medicines and a Tier 2 student in Emergent &amp; Entheogenic Modalities follow the same pedagogical structure but study entirely different clinical content.</p>
-          </div>
-          <a href="/#divisions" class="division-link">Explore the five divisions &rarr;</a>
+    <!-- DIVISIONS -->
+    <section class="divisions-section">
+      <div class="divisions-inner">
+        <span class="divisions-eyebrow">Academic Divisions</span>
+        <h2 class="divisions-heading">Every tier is studied within a Division</h2>
+        <p class="divisions-intro">When you enrol, you choose both a credential tier and a division. The tier determines your level of training and autonomy. The division determines your clinical specialisation.</p>
+
+        <div class="divisions-grid">
+          <a href="/#divisions" class="division-card" data-accent="terracotta">
+            <span class="division-dot"></span>
+            <span class="division-num">I</span>
+            <h3>Complex Herbal Medicines</h3>
+            <p>Multi-constituent botanical therapeutics, phytochemical synergy, and clinical herbal prescribing.</p>
+          </a>
+
+          <a href="/#divisions" class="division-card" data-accent="warm">
+            <span class="division-dot"></span>
+            <span class="division-num">II</span>
+            <h3>Emergent &amp; Entheogenic Modalities</h3>
+            <p>Cannabis medicine, psilocybin-assisted therapy, psychedelic integration, and novel therapeutic frameworks.</p>
+          </a>
+
+          <a href="/#divisions" class="division-card" data-accent="blue">
+            <span class="division-dot"></span>
+            <span class="division-num">III</span>
+            <h3>Systems &amp; Functional Medicine</h3>
+            <p>Systems biology approaches to chronic complex illness, functional diagnostics, metabolomic and genomic interpretation.</p>
+          </a>
+
+          <a href="/#divisions" class="division-card" data-accent="teal">
+            <span class="division-dot"></span>
+            <span class="division-num">IV</span>
+            <h3>Environmental &amp; Nutritional Medicine</h3>
+            <p>Toxicant exposure assessment, environmental determinants, clinical nutrition, microbiome therapeutics.</p>
+          </a>
+
+          <a href="/#divisions" class="division-card" data-accent="purple">
+            <span class="division-dot"></span>
+            <span class="division-num">V</span>
+            <h3>Lifestyle &amp; Relational Medicine</h3>
+            <p>Somatic therapy, contemplative practice, movement medicine, sleep architecture, and relational health.</p>
+          </a>
         </div>
       </div>
     </section>
@@ -120,11 +156,21 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     <!-- CTA -->
     <section class="cta-section">
       <div class="cta-inner">
-        <h2>Ready to begin?</h2>
-        <p>Tell us where you're starting and where you want to go. Expressions of interest are open for all credential tiers.</p>
-        <div class="cta-buttons">
-          <a href="/contact" class="cta-primary">Express Interest</a>
-          <a href="#" class="cta-secondary">Download Prospectus</a>
+        <div class="cta-primary-block">
+          <span class="cta-eyebrow">Get Started</span>
+          <h2>Ready to begin?</h2>
+          <p>Tell us where you're starting and where you want to go. Expressions of interest are open for all credential tiers.</p>
+          <a href="/contact" class="cta-primary-btn">Express interest &rarr;</a>
+        </div>
+        <div class="cta-secondary-block">
+          <a href="#" class="cta-alt">
+            <span class="cta-alt-label">Want details first?</span>
+            <span class="cta-alt-action">Download prospectus &rarr;</span>
+          </a>
+          <a href="/network" class="cta-alt">
+            <span class="cta-alt-label">Already credentialed?</span>
+            <span class="cta-alt-action">Enter The Field &rarr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -200,7 +246,7 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 5vw, 4.25rem);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.01em;
@@ -235,291 +281,197 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
 
   /* ═══════════ PEDAGOGY PILLARS ═══════════ */
   .pillars-section {
-    padding: 4rem 0;
+    padding: 5rem 0 4rem;
     border-bottom: 1px solid var(--border-light);
+  }
+
+  .pillars-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-dark);
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
   }
 
   .pillars-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 0 2.5rem;
+    margin-top: 2.5rem;
   }
 
   .pillar-card {
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    padding: 1.75rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    display: block;
+    padding: 1.75rem 0 0;
+    border-top: 1px solid var(--border-light);
+    text-decoration: none;
+    transition: border-color 0.2s;
   }
 
   .pillar-card:hover {
-    border-color: var(--accent-border-15);
-    box-shadow: 0 2px 12px var(--bg-card);
+    border-color: var(--accent-dark);
   }
 
   .pillar-card h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     font-weight: 500;
     color: var(--text-heading);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.875rem;
   }
 
   .pillar-card p {
     font-size: 0.8125rem;
     color: var(--text-body-60);
     line-height: 1.75;
-    margin-bottom: 1rem;
-  }
-
-  .pillar-link {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--accent-dark);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
-  }
-
-  .pillar-link:hover {
-    color: var(--accent);
+    margin-bottom: 0;
   }
 
 
   /* ═══════════ CREDENTIAL LADDER ═══════════ */
   .ladder-section {
-    padding: 4rem 0;
+    padding: 7rem 0 4rem;
     border-bottom: 1px solid var(--border-light);
+    text-align: center;
+  }
+
+  .ladder-section .section-intro {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .ladder {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    max-width: 800px;
+    max-width: 720px;
     margin: 0 auto;
   }
 
-  /* Central vertical line — background track */
-  .ladder::before {
-    content: '';
+  /* ── Continuous progress track ── */
+  .ladder-track {
     position: absolute;
-    top: calc(1.5rem + 24px);
-    bottom: calc(1.5rem + 24px);
-    left: 50%;
-    width: 3px;
-    background: var(--accent-bg-10);
-    transform: translateX(-50%);
-  }
-
-  /* Animated gradient progress line */
-  .ladder-progress {
-    position: absolute;
-    top: calc(1.5rem + 24px);
-    bottom: calc(1.5rem + 24px);
-    left: 50%;
-    width: 3px;
-    transform: translateX(-50%);
-    transform-origin: top;
-    background: linear-gradient(
-      180deg,
-      #9e3a2e 0%,
-      #d4634a 15%,
-      #A53D2E 28%,
-      #c45a42 42%,
-      #8b3325 55%,
-      #d4634a 68%,
-      #A53D2E 80%,
-      #c45a42 92%,
-      #9e3a2e 100%
-    );
-    background-size: 100% 300%;
-    animation: progressSwirlV 4s ease-in-out infinite;
-    scale: 1 0;
-    transition: scale 0.15s ease-out;
-    z-index: 0;
-  }
-
-  .ladder-tier {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    align-items: start;
-  }
-
-  /* Odd tiers: content LEFT, number CENTER */
-  .ladder-tier:nth-child(odd) .ladder-body {
-    grid-column: 1;
-    grid-row: 1;
-    text-align: left;
-  }
-  .ladder-tier:nth-child(odd) .ladder-num {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  /* Even tiers: number CENTER, content RIGHT */
-  .ladder-tier:nth-child(even) .ladder-num {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .ladder-tier:nth-child(even) .ladder-body {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
-  .ladder-tier:nth-child(odd) .ladder-meta {
-    justify-content: flex-start;
-  }
-
-  .ladder-num {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1;
-    flex-shrink: 0;
-    background: #fff;
+    left: calc(180px + 1rem);
+    top: 2rem;
+    bottom: 2rem;
+    width: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 1;
-    position: relative;
-    overflow: hidden;
-    transition: color 0.3s ease;
+    pointer-events: none;
   }
 
-  /* Liquid fill pseudo-element — fills top-down, driven by scroll */
-  .ladder-num::before {
-    content: '';
+  .ladder-track .track-bg {
     position: absolute;
     top: 0;
-    left: -10%;
-    width: 120%;
-    height: var(--fill, 0%);
-    background: linear-gradient(
-      180deg,
-      #9e3a2e 0%,
-      #A53D2E 40%,
-      #c45a42 80%,
-      #d4634a 100%
-    );
-    z-index: -1;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-light);
   }
 
-  /* Wave layers at the fill surface */
-  .ladder-num .wave-layer {
+  .ladder-track .track-fill {
     position: absolute;
-    left: -40%;
-    width: 180%;
-    height: 12px;
-    top: calc(var(--fill, 0%) - 6px);
-    z-index: -1;
-    opacity: 0;
-    pointer-events: none;
-    border-radius: 40%;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background: var(--accent-dark);
   }
 
-  .ladder-num .wave-1 {
-    background: rgba(212, 99, 74, 0.6);
-    border-radius: 45% 42% 50% 48%;
-  }
-  .ladder-num .wave-2 {
-    background: rgba(165, 61, 46, 0.4);
-    border-radius: 38% 52% 46% 44%;
-    height: 10px;
-    top: calc(var(--fill, 0%) - 5px);
-  }
-  .ladder-num .wave-3 {
-    background: rgba(158, 58, 46, 0.25);
-    border-radius: 50% 40% 42% 48%;
-    height: 8px;
-    top: calc(var(--fill, 0%) - 3px);
+  /* ── Shared tier — two-column layout ── */
+  .ladder-tier {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0 calc(24px + 4rem);
+    padding: 7rem 0;
   }
 
-  .ladder-num.settling .wave-1 {
-    opacity: 1;
-    animation: wave1 2.4s ease-in-out infinite;
-  }
-  .ladder-num.settling .wave-2 {
-    opacity: 1;
-    animation: wave2 3.1s ease-in-out infinite;
-  }
-  .ladder-num.settling .wave-3 {
-    opacity: 1;
-    animation: wave3 2.8s ease-in-out infinite;
+  /* Left column — identity */
+  .ladder-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
-  @keyframes wave1 {
-    0%   { transform: translateX(-4px) rotate(-1deg); border-radius: 45% 42% 50% 48%; }
-    25%  { transform: translateX(3px) rotate(1.5deg); border-radius: 40% 50% 45% 42%; }
-    50%  { transform: translateX(-2px) rotate(-0.5deg); border-radius: 48% 44% 42% 50%; }
-    75%  { transform: translateX(4px) rotate(1deg); border-radius: 42% 48% 50% 44%; }
-    100% { transform: translateX(-4px) rotate(-1deg); border-radius: 45% 42% 50% 48%; }
-  }
-
-  @keyframes wave2 {
-    0%   { transform: translateX(3px) rotate(0.5deg); border-radius: 38% 52% 46% 44%; }
-    30%  { transform: translateX(-4px) rotate(-1deg); border-radius: 50% 42% 38% 48%; }
-    60%  { transform: translateX(2px) rotate(1.5deg); border-radius: 44% 46% 52% 40%; }
-    100% { transform: translateX(3px) rotate(0.5deg); border-radius: 38% 52% 46% 44%; }
-  }
-
-  @keyframes wave3 {
-    0%   { transform: translateX(-2px) rotate(1deg); border-radius: 50% 40% 42% 48%; }
-    35%  { transform: translateX(3px) rotate(-0.5deg); border-radius: 42% 48% 40% 50%; }
-    65%  { transform: translateX(-3px) rotate(1.5deg); border-radius: 48% 42% 50% 40%; }
-    100% { transform: translateX(-2px) rotate(1deg); border-radius: 50% 40% 42% 48%; }
-  }
-  [data-accent="neutral"] .ladder-num { color: var(--text-tertiary); }
-  [data-accent="green"] .ladder-num { color: var(--accent-green); }
-  [data-accent="warm"] .ladder-num { color: var(--chart-warm); }
-  [data-accent="terracotta"] .ladder-num { color: var(--accent-dark); }
-
-
-  .ladder-body { flex: 1; }
-
-  .ladder-meta {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    background: var(--text-heading);
-    padding: 6px 10px;
-  }
-  .ladder-duration,
-  .ladder-mode {
-    font-size: 0.625rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: 0.02em;
-  }
-  .ladder-duration {
-    color: #fff;
+  .ladder-letter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid var(--border-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.25rem;
     font-weight: 700;
-  }
-  .ladder-duration::after {
-    content: '·';
-    margin-left: 0.5rem;
-    color: rgba(255,255,255,0.35);
-  }
-
-  .ladder-body h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--text-heading);
-    margin-bottom: 0.5rem;
-  }
-
-  .ladder-body p {
-    font-size: 0.875rem;
-    color: var(--text-body-60);
-    line-height: 1.7;
+    letter-spacing: 0.05em;
+    line-height: 1;
     margin-bottom: 0.75rem;
+    overflow: visible;
+    color: var(--text-tertiary);
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .ladder-left h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    line-height: 1.1;
+    margin: 0 0 0.625rem;
+    transition: color 0.25s;
+  }
+
+  .ladder-badge {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    color: var(--text-tertiary);
+    background: transparent;
+    border: 1px solid var(--border-light);
+    transition: color 0.25s, border-color 0.25s, background 0.25s;
+  }
+
+  /* Right column — content */
+  .ladder-right {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    max-width: 480px;
+    text-align: left;
+  }
+
+  .ladder-right.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ladder-summary {
+    font-size: 1.25rem;
+    color: var(--text-tertiary);
+    line-height: 1.7;
+    margin: 0 0 0.875rem;
+    transition: color 0.3s;
+  }
+
+  .ladder-detail {
+    font-size: 0.9375rem;
+    color: var(--text-tertiary);
+    line-height: 1.8;
+    margin: 0 0 1rem;
+    opacity: 0.6;
+    transition: opacity 0.3s, color 0.3s;
   }
 
   .ladder-cta {
@@ -529,123 +481,264 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     color: var(--accent-dark);
     letter-spacing: 0.02em;
     text-decoration: none;
-    transition: color 0.2s;
+    opacity: 0;
+    transition: opacity 0.3s, color 0.2s;
   }
   .ladder-cta:hover {
     color: var(--accent);
   }
 
+  /* ── Active states ── */
+  .ladder-tier.active .ladder-letter {
+    color: var(--accent-dark);
+    border-color: var(--accent-dark);
+  }
 
-  /* ═══════════ DIVISION CONNECTION ═══════════ */
-  .division-section {
-    padding: 4rem 0;
+  .ladder-tier.active .ladder-left h3 {
+    color: var(--text-heading);
+  }
+
+  .ladder-tier.active .ladder-badge {
+    color: var(--accent-dark);
+    border-color: rgba(196, 155, 104, 0.3);
+    background: rgba(196, 155, 104, 0.08);
+  }
+
+  .ladder-tier.active .ladder-summary {
+    color: var(--text-heading);
+  }
+
+  .ladder-tier.active .ladder-detail {
+    opacity: 1;
+  }
+
+  .ladder-tier.active .ladder-cta {
+    opacity: 1;
+  }
+
+  /* ── Spark burst on activation ── */
+  .ladder-letter .spark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    margin: -2px 0 0 -2px;
+    border-radius: 50%;
+    background: var(--accent-dark);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .ladder-letter .spark.fire {
+    animation: ladderSparkBurst 0.7s ease-out forwards;
+  }
+
+  @keyframes ladderSparkBurst {
+    0% { opacity: 1; transform: translate(0, 0) scale(1.2); }
+    40% { opacity: 0.9; }
+    100% { opacity: 0; transform: var(--spark-dir) scale(0); }
+  }
+
+
+  /* ═══════════ DIVISIONS ═══════════ */
+  .divisions-section {
+    padding: 4.5rem 0;
     border-bottom: 1px solid var(--border-light);
   }
 
-  .division-callout {
-    background: linear-gradient(135deg, var(--bg-dark-start) 0%, var(--bg-dark-end) 100%);
-    border-radius: 8px;
-    padding: 2.5rem;
+  .divisions-inner {
+    max-width: 100%;
   }
 
-  .division-callout-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .division-callout h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--text-on-dark);
+  .divisions-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(196, 110, 66, 0.7);
     margin-bottom: 0.75rem;
   }
 
-  .division-callout p {
-    font-size: 0.875rem;
-    color: rgba(240,235,229,0.5);
-    line-height: 1.75;
-  }
-  .division-callout strong {
-    color: rgba(240,235,229,0.75);
+  .edu-page .divisions-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
   }
 
-  .division-link {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s;
+  .divisions-intro {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 620px;
+    margin-bottom: 2.5rem;
   }
-  .division-link:hover { color: #e0725a; }
+
+  .divisions-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0 2rem;
+  }
+
+  .division-card {
+    display: block;
+    padding: 1.75rem 0;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--border-light);
+    border-radius: 0;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .division-card:hover {
+    opacity: 0.8;
+  }
+
+  .division-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  [data-accent="terracotta"] .division-dot { background: var(--accent-dark); }
+  [data-accent="warm"] .division-dot { background: var(--chart-warm); }
+  [data-accent="blue"] .division-dot { background: var(--chart-blue); }
+  [data-accent="teal"] .division-dot { background: var(--chart-teal); }
+  [data-accent="purple"] .division-dot { background: var(--chart-purple); }
+
+  .division-num {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--text-heading);
+    opacity: 0.35;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .division-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-heading);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .division-card p {
+    font-size: 0.75rem;
+    color: var(--text-body-60);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
 
 
   /* ═══════════ CTA ═══════════ */
   .cta-section {
-    padding: 4rem 0 6rem;
+    margin: 0 -40px;
+    padding: 0;
+    background: #141210;
+    border-bottom: none;
   }
 
   .cta-inner {
-    text-align: center;
-    max-width: 540px;
+    max-width: 640px;
     margin: 0 auto;
+    padding: 6rem 2rem;
+    text-align: center;
   }
 
-  .cta-inner h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
-    font-weight: 400;
-    color: var(--text-heading);
+  .cta-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(196, 110, 66, 0.7);
     margin-bottom: 1rem;
   }
 
-  .cta-inner p {
-    font-size: 0.875rem;
-    color: var(--text-body-60);
-    line-height: 1.75;
-    margin-bottom: 2rem;
+  .cta-primary-block h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #e8dfd0;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
   }
 
-  .cta-buttons {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    flex-wrap: wrap;
+  .cta-primary-block p {
+    font-size: 1rem;
+    color: rgba(208, 200, 188, 0.55);
+    line-height: 1.7;
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
   }
 
-  .cta-primary {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #fff;
-    background: var(--accent-dark);
-    border: none;
-    border-radius: 4px;
-    padding: 12px 28px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .cta-primary:hover { background: var(--accent-darker-hover); }
-
-  .cta-secondary {
+  .cta-primary-btn {
+    display: inline-block;
+    padding: 14px 40px;
     font-family: 'Manrope', sans-serif;
     font-size: 0.8125rem;
     font-weight: 600;
-    color: var(--text-secondary);
-    background: none;
-    border: 1px solid var(--glass-12);
+    letter-spacing: 0.03em;
+    color: #141210;
+    background: var(--accent-dark);
+    border: none;
     border-radius: 4px;
-    padding: 12px 28px;
     text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
+    transition: background 0.2s, transform 0.15s;
   }
-  .cta-secondary:hover {
-    border-color: var(--accent-border-30);
-    color: var(--accent-dark);
+
+  .cta-primary-btn:hover {
+    background: #d4773a;
+    transform: translateY(-1px);
+  }
+
+  .cta-secondary-block {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .cta-alt {
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .cta-alt-label {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(208, 200, 188, 0.35);
+    margin-bottom: 0.375rem;
+  }
+
+  .cta-alt-action {
+    display: block;
+    font-size: 0.8125rem;
+    color: rgba(208, 200, 188, 0.6);
+    transition: color 0.2s;
+  }
+
+  .cta-alt:hover .cta-alt-action {
+    color: #e8dfd0;
   }
 
 
@@ -658,6 +751,10 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     .hero-inner {
       padding: 64px calc(1.5rem + 20px) 48px calc(1rem + 20px);
     }
+
+    .divisions-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .cta-section { margin: 0 -20px; }
   }
 
   @media (max-width: 768px) {
@@ -669,102 +766,100 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     .hero-subtitle { font-size: 2rem; }
     .hero-lead { padding-left: 0; }
 
-    .ladder::before { left: 24px; top: calc(1.5rem + 24px); bottom: calc(1.5rem + 24px); }
-    .ladder-progress { left: 24px; top: calc(1.5rem + 24px); bottom: calc(1.5rem + 24px); }
     .ladder-tier {
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 4rem 0;
     }
-    .ladder-tier:nth-child(odd) .ladder-body,
-    .ladder-tier:nth-child(even) .ladder-body {
-      grid-column: 2;
-      text-align: left;
+    .ladder-left {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
     }
-    .ladder-tier:nth-child(odd) .ladder-num,
-    .ladder-tier:nth-child(even) .ladder-num {
-      grid-column: 1;
-    }
-    .ladder-tier:nth-child(odd) .ladder-meta {
-      justify-content: flex-start;
-    }
+    .ladder-letter { margin-bottom: 0; }
+    .ladder-left h3 { margin: 0; }
+    .ladder-track { display: none; }
+    .ladder-right { max-width: none; }
 
     .pillars-grid { grid-template-columns: 1fr; }
-    .division-callout { padding: 2rem 1.5rem; }
+    .divisions-grid { grid-template-columns: 1fr 1fr; }
+
+    .cta-secondary-block { flex-direction: column; gap: 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .divisions-grid { grid-template-columns: 1fr; }
   }
 </style>
 
 <script>
   function initLadderProgress() {
+    const section = document.querySelector('.ladder-section') as HTMLElement
     const ladder = document.querySelector('.ladder') as HTMLElement
-    const progressBar = document.getElementById('ladder-progress')
-    const nums = ladder?.querySelectorAll('.ladder-num') as NodeListOf<HTMLElement>
-    if (!ladder || !progressBar || !nums.length) return
+    const trackFill = ladder?.querySelector('.track-fill') as HTMLElement
+    const tiers = ladder?.querySelectorAll('.ladder-tier') as NodeListOf<HTMLElement>
+    if (!section || !ladder || !trackFill || !tiers.length) return
 
-    let scrollTimer: ReturnType<typeof setTimeout> | null = null
+    const activated = new Set<number>()
 
-    function removeSettling() {
-      nums.forEach(num => num.classList.remove('settling'))
-    }
-
-    function addSettling() {
-      nums.forEach(num => {
-        const fill = parseFloat(num.style.getPropertyValue('--fill') || '0')
-        if (fill > 0 && fill < 100) {
-          num.classList.add('settling')
-        }
-      })
+    function emitSparks(letter: HTMLElement) {
+      for (let i = 0; i < 8; i++) {
+        const spark = document.createElement('span')
+        spark.className = 'spark'
+        const angle = (i / 8) * Math.PI * 2
+        const dist = 28 + Math.random() * 10
+        const tx = Math.cos(angle) * dist
+        const ty = Math.sin(angle) * dist
+        spark.style.setProperty('--spark-dir', `translate(${tx}px, ${ty}px)`)
+        letter.appendChild(spark)
+        requestAnimationFrame(() => spark.classList.add('fire'))
+        setTimeout(() => spark.remove(), 800)
+      }
     }
 
     function update() {
-      const rect = ladder.getBoundingClientRect()
-      const viewportH = window.innerHeight
-      const ladderTop = rect.top
-      const ladderHeight = rect.height
+      const sectionRect = section.getBoundingClientRect()
+      const viewH = window.innerHeight
 
-      if (ladderTop >= viewportH || ladderTop + ladderHeight <= 0) {
-        progressBar.style.scale = '1 0'
-        return
+      // Progress bar fill
+      const scrollStart = sectionRect.top + viewH * 0.15
+      const scrollEnd = sectionRect.bottom - viewH * 0.3
+      const scrollRange = scrollEnd - scrollStart
+      const scrolled = -scrollStart
+      const progress = Math.max(0, Math.min(1, scrolled / scrollRange))
+
+      const trackEl = ladder.querySelector('.ladder-track') as HTMLElement
+      if (trackEl) {
+        const trackRect = trackEl.getBoundingClientRect()
+        trackFill.style.height = (trackRect.height * progress) + 'px'
       }
 
-      const scrolledInto = viewportH * 0.4 - ladderTop
-      const progress = Math.max(0, Math.min(1, scrolledInto / ladderHeight))
-      progressBar.style.scale = `1 ${progress}`
+      // Tier activation
+      tiers.forEach((tier, idx) => {
+        const rect = tier.getBoundingClientRect()
+        const tierCenter = rect.top + rect.height * 0.4
+        const trigger = viewH * 0.55
+        const isActive = tierCenter < trigger && rect.bottom > 0
 
-      // Remove waves while scrolling
-      removeSettling()
+        if (isActive) {
+          tier.classList.add('active')
+          const right = tier.querySelector('.ladder-right')
+          if (right) right.classList.add('visible')
 
-      // Fill circles proportionally as the progress line passes through them
-      const lineTop = rect.top + 24
-      const lineLength = (ladderHeight - 48) * progress
-      const lineBottom = lineTop + lineLength
-
-      nums.forEach(num => {
-        const numRect = num.getBoundingClientRect()
-        const numTop = numRect.top
-        const numBottom = numRect.bottom
-        const numHeight = numRect.height
-
-        if (lineBottom <= numTop) {
-          num.style.setProperty('--fill', '0%')
-          num.style.color = ''
-        } else if (lineBottom >= numBottom) {
-          num.style.setProperty('--fill', '100%')
-          num.style.color = '#fff'
+          if (!activated.has(idx)) {
+            activated.add(idx)
+            const letter = tier.querySelector('.ladder-letter')
+            if (letter) emitSparks(letter as HTMLElement)
+          }
         } else {
-          const fillPct = ((lineBottom - numTop) / numHeight) * 100
-          num.style.setProperty('--fill', `${Math.min(100, fillPct)}%`)
-          num.style.color = fillPct > 55 ? '#fff' : ''
+          tier.classList.remove('active')
         }
       })
-
-      // Start waves after scrolling stops
-      if (scrollTimer) clearTimeout(scrollTimer)
-      scrollTimer = setTimeout(addSettling, 150)
     }
 
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update, { passive: true })
     update()
-    setTimeout(addSettling, 300)
   }
 
   document.addEventListener('DOMContentLoaded', initLadderProgress)

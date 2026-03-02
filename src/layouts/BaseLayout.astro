@@ -19,6 +19,7 @@ const { title, description = 'Sohma Institute — Practitioner knowledge base fo
     <link rel="preload" href="/fonts/Manrope-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/CormorantGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <title>{title} | Sohma Institute</title>
+
     <script is:inline>
       // Restore theme before render to prevent flash (initial load)
       (function() {
@@ -29,15 +30,24 @@ const { title, description = 'Sohma Institute — Practitioner knowledge base fo
       })()
       // Preserve theme across View Transitions (before DOM swap)
       document.addEventListener('astro:before-swap', function(e) {
-        const stored = localStorage.getItem('sohma-theme')
+        var stored = localStorage.getItem('sohma-theme')
         if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           e.newDocument.documentElement.setAttribute('data-theme', 'dark')
         }
+        e.newDocument.body.classList.add('ready')
       })
     </script>
+    <style is:inline>
+      .portal-layout{display:flex;min-height:100vh}
+      .portal-sidebar-right{width:260px;flex-shrink:0;overflow:hidden}
+      @media(max-width:1280px){.portal-sidebar-right{display:none}}
+      body:not(.ready){opacity:0}
+      body.ready{opacity:1;transition:opacity .12s ease-out}
+    </style>
     <ViewTransitions />
   </head>
   <body>
+    <script is:inline>requestAnimationFrame(function(){document.body.classList.add('ready')})</script>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <canvas id="grain-canvas" aria-hidden="true" style="position:fixed;inset:0;z-index:9999;pointer-events:none;width:100%;height:100%;opacity:0.06;"></canvas>
     <slot />

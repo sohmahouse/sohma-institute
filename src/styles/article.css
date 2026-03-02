@@ -80,9 +80,27 @@ html {
   font-weight: 400;
   color: var(--text-heading);
   line-height: 1.15;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
   max-width: 800px;
   letter-spacing: -0.01em;
+}
+
+.wp-date-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.wp-date-sep {
+  opacity: 0.35;
+  font-size: 0.5rem;
 }
 
 .wp-excerpt {
@@ -112,22 +130,22 @@ html {
   isolation: isolate;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 0.75rem 1.5rem;
-  margin-left: 1.5rem;
-  margin-right: calc(-2rem - 40px);
-  padding: 8px 1rem 8px 16px;
+  margin-left: calc(-1rem - 40px);
+  margin-right: calc(-2rem - 40px - 260px);
+  padding: 12px calc(2rem + 40px) 12px calc(1rem + 40px);
 }
 
 .wp-meta-row::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: -100vw;
   bottom: 0;
   right: -100vw;
   background: var(--bg-card);
-  border-radius: 6px 0 0 6px;
   z-index: -1;
 }
 
@@ -161,10 +179,55 @@ html {
   letter-spacing: 0.08em;
 }
 
+/* ===== CREDITS ===== */
+.wp-credits {
+  display: flex;
+  gap: 3.5rem;
+}
+
+.wp-credit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.wp-credit + .wp-credit {
+  padding-left: 3.5rem;
+  border-left: 1px solid var(--border-light);
+}
+
+.wp-credit-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1875rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.wp-credit-function {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  opacity: 0.65;
+}
+
+.wp-credit-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
 /* ===== ACTION BUTTONS ===== */
 .wp-actions {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 2px;
   flex-shrink: 0;
   margin-left: auto;
@@ -173,7 +236,7 @@ html {
 .wp-action-btn {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 0;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   font-weight: 400;
@@ -183,22 +246,43 @@ html {
   background: none;
   border: 1px solid transparent;
   border-radius: 4px;
-  padding: 8px 14px;
+  padding: 8px 10px;
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  transition: color 0.15s, border-color 0.15s, background 0.15s, gap 0.15s, padding 0.15s;
   white-space: nowrap;
 }
 
+.wp-action-btn span {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-width 0.2s, opacity 0.15s;
+}
+
+.wp-action-btn:hover span {
+  max-width: 60px;
+  opacity: 1;
+}
+
 .wp-action-btn:hover {
+  gap: 7px;
+  padding: 8px 14px;
   color: var(--text-heading);
   border-color: var(--border-medium);
   background: var(--bg-card);
 }
 
 .wp-action-btn.copied {
+  gap: 7px;
+  padding: 8px 14px;
   color: var(--accent-green);
   border-color: rgba(104, 124, 87, 0.15);
   background: rgba(104, 124, 87, 0.06);
+}
+
+.wp-action-btn.copied span {
+  max-width: 60px;
+  opacity: 1;
 }
 
 .wp-action-btn svg {
@@ -219,6 +303,16 @@ html {
   font-size: 1.0625rem;
   color: var(--text-body);
   line-height: 1.9;
+}
+
+.wp-body-fade {
+  position: sticky;
+  top: 0;
+  height: 180px;
+  margin: 0 -100vw;
+  pointer-events: none;
+  z-index: 5;
+  background: linear-gradient(to bottom, var(--bg-base) 0%, var(--bg-base) 20%, transparent 100%);
 }
 
 .wp-body p {
@@ -613,4 +707,185 @@ html {
     animation: none;
     opacity: 0.6;
   }
+}
+
+/* ===== PRINT / PDF TYPOGRAPHY ===== */
+@media print {
+  .whitepaper {
+    line-height: 1.6;
+  }
+
+  /* Title page feel */
+  .wp-header {
+    background: none !important;
+  }
+
+  .wp-title {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+
+  .wp-date-line {
+    margin-bottom: 0.75rem;
+  }
+
+  .wp-excerpt {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: none;
+  }
+
+  /* Body text — tighter for print */
+  .wp-body {
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  .wp-body p {
+    margin: 0 0 0.75rem;
+  }
+
+  .wp-body ul,
+  .wp-body ol {
+    margin: 0 0 1rem;
+  }
+
+  .wp-body ul li,
+  .wp-body ol li {
+    margin-bottom: 0.3rem;
+    line-height: 1.6;
+  }
+
+  /* Section spacing — print-optimised */
+  .wp-section {
+    padding-top: 2rem;
+  }
+
+  .wp-section:first-child {
+    padding-top: 2.5rem;
+  }
+
+  .wp-section-number {
+    font-size: 0.5625rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .wp-section-heading {
+    font-size: 1.625rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .wp-subsection-heading {
+    font-size: 1.2rem;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Dividers — static, no animation */
+  .section-divider {
+    padding: 1rem 0;
+  }
+
+  .section-divider::after {
+    animation: none;
+    opacity: 0.4;
+  }
+
+  /* Callouts — compact */
+  .wp-callout {
+    padding: 0.875rem 1.25rem;
+    margin: 1.25rem 0;
+  }
+
+  .wp-callout-title {
+    font-size: 0.625rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .wp-callout p,
+  .wp-callout ul li {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  /* Tables — compact */
+  .wp-table {
+    font-size: 0.8125rem;
+  }
+
+  .wp-table th {
+    font-size: 0.625rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .wp-table td {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .wp-table-wrap table {
+    font-size: 0.75rem;
+  }
+
+  .wp-table-wrap th,
+  .wp-table-wrap td {
+    padding: 0.4rem 0.625rem;
+  }
+
+  /* References — tighter */
+  .wp-references li {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  /* Research / overview lists */
+  .wp-research-list li,
+  .wp-overview-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+}
+
+/* ===== PRINT-ONLY AUTHOR BLOCK ===== */
+.wp-print-author {
+  display: none;
+}
+
+.wp-print-author-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0 0 2px;
+}
+
+.wp-print-author-role {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin: 0 0 2px;
+}
+
+.wp-print-author-institution {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  margin: 0 0 4px;
+}
+
+.wp-print-editor {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 0 4px;
+}
+
+.wp-print-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+  margin: 8px 0 0;
 }
