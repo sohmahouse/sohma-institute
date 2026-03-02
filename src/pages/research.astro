@@ -551,7 +551,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   .spiral-scroll-outer {
     position: relative;
-    height: 550vh;
+    height: 420vh;
   }
 
   .spiral-scroll-sticky {
@@ -1418,7 +1418,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     return arcLens[lo] + (arcLens[hi] - arcLens[lo]) * frac
   }
 
-  var NODE_END = 0.82  // nodes span 0 to 0.82, leaving tail for progress fadeout
+  var NODE_END = 0.92  // nodes span 0 to 0.92
   for (var i = 0; i < NODE_COUNT; i++) {
     nodeTs.push((i / (NODE_COUNT - 1)) * NODE_END)
   }
@@ -1673,7 +1673,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   function spawnGeo() {
     // Idle mode: particles drift from small radius back to center
     var isIdle = progressT < 0.05
-    geoAccum += isIdle ? (3 + Math.random() * 2) : (8 + Math.random() * 5)
+    geoAccum += isIdle ? (3 + Math.random() * 2) : (12 + Math.random() * 6)
     var toSpawn = Math.floor(geoAccum)
     if (toSpawn <= 0) return
     geoAccum -= toSpawn
@@ -1687,8 +1687,9 @@ import PortalLayout from '../layouts/PortalLayout.astro'
           var idleA = Math.random() * Math.PI * 2
           pos = { x: cx + Math.cos(idleA) * idleR, y: cy + Math.sin(idleA) * idleR }
         } else {
-          // Pick a point behind the forward particle front
-          var t = Math.random() * progressT * 0.65
+          // Bias toward outer edge of reached spiral
+          var r = Math.random()
+          var t = r * r * progressT * 0.85
           pos = spiralPos(t)
         }
         var dx = pos.x - cx, dy = pos.y - cy
@@ -1776,11 +1777,14 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     var nextLabelIdx = activeLabelIdx + 1
 
     // Map progressT directly to track position — continuous, no stepping
+    // Extends past last card so it scrolls up and out through the mask
     var topPad = 100
     if (labelsTrack && labelOffsets.length > 1) {
       var lastOff = labelOffsets[labelOffsets.length - 1]
-      var t = Math.max(0, Math.min(1, (progressT - nodeTs[1]) / (nodeTs[NODE_COUNT - 1] - nodeTs[1])))
-      var targetY = t * lastOff
+      var lastCard = labels[labels.length - 1]
+      var exitExtra = lastCard ? lastCard.offsetHeight + topPad + 40 : 300
+      var t = Math.max(0, (progressT - nodeTs[1]) / (1 - nodeTs[1]))
+      var targetY = t * (lastOff + exitExtra)
       labelsTrack.style.transform = 'translateY(' + (topPad - targetY) + 'px)'
     }
 
