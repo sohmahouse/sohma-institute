@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro'
+import PasswordGate from '../components/PasswordGate.astro'
 import sohmaLogo from '../assets/images/sohma_practitioners_logo.svg?raw'
 import { articles, getArticlesByCategory } from '../data/articles'
 
@@ -27,6 +28,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
 ---
 
 <BaseLayout title={title} description={description}>
+  <PasswordGate password="sohma2026" storageKey="sohma-institute-access" />
 
   <div class="portal-layout">
     <!-- Mobile header -->

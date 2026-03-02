@@ -19,27 +19,6 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     </header>
 
 
-    <!-- PEDAGOGICAL COMMITMENTS -->
-    <section class="pillars-section">
-      <span class="pillars-eyebrow">How We Teach</span>
-      <h2 class="section-heading">Pedagogical Commitments</h2>
-      <div class="pillars-grid">
-        <a href="/education/pedagogy" class="pillar-card">
-          <h3>Case-Based Architecture</h3>
-          <p>Every unit of competency is assessed through real clinical cases, not simulated scenarios. Students work within the Sohma House patient population from Tier 1 onward, with supervision intensity calibrated to credential level.</p>
-        </a>
-        <a href="/education/pedagogy" class="pillar-card">
-          <h3>Inverse Classroom</h3>
-          <p>Didactic content is asynchronous. All synchronous contact hours are dedicated to clinical reasoning, case presentation, supervised practice, and peer conferencing. We don't pay clinicians to lecture. We pay them to mentor.</p>
-        </a>
-        <a href="/education/pedagogy" class="pillar-card">
-          <h3>Portfolio Assessment</h3>
-          <p>No written examinations. Competency is demonstrated through clinical portfolios containing case documentation, reflective practice records, supervisor evaluations, and peer review. The portfolio becomes the practitioner's ongoing professional development record.</p>
-        </a>
-      </div>
-    </section>
-
-
     <!-- CREDENTIAL LADDER -->
     <section class="ladder-section">
       <h2 class="section-heading">Credential Ladder</h2>
@@ -60,7 +39,6 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
             <span class="ladder-badge">12 weeks &middot; Online + Clinical Intensive</span>
             <p class="ladder-summary">Entry point for registered health practitioners seeking to add traditional medicine competencies.</p>
             <p class="ladder-detail">Foundational literacy in one division. Systems biology primer, clinical reasoning methodology, regulatory and ethical frameworks. Prerequisite: current AHPRA registration or equivalent.</p>
-
           </div>
         </div>
 
@@ -73,7 +51,6 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
             <span class="ladder-badge">12 months &middot; Hybrid Clinical Mentorship</span>
             <p class="ladder-summary">Deep specialisation with mandatory cross-divisional elective and 200 hours supervised clinical practice.</p>
             <p class="ladder-detail">Deep specialisation in one division with mandatory cross-divisional elective. 200 hours supervised clinical practice within Sohma House or partner sites. Clinical portfolio assessment rather than examination. Produces competent clinical practitioners in their chosen division.</p>
-
           </div>
         </div>
 
@@ -86,7 +63,6 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
             <span class="ladder-badge">18 months &middot; Research + Clinical Integration</span>
             <p class="ladder-summary">Cross-divisional clinical reasoning at complexity with original research contribution.</p>
             <p class="ladder-detail">Requires integration of minimum two divisional frameworks. Original research contribution (case series, systematic review, or protocol validation). Articulation pathway to university Master's programs through partner institutions.</p>
-
           </div>
         </div>
 
@@ -99,9 +75,29 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
             <span class="ladder-badge">2 years &middot; Clinical Leadership + Research</span>
             <p class="ladder-summary">The Institute's highest credential. Produces clinical leaders and future faculty.</p>
             <p class="ladder-detail">Fellows produce original research, supervise clinical trainees, and contribute to protocol development. Fellowship requires demonstrated capacity to operate across three or more divisions simultaneously. Produces clinical leaders and future Institute faculty.</p>
-
           </div>
         </div>
+      </div>
+    </section>
+
+
+    <!-- PEDAGOGICAL COMMITMENTS -->
+    <section class="pillars-section">
+      <span class="pillars-eyebrow">How We Teach</span>
+      <h2 class="section-heading">Pedagogical Commitments</h2>
+      <div class="pillars-grid">
+        <a href="/education/pedagogy" class="pillar-card">
+          <h3>Case-Based Architecture</h3>
+          <p>Every unit of competency is assessed through real clinical cases, not simulated scenarios. Students work within the Sohma House patient population from Tier 1 onward, with supervision intensity calibrated to credential level.</p>
+        </a>
+        <a href="/education/pedagogy" class="pillar-card">
+          <h3>Inverse Classroom</h3>
+          <p>Didactic content is asynchronous. All synchronous contact hours are dedicated to clinical reasoning, case presentation, supervised practice, and peer conferencing. We don't pay clinicians to lecture. We pay them to mentor.</p>
+        </a>
+        <a href="/education/pedagogy" class="pillar-card">
+          <h3>Portfolio Assessment</h3>
+          <p>No written examinations. Competency is demonstrated through clinical portfolios containing case documentation, reflective practice records, supervisor evaluations, and peer review. The portfolio becomes the practitioner's ongoing professional development record.</p>
+        </a>
       </div>
     </section>
 
@@ -307,13 +303,8 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
   .pillar-card {
     display: block;
     padding: 1.75rem 0 0;
-    border-top: 1px solid var(--border-light);
+    border-top: none;
     text-decoration: none;
-    transition: border-color 0.2s;
-  }
-
-  .pillar-card:hover {
-    border-color: var(--accent-dark);
   }
 
   .pillar-card h3 {

@@ -10,19 +10,16 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
     <!-- STICKY BAR -->
     <div class="network-sticky-bar">
-      <a href="#" class="sticky-bar-login">Login to portal</a>
+      <a href="#" class="sticky-bar-login"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-1px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Login to portal</a>
     </div>
 
     <!-- HERO -->
     <header class="network-hero">
       <canvas id="network-mesh-canvas" aria-hidden="true"></canvas>
       <div class="hero-inner">
+        <div class="section-label">The Practitioner Network</div>
         <h1 class="hero-title">Distributed clinical intelligence.</h1>
         <p class="hero-lead">The Field isn't a professional association. It's not an alumni directory. It's an operational mesh — credentialed practitioners running shared protocols, feeding outcome data into a common registry, and conferencing on complex cases across divisional boundaries. Every member practises within a system that gets smarter because they participate.</p>
-        <div class="hero-cta-row">
-          <a href="#" class="hero-field-login">Login to The Field</a>
-          <a href="/contact" class="hero-field-info">Get Information Pack</a>
-        </div>
       </div>
     </header>
 
@@ -48,7 +45,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
               <span class="tier-detail-label">Role in the Network</span>
               <p>The broadest layer. Affiliates integrate Institute protocols into existing practice, contribute outcome data to the registry, and participate in peer case conferencing.</p>
             </div>
-            <a href="/contact" class="tier-cta-btn">Enquire about membership</a>
+            <button type="button" class="tier-cta-btn" data-tier="Tier I — Affiliate">Enquire about membership</button>
           </div>
         </div>
       </div>
@@ -73,7 +70,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
               <span class="tier-detail-label">Role in the Network</span>
               <p><span class="tier-statement">The clinical backbone.</span> Associates practise within the Institute's framework at depth, supervise Affiliates, participate in quarterly case conferencing, and their clinical data carries more weight in the registry due to supervised training.</p>
             </div>
-            <a href="/contact" class="tier-cta-btn">Enquire about membership</a>
+            <button type="button" class="tier-cta-btn" data-tier="Tier II — Associate">Enquire about membership</button>
           </div>
         </div>
       </div>
@@ -204,21 +201,113 @@ import PortalLayout from '../layouts/PortalLayout.astro'
           <span class="join-eyebrow">Join The Field</span>
           <h2>Enter the Field</h2>
           <p>Your credential determines your entry point. The network gets stronger with every practitioner who joins.</p>
-          <a href="/contact" class="join-primary-btn">Apply for membership &rarr;</a>
+          <button type="button" class="join-primary-btn" id="join-apply-btn">Apply for membership</button>
         </div>
         <div class="join-secondary">
           <a href="/education" class="join-alt">
             <span class="join-alt-label">No credential yet?</span>
-            <span class="join-alt-action">Start with the Foundation Certificate &rarr;</span>
+            <span class="join-alt-action">Start with the Foundation Certificate</span>
           </a>
           <a href="/contact" class="join-alt">
             <span class="join-alt-label">Institutional?</span>
-            <span class="join-alt-action">Group credentialing enquiry &rarr;</span>
+            <span class="join-alt-action">Group credentialing enquiry</span>
           </a>
         </div>
       </div>
     </section>
 
+
+    <!-- MEMBERSHIP ENQUIRY POPUP -->
+    <div class="enquiry-overlay" id="enquiry-overlay">
+      <div class="enquiry-popup">
+        <button type="button" class="enquiry-close" id="enquiry-close" aria-label="Close">&times;</button>
+        <span class="enquiry-eyebrow">Membership Enquiry</span>
+        <h2 class="enquiry-heading">Join The Field</h2>
+        <p class="enquiry-intro">Submit your details and we'll send you an information pack for your selected tier.</p>
+
+        <form class="enquiry-form" id="enquiry-form">
+          <div class="enquiry-row">
+            <div class="enquiry-field">
+              <label for="eq-name">Full Name</label>
+              <input type="text" id="eq-name" name="name" required autocomplete="name" />
+            </div>
+            <div class="enquiry-field">
+              <label for="eq-email">Email</label>
+              <input type="email" id="eq-email" name="email" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="enquiry-row">
+            <div class="enquiry-field">
+              <label for="eq-practice">Practice Type</label>
+              <select id="eq-practice" name="practice_type" required>
+                <option value="">Select discipline</option>
+                <option value="Naturopath">Naturopath</option>
+                <option value="Herbalist">Herbalist</option>
+                <option value="General Practitioner">General Practitioner</option>
+                <option value="Acupuncturist / TCM">Acupuncturist / TCM</option>
+                <option value="Nutritionist / Dietitian">Nutritionist / Dietitian</option>
+                <option value="Psychologist / Psychotherapist">Psychologist / Psychotherapist</option>
+                <option value="Nurse Practitioner">Nurse Practitioner</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="enquiry-field">
+              <label for="eq-years">Years in Practice</label>
+              <select id="eq-years" name="years_practice">
+                <option value="">Select range</option>
+                <option value="Student / Pre-registration">Student / Pre-registration</option>
+                <option value="0–2 years">0–2 years</option>
+                <option value="3–5 years">3–5 years</option>
+                <option value="6–10 years">6–10 years</option>
+                <option value="10+ years">10+ years</option>
+              </select>
+            </div>
+          </div>
+          <div class="enquiry-row">
+            <div class="enquiry-field">
+              <label for="eq-location">Practice Location</label>
+              <input type="text" id="eq-location" name="location" placeholder="City, State" autocomplete="address-level2" />
+            </div>
+            <div class="enquiry-field">
+              <label for="eq-tier">Tier of Interest</label>
+              <select id="eq-tier" name="tier" required>
+                <option value="">Select a tier</option>
+                <option value="Tier I — Affiliate">Tier I — Affiliate</option>
+                <option value="Tier II — Associate">Tier II — Associate</option>
+                <option value="Tier III — Fellow">Tier III — Fellow</option>
+              </select>
+            </div>
+          </div>
+          <div class="enquiry-field">
+            <label for="eq-qualifications">Current Qualifications &amp; Registrations</label>
+            <input type="text" id="eq-qualifications" name="qualifications" placeholder="e.g. BHSc Naturopathy, ANTA member, AHPRA registered" />
+          </div>
+          <div class="enquiry-field">
+            <label for="eq-interest">What interests you about the network?</label>
+            <textarea id="eq-interest" name="interest" rows="3" placeholder="Clinical protocols, supervision, research participation, case conferencing..."></textarea>
+          </div>
+          <div class="enquiry-field">
+            <label for="eq-referral">How did you hear about us?</label>
+            <select id="eq-referral" name="referral">
+              <option value="">Select</option>
+              <option value="Institute education">Institute education</option>
+              <option value="Colleague / referral">Colleague / referral</option>
+              <option value="Conference / event">Conference / event</option>
+              <option value="Online search">Online search</option>
+              <option value="Social media">Social media</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="enquiry-submit">Send Enquiry</button>
+        </form>
+
+        <div class="enquiry-success" id="enquiry-success">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3>Enquiry Sent</h3>
+          <p>We'll be in touch within 48 hours with your information pack.</p>
+        </div>
+      </div>
+    </div>
 
   </article>
 </PortalLayout>
@@ -234,23 +323,22 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   .network-page h2, .network-page h3 { margin: 0; }
   .network-page a { color: var(--accent-dark); text-decoration: none; transition: color 0.15s; }
   .network-page a:hover { color: var(--accent-darker-hover); }
-  .network-page a.tier-cta-btn { color: var(--text-heading); }
-  .network-page a.tier-cta-btn:hover { color: var(--text-heading); }
-  .tier-band.active .network-page a.tier-cta-btn,
-  .network-page .tier-band.active a.tier-cta-btn { color: #fff; }
-  :global([data-theme="dark"]) .network-page .tier-band.active a.tier-cta-btn { color: #1a1a1a; }
+  .network-page .tier-cta-btn { color: var(--text-heading); }
+  .network-page .tier-cta-btn:hover { color: var(--text-heading); }
+  .network-page .tier-band.active .tier-cta-btn { color: #fff; }
+  :global([data-theme="dark"]) .network-page .tier-band.active .tier-cta-btn { color: #1a1a1a; }
 
-  .network-page a.join-primary-btn { color: #141210; }
-  .network-page a.join-primary-btn:hover { color: #141210; }
+  .network-page .join-primary-btn { color: #141210; }
+  .network-page .join-primary-btn:hover { color: #141210; }
   .network-page a.join-alt { color: inherit; }
   .network-page a.join-alt:hover { color: inherit; }
   :global(.reading-progress) { display: none !important; }
-  .network-page a.sticky-bar-login { color: #fff; }
-  .network-page a.sticky-bar-login:hover { color: #fff; }
-  .network-page a.hero-field-login { color: rgba(255, 255, 255, 0.7); }
-  .network-page a.hero-field-login:hover { color: rgba(255, 255, 255, 0.85); }
-  .network-page a.hero-field-info { color: rgba(208, 200, 188, 0.6); }
-  .network-page a.hero-field-info:hover { color: rgba(208, 200, 188, 0.9); }
+  .network-page a.sticky-bar-login { color: rgba(255, 255, 255, 0.45); }
+  .network-page a.sticky-bar-login:hover { color: rgba(255, 255, 255, 0.45); }
+  .network-page a.hero-cta-primary { color: #141210; }
+  .network-page a.hero-cta-primary:hover { color: #141210; }
+  .network-page a.hero-cta-secondary { color: rgba(208, 200, 188, 0.7); }
+  .network-page a.hero-cta-secondary:hover { color: #e8dfd0; }
 
   /* ═══════════ HERO ═══════════ */
   .network-hero {
@@ -308,13 +396,13 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 5vw, 4.25rem);
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.01em;
     color: var(--text-heading);
-    max-width: 800px;
-    margin: 0 0 20px;
+    max-width: 700px;
+    margin: 0 0 24px;
   }
 
   .hero-lead {
@@ -323,51 +411,53 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     line-height: 1.65;
     max-width: 640px;
     padding-left: 1.5rem;
-    margin-bottom: 0;
+    margin-bottom: 2rem;
   }
 
   .hero-cta-row {
-    margin-top: 3.5rem;
+    margin-top: 3rem;
     display: flex;
     align-items: center;
-    gap: 2rem;
-    padding-left: 1.5rem;
+    gap: 1rem;
+    padding-left: 0;
   }
 
-  .hero-field-login {
+  .hero-cta-primary {
     display: inline-block;
     font-family: 'Manrope', sans-serif;
     font-size: 0.8125rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.02em;
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #141210;
+    background: rgba(245, 240, 232, 0.9);
+    padding: 12px 28px;
     border-radius: 4px;
-    padding: 10px 24px;
     text-decoration: none;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background 0.15s;
   }
 
-  .hero-field-login:hover {
-    background: rgba(255, 255, 255, 0.18);
-    border-color: rgba(255, 255, 255, 0.25);
+  .hero-cta-primary:hover {
+    background: #f1ece4;
+    color: #141210;
   }
 
-  .hero-field-info {
+  .hero-cta-secondary {
     display: inline-block;
     font-family: 'Manrope', sans-serif;
     font-size: 0.8125rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.02em;
-    color: rgba(208, 200, 188, 0.6);
-    padding: 10px 0;
+    color: rgba(208, 200, 188, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px 28px;
+    border-radius: 4px;
     text-decoration: none;
-    transition: color 0.15s;
+    transition: border-color 0.15s, color 0.15s;
   }
 
-  .hero-field-info:hover {
-    color: rgba(208, 200, 188, 0.9);
+  .hero-cta-secondary:hover {
+    border-color: var(--accent-dark);
+    color: #e8dfd0;
   }
 
   /* Hero CTAs */
@@ -407,9 +497,10 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: default;
     padding: 6px 18px;
     border-radius: 4px;
     text-decoration: none;
@@ -419,6 +510,178 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   .sticky-bar-login:hover {
     opacity: 0.85;
   }
+
+  /* ═══════════ ENQUIRY POPUP ═══════════ */
+  .enquiry-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .enquiry-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .enquiry-popup {
+    position: relative;
+    width: 90%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 3rem 2.5rem;
+    transform: translateY(12px);
+    transition: transform 0.25s;
+  }
+
+  .enquiry-overlay.open .enquiry-popup {
+    transform: translateY(0);
+  }
+
+  .enquiry-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 4px 8px;
+    line-height: 1;
+    transition: color 0.15s;
+  }
+
+  .enquiry-close:hover {
+    color: var(--text-heading);
+  }
+
+  .enquiry-eyebrow {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .enquiry-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    margin: 0 0 0.75rem;
+  }
+
+  .enquiry-intro {
+    font-size: 0.8125rem;
+    color: var(--text-body-60);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+
+  .enquiry-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .enquiry-field {
+    margin-bottom: 1.25rem;
+  }
+
+  .enquiry-field label {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-tertiary);
+    margin-bottom: 0.375rem;
+  }
+
+  .enquiry-field input,
+  .enquiry-field select,
+  .enquiry-field textarea {
+    width: 100%;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.875rem;
+    color: var(--text-heading);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 10px 12px;
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+  }
+
+  .enquiry-field input:focus,
+  .enquiry-field select:focus,
+  .enquiry-field textarea:focus {
+    outline: none;
+    border-color: var(--accent-dark);
+  }
+
+  .enquiry-field textarea {
+    resize: vertical;
+    min-height: 72px;
+  }
+
+  .enquiry-submit {
+    display: inline-block;
+    width: 100%;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #141210;
+    background: var(--accent-dark);
+    border: none;
+    border-radius: 4px;
+    padding: 12px 28px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .enquiry-submit:hover {
+    background: #d4773a;
+  }
+
+  .enquiry-success {
+    display: none;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .enquiry-success h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-heading);
+    margin: 1rem 0 0.5rem;
+  }
+
+  .enquiry-success p {
+    font-size: 0.8125rem;
+    color: var(--text-body-60);
+    line-height: 1.65;
+  }
+
 
   /* ═══════════ ENTER THE FIELD ═══════════ */
   .join-section {
@@ -759,6 +1022,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
     font-weight: 400;
+    line-height: 1.15;
     color: var(--text-heading);
     letter-spacing: -0.01em;
     margin: 0 0 4rem;
@@ -774,7 +1038,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 2.5rem 2rem 2rem;
+    padding: 2.5rem 1.5rem 2rem;
     border: 1px solid var(--border-light);
     border-radius: 2px;
     overflow: hidden;
@@ -1174,7 +1438,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     }
 
     .hero-title {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
     }
 
     .hero-lead {
@@ -1190,11 +1454,15 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     .tier-band-left {
       position: static;
     }
-    .tier-name { margin-bottom: 0.75rem; }
+    .tier-name { margin-bottom: 0; padding-bottom: 0.25rem; }
+    .tier-band-right { padding-top: 0.5rem; }
 
     .infra-grid {
       grid-template-columns: 1fr;
     }
+
+    .enquiry-row { grid-template-columns: 1fr; }
+    .enquiry-popup { padding: 2.5rem 1.5rem; }
 
     .join-section { margin: 0 -20px; }
     .join-inner { padding: 4rem 1.25rem; }
@@ -1224,11 +1492,17 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     }
 
     .hero-title {
-      font-size: 2rem;
+      font-size: 3rem;
+    }
+
+    .hero-cta-primary,
+    .hero-cta-secondary {
+      padding: 10px 16px;
     }
 
     .network-page .section-heading {
       font-size: 2rem;
+      line-height: 1.15;
     }
   }
 </style>
@@ -1392,11 +1666,61 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   initDataStream();
 
+  function initEnquiryPopup() {
+    const overlay = document.getElementById('enquiry-overlay');
+    const closeBtn = document.getElementById('enquiry-close');
+    const form = document.getElementById('enquiry-form');
+    const success = document.getElementById('enquiry-success');
+    const tierSelect = document.getElementById('eq-tier');
+    if (!overlay || !form) return;
+
+    function openPopup(tier) {
+      if (tierSelect) tierSelect.value = tier || '';
+      form.style.display = '';
+      success.style.display = 'none';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Open popup from tier CTA buttons
+    document.querySelectorAll('.tier-cta-btn[data-tier]').forEach(btn => {
+      btn.addEventListener('click', () => openPopup(btn.dataset.tier));
+    });
+
+    // Open popup from bottom CTA
+    const joinBtn = document.getElementById('join-apply-btn');
+    joinBtn?.addEventListener('click', () => openPopup(''));
+
+    // Close
+    function close() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn?.addEventListener('click', close);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+    });
+
+    // Submit
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.style.display = 'none';
+      success.style.display = 'block';
+    });
+  }
+
+  initEnquiryPopup();
+
   document.addEventListener('astro:page-load', () => {
     initTierObserver();
     initProtocolReveal();
     initProtocolFocus();
     initDataStream();
+    initEnquiryPopup();
   });
 </script>
 

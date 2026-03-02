@@ -87,89 +87,81 @@ import PortalLayout from '../layouts/PortalLayout.astro'
             <span class="program-num">01</span>
             <h3 class="program-title">Phytochemical Synergy Mapping</h3>
             <p class="program-subtitle">Network pharmacology analysis of traditional formulae to identify synergistic mechanisms that single-compound analysis cannot detect.</p>
-            <button class="program-details-toggle" type="button">See more details</button>
+
+            <div class="program-accordion">Computational and empirical investigation of multi-constituent botanical preparations. The signature deliverable is the first open-access database mapping traditional herbal combinations to validated network pharmacology profiles.</div>
             <div class="program-footer">
               <span class="program-division">Division I</span>
-              <span class="program-status active">Active</span>
+              <span class="program-status status-active">Active</span>
               <a href="/contact?program=phytochemical-synergy" class="program-cta">Collaborate on This Program</a>
             </div>
-            <div class="program-detail-data" hidden>Computational and empirical investigation of multi-constituent botanical preparations. The signature deliverable is the first open-access database mapping traditional herbal combinations to validated network pharmacology profiles.</div>
           </div>
 
           <div class="program-card" data-division="Division II">
             <span class="program-num">02</span>
             <h3 class="program-title">Cannabis Clinical Outcomes Registry</h3>
             <p class="program-subtitle">Practice-based evidence network aggregating clinical outcomes from Sohma House and partner prescriber sites.</p>
-            <button class="program-details-toggle" type="button">See more details</button>
+
+            <div class="program-accordion">Standardised outcome measures across condition categories. Real-world evidence generation at scale — the kind of data the TGA needs for regulatory pathway development. Feeds directly into TGA submissions and clinical protocol refinement.</div>
             <div class="program-footer">
               <span class="program-division">Division II</span>
-              <span class="program-status active">Active</span>
+              <span class="program-status status-active">Active</span>
               <a href="/contact?program=clinical-outcomes-registry" class="program-cta">View Outcomes</a>
             </div>
-            <div class="program-detail-data" hidden>Standardised outcome measures across condition categories. Real-world evidence generation at scale — the kind of data the TGA needs for regulatory pathway development. Feeds directly into TGA submissions and clinical protocol refinement.</div>
           </div>
 
           <div class="program-card" data-division="Cross-Divisional">
             <span class="program-num">03</span>
             <h3 class="program-title">Whole-Systems Research Design</h3>
             <p class="program-subtitle">Research about how to do research. Methodological innovation for complex, multi-component interventions.</p>
-            <button class="program-details-toggle" type="button">See more details</button>
+
+            <div class="program-accordion">Preserve intervention complexity rather than reducing it to fit existing trial designs. The contribution is a published methodology framework that other institutions can adopt — proof that rigorous evidence doesn't require destroying the thing you're studying.</div>
             <div class="program-footer">
               <span class="program-division">Cross-Divisional</span>
               <span class="program-status design">In Design</span>
               <a href="/contact?program=whole-systems-research" class="program-cta">Research Collaboration Enquiry</a>
             </div>
-            <div class="program-detail-data" hidden>Preserve intervention complexity rather than reducing it to fit existing trial designs. The contribution is a published methodology framework that other institutions can adopt — proof that rigorous evidence doesn't require destroying the thing you're studying.</div>
           </div>
 
           <div class="program-card" data-division="Division I">
             <span class="program-num">04</span>
             <h3 class="program-title">Tropical &amp; Indigenous Pharmacopoeia</h3>
             <p class="program-subtitle">Documentation and clinical validation of Far North Queensland botanical resources under Indigenous Data Sovereignty.</p>
-            <button class="program-details-toggle" type="button">See more details</button>
+
+            <div class="program-accordion">Supporting communities to document and validate their own traditions using modern analytical tools, with community ownership of all data and outputs. Operates under AIATSIS guidelines and community-controlled data governance.</div>
             <div class="program-footer">
               <span class="program-division">Division I</span>
               <span class="program-status design">In Design</span>
               <a href="/contact?program=indigenous-pharmacopoeia" class="program-cta">Research Collaboration Enquiry</a>
             </div>
-            <div class="program-detail-data" hidden>Supporting communities to document and validate their own traditions using modern analytical tools, with community ownership of all data and outputs. Operates under AIATSIS guidelines and community-controlled data governance.</div>
           </div>
 
           <div class="program-card" data-division="Division V">
             <span class="program-num">05</span>
             <h3 class="program-title">Consciousness &amp; Somatic Therapeutics</h3>
             <p class="program-subtitle">Clinical investigation of meditation, breathwork, and somatic practices as measurable interventions.</p>
-            <button class="program-details-toggle" type="button">See more details</button>
+
+            <div class="program-accordion">Standardised dosing for practices historically treated as unmeasurable. Neuroimaging partnerships to establish biomarker correlates. Moving these interventions from "wellness" into the same evidentiary category as pharmacological treatments.</div>
             <div class="program-footer">
               <span class="program-division">Division V</span>
               <span class="program-status seeking">Seeking Funding</span>
               <a href="/contact?program=consciousness-somatic&enquiry=funding" class="program-cta">Funding Enquiry</a>
             </div>
-            <div class="program-detail-data" hidden>Standardised dosing for practices historically treated as unmeasurable. Neuroimaging partnerships to establish biomarker correlates. Moving these interventions from "wellness" into the same evidentiary category as pharmacological treatments.</div>
           </div>
 
           <div class="program-card" data-division="Cross-Divisional">
             <span class="program-num">06</span>
             <h3 class="program-title">AI-Augmented Clinical Decision Support</h3>
             <p class="program-subtitle">Machine learning models trained on traditional medicine diagnostic frameworks.</p>
-            <button class="program-details-toggle" type="button">See more details</button>
+
+            <div class="program-accordion">Constitutional classification systems, pattern recognition methodologies, and multi-target therapeutic logic. Augmenting clinical reasoning, not replacing it — surfacing pattern matches a human clinician might miss.</div>
             <div class="program-footer">
               <span class="program-division">Cross-Divisional</span>
               <span class="program-status design">In Design</span>
               <a href="/contact?program=ai-clinical-decision-support" class="program-cta">Research Collaboration Enquiry</a>
             </div>
-            <div class="program-detail-data" hidden>Constitutional classification systems, pattern recognition methodologies, and multi-target therapeutic logic. Augmenting clinical reasoning, not replacing it — surfacing pattern matches a human clinician might miss.</div>
           </div>
         </div>
 
-        <aside class="program-panel" id="program-panel" aria-hidden="true">
-          <button class="program-panel-close" id="program-panel-close" type="button" aria-label="Close details">&times;</button>
-          <span class="program-panel-num" id="panel-num"></span>
-          <h3 class="program-panel-title" id="panel-title"></h3>
-          <p class="program-panel-subtitle" id="panel-subtitle"></p>
-          <p class="program-panel-body" id="panel-body"></p>
-          <div class="program-panel-footer" id="panel-footer"></div>
-        </aside>
       </div>
     </section>
 
@@ -883,108 +875,31 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     color: var(--text-heading);
   }
 
-  .program-card.program-card-active {
+  :global(.program-card.program-card-active) {
     border-color: var(--accent-border-25);
     background: var(--accent-bg-02);
   }
 
-  .program-card.program-card-active .program-details-toggle::before {
+  :global(.program-card.program-card-active .program-details-toggle)::before {
     content: '−';
   }
 
-  /* Panel wrapper */
-  .programs-wrap {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    position: relative;
-  }
-
-  .programs-wrap.panel-open {
-    grid-template-columns: 1fr 340px;
-    gap: 1.5rem;
-  }
-
-  /* Detail panel */
-  .program-panel {
-    display: none;
-    flex-direction: column;
-    gap: 12px;
-    position: sticky;
-    top: 2rem;
-    align-self: start;
-    background: var(--bg-card);
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    padding: 28px 24px;
-    max-height: calc(100vh - 4rem);
-    overflow-y: auto;
-  }
-
-  .programs-wrap.panel-open .program-panel {
-    display: flex;
-  }
-
-  .program-panel-close {
-    position: absolute;
-    top: 12px;
-    right: 14px;
-    font-size: 1.25rem;
-    line-height: 1;
-    color: var(--text-tertiary);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    transition: color 0.15s;
-  }
-
-  .program-panel-close:hover {
-    color: var(--text-heading);
-  }
-
-  .program-panel-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.625rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    color: var(--text-tertiary);
-    opacity: 0.7;
-  }
-
-  .program-panel-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.375rem;
-    font-weight: 500;
-    color: var(--text-heading);
-    line-height: 1.25;
-    margin: 0;
-  }
-
-  .program-panel-subtitle {
-    font-size: 0.8125rem;
-    font-style: italic;
-    color: var(--text-tertiary);
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  .program-panel-body {
+  /* Accordion */
+  .program-accordion {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+    opacity: 0;
     font-size: 0.875rem;
     color: var(--text-body-65);
     line-height: 1.7;
     margin: 0;
-    padding-top: 4px;
   }
 
-  .program-panel-footer {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border-light);
+  :global(.program-card.program-card-active .program-accordion) {
+    max-height: 200px;
+    opacity: 1;
+    margin: 12px 0 0;
   }
 
   .program-footer {
@@ -1025,7 +940,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     border-radius: 3px;
     white-space: nowrap;
   }
-  .program-status.active { color: var(--text-tertiary); }
+  .program-status.status-active { color: var(--text-tertiary); }
   .program-status.design { color: var(--text-tertiary); }
   .program-status.seeking { color: var(--text-tertiary); }
 
@@ -1262,20 +1177,6 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     .cta-secondary-block { flex-direction: column; gap: 1.5rem; }
     .programs-grid { grid-template-columns: 1fr; }
     .program-card { padding: 20px; }
-    .programs-wrap.panel-open { grid-template-columns: 1fr; }
-    .program-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 340px;
-      max-height: none;
-      border-radius: 0;
-      border: none;
-      border-left: 1px solid var(--border-light);
-      z-index: 100;
-      box-shadow: -4px 0 24px rgba(0,0,0,0.08);
-    }
     .ethics-grid { grid-template-columns: 1fr; }
   }
 </style>
@@ -1315,47 +1216,6 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   }
 
   function initProgramPanel() {
-    var wrap = document.querySelector('.programs-wrap')
-    var panel = document.getElementById('program-panel')
-    var closeBtn = document.getElementById('program-panel-close')
-    if (!wrap || !panel || !closeBtn) return
-
-    var panelNum = document.getElementById('panel-num')
-    var panelTitle = document.getElementById('panel-title')
-    var panelSubtitle = document.getElementById('panel-subtitle')
-    var panelBody = document.getElementById('panel-body')
-    var panelFooter = document.getElementById('panel-footer')
-
-    function openPanel(card) {
-      // Clear previous active
-      document.querySelectorAll('.program-card-active').forEach(function(c) {
-        c.classList.remove('program-card-active')
-      })
-      card.classList.add('program-card-active')
-
-      // Populate panel
-      panelNum.textContent = card.querySelector('.program-num').textContent
-      panelTitle.textContent = card.querySelector('.program-title').textContent
-      panelSubtitle.textContent = card.querySelector('.program-subtitle').textContent
-      panelBody.textContent = card.querySelector('.program-detail-data').textContent
-
-      // Clone footer content
-      var footer = card.querySelector('.program-footer')
-      panelFooter.innerHTML = footer.innerHTML
-
-      wrap.classList.add('panel-open')
-      panel.setAttribute('aria-hidden', 'false')
-    }
-
-    function closePanel() {
-      wrap.classList.remove('panel-open')
-      panel.setAttribute('aria-hidden', 'true')
-      document.querySelectorAll('.program-card-active').forEach(function(c) {
-        c.classList.remove('program-card-active')
-      })
-    }
-
-    // Toggle buttons
     var toggles = document.querySelectorAll('.program-details-toggle')
     toggles.forEach(function(btn) {
       btn.addEventListener('click', function(e) {
@@ -1363,14 +1223,15 @@ import PortalLayout from '../layouts/PortalLayout.astro'
         var card = btn.closest('.program-card')
         if (!card) return
         if (card.classList.contains('program-card-active')) {
-          closePanel()
+          card.classList.remove('program-card-active')
         } else {
-          openPanel(card)
+          document.querySelectorAll('.program-card-active').forEach(function(c) {
+            c.classList.remove('program-card-active')
+          })
+          card.classList.add('program-card-active')
         }
       })
     })
-
-    closeBtn.addEventListener('click', closePanel)
   }
 
   // Run immediately (script is at bottom of page, DOM is ready)
