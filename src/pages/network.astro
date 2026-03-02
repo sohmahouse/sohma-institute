@@ -1724,7 +1724,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   });
 </script>
 
-<script is:inline>
+<script is:inline data-astro-rerun>
 var _meshCleanup = null
 function initNetworkMesh() {
   if (_meshCleanup) { _meshCleanup(); _meshCleanup = null }
@@ -2144,5 +2144,4 @@ function initNetworkMesh() {
 }
 
 initNetworkMesh()
-document.addEventListener('astro:page-load', initNetworkMesh)
 </script>

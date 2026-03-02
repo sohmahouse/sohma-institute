@@ -86,18 +86,18 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
       <span class="pillars-eyebrow">How We Teach</span>
       <h2 class="section-heading">Pedagogical Commitments</h2>
       <div class="pillars-grid">
-        <a href="/education/pedagogy" class="pillar-card">
+        <div class="pillar-card">
           <h3>Case-Based Architecture</h3>
           <p>Every unit of competency is assessed through real clinical cases, not simulated scenarios. Students work within the Sohma House patient population from Tier 1 onward, with supervision intensity calibrated to credential level.</p>
-        </a>
-        <a href="/education/pedagogy" class="pillar-card">
+        </div>
+        <div class="pillar-card">
           <h3>Inverse Classroom</h3>
           <p>Didactic content is asynchronous. All synchronous contact hours are dedicated to clinical reasoning, case presentation, supervised practice, and peer conferencing. We don't pay clinicians to lecture. We pay them to mentor.</p>
-        </a>
-        <a href="/education/pedagogy" class="pillar-card">
+        </div>
+        <div class="pillar-card">
           <h3>Portfolio Assessment</h3>
           <p>No written examinations. Competency is demonstrated through clinical portfolios containing case documentation, reflective practice records, supervisor evaluations, and peer review. The portfolio becomes the practitioner's ongoing professional development record.</p>
-        </a>
+        </div>
       </div>
     </section>
 
@@ -296,15 +296,13 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
   .pillars-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0 2.5rem;
+    gap: 0 3.5rem;
     margin-top: 2.5rem;
   }
 
   .pillar-card {
     display: block;
-    padding: 1.75rem 0 0;
-    border-top: none;
-    text-decoration: none;
+    padding: 2.5rem 0 0;
   }
 
   .pillar-card h3 {
@@ -312,7 +310,7 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     font-size: 1.35rem;
     font-weight: 500;
     color: var(--text-heading);
-    margin-bottom: 0.875rem;
+    margin-bottom: 1.125rem;
   }
 
   .pillar-card p {
@@ -573,9 +571,15 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
 
   .divisions-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0 2rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem 2.5rem;
+    justify-items: center;
   }
+  .divisions-grid .division-card:nth-child(1) { grid-column: 1 / 3; }
+  .divisions-grid .division-card:nth-child(2) { grid-column: 3 / 5; }
+  .divisions-grid .division-card:nth-child(3) { grid-column: 5 / 7; }
+  .divisions-grid .division-card:nth-child(4) { grid-column: 2 / 4; }
+  .divisions-grid .division-card:nth-child(5) { grid-column: 4 / 6; }
 
   .division-card {
     display: block;
@@ -743,7 +747,10 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
       padding: 64px calc(1.5rem + 20px) 48px calc(1rem + 20px);
     }
 
-    .divisions-grid { grid-template-columns: repeat(3, 1fr); }
+    .divisions-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .divisions-grid .division-card:nth-child(n) { grid-column: auto; }
 
     .cta-section { margin: 0 -20px; }
   }
@@ -773,13 +780,12 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     .ladder-right { max-width: none; }
 
     .pillars-grid { grid-template-columns: 1fr; }
-    .divisions-grid { grid-template-columns: 1fr 1fr; }
+    .divisions-grid {
+      grid-template-columns: 1fr;
+    }
+    .divisions-grid .division-card:nth-child(n) { grid-column: auto; }
 
     .cta-secondary-block { flex-direction: column; gap: 1.5rem; }
-  }
-
-  @media (max-width: 480px) {
-    .divisions-grid { grid-template-columns: 1fr; }
   }
 </style>
 

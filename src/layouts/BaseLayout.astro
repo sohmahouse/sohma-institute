@@ -16,6 +16,12 @@ const { title, description = 'Sohma Institute — Practitioner knowledge base fo
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:title" content={`${title} | Sohma Institute`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://sohma.institute/og-image.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://sohma.institute/og-image.png" />
     <link rel="preload" href="/fonts/Manrope-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/CormorantGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <title>{title} | Sohma Institute</title>
@@ -51,14 +57,16 @@ const { title, description = 'Sohma Institute — Practitioner knowledge base fo
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <canvas id="grain-canvas" aria-hidden="true" style="position:fixed;inset:0;z-index:9999;pointer-events:none;width:100%;height:100%;opacity:0.06;"></canvas>
     <slot />
-    <script is:inline>
-      (function() {
+    <script is:inline data-astro-rerun>
+      function __grainInit() {
+        if (window.__grainCleanup) { window.__grainCleanup(); window.__grainCleanup = null }
+
         const canvas = document.getElementById('grain-canvas')
         if (!canvas) return
         const ctx = canvas.getContext('2d')
         if (!ctx) return
 
-        let w, h
+        let w, h, animId = 0
 
         function resize() {
           w = canvas.width = window.innerWidth
@@ -86,10 +94,16 @@ const { title, description = 'Sohma Institute — Practitioner knowledge base fo
             lastTime = time
             noise()
           }
-          requestAnimationFrame(loop)
+          animId = requestAnimationFrame(loop)
         }
-        requestAnimationFrame(loop)
-      })()
+        animId = requestAnimationFrame(loop)
+
+        window.__grainCleanup = function() {
+          if (animId) cancelAnimationFrame(animId)
+          window.removeEventListener('resize', resize)
+        }
+      }
+      __grainInit()
     </script>
   </body>
 </html>
