@@ -158,11 +158,16 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
     <!-- CLINICAL TRANSLATION PIPELINE -->
     <section class="pipeline-section" id="pipeline">
+      <canvas id="pipeline-sparks"></canvas>
       <div class="spiral-scroll-outer" id="spiral-scroll-outer">
         <div class="spiral-scroll-sticky">
           <div class="spiral-sidebar">
             <h2 class="section-heading">Clinical Translation Pipeline</h2>
-            <p class="section-intro">Every funder and reviewer asks the same question: <em>so what happens with the research?</em> It goes straight into clinical practice through Sohma House and the practitioner network. Clinical data flows back into research refinement. The loop is closed by design.</p>
+            <div class="pipeline-intro">
+              <p class="pipeline-question">Every funder and reviewer asks the same question — <em>so what happens with the research?</em></p>
+              <p class="pipeline-answer">It goes straight into clinical practice through Sohma House and the practitioner network. Clinical data flows back into research refinement.</p>
+              <p class="pipeline-close">The loop is closed by design.</p>
+            </div>
             <div class="spiral-labels" id="spiral-labels">
               <div class="spiral-labels-track" id="spiral-labels-track">
               <div class="spiral-label" data-node="1">
@@ -244,31 +249,49 @@ import PortalLayout from '../layouts/PortalLayout.astro'
         </div>
       </div>
 
-      <div class="tiers-row">
-        <div class="tier-card">
-          <div class="tier-header">
-            <span class="tier-letter green">A</span>
-            <span class="tier-name">Validated</span>
+      <div class="tiers-layout">
+        <div class="pipeline-feedback">
+          <div class="pipeline-feedback-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
           </div>
-          <p>Completed clinical pilot, peer-reviewed publication, network-wide distribution. Available to all credentialed practitioners.</p>
+          <div class="pipeline-feedback-text">
+            <span class="pipeline-feedback-label">Bidirectional by design</span>
+            <p>Practitioners submit outcome data, adverse events, and protocol modification requests through a standardised reporting system. This data feeds directly into research program refinement.</p>
+          </div>
         </div>
-        <div class="tier-card">
-          <div class="tier-header">
-            <span class="tier-letter warm">B</span>
-            <span class="tier-name">Provisional</span>
+        <div class="tiers-stack">
+          <div class="tier-card tier-green">
+            <div class="tier-header">
+              <span class="tier-letter green">A</span>
+              <div class="tier-meta">
+                <span class="tier-name">Validated</span>
+                <span class="tier-access">All credentialed practitioners</span>
+              </div>
+            </div>
+            <p>Completed clinical pilot, peer-reviewed publication, network-wide distribution.</p>
           </div>
-          <p>Active clinical pilot with preliminary data. Available under supervision framework for Associate and Fellow practitioners.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-header">
-            <span class="tier-letter neutral">C</span>
-            <span class="tier-name">Investigational</span>
+          <div class="tier-card tier-warm">
+            <div class="tier-header">
+              <span class="tier-letter warm">B</span>
+              <div class="tier-meta">
+                <span class="tier-name">Provisional</span>
+                <span class="tier-access">Associate & Fellow practitioners</span>
+              </div>
+            </div>
+            <p>Active clinical pilot with preliminary data. Available under supervision framework.</p>
           </div>
-          <p>Research design phase. Not available outside research settings. Active data collection underway.</p>
+          <div class="tier-card tier-neutral">
+            <div class="tier-header">
+              <span class="tier-letter neutral">C</span>
+              <div class="tier-meta">
+                <span class="tier-name">Investigational</span>
+                <span class="tier-access">Research settings only</span>
+              </div>
+            </div>
+            <p>Research design phase. Active data collection underway.</p>
+          </div>
         </div>
       </div>
-
-      <p class="pipeline-note">The pipeline is bidirectional. Practitioners submit outcome data, adverse events, and protocol modification requests through a standardised reporting system. This data feeds directly into research program refinement.</p>
     </section>
 
 
@@ -582,10 +605,49 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     line-height: 1.15;
   }
 
-  .spiral-sidebar .section-intro {
-    font-size: 0.95rem;
+  .pipeline-intro {
+    margin-bottom: 0.5rem;
+  }
+
+  .pipeline-question {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .pipeline-question em {
+    font-style: italic;
+    color: var(--text-primary);
+  }
+
+  .pipeline-answer {
+    font-size: 0.875rem;
     line-height: 1.7;
     color: var(--text-body-60);
+    margin-top: 0.5rem;
+  }
+
+  .pipeline-close {
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-top: 0.75rem;
+    font-weight: 700;
+  }
+
+  .pipeline-section {
+    position: relative;
+  }
+
+  #pipeline-sparks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .spiral-wrap {
@@ -731,8 +793,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   }
 
 
-  .pipeline-animated .tiers-row,
-  .pipeline-animated .pipeline-note {
+  .pipeline-animated .tiers-layout {
     position: relative;
     z-index: 1;
   }
@@ -742,40 +803,62 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     display: none;
   }
 
-  .tiers-row {
+  .tiers-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: -2rem;
     margin-bottom: 2rem;
+  }
+
+  .tiers-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .tier-card {
     border: 1px solid var(--border-light);
-    padding: 1.5rem;
-    transition: border-color 0.2s;
+    border-left: 3px solid var(--border-light);
+    padding: 1.5rem 1.5rem 1.25rem;
+    transition: border-color 0.2s, background 0.2s;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .tier-green { border-left-color: var(--accent-green); }
+  .tier-warm { border-left-color: var(--chart-warm); }
+  .tier-neutral { border-left-color: var(--text-tertiary); }
+
+  [data-theme="light"] .tier-card {
+    background: rgba(0, 0, 0, 0.015);
   }
 
   .tier-card:hover {
-    border-color: var(--accent-border-15);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  [data-theme="light"] .tier-card:hover {
+    background: rgba(0, 0, 0, 0.025);
   }
 
   .tier-header {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .tier-letter {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.875rem;
+    font-weight: 700;
     flex-shrink: 0;
   }
 
@@ -783,25 +866,69 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   .tier-letter.warm { color: var(--chart-warm); border: 2px solid var(--chart-warm); }
   .tier-letter.neutral { color: var(--text-tertiary); border: 2px solid var(--text-tertiary); }
 
+  .tier-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
   .tier-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.15rem;
+    font-weight: 600;
     color: var(--text-heading);
+    line-height: 1.2;
+  }
+
+  .tier-access {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-tertiary);
+    font-weight: 500;
   }
 
   .tier-card p {
     font-size: 0.8125rem;
     color: var(--text-body-60);
-    line-height: 1.7;
+    line-height: 1.65;
   }
 
-  .research-page p.pipeline-note {
+  .pipeline-feedback {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    max-width: 720px;
+  }
+
+  [data-theme="light"] .pipeline-feedback {
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  .pipeline-feedback-icon {
+    flex-shrink: 0;
+    color: var(--accent);
+    margin-top: 0.125rem;
+  }
+
+  .pipeline-feedback-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: var(--text-heading);
+    display: block;
+    margin-bottom: 0.375rem;
+  }
+
+  .pipeline-feedback-text p {
     font-size: 0.8125rem;
-    font-style: italic;
-    color: var(--text-tertiary);
-    line-height: 1.7;
-    max-width: 680px;
+    color: var(--text-body-60);
+    line-height: 1.65;
     margin: 0;
   }
 
@@ -881,7 +1008,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   .programs-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
 
@@ -1255,7 +1382,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       opacity: 1 !important;
     }
 
-    .tiers-row { grid-template-columns: 1fr; }
+    .tiers-layout { grid-template-columns: 1fr; }
     .collab-cta { margin: 0 -20px; }
     .cta-secondary-block { flex-direction: column; gap: 1.5rem; }
     .programs-grid { grid-template-columns: 1fr; }
@@ -1418,34 +1545,76 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     return arcLens[lo] + (arcLens[hi] - arcLens[lo]) * frac
   }
 
-  var NODE_END = 0.92  // nodes span 0 to 0.92
+  var NODE_END = 0.80  // nodes span 0 to 0.80, before return curve
   for (var i = 0; i < NODE_COUNT; i++) {
     nodeTs.push((i / (NODE_COUNT - 1)) * NODE_END)
   }
 
-  var SPIN_SPEED = 0.08 // radians per second
+  var SPIN_SPEED = 0.04 // radians per second
   var spinOffset = 0 // cached per frame
 
+  // Shell return: after RETURN_START, bezier curves back to spiral origin
+  var RETURN_START = 0.82
+  var returnMaxR = 0
+  // Cached bezier control points for the return curve (updated on resize + each frame for spin)
+  var retP0x = 0, retP0y = 0, retP1x = 0, retP1y = 0, retP2x = 0, retP2y = 0
+
+  function updateReturnCurve() {
+    // P0: position at RETURN_START (on the spiral)
+    var t0 = RETURN_START * TOTAL_THETA + spinOffset
+    retP0x = cx + returnMaxR * Math.cos(t0)
+    retP0y = cy + returnMaxR * Math.sin(t0)
+    // P2: spiral center
+    retP2x = cx
+    retP2y = cy
+    // P1: tangent direction + perpendicular bulge so the curve always arcs
+    var tan = spiralTangent(RETURN_START - 0.001)
+    var tanLen = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
+    var tdx = tan.x / tanLen, tdy = tan.y / tanLen
+    var reach = returnMaxR * 0.5
+    var bulge = returnMaxR * 0.35
+    // Perpendicular to tangent (always creates a curve, never a straight line)
+    retP1x = retP0x + tdx * reach + (-tdy) * bulge
+    retP1y = retP0y + tdy * reach + tdx * bulge
+  }
+
   function spiralPos(t) {
-    var theta = t * TOTAL_THETA + spinOffset
-    var r = spiralA + spiralB * (t * TOTAL_THETA)
-    return { x: cx + r * Math.cos(theta), y: cy + r * Math.sin(theta) }
+    if (t <= RETURN_START) {
+      var theta = t * TOTAL_THETA + spinOffset
+      var r = spiralA + spiralB * (t * TOTAL_THETA)
+      return { x: cx + r * Math.cos(theta), y: cy + r * Math.sin(theta) }
+    }
+    var u = (t - RETURN_START) / (1 - RETURN_START)
+    var inv = 1 - u
+    return {
+      x: inv * inv * retP0x + 2 * inv * u * retP1x + u * u * retP2x,
+      y: inv * inv * retP0y + 2 * inv * u * retP1y + u * u * retP2y
+    }
   }
 
   function spiralTangent(t) {
-    var theta = t * TOTAL_THETA + spinOffset
-    var r = spiralA + spiralB * (t * TOTAL_THETA)
-    var dr = spiralB * TOTAL_THETA
-    var ct = Math.cos(theta), st = Math.sin(theta)
+    if (t <= RETURN_START) {
+      var theta = t * TOTAL_THETA + spinOffset
+      var r = spiralA + spiralB * (t * TOTAL_THETA)
+      var dr = spiralB * TOTAL_THETA
+      var ct = Math.cos(theta), st = Math.sin(theta)
+      return {
+        x: dr * ct - r * st * TOTAL_THETA,
+        y: dr * st + r * ct * TOTAL_THETA
+      }
+    }
+    var u = (t - RETURN_START) / (1 - RETURN_START)
+    var s = 1 / (1 - RETURN_START)
     return {
-      x: dr * ct - r * st * TOTAL_THETA,
-      y: dr * st + r * ct * TOTAL_THETA
+      x: (2 * (1 - u) * (retP1x - retP0x) + 2 * u * (retP2x - retP1x)) * s,
+      y: (2 * (1 - u) * (retP1y - retP0y) + 2 * u * (retP2y - retP1y)) * s
     }
   }
 
   function computeSpiral() {
     var maxR = Math.min(W, H) * 0.46
     spiralB = (maxR - spiralA) / TOTAL_THETA
+    returnMaxR = spiralA + spiralB * (RETURN_START * TOTAL_THETA)
     cx = W / 2
     cy = H / 2
     computeArcLengths()
@@ -1466,19 +1635,19 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   /* ── Particle pools ── */
   // Forward particles (helix strand A) — spawn from center + boosted from nodes
-  var FWD_COUNT = 2000
+  var FWD_COUNT = 600
   var FWD_STRIDE = 7 // [t, speed, active, jitter, sinePhase, size, _]
   var fwd = new Float32Array(FWD_COUNT * FWD_STRIDE)
 
   // Return helix particles (helix strand B) — spiral back from progressT
-  var RH_COUNT = 900
+  var RH_COUNT = 250
   var RH_STRIDE = 6 // [t, speed, active, sinePhase, size, _]
   var rh = new Float32Array(RH_COUNT * RH_STRIDE)
 
   var nodeGlow = new Float32Array(NODE_COUNT)
 
   // Sacred geometry petal returns — particles arc back to center in flower-of-life curves
-  var GEO_COUNT = 1200
+  var GEO_COUNT = 300
   var GEO_STRIDE = 8 // [startX, startY, ctrlX, ctrlY, progress, speed, curveSide, active]
   var geo = new Float32Array(GEO_COUNT * GEO_STRIDE)
   var GEO_AXES = 6 // hexagonal symmetry
@@ -1491,7 +1660,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   function spawnFwd() {
     if (progressT < 0.01) return
     // From center
-    fwdAccum += 12 + Math.random() * 8
+    fwdAccum += 5 + Math.random() * 4
     var toSpawn = Math.floor(fwdAccum)
     if (toSpawn > 0) {
       fwdAccum -= toSpawn
@@ -1499,7 +1668,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
         var b = i * FWD_STRIDE
         if (fwd[b + 2] === 0) {
           fwd[b]     = Math.random() * 0.005
-          fwd[b + 1] = 0.0002 + Math.random() * 0.0025
+          fwd[b + 1] = 0.0001 + Math.random() * 0.0012
           fwd[b + 2] = 1
           fwd[b + 3] = (Math.random() - 0.5) * 12
           fwd[b + 4] = Math.random() * Math.PI * 2
@@ -1514,7 +1683,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       if (progressT >= nodeTs[n] + 0.01 && nodeTs[n] < progressT - 0.02) reached.push(n)
     }
     if (reached.length === 0) return
-    fwdNodeAccum += (5 + Math.random() * 3) * reached.length
+    fwdNodeAccum += (1 + Math.random() * 1) * reached.length
     var nodeSpawn = Math.floor(fwdNodeAccum)
     if (nodeSpawn <= 0) return
     fwdNodeAccum -= nodeSpawn
@@ -1523,7 +1692,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       if (fwd[b + 2] === 0) {
         var ni = reached[Math.floor(Math.random() * reached.length)]
         fwd[b]     = nodeTs[ni] + Math.random() * 0.01
-        fwd[b + 1] = 0.0003 + Math.random() * 0.003
+        fwd[b + 1] = 0.0001 + Math.random() * 0.001
         fwd[b + 2] = 1
         fwd[b + 3] = (Math.random() - 0.5) * 10
         fwd[b + 4] = Math.random() * Math.PI * 2
@@ -1535,7 +1704,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   function spawnRetHelix() {
     if (progressT < 0.08) return
-    rhAccum += 7 + Math.random() * 5
+    rhAccum += 3 + Math.random() * 3
     var toSpawn = Math.floor(rhAccum)
     if (toSpawn <= 0) return
     rhAccum -= toSpawn
@@ -1543,7 +1712,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       var b = i * RH_STRIDE
       if (rh[b + 2] === 0) {
         rh[b]     = progressT * 0.75 + Math.random() * progressT * 0.2
-        rh[b + 1] = 0.0003 + Math.random() * 0.001
+        rh[b + 1] = 0.0002 + Math.random() * 0.0006
         rh[b + 2] = 1
         rh[b + 3] = Math.random() * Math.PI * 2
         rh[b + 4] = 0.8 + Math.random() * 1.8
@@ -1557,22 +1726,33 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     if (progressT < 0.005) return
     var c = getColors()
     var steps = Math.max(2, Math.floor(300 * progressT))
+    // Return curve: use t-based wave (arc lengths are stale due to spin rotation)
+    var retArcAtStart = arcAtT(RETURN_START)
+    var RET_CYCLES = 4 // oscillations along the return curve
+    var RET_WAVE = Math.PI * 2 * RET_CYCLES / (1 - RETURN_START)
+
     // Strand A (forward helix)
     ctx.beginPath()
     for (var i = 0; i <= steps; i++) {
-      var t = (i / 300) // keep same parametric density
+      var t = (i / 300)
       if (t > progressT) break
-      var theta = t * TOTAL_THETA
       var p = spiralPos(t)
       var tan = spiralTangent(t)
       var len = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
       var nx = -tan.y / len, ny = tan.x / len
-      var d = HELIX_AMP * Math.sin(HELIX_WAVE * arcAtT(t))
+      var wave, d
+      if (t > RETURN_START) {
+        wave = HELIX_WAVE * retArcAtStart + RET_WAVE * (t - RETURN_START)
+        d = HELIX_AMP * Math.sin(wave)
+      } else {
+        d = HELIX_AMP * Math.sin(HELIX_WAVE * arcAtT(t))
+      }
       var hx = p.x + nx * d, hy = p.y + ny * d
       if (i === 0) ctx.moveTo(hx, hy)
       else ctx.lineTo(hx, hy)
     }
-    ctx.strokeStyle = 'rgba(255,255,255,0.06)'
+    var pulseAlpha = 0.04 + 0.04 * Math.sin(time * 0.8)
+    ctx.strokeStyle = 'rgba(255,255,255,' + pulseAlpha + ')'
     ctx.lineWidth = 0.5
     ctx.stroke()
 
@@ -1581,17 +1761,22 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     for (var i = 0; i <= steps; i++) {
       var t = (i / 300)
       if (t > progressT) break
-      var theta = t * TOTAL_THETA
       var p = spiralPos(t)
       var tan = spiralTangent(t)
       var len = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
       var nx = -tan.y / len, ny = tan.x / len
-      var d = HELIX_AMP * Math.sin(HELIX_WAVE * arcAtT(t) + Math.PI)
+      var wave, d
+      if (t > RETURN_START) {
+        wave = HELIX_WAVE * retArcAtStart + RET_WAVE * (t - RETURN_START)
+        d = HELIX_AMP * Math.sin(wave + Math.PI)
+      } else {
+        d = HELIX_AMP * Math.sin(HELIX_WAVE * arcAtT(t) + Math.PI)
+      }
       var hx = p.x + nx * d, hy = p.y + ny * d
       if (i === 0) ctx.moveTo(hx, hy)
       else ctx.lineTo(hx, hy)
     }
-    ctx.strokeStyle = 'rgba(255,255,255,0.06)'
+    ctx.strokeStyle = 'rgba(255,255,255,' + pulseAlpha + ')'
     ctx.lineWidth = 0.5
     ctx.stroke()
   }
@@ -1607,20 +1792,33 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       var b = i * FWD_STRIDE
       if (fwd[b + 2] === 0) continue
 
-      fwd[b] += fwd[b + 1]
+      var slowZone = progressT - 0.15
+      var speedMul = (fwd[b] > slowZone && progressT > 0.2) ? Math.max(0.15, (progressT - fwd[b]) / 0.15) : 1
+      fwd[b] += fwd[b + 1] * speedMul
       if (fwd[b] >= progressT) { fwd[b + 2] = 0; continue }
 
       var t = fwd[b]
-      var theta = t * TOTAL_THETA + spinOffset
-      var r = spiralA + spiralB * (t * TOTAL_THETA)
-      var ct = Math.cos(theta), st = Math.sin(theta)
-      var posX = cx + r * ct, posY = cy + r * st
-      // Inline tangent + normal
-      var dr = spiralB * TOTAL_THETA
-      var tx = dr * ct - r * st * TOTAL_THETA
-      var ty = dr * st + r * ct * TOTAL_THETA
+      var posX, posY, tx, ty
+      if (t > RETURN_START) {
+        var p = spiralPos(t), tn = spiralTangent(t)
+        posX = p.x; posY = p.y; tx = tn.x; ty = tn.y
+      } else {
+        var theta = t * TOTAL_THETA + spinOffset
+        var r = spiralA + spiralB * (t * TOTAL_THETA)
+        var ct = Math.cos(theta), st = Math.sin(theta)
+        posX = cx + r * ct; posY = cy + r * st
+        var dr = spiralB * TOTAL_THETA
+        tx = dr * ct - r * st * TOTAL_THETA
+        ty = dr * st + r * ct * TOTAL_THETA
+      }
       var len = Math.sqrt(tx * tx + ty * ty) || 1
-      var d = HELIX_AMP * Math.sin(HELIX_WAVE * arcAtT(t)) + fwd[b + 3] * Math.sin(time * 2.5 + fwd[b + 4]) * 0.6
+      var fWave
+      if (t > RETURN_START) {
+        fWave = HELIX_WAVE * arcAtT(RETURN_START) + (Math.PI * 2 * 4 / (1 - RETURN_START)) * (t - RETURN_START)
+      } else {
+        fWave = HELIX_WAVE * arcAtT(t)
+      }
+      var d = HELIX_AMP * Math.sin(fWave) + fwd[b + 3] * Math.sin(time * 2.5 + fwd[b + 4]) * 0.6
       var px = posX + (-ty / len) * d
       var py = posY + (tx / len) * d
 
@@ -1629,7 +1827,9 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       if (fadeZone > 0 && t > fadeZone) a *= (progressT - t) / 0.05
 
       ctx.fillStyle = 'rgba(' + ((cs0 + cd0 * t) | 0) + ',' + ((cs1 + cd1 * t) | 0) + ',' + ((cs2 + cd2 * t) | 0) + ',' + a + ')'
-      ctx.fillRect(px, py, fwd[b + 5], fwd[b + 5])
+      ctx.beginPath()
+      ctx.arc(px, py, fwd[b + 5] * 0.4, 0, Math.PI * 2)
+      ctx.fill()
     }
   }
 
@@ -1647,15 +1847,27 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       if (rh[b] <= 0) { rh[b + 2] = 0; continue }
 
       var t = rh[b]
-      var theta = t * TOTAL_THETA + spinOffset
-      var r = spiralA + spiralB * (t * TOTAL_THETA)
-      var ct = Math.cos(theta), st = Math.sin(theta)
-      var posX = cx + r * ct, posY = cy + r * st
-      var dr = spiralB * TOTAL_THETA
-      var tx = dr * ct - r * st * TOTAL_THETA
-      var ty = dr * st + r * ct * TOTAL_THETA
+      var posX, posY, tx, ty
+      if (t > RETURN_START) {
+        var p = spiralPos(t), tn = spiralTangent(t)
+        posX = p.x; posY = p.y; tx = tn.x; ty = tn.y
+      } else {
+        var theta = t * TOTAL_THETA + spinOffset
+        var r = spiralA + spiralB * (t * TOTAL_THETA)
+        var ct = Math.cos(theta), st = Math.sin(theta)
+        posX = cx + r * ct; posY = cy + r * st
+        var dr = spiralB * TOTAL_THETA
+        tx = dr * ct - r * st * TOTAL_THETA
+        ty = dr * st + r * ct * TOTAL_THETA
+      }
       var len = Math.sqrt(tx * tx + ty * ty) || 1
-      var d = HELIX_AMP * Math.sin(HELIX_WAVE * arcAtT(t) + Math.PI) + Math.sin(time * 1.5 + rh[b + 3]) * 0.6
+      var rWave
+      if (t > RETURN_START) {
+        rWave = HELIX_WAVE * arcAtT(RETURN_START) + (Math.PI * 2 * 4 / (1 - RETURN_START)) * (t - RETURN_START)
+      } else {
+        rWave = HELIX_WAVE * arcAtT(t)
+      }
+      var d = HELIX_AMP * Math.sin(rWave + Math.PI) + Math.sin(time * 1.5 + rh[b + 3]) * 0.6
       var px = posX + (-ty / len) * d
       var py = posY + (tx / len) * d
 
@@ -1663,7 +1875,9 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       if (t < 0.05) a *= t / 0.05
 
       ctx.fillStyle = retPrefix + a + ')'
-      ctx.fillRect(px, py, rh[b + 4], rh[b + 4])
+      ctx.beginPath()
+      ctx.arc(px, py, rh[b + 4] * 0.4, 0, Math.PI * 2)
+      ctx.fill()
     }
   }
 
@@ -1671,27 +1885,18 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   var geoAccum = 0
 
   function spawnGeo() {
-    // Idle mode: particles drift from small radius back to center
-    var isIdle = progressT < 0.05
-    geoAccum += isIdle ? (3 + Math.random() * 2) : (12 + Math.random() * 6)
+    if (progressT < 0.1) return
+    geoAccum += 4 + Math.random() * 3
     var toSpawn = Math.floor(geoAccum)
     if (toSpawn <= 0) return
     geoAccum -= toSpawn
     for (var i = 0; i < GEO_COUNT && toSpawn > 0; i++) {
       var b = i * GEO_STRIDE
       if (geo[b + 7] === 0) {
-        var pos, dist, angle
-        if (isIdle) {
-          // Spawn in a small halo around center
-          var idleR = 30 + Math.random() * 60
-          var idleA = Math.random() * Math.PI * 2
-          pos = { x: cx + Math.cos(idleA) * idleR, y: cy + Math.sin(idleA) * idleR }
-        } else {
-          // Bias toward outer edge of reached spiral
-          var r = Math.random()
-          var t = r * r * progressT * 0.85
-          pos = spiralPos(t)
-        }
+        // Bias toward outer edge of reached spiral
+        var r = Math.random()
+        var t = r * r * progressT * 0.85
+        var pos = spiralPos(t)
         var dx = pos.x - cx, dy = pos.y - cy
         var dist = Math.sqrt(dx * dx + dy * dy)
         var angle = Math.atan2(dy, dx)
@@ -1717,7 +1922,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
         geo[b + 2] = cpx    // ctrlX
         geo[b + 3] = cpy    // ctrlY
         geo[b + 4] = 0      // progress (0→1)
-        geo[b + 5] = 0.005 + Math.random() * 0.008  // speed
+        geo[b + 5] = 0.003 + Math.random() * 0.005  // speed
         geo[b + 6] = side   // curve side (for visual variety)
         geo[b + 7] = 1      // active
         toSpawn--
@@ -1750,7 +1955,9 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       if (p > 0.8) a *= (1 - p) / 0.2
 
       ctx.fillStyle = geoPrefix + a + ')'
-      ctx.fillRect(px, py, 1.2, 1.2)
+      ctx.beginPath()
+      ctx.arc(px, py, 0.6, 0, Math.PI * 2)
+      ctx.fill()
     }
   }
 
@@ -1841,6 +2048,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     time += 0.016
 
     spinOffset = time * SPIN_SPEED
+    updateReturnCurve()
     prevProgressT = progressT
     progressT = getScrollProgress()
 
@@ -1888,6 +2096,88 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   new MutationObserver(function() {
     if (visible) resize()
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+})()
+</script>
+
+<script is:inline>
+;(function() {
+  var section = document.getElementById('pipeline')
+  var c = document.getElementById('pipeline-sparks')
+  if (!section || !c) return
+  var ctx = c.getContext('2d')
+
+  var SPARK_COUNT = 60
+  var sparks = new Float32Array(SPARK_COUNT * 6) // x, y, vx, vy, life, maxLife
+  var W = 0, H = 0, dpr = 1, animId = 0, visible = false
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2)
+    W = section.offsetWidth
+    H = section.offsetHeight
+    c.width = W * dpr
+    c.height = H * dpr
+    c.style.width = W + 'px'
+    c.style.height = H + 'px'
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+  }
+
+  function spawn(i) {
+    var b = i * 6
+    sparks[b]     = Math.random() * W
+    sparks[b + 1] = Math.random() * H
+    sparks[b + 2] = (Math.random() - 0.5) * 0.4
+    sparks[b + 3] = -0.15 - Math.random() * 0.5
+    sparks[b + 4] = 0
+    sparks[b + 5] = 60 + Math.random() * 80
+  }
+
+  for (var i = 0; i < SPARK_COUNT; i++) {
+    spawn(i)
+    sparks[i * 6 + 4] = Math.random() * sparks[i * 6 + 5]
+  }
+
+  function tick() {
+    if (!visible) { animId = 0; return }
+    animId = requestAnimationFrame(tick)
+    ctx.clearRect(0, 0, W, H)
+
+    var isDark = document.documentElement.dataset.theme !== 'light'
+    var r = isDark ? 255 : 180
+    var g = isDark ? 210 : 140
+    var bv = isDark ? 140 : 80
+
+    for (var i = 0; i < SPARK_COUNT; i++) {
+      var b = i * 6
+      sparks[b + 4] += 1
+      if (sparks[b + 4] >= sparks[b + 5]) { spawn(i); continue }
+
+      sparks[b] += sparks[b + 2]
+      sparks[b + 1] += sparks[b + 3]
+
+      var lifeT = sparks[b + 4] / sparks[b + 5]
+      var alpha = lifeT < 0.2 ? lifeT / 0.2 : 1 - (lifeT - 0.2) / 0.8
+      alpha *= 0.7
+
+      if (Math.random() < 0.1) alpha *= 0.3
+
+      var size = 1.5 + (1 - lifeT) * 1.5
+
+      ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + bv + ',' + alpha + ')'
+      ctx.fillRect(sparks[b], sparks[b + 1], size, size)
+    }
+  }
+
+  resize()
+  window.addEventListener('resize', resize)
+
+  new IntersectionObserver(function(entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        visible = true
+        if (!animId) animId = requestAnimationFrame(tick)
+      } else { visible = false }
+    }
+  }, { threshold: 0.01 }).observe(section)
 })()
 </script>
 
