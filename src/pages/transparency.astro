@@ -188,6 +188,10 @@ import sohmaLogo from '../assets/images/sohma_practitioners_logo.svg?raw'
     max-width: 220px;
     display: flex;
     flex-direction: column;
+    background: rgba(180, 170, 155, 0.12);
+  }
+  :global([data-theme="dark"]) .stream-card {
+    background: transparent;
   }
 
   /* When any source card is hovered, dim all siblings */
@@ -246,12 +250,12 @@ import sohmaLogo from '../assets/images/sohma_practitioners_logo.svg?raw'
     letter-spacing: 0.12em;
     color: var(--text-body-60);
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--border-light);
     text-decoration: none;
     transition: background 0.3s, color 0.3s, border-color 0.3s;
   }
   .stream-card:hover .stream-link {
-    color: #000;
+    color: #fff;
     background: var(--stream-color, var(--accent-dark));
     border-color: var(--stream-color, var(--accent-dark));
   }
@@ -267,7 +271,7 @@ import sohmaLogo from '../assets/images/sohma_practitioners_logo.svg?raw'
     display: block;
   }
   .dest-logo :global(path) {
-    fill: #fff !important;
+    fill: var(--text-heading) !important;
   }
 
   .dest-card p {
@@ -277,7 +281,7 @@ import sohmaLogo from '../assets/images/sohma_practitioners_logo.svg?raw'
   }
 
   .dest-card:hover .stream-link {
-    color: #000;
+    color: #fff;
     background: var(--accent-line, var(--accent-dark));
     border-color: var(--accent-line, var(--accent-dark));
   }
@@ -574,6 +578,11 @@ import sohmaLogo from '../assets/images/sohma_practitioners_logo.svg?raw'
       ctx.clearRect(0, 0, cw, ch)
       if (grid) grid.fill(-1)
 
+      // Theme-aware particle rendering
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+      const baseAlpha = isDark ? 0.85 : 0.45
+      const defaultGrey: [number, number, number] = isDark ? [51, 51, 51] : [180, 170, 155]
+
       // Update & draw particles
       for (let i = 0; i < MAX; i++) {
         const b = i * 6
@@ -607,18 +616,18 @@ import sohmaLogo from '../assets/images/sohma_practitioners_logo.svg?raw'
         }
 
         // Fade in/out
-        let a = 0.85
-        if (t < 0.06) a = (t / 0.06) * 0.85
-        else if (t > 0.9) a = ((1 - t) / 0.1) * 0.85
+        let a = baseAlpha
+        if (t < 0.06) a = (t / 0.06) * baseAlpha
+        else if (t > 0.9) a = ((1 - t) / 0.1) * baseAlpha
 
-        // Default grey (#333), stream color when source or destination is hovered
+        // Default grey or stream color on hover
         const flowIdx = pool[b + 2]
         const isFocused = activeSource >= 0 || activeDest >= 0
         const showColor = isFocused && (
           (activeSource >= 0 && FLOWS[flowIdx].src === activeSource) ||
           (activeDest >= 0 && FLOWS[flowIdx].dst === activeDest)
         )
-        const [r, g, bl] = showColor ? rgb(p.color) : [51, 51, 51]
+        const [r, g, bl] = showColor ? rgb(p.color) : defaultGrey
         const fa = (isFocused && !showColor) ? a * 0.08 : a
         const px = Math.round(x)
         const py = Math.round(y)

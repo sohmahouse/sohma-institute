@@ -83,19 +83,89 @@ let articleIndex = 0
           })
         ))}
       </div>
+
+      <!-- MOBILE PAGINATION -->
+      <div class="hub-pagination" id="hub-pagination"></div>
     </div>
 
   </div>
 </PortalLayout>
 
 <script>
+  const PER_PAGE = 6
+
+  function isMobile() {
+    return window.innerWidth <= 640
+  }
+
   function initFilters() {
     const filters = document.getElementById('hub-filters')
     const grid = document.getElementById('hub-grid')
+    const pagination = document.getElementById('hub-pagination')
     if (!filters || !grid) return
 
-    const cards = Array.from(grid.querySelectorAll('.hub-card')) as HTMLElement[]
+    const allCards = Array.from(grid.querySelectorAll('.hub-card')) as HTMLElement[]
     const contexts = Array.from(document.querySelectorAll('.hub-category-context')) as HTMLElement[]
+    let currentPage = 1
+    let visibleCards: HTMLElement[] = []
+
+    function applyPagination() {
+      if (!isMobile()) {
+        // Desktop: show all, hide pagination
+        visibleCards.forEach(c => c.classList.remove('hub-card-paged'))
+        if (pagination) pagination.innerHTML = ''
+        return
+      }
+
+      const totalPages = Math.ceil(visibleCards.length / PER_PAGE)
+      visibleCards.forEach((card, i) => {
+        const page = Math.floor(i / PER_PAGE) + 1
+        card.classList.toggle('hub-card-paged', page !== currentPage)
+      })
+
+      // Render pagination
+      if (pagination && totalPages > 1) {
+        let html = ''
+        for (let p = 1; p <= totalPages; p++) {
+          html += `<button class="hub-page-btn${p === currentPage ? ' active' : ''}" data-page="${p}">${p}</button>`
+        }
+        pagination.innerHTML = html
+
+        pagination.querySelectorAll('.hub-page-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            currentPage = parseInt((btn as HTMLElement).dataset.page!)
+            applyPagination()
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          })
+        })
+      } else if (pagination) {
+        pagination.innerHTML = ''
+      }
+    }
+
+    function filterCards(category: string) {
+      let visibleIndex = 0
+      visibleCards = []
+
+      allCards.forEach(card => {
+        const match = category === 'All' || card.dataset.category === category
+        if (match) {
+          card.classList.remove('hub-card-hidden')
+          card.classList.remove('hub-card-paged')
+          visibleIndex++
+          visibleCards.push(card)
+          const num = card.querySelector('.hub-card-number')
+          if (num) num.textContent = String(visibleIndex).padStart(2, '0')
+          const catTag = card.querySelector('.hub-card-category') as HTMLElement
+          if (catTag) catTag.style.display = category === 'All' ? '' : 'none'
+        } else {
+          card.classList.add('hub-card-hidden')
+        }
+      })
+
+      currentPage = 1
+      applyPagination()
+    }
 
     filters.addEventListener('click', (e) => {
       const btn = (e.target as HTMLElement).closest('.hub-filter') as HTMLButtonElement
@@ -103,11 +173,9 @@ let articleIndex = 0
 
       const category = btn.dataset.category!
 
-      // Update active filter
       filters.querySelectorAll('.hub-filter').forEach(f => f.classList.remove('active'))
       btn.classList.add('active')
 
-      // Show/hide category context
       contexts.forEach(ctx => {
         if (category !== 'All' && ctx.dataset.context === category) {
           ctx.classList.add('visible')
@@ -118,23 +186,14 @@ let articleIndex = 0
         }
       })
 
-      // Filter cards
-      let visibleIndex = 0
-      cards.forEach(card => {
-        const match = category === 'All' || card.dataset.category === category
-        if (match) {
-          card.classList.remove('hub-card-hidden')
-          visibleIndex++
-          const num = card.querySelector('.hub-card-number')
-          if (num) num.textContent = String(visibleIndex).padStart(2, '0')
-          // Show/hide category tag in footer
-          const catTag = card.querySelector('.hub-card-category') as HTMLElement
-          if (catTag) catTag.style.display = category === 'All' ? '' : 'none'
-        } else {
-          card.classList.add('hub-card-hidden')
-        }
-      })
+      filterCards(category)
     })
+
+    // Init
+    filterCards('All')
+
+    // Re-apply on resize
+    window.addEventListener('resize', () => applyPagination(), { passive: true })
   }
 
   document.addEventListener('DOMContentLoaded', initFilters)
@@ -142,6 +201,8 @@ let articleIndex = 0
 </script>
 
 <style>
+  :global(.reading-progress) { display: none !important; }
+
   .hub-page {
     min-height: 100vh;
     min-width: 0;
@@ -349,7 +410,7 @@ let articleIndex = 0
   /* ===== ARTICLE GRID ===== */
   .hub-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding-top: 32px;
   }
@@ -370,7 +431,12 @@ let articleIndex = 0
     border-color: var(--accent-border-15);
   }
 
-  .hub-card-hidden {
+  .hub-card-hidden,
+  .hub-card-paged {
+    display: none;
+  }
+
+  .hub-pagination {
     display: none;
   }
 
@@ -395,7 +461,7 @@ let articleIndex = 0
   }
 
   .hub-card:hover .hub-card-title {
-    color: var(--accent);
+    color: var(--accent-dark);
   }
 
   .hub-card-subtitle {
@@ -423,35 +489,36 @@ let articleIndex = 0
   .hub-card-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 8px;
-    margin-top: 16px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border-light);
+    margin: auto -24px -24px;
+    padding: 2rem 24px 20px;
   }
 
-  .hub-card-category {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6875rem;
-    font-weight: 600;
+  .hub-card-category,
+  .hub-card-time {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--text-tertiary);
-    background: var(--bg-card);
-    padding: 2px 8px;
+    background: var(--bg-card-hover);
+    border: 1px solid rgba(0,0,0,0.04);
+    padding: 3px 10px;
     border-radius: 3px;
+    white-space: nowrap;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
   }
 
   .hub-card-time {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6875rem;
-    font-weight: 500;
-    color: var(--text-tertiary);
-    background: var(--bg-card);
-    padding: 2px 8px;
-    border-radius: 3px;
-    white-space: nowrap;
     margin-left: auto;
+  }
+
+  .hub-card:hover .hub-card-category,
+  .hub-card:hover .hub-card-time {
+    color: #fff;
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
   }
 
   /* ===== RESPONSIVE ===== */
@@ -515,17 +582,61 @@ let articleIndex = 0
     .hub-card-title {
       font-size: 1.125rem;
     }
+
+    .hub-card-footer {
+      margin: auto -20px -20px;
+      padding: 1.5rem 20px 16px;
+    }
+
+    .hub-pagination {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 2rem 0 1rem;
+    }
+  }
+
+  .hub-page-btn {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+  }
+
+  .hub-page-btn:hover {
+    border-color: var(--accent-dark);
+    color: var(--accent-dark);
+  }
+
+  .hub-page-btn.active {
+    color: #fff;
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
   }
 
   /* ===== DARK MODE ===== */
-  :global([data-theme="dark"]) .hub-card-category {
-    color: var(--accent);
-    background: var(--accent-bg-08);
+  :global([data-theme="dark"]) .hub-card-category,
+  :global([data-theme="dark"]) .hub-card-time {
+    color: var(--text-tertiary);
+    background: var(--bg-card-hover);
+    border-color: var(--border-light);
   }
 
-  :global([data-theme="dark"]) .hub-card-time {
-    color: var(--accent);
-    background: var(--accent-bg-08);
+  :global([data-theme="dark"]) .hub-card:hover .hub-card-category,
+  :global([data-theme="dark"]) .hub-card:hover .hub-card-time {
+    color: #fff;
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
   }
 
   @media (prefers-reduced-motion: reduce) {
