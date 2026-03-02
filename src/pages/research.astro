@@ -161,64 +161,48 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       <h2 class="section-heading">Clinical Translation Pipeline</h2>
       <p class="section-intro">Every funder and reviewer asks the same question: <em>so what happens with the research?</em> It goes straight into clinical practice through Sohma House and the practitioner network. Clinical data flows back into research refinement. The loop is closed by design.</p>
 
-      <canvas id="pipeline-canvas" class="pipeline-canvas" aria-hidden="true"></canvas>
-
-      <div class="pipeline-timeline">
-        <div class="pl-step left">
-          <div class="pl-content">
-            <h3>Research Hypothesis</h3>
-            <p>Clinical questions identified from practice-based observation and traditional knowledge systems.</p>
+      <div class="spiral-scroll-outer" id="spiral-scroll-outer">
+        <div class="spiral-scroll-sticky">
+          <div class="spiral-wrap">
+            <canvas id="pipeline-canvas" class="pipeline-canvas" aria-hidden="true"></canvas>
+            <div class="spiral-labels" id="spiral-labels">
+              <div class="spiral-label" data-node="0">
+                <span class="spiral-num">01</span>
+                <h3>Research Hypothesis</h3>
+                <p>Clinical questions identified from practice-based observation and traditional knowledge systems.</p>
+              </div>
+              <div class="spiral-label" data-node="1">
+                <span class="spiral-num">02</span>
+                <h3>Protocol Design</h3>
+                <p>Whole-systems trial methodology designed to preserve intervention complexity.</p>
+              </div>
+              <div class="spiral-label" data-node="2">
+                <span class="spiral-num">03</span>
+                <h3>Clinical Pilot</h3>
+                <p>Small-scale clinical implementation through Sohma House and partner sites.</p>
+              </div>
+              <div class="spiral-label" data-node="3">
+                <span class="spiral-num">04</span>
+                <h3>Data Collection</h3>
+                <p>Standardised outcome measurement and registry data aggregation at scale.</p>
+              </div>
+              <div class="spiral-label" data-node="4">
+                <span class="spiral-num">05</span>
+                <h3>Refinement</h3>
+                <p>Protocol adjustment based on clinical outcomes and practitioner feedback loops.</p>
+              </div>
+              <div class="spiral-label" data-node="5">
+                <span class="spiral-num">06</span>
+                <h3>Validated Protocol</h3>
+                <p>Peer-reviewed publication and evidence tier classification.</p>
+              </div>
+              <div class="spiral-label" data-node="6">
+                <span class="spiral-num">07</span>
+                <h3>Network Distribution</h3>
+                <p>Distributed to credentialed practitioners through the network infrastructure.</p>
+              </div>
+            </div>
           </div>
-          <div class="pl-node"></div>
-          <div class="pl-spacer"></div>
-        </div>
-        <div class="pl-step right">
-          <div class="pl-spacer"></div>
-          <div class="pl-node"></div>
-          <div class="pl-content">
-            <h3>Protocol Design</h3>
-            <p>Whole-systems trial methodology designed to preserve intervention complexity.</p>
-          </div>
-        </div>
-        <div class="pl-step left">
-          <div class="pl-content">
-            <h3>Clinical Pilot</h3>
-            <p>Small-scale clinical implementation through Sohma House and partner sites.</p>
-          </div>
-          <div class="pl-node"></div>
-          <div class="pl-spacer"></div>
-        </div>
-        <div class="pl-step right">
-          <div class="pl-spacer"></div>
-          <div class="pl-node"></div>
-          <div class="pl-content">
-            <h3>Data Collection</h3>
-            <p>Standardised outcome measurement and registry data aggregation at scale.</p>
-          </div>
-        </div>
-        <div class="pl-step left">
-          <div class="pl-content">
-            <h3>Refinement</h3>
-            <p>Protocol adjustment based on clinical outcomes and practitioner feedback loops.</p>
-          </div>
-          <div class="pl-node"></div>
-          <div class="pl-spacer"></div>
-        </div>
-        <div class="pl-step right">
-          <div class="pl-spacer"></div>
-          <div class="pl-node"></div>
-          <div class="pl-content">
-            <h3>Validated Protocol</h3>
-            <p>Peer-reviewed publication and evidence tier classification.</p>
-          </div>
-        </div>
-        <div class="pl-step left">
-          <div class="pl-content">
-            <h3>Network Distribution</h3>
-            <p>Distributed to credentialed practitioners through the network infrastructure.</p>
-          </div>
-          <div class="pl-node"></div>
-          <div class="pl-spacer"></div>
         </div>
       </div>
 
@@ -523,8 +507,31 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   /* ═══════════ PIPELINE ═══════════ */
   .pipeline-section {
     position: relative;
-    padding: 4rem 0;
+    padding: 2rem 0 0;
     border-bottom: 1px solid var(--border-light);
+  }
+
+  .spiral-scroll-outer {
+    position: relative;
+    height: 350vh;
+    margin-top: 0.5rem;
+  }
+
+  .spiral-scroll-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .spiral-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 700px;
   }
 
   .pipeline-canvas {
@@ -536,98 +543,79 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     z-index: 0;
   }
 
-  .pipeline-animated .pipeline-timeline::before { display: none; }
-  .pipeline-animated .pl-node { opacity: 0; }
+  .spiral-labels {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+  }
 
-  .pipeline-animated .pipeline-timeline,
+  .spiral-label {
+    position: absolute;
+    width: 320px;
+    pointer-events: auto;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    background: var(--bg-base, #faf8f5);
+    border-left: 1.5px solid var(--accent-dark, #6a6a5a);
+    border-radius: 0 2px 2px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  [data-theme="dark"] .spiral-label {
+    background: rgba(28, 26, 23, 0.9);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  }
+
+  .spiral-num {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    opacity: 0.5;
+    margin-bottom: 0.1rem;
+  }
+
+  .spiral-label h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-heading);
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.15rem;
+  }
+
+  .spiral-label p {
+    font-size: 0.68rem;
+    color: var(--text-body-60);
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.7;
+  }
+
+  .pipeline-animated .spiral-label {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .pipeline-animated .spiral-label.reached {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .pipeline-animated .tiers-row,
   .pipeline-animated .pipeline-note {
     position: relative;
     z-index: 1;
   }
 
-  .pipeline-animated .pl-content p {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 0.3s, max-height 0.3s;
-    margin: 0;
-  }
-
-  .pipeline-animated .pl-step:hover .pl-content p {
-    opacity: 1;
-    max-height: 120px;
-    margin-top: 0.25rem;
-  }
-
-  .pipeline-timeline {
-    position: relative;
-    max-width: 700px;
-    margin: 0 auto 3rem;
-  }
-
-  .pipeline-timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 5px;
-    bottom: 5px;
-    width: 1px;
-    background: var(--border-light);
-    transform: translateX(-0.5px);
-  }
-
-  .pl-step {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 0;
-    align-items: center;
-    padding: 1.25rem 0;
-  }
-
-  .pl-step:first-child { padding-top: 0; }
-  .pl-step:last-child { padding-bottom: 0; }
-
-  .pl-node {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--text-heading);
-    position: relative;
-    z-index: 1;
-    justify-self: center;
-  }
-
-  .pl-spacer {
-    min-width: 0;
-  }
-
-  .pl-content {
-    padding: 0 2rem;
-  }
-
-  .pl-step.left .pl-content {
-    text-align: right;
-  }
-
-  .pl-step.right .pl-content {
-    text-align: left;
-  }
-
-  .pl-content h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: var(--text-heading);
-    line-height: 1.25;
-    margin-bottom: 0.25rem;
-  }
-
-  .pl-content p {
-    font-size: 0.8125rem;
-    color: var(--text-body-60);
-    line-height: 1.6;
-    margin: 0;
+  /* Mobile fallback: no spiral, vertical list */
+  .spiral-fallback-list {
+    display: none;
   }
 
   .tiers-row {
@@ -1125,21 +1113,31 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     .hero-right { order: -1; gap: 1.5rem; }
     .section-heading { font-size: 2rem; }
 
+    .spiral-scroll-outer { height: auto; }
+    .spiral-scroll-sticky { position: static; height: auto; }
+    .spiral-wrap { height: auto; }
     .pipeline-canvas { display: none; }
-    .pipeline-animated .pl-node { opacity: 1; }
-    .pipeline-animated .pipeline-timeline::before { display: block; }
-    .pipeline-animated .pl-content p {
-      opacity: 1; max-height: none; overflow: visible; margin: 0 0 1rem;
+    .spiral-labels {
+      position: static;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 1rem 0;
     }
-
-    .pipeline-timeline { max-width: none; }
-    .pipeline-timeline::before { left: 20px; }
-    .pl-step { grid-template-columns: auto 1fr; }
-    .pl-step.left .pl-content,
-    .pl-step.right .pl-content { text-align: left; }
-    .pl-spacer { display: none; }
-    .pl-node { margin: 0 0 0 15px; }
-    .pl-content { padding: 0 0 0 1.5rem; }
+    .spiral-label {
+      position: static !important;
+      transform: none !important;
+      max-width: none;
+      text-align: left !important;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--border-light);
+    }
+    .pipeline-animated .spiral-label {
+      opacity: 1;
+    }
+    .pipeline-animated .spiral-label p {
+      opacity: 1; max-height: none; overflow: visible; margin: 0.25rem 0 0;
+    }
 
     .tiers-row { grid-template-columns: 1fr; }
     .collab-cta { margin: 0 -20px; }
@@ -1211,15 +1209,17 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 </script>
 
 <script is:inline>
-;(function pipelineViz() {
+;(function spiralViz() {
   /* ── Preflight ── */
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   var section = document.getElementById('pipeline')
   var canvas = document.getElementById('pipeline-canvas')
-  if (!section || !canvas) return
+  var scrollOuter = document.getElementById('spiral-scroll-outer')
+  if (!section || !canvas || !scrollOuter) return
   var ctx = canvas.getContext('2d')
   if (!ctx) return
-  if (reducedMotion) return // static HTML fallback
+  if (window.innerWidth <= 768) return
+  if (reducedMotion) return
 
   section.classList.add('pipeline-animated')
 
@@ -1227,50 +1227,425 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   function isDark() { return document.documentElement.dataset.theme === 'dark' }
 
   var COLORS_LIGHT = {
-    fwdStart: [125, 179, 212],  // #7db3d4
-    fwdEnd:   [104, 124, 87],   // #687C57
-    ret:      [196, 90, 66],    // #c45a42
-    tierA:    [104, 124, 87],   // #687C57
-    tierB:    [158, 122, 74],   // #9e7a4a
-    tierC:    [90, 138, 173]    // #5a8aad
+    fwdStart: [125, 179, 212],
+    fwdEnd:   [104, 124, 87],
+    ret:      [196, 90, 66],
+    progress: [220, 190, 120]
   }
   var COLORS_DARK = {
-    fwdStart: [110, 155, 190],  // #6e9bbe
-    fwdEnd:   [122, 148, 101],  // #7a9465
-    ret:      [212, 112, 78],   // #d4704e
-    tierA:    [122, 148, 101],  // #7a9465
-    tierB:    [184, 144, 96],   // #b89060
-    tierC:    [110, 155, 190]   // #6e9bbe
+    fwdStart: [110, 155, 190],
+    fwdEnd:   [122, 148, 101],
+    ret:      [212, 112, 78],
+    progress: [240, 210, 140]
   }
 
   function getColors() { return isDark() ? COLORS_DARK : COLORS_LIGHT }
-  function baseAlpha() { return isDark() ? 0.5 : 0.35 }
+  function baseAlpha() { return isDark() ? 0.75 : 0.6 }
 
   function lerpColor(a, b, t) {
-    return [
-      a[0] + (b[0] - a[0]) * t,
-      a[1] + (b[1] - a[1]) * t,
-      a[2] + (b[2] - a[2]) * t
-    ]
+    return [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t]
   }
 
   function rgbStr(c, a) {
-    return 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' + a + ')'
+    return 'rgba('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+','+a+')'
   }
 
   /* ── Canvas setup ── */
+  var wrap = section.querySelector('.spiral-wrap')
+  var labels = section.querySelectorAll('.spiral-label')
   var W = 0, H = 0, dpr = 1
   var animId = 0, visible = false, time = 0
-  var phase = 0 // 0=idle 1=forward 2=return 3=tiers 4=ambient
-  var phaseStart = 0
   var hoveredNode = -1
-
-  var pipeNodes = [] // {x,y} for 7 pipeline nodes
-  var tierCenters = [] // {x,y} for 3 tier letters
+  var activeNode = -1
   var resizeTimer = 0
+  var progressT = 0
 
+  /* ── Spiral geometry ── */
+  var TOTAL_THETA = Math.PI * 5    // ~2.5 turns
+  var NODE_COUNT = 7
+  var nodeTs = []                   // t-values for each node (0-1)
+  var nodePositions = []            // {x, y} for each node
+  var spiralA = 20                  // inner radius
+  var spiralB = 0                   // computed on resize
+  var cx = 0, cy = 0               // center
+
+  var HELIX_FREQ = 10       // full sine cycles over the spiral
+  var HELIX_AMP  = 10       // px displacement from spiral backbone
+
+  for (var i = 0; i < NODE_COUNT; i++) {
+    nodeTs.push(i / (NODE_COUNT - 1))
+  }
+
+  function spiralPos(t) {
+    var theta = t * TOTAL_THETA
+    var r = spiralA + spiralB * theta
+    return { x: cx + r * Math.cos(theta), y: cy + r * Math.sin(theta) }
+  }
+
+  function spiralTangent(t) {
+    var theta = t * TOTAL_THETA
+    var r = spiralA + spiralB * theta
+    var dr = spiralB * TOTAL_THETA
+    return {
+      x: dr * Math.cos(theta) - r * Math.sin(theta) * TOTAL_THETA,
+      y: dr * Math.sin(theta) + r * Math.cos(theta) * TOTAL_THETA
+    }
+  }
+
+  function computeSpiral() {
+    var maxR = Math.min(W, H) * 0.46
+    spiralB = (maxR - spiralA) / TOTAL_THETA
+    cx = W / 2
+    cy = H / 2
+
+    nodePositions = []
+    for (var i = 0; i < NODE_COUNT; i++) {
+      nodePositions.push(spiralPos(nodeTs[i]))
+    }
+
+    // Position labels — top-left of each node
+    for (var j = 0; j < labels.length; j++) {
+      var nd = parseInt(labels[j].dataset.node)
+      if (isNaN(nd) || !nodePositions[nd]) continue
+      var np = nodePositions[nd]
+      var lh = labels[j].offsetHeight || 90
+      labels[j].style.left = (np.x - 12) + 'px'
+      labels[j].style.top = (np.y - lh - 20) + 'px'
+    }
+  }
+
+  /* ── Scroll progress ── */
+  function getScrollProgress() {
+    var rect = scrollOuter.getBoundingClientRect()
+    var total = scrollOuter.offsetHeight - window.innerHeight
+    if (total <= 0) return 0
+    return Math.max(0, Math.min(1, -rect.top / total))
+  }
+
+  /* ── Particle pools ── */
+  // Forward particles (helix strand A) — spawn from center + boosted from nodes
+  var FWD_COUNT = 800
+  var FWD_STRIDE = 6 // [t, speed, active, jitter, sinePhase, _]
+  var fwd = new Float32Array(FWD_COUNT * FWD_STRIDE)
+
+  // Return helix particles (helix strand B) — spiral back from progressT
+  var RH_COUNT = 250
+  var RH_STRIDE = 5 // [t, speed, active, sinePhase, _]
+  var rh = new Float32Array(RH_COUNT * RH_STRIDE)
+
+  var nodeGlow = new Float32Array(NODE_COUNT)
+
+  // Sparks — burst from active node
+  var SPARK_COUNT = 80
+  var SPARK_STRIDE = 7 // [x, y, vx, vy, life, maxLife, active]
+  var sparks = new Float32Array(SPARK_COUNT * SPARK_STRIDE)
+
+  /* ── Spawn ── */
+  var fwdAccum = 0, fwdNodeAccum = 0, rhAccum = 0
+
+  function spawnFwd() {
+    if (progressT < 0.01) return
+    // From center
+    fwdAccum += 4 + Math.random() * 2
+    var toSpawn = Math.floor(fwdAccum)
+    if (toSpawn > 0) {
+      fwdAccum -= toSpawn
+      for (var i = 0; i < FWD_COUNT && toSpawn > 0; i++) {
+        var b = i * FWD_STRIDE
+        if (fwd[b + 2] === 0) {
+          fwd[b]     = Math.random() * 0.02
+          fwd[b + 1] = 0.0008 + Math.random() * 0.0016
+          fwd[b + 2] = 1
+          fwd[b + 3] = (Math.random() - 0.5) * 8
+          fwd[b + 4] = Math.random() * Math.PI * 2
+          toSpawn--
+        }
+      }
+    }
+    // From reached nodes (boost — each node emits forward particles)
+    var reached = []
+    for (var n = 0; n < NODE_COUNT; n++) {
+      if (progressT >= nodeTs[n] + 0.01 && nodeTs[n] < progressT - 0.02) reached.push(n)
+    }
+    if (reached.length === 0) return
+    fwdNodeAccum += (1.5 + Math.random()) * reached.length
+    var nodeSpawn = Math.floor(fwdNodeAccum)
+    if (nodeSpawn <= 0) return
+    fwdNodeAccum -= nodeSpawn
+    for (var i = 0; i < FWD_COUNT && nodeSpawn > 0; i++) {
+      var b = i * FWD_STRIDE
+      if (fwd[b + 2] === 0) {
+        var ni = reached[Math.floor(Math.random() * reached.length)]
+        fwd[b]     = nodeTs[ni] + Math.random() * 0.01
+        fwd[b + 1] = 0.001 + Math.random() * 0.002
+        fwd[b + 2] = 1
+        fwd[b + 3] = (Math.random() - 0.5) * 6
+        fwd[b + 4] = Math.random() * Math.PI * 2
+        nodeSpawn--
+      }
+    }
+  }
+
+  function spawnRetHelix() {
+    if (progressT < 0.08) return
+    rhAccum += 1.8 + Math.random() * 1.2
+    var toSpawn = Math.floor(rhAccum)
+    if (toSpawn <= 0) return
+    rhAccum -= toSpawn
+    for (var i = 0; i < RH_COUNT && toSpawn > 0; i++) {
+      var b = i * RH_STRIDE
+      if (rh[b + 2] === 0) {
+        rh[b]     = progressT - Math.random() * 0.01
+        rh[b + 1] = 0.0006 + Math.random() * 0.0014
+        rh[b + 2] = 1
+        rh[b + 3] = Math.random() * Math.PI * 2
+        toSpawn--
+      }
+    }
+  }
+
+  /* ── Draw double-helix guide paths (up to progressT) ── */
+  function drawSpiralPath() {
+    if (progressT < 0.005) return
+    var c = getColors()
+    var steps = Math.max(2, Math.floor(300 * progressT))
+    // Strand A (forward helix)
+    ctx.beginPath()
+    for (var i = 0; i <= steps; i++) {
+      var t = (i / 300) // keep same parametric density
+      if (t > progressT) break
+      var theta = t * TOTAL_THETA
+      var p = spiralPos(t)
+      var tan = spiralTangent(t)
+      var len = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
+      var nx = -tan.y / len, ny = tan.x / len
+      var d = HELIX_AMP * Math.sin(HELIX_FREQ * theta)
+      var hx = p.x + nx * d, hy = p.y + ny * d
+      if (i === 0) ctx.moveTo(hx, hy)
+      else ctx.lineTo(hx, hy)
+    }
+    ctx.strokeStyle = 'rgba(255,255,255,0.06)'
+    ctx.lineWidth = 0.5
+    ctx.stroke()
+
+    // Strand B (return helix — π out of phase)
+    ctx.beginPath()
+    for (var i = 0; i <= steps; i++) {
+      var t = (i / 300)
+      if (t > progressT) break
+      var theta = t * TOTAL_THETA
+      var p = spiralPos(t)
+      var tan = spiralTangent(t)
+      var len = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
+      var nx = -tan.y / len, ny = tan.x / len
+      var d = HELIX_AMP * Math.sin(HELIX_FREQ * theta + Math.PI)
+      var hx = p.x + nx * d, hy = p.y + ny * d
+      if (i === 0) ctx.moveTo(hx, hy)
+      else ctx.lineTo(hx, hy)
+    }
+    ctx.strokeStyle = 'rgba(255,255,255,0.06)'
+    ctx.lineWidth = 0.5
+    ctx.stroke()
+  }
+
+  /* ── Draw progress node ── */
+  function drawProgressNode() {
+    if (progressT < 0.005) return
+    var c = getColors()
+    var pos = spiralPos(progressT)
+    var r = 16 + Math.sin(time * 1.5) * 2
+    var grad = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, r)
+    grad.addColorStop(0, rgbStr(c.progress, 0.7))
+    grad.addColorStop(0.4, rgbStr(c.progress, 0.25))
+    grad.addColorStop(1, rgbStr(c.progress, 0))
+    ctx.beginPath()
+    ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
+    ctx.fillStyle = grad
+    ctx.fill()
+    // Core
+    ctx.beginPath()
+    ctx.arc(pos.x, pos.y, 3, 0, Math.PI * 2)
+    ctx.fillStyle = rgbStr(c.progress, 0.9)
+    ctx.fill()
+  }
+
+  /* ── Draw nodes ── */
+  function drawNodes() {
+    var c = getColors()
+    var ba = baseAlpha()
+    for (var i = 0; i < NODE_COUNT; i++) {
+      var n = nodePositions[i]
+      if (!n) continue
+      nodeGlow[i] *= 0.96
+
+      var isActive = (i === activeNode)
+      var r = 3 + Math.sin(time * 1.2 + i * 0.9) * 0.8
+      var a = isActive ? 0.95 : 0.4
+
+      ctx.beginPath()
+      ctx.arc(n.x, n.y, r, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(255,255,255,' + a + ')'
+      ctx.fill()
+    }
+  }
+
+  /* ── Update & draw forward particles ── */
+  function drawForward() {
+    var c = getColors()
+    var ba = baseAlpha()
+    for (var i = 0; i < FWD_COUNT; i++) {
+      var b = i * FWD_STRIDE
+      if (fwd[b + 2] === 0) continue
+
+      // Node proximity slowdown
+      var speed = fwd[b + 1]
+      for (var n = 0; n < NODE_COUNT; n++) {
+        if (Math.abs(fwd[b] - nodeTs[n]) < 0.02) {
+          speed *= 0.3
+          nodeGlow[n] = Math.min(nodeGlow[n] + 0.08, 1)
+          break
+        }
+      }
+      fwd[b] += speed
+      // Clamp to scroll progress
+      if (fwd[b] >= progressT) { fwd[b + 2] = 0; continue }
+
+      var t = fwd[b]
+      var theta = t * TOTAL_THETA
+      var pos = spiralPos(t)
+      var tan = spiralTangent(t)
+      var len = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
+      var nx = -tan.y / len
+      var ny = tan.x / len
+      var helix = HELIX_AMP * Math.sin(HELIX_FREQ * theta)
+      var jitter = (Math.sin(time * 2 + fwd[b + 4]) * 2) * 0.5
+      var px = pos.x + nx * (helix + jitter)
+      var py = pos.y + ny * (helix + jitter)
+
+      // Fade in/out near edges
+      var a = ba
+      if (t < 0.05) a = (t / 0.05) * ba
+      var fadeZone = progressT - 0.05
+      if (fadeZone > 0 && t > fadeZone) a *= (progressT - t) / 0.05
+
+      var col = lerpColor(c.fwdStart, c.fwdEnd, t)
+
+      // Halo
+      ctx.fillStyle = rgbStr(col, a * 0.25)
+      ctx.fillRect(px - 2.5, py - 2.5, 6, 6)
+      // Core
+      ctx.fillStyle = rgbStr(col, a)
+      ctx.fillRect(px - 0.5, py - 0.5, 2.5, 2.5)
+    }
+  }
+
+  /* ── Update & draw helix return particles (spiral back along strand B) ── */
+  function drawReturnHelix() {
+    var c = getColors()
+    var ba = baseAlpha() * 0.6
+    for (var i = 0; i < RH_COUNT; i++) {
+      var b = i * RH_STRIDE
+      if (rh[b + 2] === 0) continue
+
+      rh[b] -= rh[b + 1]
+      if (rh[b] <= 0) { rh[b + 2] = 0; continue }
+
+      var t = rh[b]
+      var theta = t * TOTAL_THETA
+      var pos = spiralPos(t)
+      var tan = spiralTangent(t)
+      var len = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
+      var nx = -tan.y / len
+      var ny = tan.x / len
+      var helix = HELIX_AMP * Math.sin(HELIX_FREQ * theta + Math.PI)
+      var jitter = (Math.sin(time * 1.5 + rh[b + 3]) * 1.5) * 0.4
+      var px = pos.x + nx * (helix + jitter)
+      var py = pos.y + ny * (helix + jitter)
+
+      var a = ba
+      if (t < 0.05) a *= t / 0.05
+
+      ctx.fillStyle = rgbStr(c.ret, a * 0.2)
+      ctx.fillRect(px - 1.5, py - 1.5, 4, 4)
+      ctx.fillStyle = rgbStr(c.ret, a)
+      ctx.fillRect(px - 0.5, py - 0.5, 2, 2)
+    }
+  }
+
+  /* ── Sparks from active node ── */
+  var sparkAccum = 0
+
+  function spawnSparks() {
+    if (activeNode < 0) return
+    var np = nodePositions[activeNode]
+    if (!np) return
+    sparkAccum += 1.5 + Math.random()
+    var toSpawn = Math.floor(sparkAccum)
+    if (toSpawn <= 0) return
+    sparkAccum -= toSpawn
+    for (var i = 0; i < SPARK_COUNT && toSpawn > 0; i++) {
+      var b = i * SPARK_STRIDE
+      if (sparks[b + 6] === 0) {
+        var angle = Math.random() * Math.PI * 2
+        var speed = 0.4 + Math.random() * 1.2
+        sparks[b]     = np.x
+        sparks[b + 1] = np.y
+        sparks[b + 2] = Math.cos(angle) * speed
+        sparks[b + 3] = Math.sin(angle) * speed
+        sparks[b + 4] = 0                             // life
+        sparks[b + 5] = 30 + Math.random() * 40       // maxLife (frames)
+        sparks[b + 6] = 1                              // active
+        toSpawn--
+      }
+    }
+  }
+
+  function drawSparks() {
+    var c = getColors()
+    for (var i = 0; i < SPARK_COUNT; i++) {
+      var b = i * SPARK_STRIDE
+      if (sparks[b + 6] === 0) continue
+
+      sparks[b + 4] += 1
+      if (sparks[b + 4] >= sparks[b + 5]) { sparks[b + 6] = 0; continue }
+
+      // Move + decelerate
+      sparks[b]     += sparks[b + 2]
+      sparks[b + 1] += sparks[b + 3]
+      sparks[b + 2] *= 0.96
+      sparks[b + 3] *= 0.96
+
+      var life = sparks[b + 4] / sparks[b + 5]
+      var a = life < 0.15 ? life / 0.15 : (1 - life) * 1.2
+      a = Math.min(a, 1)
+
+      var px = sparks[b], py = sparks[b + 1]
+      var sz = 1.5 * (1 - life * 0.5)
+
+      // Warm white glow
+      ctx.fillStyle = rgbStr(c.progress, a * 0.2)
+      ctx.fillRect(px - sz, py - sz, sz * 3, sz * 3)
+      ctx.fillStyle = 'rgba(255,255,245,' + a * 0.9 + ')'
+      ctx.fillRect(px - sz * 0.3, py - sz * 0.3, sz * 1.2, sz * 1.2)
+    }
+  }
+
+  /* ── Update label visibility (only the most recently reached node) ── */
+  function updateLabels() {
+    activeNode = -1
+    for (var i = NODE_COUNT - 1; i >= 0; i--) {
+      if (progressT >= nodeTs[i] - 0.01) { activeNode = i; break }
+    }
+    for (var j = 0; j < labels.length; j++) {
+      var nd = parseInt(labels[j].dataset.node)
+      if (isNaN(nd)) continue
+      labels[j].classList.toggle('reached', nd === activeNode)
+    }
+  }
+
+  /* ── Resize ── */
   function resize() {
-    var rect = section.getBoundingClientRect()
+    var rect = wrap.getBoundingClientRect()
     dpr = Math.min(window.devicePixelRatio || 1, 2)
     W = rect.width
     H = rect.height
@@ -1279,7 +1654,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     canvas.style.width = W + 'px'
     canvas.style.height = H + 'px'
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-    computeNodePositions()
+    computeSpiral()
   }
 
   function debouncedResize() {
@@ -1288,673 +1663,62 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   }
   window.addEventListener('resize', debouncedResize)
 
-  function computeNodePositions() {
-    var sRect = section.getBoundingClientRect()
-    var nodes = section.querySelectorAll('.pl-node')
-    var tiers = section.querySelectorAll('.tier-letter')
-
-    pipeNodes = []
-    for (var i = 0; i < nodes.length; i++) {
-      var r = nodes[i].getBoundingClientRect()
-      pipeNodes.push({
-        x: r.left + r.width / 2 - sRect.left,
-        y: r.top + r.height / 2 - sRect.top
-      })
-    }
-
-    tierCenters = []
-    for (var j = 0; j < tiers.length; j++) {
-      var t = tiers[j].getBoundingClientRect()
-      tierCenters.push({
-        x: t.left + t.width / 2 - sRect.left,
-        y: t.top + t.height / 2 - sRect.top
-      })
-    }
-  }
-
-  resize()
-
-  /* ── Path helpers ── */
-  function getSegmentPath(fromIdx, toIdx) {
-    var a = pipeNodes[fromIdx], b = pipeNodes[toIdx]
-    if (!a || !b) return null
-    // Slight S-curve: offset control point based on step side
-    var side = fromIdx % 2 === 0 ? 1 : -1
-    var cx = (a.x + b.x) / 2 + side * 20
-    var cy = (a.y + b.y) / 2
-    return { fx: a.x, fy: a.y, cx: cx, cy: cy, tx: b.x, ty: b.y }
-  }
-
-  function getBranchPath(pipeIdx, tierIdx) {
-    var a = pipeNodes[pipeIdx], b = tierCenters[tierIdx]
-    if (!a || !b) return null
-    var cx = (a.x + b.x) / 2
-    var cy = a.y + (b.y - a.y) * 0.3
-    return { fx: a.x, fy: a.y, cx: cx, cy: cy, tx: b.x, ty: b.y }
-  }
-
-  function bezAt(p, t) {
-    var mt = 1 - t
-    return {
-      x: mt * mt * p.fx + 2 * mt * t * p.cx + t * t * p.tx,
-      y: mt * mt * p.fy + 2 * mt * t * p.cy + t * t * p.ty
-    }
-  }
-
-  function tangentAt(p, t) {
-    var mt = 1 - t
-    return {
-      x: 2 * (mt * (p.cx - p.fx) + t * (p.tx - p.cx)),
-      y: 2 * (mt * (p.cy - p.fy) + t * (p.ty - p.cy))
-    }
-  }
-
-  /* ── Forward flow particles ── */
-  var FWD_COUNT = 200
-  var FWD_STRIDE = 8 // progress(0-1 over full pipeline), speed, active, jitter, sinePhase, gatherTimer, state(0=travel,1=gather,2=release), gatherThreshold
-  var fwdPool = new Float32Array(FWD_COUNT * FWD_STRIDE)
-
-  function initForward() {
-    for (var i = 0; i < FWD_COUNT; i++) {
-      var b = i * FWD_STRIDE
-      fwdPool[b] = Math.random()
-      fwdPool[b + 1] = 0.0004 + Math.random() * 0.0006
-      fwdPool[b + 2] = 0 // inactive until phase triggers
-      fwdPool[b + 3] = (Math.random() - 0.5) * 2
-      fwdPool[b + 4] = Math.random() * Math.PI * 2
-      fwdPool[b + 5] = 0
-      fwdPool[b + 6] = 0
-      fwdPool[b + 7] = 40 + Math.random() * 40
-    }
-  }
-  initForward()
-
-  /* ── Return flow particles ── */
-  var RET_COUNT = 80
-  var RET_STRIDE = 6 // progress, speed, active, jitter, sinePhase, dummy
-  var retPool = new Float32Array(RET_COUNT * RET_STRIDE)
-
-  function initReturn() {
-    for (var i = 0; i < RET_COUNT; i++) {
-      var b = i * RET_STRIDE
-      retPool[b] = Math.random()
-      retPool[b + 1] = 0.0007 + Math.random() * 0.0005
-      retPool[b + 2] = 0
-      retPool[b + 3] = (Math.random() - 0.5) * 2
-      retPool[b + 4] = Math.random() * Math.PI * 2
-      retPool[b + 5] = 0
-    }
-  }
-  initReturn()
-
-  /* ── Tier orbital particles ── */
-  var TIER_COUNT = 120
-  var TIER_STRIDE = 7 // angle, angularSpeed, orbitRadius, active, tier(0-2), radOscPhase, alpha
-  var tierPool = new Float32Array(TIER_COUNT * TIER_STRIDE)
-
-  function initTierOrbitals() {
-    var idx = 0
-    // Tier A: 50 particles, dense, slow
-    for (var a = 0; a < 50; a++) {
-      var b = idx * TIER_STRIDE
-      tierPool[b] = Math.random() * Math.PI * 2
-      tierPool[b + 1] = 0.003 + Math.random() * 0.004
-      tierPool[b + 2] = 12 + Math.random() * 16
-      tierPool[b + 3] = 0
-      tierPool[b + 4] = 0
-      tierPool[b + 5] = Math.random() * Math.PI * 2
-      tierPool[b + 6] = 0.3 + Math.random() * 0.3
-      idx++
-    }
-    // Tier B: 40 particles, medium
-    for (var c = 0; c < 40; c++) {
-      var b2 = idx * TIER_STRIDE
-      tierPool[b2] = Math.random() * Math.PI * 2
-      tierPool[b2 + 1] = 0.006 + Math.random() * 0.008
-      tierPool[b2 + 2] = 16 + Math.random() * 22
-      tierPool[b2 + 3] = 0
-      tierPool[b2 + 4] = 1
-      tierPool[b2 + 5] = Math.random() * Math.PI * 2
-      tierPool[b2 + 6] = 0.25 + Math.random() * 0.3
-      idx++
-    }
-    // Tier C: 30 particles, sparse, fast
-    for (var d = 0; d < 30; d++) {
-      var b3 = idx * TIER_STRIDE
-      tierPool[b3] = Math.random() * Math.PI * 2
-      tierPool[b3 + 1] = 0.012 + Math.random() * 0.015
-      tierPool[b3 + 2] = 20 + Math.random() * 28
-      tierPool[b3 + 3] = 0
-      tierPool[b3 + 4] = 2
-      tierPool[b3 + 5] = Math.random() * Math.PI * 2
-      tierPool[b3 + 6] = 0.2 + Math.random() * 0.25
-      idx++
-    }
-  }
-  initTierOrbitals()
-
-  /* ── Branch particles (pipeline→tiers) ── */
-  var BRANCH_COUNT = 60
-  var BRANCH_STRIDE = 6 // progress, speed, active, jitter, sinePhase, branchIdx(0=C,1=B,2=A)
-  var branchPool = new Float32Array(BRANCH_COUNT * BRANCH_STRIDE)
-
-  // Branch definitions: [pipeNodeIdx, tierIdx]
-  var BRANCHES = [
-    [1, 2],  // early stage → Tier C
-    [3, 1],  // mid stage → Tier B
-    [6, 0]   // endpoint → Tier A
-  ]
-
-  function initBranches() {
-    for (var i = 0; i < BRANCH_COUNT; i++) {
-      var b = i * BRANCH_STRIDE
-      branchPool[b] = Math.random()
-      branchPool[b + 1] = 0.002 + Math.random() * 0.003
-      branchPool[b + 2] = 0
-      branchPool[b + 3] = (Math.random() - 0.5) * 2
-      branchPool[b + 4] = Math.random() * Math.PI * 2
-      branchPool[b + 5] = Math.floor(i / 20) // 0,1,2
-    }
-  }
-  initBranches()
-
-  /* ── Spawn control ── */
-  var fwdSpawned = 0, retSpawned = 0, tierSpawned = 0, branchSpawned = 0
-
-  function spawnForward(count) {
-    var toSpawn = Math.min(count, FWD_COUNT - fwdSpawned)
-    for (var i = 0; i < toSpawn; i++) {
-      var b = fwdSpawned * FWD_STRIDE
-      fwdPool[b + 2] = 1 // activate
-      fwdPool[b] = i / toSpawn // stagger along path
-      fwdSpawned++
-    }
-  }
-
-  function spawnReturn(count) {
-    var toSpawn = Math.min(count, RET_COUNT - retSpawned)
-    for (var i = 0; i < toSpawn; i++) {
-      var b = retSpawned * RET_STRIDE
-      retPool[b + 2] = 1
-      retPool[b] = i / toSpawn
-      retSpawned++
-    }
-  }
-
-  function spawnTiers(count) {
-    var toSpawn = Math.min(count, TIER_COUNT - tierSpawned)
-    for (var i = 0; i < toSpawn; i++) {
-      tierPool[tierSpawned * TIER_STRIDE + 3] = 1
-      tierSpawned++
-    }
-  }
-
-  function spawnBranches(count) {
-    var toSpawn = Math.min(count, BRANCH_COUNT - branchSpawned)
-    for (var i = 0; i < toSpawn; i++) {
-      branchPool[branchSpawned * BRANCH_STRIDE + 2] = 1
-      branchSpawned++
-    }
-  }
-
-  /* ── Node glow tracking ── */
-  var nodeGlow = new Float32Array(7) // intensity per pipeline node
-
-  /* ── Intersection Observer ── */
-  var observer = new IntersectionObserver(function(entries) {
-    for (var i = 0; i < entries.length; i++) {
-      if (entries[i].isIntersecting) {
-        visible = true
-        if (phase === 0) {
-          phase = 1
-          phaseStart = performance.now()
-        }
-        if (!animId) tick()
-      } else {
-        visible = false
-      }
-    }
-  }, { threshold: 0.15 })
-  observer.observe(section)
-
-  /* ── Hover detection ── */
+  /* ── Hover detection (node glow only) ── */
   section.addEventListener('mousemove', function(e) {
-    var rect = section.getBoundingClientRect()
+    var rect = wrap.getBoundingClientRect()
     var mx = e.clientX - rect.left
     var my = e.clientY - rect.top
     hoveredNode = -1
-    for (var i = 0; i < pipeNodes.length; i++) {
-      var dx = mx - pipeNodes[i].x
-      var dy = my - pipeNodes[i].y
-      if (Math.sqrt(dx * dx + dy * dy) < 40) {
-        hoveredNode = i
-        break
-      }
+    for (var i = 0; i < NODE_COUNT; i++) {
+      var np = nodePositions[i]
+      if (!np) continue
+      var dx = mx - np.x, dy = my - np.y
+      if (Math.sqrt(dx * dx + dy * dy) < 40) { hoveredNode = i; break }
     }
   })
-  section.addEventListener('mouseleave', function() { hoveredNode = -1 })
+  section.addEventListener('mouseleave', function() {
+    hoveredNode = -1
+  })
 
-  /* ── Main tick ── */
+  /* ── Main loop ── */
   function tick() {
     if (!visible) { animId = 0; return }
     animId = requestAnimationFrame(tick)
     time += 0.016
 
-    var elapsed = (performance.now() - phaseStart) / 1000
-
-    // Phase management
-    if (phase === 1) {
-      // Beat 1: spawn forward particles gradually
-      var fwdTarget = Math.min(FWD_COUNT, Math.floor(elapsed / 3 * FWD_COUNT))
-      if (fwdSpawned < fwdTarget) spawnForward(fwdTarget - fwdSpawned)
-      if (elapsed > 3) phase = 2
-    }
-    if (phase === 2) {
-      // Beat 2: spawn return particles
-      if (fwdSpawned < FWD_COUNT) spawnForward(FWD_COUNT - fwdSpawned)
-      var retTarget = Math.min(RET_COUNT, Math.floor((elapsed - 3) / 1 * RET_COUNT))
-      if (retSpawned < retTarget) spawnReturn(retTarget - retSpawned)
-      if (elapsed > 4) phase = 3
-    }
-    if (phase === 3) {
-      // Beat 3: spawn tiers + branches
-      if (retSpawned < RET_COUNT) spawnReturn(RET_COUNT - retSpawned)
-      var tierTarget = Math.min(TIER_COUNT, Math.floor((elapsed - 4) / 1.5 * TIER_COUNT))
-      if (tierSpawned < tierTarget) spawnTiers(tierTarget - tierSpawned)
-      var brTarget = Math.min(BRANCH_COUNT, Math.floor((elapsed - 4) / 1.5 * BRANCH_COUNT))
-      if (branchSpawned < brTarget) spawnBranches(brTarget - branchSpawned)
-      if (elapsed > 5.5) phase = 4
-    }
-    if (phase === 4) {
-      // Ambient: ensure everything spawned
-      if (fwdSpawned < FWD_COUNT) spawnForward(FWD_COUNT)
-      if (retSpawned < RET_COUNT) spawnReturn(RET_COUNT)
-      if (tierSpawned < TIER_COUNT) spawnTiers(TIER_COUNT)
-      if (branchSpawned < BRANCH_COUNT) spawnBranches(BRANCH_COUNT)
-    }
+    progressT = getScrollProgress()
 
     ctx.clearRect(0, 0, W, H)
 
-    // Decay node glow
-    for (var g = 0; g < 7; g++) {
-      nodeGlow[g] *= 0.96
-    }
-
-    drawFlowPaths()
-    updateAndDrawForward()
-    updateAndDrawReturn()
-    if (phase >= 3) {
-      drawBranchPaths()
-      updateAndDrawBranches()
-      updateAndDrawTierOrbitals()
-    }
+    spawnFwd()
+    spawnRetHelix()
+    spawnSparks()
+    drawSpiralPath()
+    drawForward()
+    drawReturnHelix()
     drawNodes()
+    drawProgressNode()
+    drawSparks()
+    updateLabels()
   }
 
-  /* ── Draw faint flow paths ── */
-  function drawFlowPaths() {
-    var cols = getColors()
-    var alpha = baseAlpha() * 0.2
-
-    // Forward paths
-    for (var i = 0; i < 6; i++) {
-      var p = getSegmentPath(i, i + 1)
-      if (!p) continue
-      var t = (i + 0.5) / 6
-      var c = lerpColor(cols.fwdStart, cols.fwdEnd, t)
-      ctx.beginPath()
-      ctx.moveTo(p.fx, p.fy)
-      ctx.quadraticCurveTo(p.cx, p.cy, p.tx, p.ty)
-      ctx.strokeStyle = rgbStr(c, alpha)
-      ctx.lineWidth = 2
-      ctx.stroke()
-    }
-
-    // Return path (offset slightly)
-    if (phase >= 2) {
-      var retAlpha = alpha * 0.6
-      for (var j = 5; j >= 0; j--) {
-        var pr = getSegmentPath(j + 1, j)
-        if (!pr) continue
-        // Offset slightly to the right of forward flow
-        pr.cx += 8
-        ctx.beginPath()
-        ctx.moveTo(pr.fx + 4, pr.fy)
-        ctx.quadraticCurveTo(pr.cx, pr.cy, pr.tx + 4, pr.ty)
-        ctx.strokeStyle = rgbStr(cols.ret, retAlpha)
-        ctx.lineWidth = 1
-        ctx.stroke()
+  /* ── Visibility gating ── */
+  new IntersectionObserver(function(entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        visible = true
+        if (!animId) { resize(); animId = requestAnimationFrame(tick) }
+      } else {
+        visible = false
       }
     }
-  }
+  }, { threshold: 0.01 }).observe(scrollOuter)
 
-  /* ── Draw branch paths to tiers ── */
-  function drawBranchPaths() {
-    var cols = getColors()
-    var alpha = baseAlpha() * 0.12
-    var tierColors = [cols.tierC, cols.tierB, cols.tierA]
-    for (var i = 0; i < BRANCHES.length; i++) {
-      var bp = getBranchPath(BRANCHES[i][0], BRANCHES[i][1])
-      if (!bp) continue
-      ctx.beginPath()
-      ctx.moveTo(bp.fx, bp.fy)
-      ctx.quadraticCurveTo(bp.cx, bp.cy, bp.tx, bp.ty)
-      ctx.strokeStyle = rgbStr(tierColors[i], alpha)
-      ctx.lineWidth = 1
-      ctx.stroke()
-    }
-  }
-
-  /* ── Update + draw forward particles ── */
-  function updateAndDrawForward() {
-    if (pipeNodes.length < 7) return
-    var cols = getColors()
-    var bAlpha = baseAlpha()
-    var REFINEMENT = 4 / 6 // progress position of Refinement node
-
-    for (var i = 0; i < FWD_COUNT; i++) {
-      var b = i * FWD_STRIDE
-      if (!fwdPool[b + 2]) continue
-
-      var progress = fwdPool[b]
-      var speed = fwdPool[b + 1]
-      var state = fwdPool[b + 6]
-      var gatherTimer = fwdPool[b + 5]
-      var gatherThreshold = fwdPool[b + 7]
-
-      // Determine current segment
-      var seg = Math.min(Math.floor(progress * 6), 5)
-      var segT = (progress * 6) - seg
-
-      // Speed modulation near nodes
-      var effectiveSpeed = speed
-      var distToNextNode = 1 - segT
-      var distToPrevNode = segT
-      var nearestDist = Math.min(distToNextNode, distToPrevNode)
-
-      if (state === 0) { // traveling
-        if (nearestDist < 0.15) {
-          effectiveSpeed = speed * (0.3 + 0.7 * (nearestDist / 0.15))
-        }
-        // Check if at a node boundary
-        if (distToNextNode < 0.02) {
-          fwdPool[b + 6] = 1 // gather
-          fwdPool[b + 5] = 0
-          // Boost node glow
-          var nodeIdx = seg + 1
-          if (nodeIdx < 7) nodeGlow[nodeIdx] = Math.min(nodeGlow[nodeIdx] + 0.15, 1)
-        }
-      } else if (state === 1) { // gathering
-        fwdPool[b + 5] = gatherTimer + 1
-        effectiveSpeed = speed * 0.05
-        if (gatherTimer + 1 > gatherThreshold) {
-          fwdPool[b + 6] = 2 // release
-        }
-      } else if (state === 2) { // releasing
-        var releaseT = Math.min((gatherTimer - gatherThreshold) / 20, 1)
-        effectiveSpeed = speed * (0.5 + 1.5 * releaseT * releaseT)
-        fwdPool[b + 5] = gatherTimer + 1
-        if (releaseT >= 1) fwdPool[b + 6] = 0
-      }
-
-      // Post-refinement boost
-      if (progress > REFINEMENT + 0.04) {
-        effectiveSpeed *= 1.25
-      }
-
-      // Turbulence at refinement
-      var distToRef = Math.abs(progress - REFINEMENT)
-      var turbulence = 0
-      if (distToRef < 0.06) {
-        turbulence = 1 - (distToRef / 0.06)
-      }
-
-      // Advance
-      progress += effectiveSpeed
-      if (progress > 1) progress -= 1
-      fwdPool[b] = progress
-
-      // Recalculate segment for drawing
-      seg = Math.min(Math.floor(progress * 6), 5)
-      segT = (progress * 6) - seg
-
-      var path = getSegmentPath(seg, seg + 1)
-      if (!path) continue
-      var pos = bezAt(path, segT)
-
-      // Perpendicular jitter
-      var jitterAmp = 3 + turbulence * 6
-      var jitter = Math.sin(progress * Math.PI * 6 + fwdPool[b + 4]) * jitterAmp * fwdPool[b + 3]
-      var tan = tangentAt(path, segT)
-      var tlen = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
-      pos.x += (-tan.y / tlen) * jitter
-      pos.y += (tan.x / tlen) * jitter
-
-      // Turbulence swirl
-      if (turbulence > 0) {
-        var swirlAngle = turbulence * Math.sin(time * 4 + fwdPool[b + 4]) * 0.8
-        var sx = pos.x - pipeNodes[4].x
-        var sy = pos.y - pipeNodes[4].y
-        var cos = Math.cos(swirlAngle), sin = Math.sin(swirlAngle)
-        pos.x = pipeNodes[4].x + sx * cos - sy * sin
-        pos.y = pipeNodes[4].y + sx * sin + sy * cos
-      }
-
-      // Gravitational pull toward nearest node
-      if (nearestDist < 0.1 && state !== 2) {
-        var pullNode = distToPrevNode < distToNextNode ? seg : Math.min(seg + 1, 6)
-        var pullStrength = (1 - nearestDist / 0.1) * 0.3
-        pos.x += (pipeNodes[pullNode].x - pos.x) * pullStrength
-        pos.y += (pipeNodes[pullNode].y - pos.y) * pullStrength
-      }
-
-      // Color
-      var colorT = progress
-      var c = lerpColor(cols.fwdStart, cols.fwdEnd, colorT)
-      var alpha = bAlpha * (0.6 + fwdPool[b + 3] * 0.15)
-      if (progress > REFINEMENT + 0.04) alpha *= 1.15
-
-      ctx.fillStyle = rgbStr(c, alpha)
-      ctx.fillRect(pos.x - 1, pos.y - 1, 2, 2)
-    }
-  }
-
-  /* ── Update + draw return particles ── */
-  function updateAndDrawReturn() {
-    if (pipeNodes.length < 7 || phase < 2) return
-    var cols = getColors()
-    var bAlpha = baseAlpha() * 0.6
-
-    for (var i = 0; i < RET_COUNT; i++) {
-      var b = i * RET_STRIDE
-      if (!retPool[b + 2]) continue
-
-      var progress = retPool[b]
-      var speed = retPool[b + 1]
-
-      // Advance (reverse direction: high progress = near start)
-      progress += speed
-      if (progress > 1) progress -= 1
-      retPool[b] = progress
-
-      // Map to pipeline position (reverse: progress 0 = node 6, progress 1 = node 0)
-      var pipeProgress = 1 - progress
-      var seg = Math.min(Math.floor(pipeProgress * 6), 5)
-      var segT = (pipeProgress * 6) - seg
-
-      var path = getSegmentPath(seg, seg + 1)
-      if (!path) continue
-      var pos = bezAt(path, segT)
-
-      // Offset to the side of forward flow
-      var tan = tangentAt(path, segT)
-      var tlen = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
-      var perpX = -tan.y / tlen
-      var perpY = tan.x / tlen
-
-      // Constant offset + smaller jitter
-      pos.x += perpX * 6
-      pos.y += perpY * 6
-      var jitter = Math.sin(progress * Math.PI * 5 + retPool[b + 4]) * 1.5 * retPool[b + 3]
-      pos.x += perpX * jitter
-      pos.y += perpY * jitter
-
-      // Turbulence near refinement
-      var refProg = 4 / 6
-      var distToRef = Math.abs(pipeProgress - refProg)
-      if (distToRef < 0.06) {
-        var turb = 1 - distToRef / 0.06
-        var swirlAngle = turb * Math.sin(time * 5 + retPool[b + 4]) * 0.6
-        var sx = pos.x - pipeNodes[4].x
-        var sy = pos.y - pipeNodes[4].y
-        pos.x = pipeNodes[4].x + sx * Math.cos(swirlAngle) - sy * Math.sin(swirlAngle)
-        pos.y = pipeNodes[4].y + sx * Math.sin(swirlAngle) + sy * Math.cos(swirlAngle)
-      }
-
-      ctx.fillStyle = rgbStr(cols.ret, bAlpha * (0.5 + retPool[b + 3] * 0.15))
-      ctx.fillRect(pos.x - 0.75, pos.y - 0.75, 1.5, 1.5)
-    }
-  }
-
-  /* ── Update + draw branch particles ── */
-  function updateAndDrawBranches() {
-    if (tierCenters.length < 3) return
-    var cols = getColors()
-    var bAlpha = baseAlpha() * 0.5
-    var tierColors = [cols.tierC, cols.tierB, cols.tierA]
-
-    for (var i = 0; i < BRANCH_COUNT; i++) {
-      var b = i * BRANCH_STRIDE
-      if (!branchPool[b + 2]) continue
-
-      var progress = branchPool[b]
-      var speed = branchPool[b + 1]
-      var brIdx = branchPool[b + 5]
-
-      progress += speed
-      if (progress > 1) progress -= 1
-      branchPool[b] = progress
-
-      var br = BRANCHES[brIdx]
-      if (!br) continue
-      var path = getBranchPath(br[0], br[1])
-      if (!path) continue
-
-      var pos = bezAt(path, progress)
-      var jitter = Math.sin(progress * Math.PI * 3 + branchPool[b + 4]) * 2 * branchPool[b + 3]
-      var tan = tangentAt(path, progress)
-      var tlen = Math.sqrt(tan.x * tan.x + tan.y * tan.y) || 1
-      pos.x += (-tan.y / tlen) * jitter
-      pos.y += (tan.x / tlen) * jitter
-
-      ctx.fillStyle = rgbStr(tierColors[brIdx], bAlpha * (0.4 + Math.abs(branchPool[b + 3]) * 0.2))
-      ctx.fillRect(pos.x - 0.75, pos.y - 0.75, 1.5, 1.5)
-    }
-  }
-
-  /* ── Update + draw tier orbital particles ── */
-  function updateAndDrawTierOrbitals() {
-    if (tierCenters.length < 3) return
-    var cols = getColors()
-    var bAlpha = baseAlpha()
-    var tierColors = [cols.tierA, cols.tierB, cols.tierC]
-
-    for (var i = 0; i < TIER_COUNT; i++) {
-      var b = i * TIER_STRIDE
-      if (!tierPool[b + 3]) continue
-
-      var angle = tierPool[b]
-      var angSpeed = tierPool[b + 1]
-      var radius = tierPool[b + 2]
-      var tier = tierPool[b + 4]
-      var radOsc = tierPool[b + 5]
-      var pAlpha = tierPool[b + 6]
-
-      // Update angle
-      angle += angSpeed
-      if (angle > Math.PI * 2) angle -= Math.PI * 2
-      tierPool[b] = angle
-
-      // Oscillate radius
-      var oscRadius = radius + Math.sin(time * 0.8 + radOsc) * radius * 0.15
-
-      // Tier C: occasional drift (wider oscillation)
-      if (tier === 2) {
-        oscRadius += Math.sin(time * 0.3 + radOsc * 2) * 8
-      }
-      // Tier B: occasional escape-and-return
-      if (tier === 1) {
-        var escape = Math.sin(time * 0.2 + radOsc * 3)
-        if (escape > 0.85) oscRadius += (escape - 0.85) * 40
-      }
-
-      var center = tierCenters[tier]
-      if (!center) continue
-
-      var px = center.x + Math.cos(angle) * oscRadius
-      var py = center.y + Math.sin(angle) * oscRadius
-
-      ctx.fillStyle = rgbStr(tierColors[tier], bAlpha * pAlpha)
-      ctx.fillRect(px - 1, py - 1, 2, 2)
-    }
-  }
-
-  /* ── Draw pipeline nodes (radial glow) ── */
-  function drawNodes() {
-    for (var i = 0; i < pipeNodes.length; i++) {
-      var n = pipeNodes[i]
-      var isHovered = hoveredNode === i
-      var glowIntensity = nodeGlow[i]
-
-      var breathe = 1 + Math.sin(time * 0.5 + i * 0.7) * 0.04
-      var baseR = isHovered ? 22 : 14
-      var r = baseR * breathe + glowIntensity * 10
-
-      var isRefinement = (i === 4)
-      if (isRefinement && phase >= 2) {
-        r += 4 // Refinement glows wider when return flow active
-        glowIntensity += 0.15
-      }
-
-      var cols = getColors()
-      var colorT = i / 6
-      var c = lerpColor(cols.fwdStart, cols.fwdEnd, colorT)
-
-      var centerAlpha = isHovered ? 0.3 : (0.12 + glowIntensity * 0.2)
-      var grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r)
-      grad.addColorStop(0, rgbStr(c, centerAlpha))
-      grad.addColorStop(0.5, rgbStr(c, centerAlpha * 0.4))
-      grad.addColorStop(1, rgbStr(c, 0))
-
-      ctx.beginPath()
-      ctx.arc(n.x, n.y, r, 0, Math.PI * 2)
-      ctx.fillStyle = grad
-      ctx.fill()
-
-      // Core dot
-      ctx.beginPath()
-      ctx.arc(n.x, n.y, 2.5, 0, Math.PI * 2)
-      ctx.fillStyle = rgbStr(c, isHovered ? 0.5 : 0.25)
-      ctx.fill()
-    }
-
-    // Tier node glows (when active)
-    if (phase >= 3) {
-      var cols2 = getColors()
-      var tierColors = [cols2.tierA, cols2.tierB, cols2.tierC]
-      for (var j = 0; j < tierCenters.length; j++) {
-        var tc = tierCenters[j]
-        var tr = 20 + Math.sin(time * 0.4 + j * 1.2) * 2
-        var grad2 = ctx.createRadialGradient(tc.x, tc.y, 0, tc.x, tc.y, tr)
-        grad2.addColorStop(0, rgbStr(tierColors[j], 0.1))
-        grad2.addColorStop(1, rgbStr(tierColors[j], 0))
-        ctx.beginPath()
-        ctx.arc(tc.x, tc.y, tr, 0, Math.PI * 2)
-        ctx.fillStyle = grad2
-        ctx.fill()
-      }
-    }
-  }
+  /* ── Theme reactivity ── */
+  new MutationObserver(function() {
+    if (visible) resize()
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
 })()
 </script>
+
 
