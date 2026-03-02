@@ -12,37 +12,96 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     <!-- HERO -->
     <header class="home-hero">
       <div class="hero-inner">
-        <div class="section-label">Sohma Institute of Traditional Medicines</div>
-        <h1 class="hero-title">Training practitioners for the medicine <span class="hero-accent">that already exists.</span></h1>
-        <p class="hero-lead">An Australian training institution advancing traditional pharmacological systems as sophisticated therapeutic architectures — not alternatives to modern medicine, but its predecessors. Five clinical divisions. A credential ladder from foundation to fellowship. A practitioner network that gets smarter because you participate.</p>
-        <div class="hero-cta-row">
-          <a href="/education" class="hero-cta-primary">Explore education programs &rarr;</a>
-          <a href="/network" class="hero-cta-secondary">Enter The Field</a>
+        <div class="hero-columns">
+          <div class="hero-left">
+            <div class="section-label">Sohma Institute of Traditional Medicines</div>
+            <h1 class="hero-title">Training practitioners for the medicine <span class="hero-accent">that already exists.</span></h1>
+            <p class="hero-lead">An Australian training institution advancing traditional pharmacological systems as sophisticated therapeutic architectures — not alternatives to modern medicine, but its predecessors. Five clinical divisions. A credential ladder from foundation to fellowship. A practitioner network that gets smarter because you participate.</p>
+          </div>
+          <div class="hero-right">
+            <div class="hero-info-card">
+              <div class="hero-info-header">
+                <span class="hero-info-label">The Institute</span>
+                <div class="hero-info-line"></div>
+              </div>
+              <div class="hero-info-pillars">
+                <div class="hero-info-pillar">
+                  <span class="pillar-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </span>
+                  <span>5 Clinical Divisions</span>
+                </div>
+                <div class="hero-info-pillar">
+                  <span class="pillar-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  </span>
+                  <span>Foundation to Fellowship</span>
+                </div>
+                <div class="hero-info-pillar">
+                  <span class="pillar-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </span>
+                  <span>Practitioner Network</span>
+                </div>
+                <div class="hero-info-pillar">
+                  <span class="pillar-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                  </span>
+                  <span>6 Research Programs</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
 
 
     <!-- THREE PILLARS -->
-    <section class="pillars-section">
+    <section class="pillars-section" id="pillars">
       <span class="pillars-eyebrow">What We Do</span>
       <h2 class="section-heading">Three interconnected systems</h2>
-      <div class="pillars-grid">
-        <a href="/education" class="pillar-card">
-          <h3>Education</h3>
-          <p>Four credential tiers from foundation to fellowship. Case-based clinical mentorship, not lecture-hall reproduction. Every qualification is built on supervised practice within real patient populations.</p>
-          <span class="pillar-link">Explore programs &rarr;</span>
-        </a>
-        <a href="/network" class="pillar-card">
-          <h3>The Field</h3>
-          <p>A distributed clinical intelligence network. Credentialed practitioners running shared protocols, contributing outcome data, and conferencing on complex cases across divisional boundaries.</p>
-          <span class="pillar-link">Enter The Field &rarr;</span>
-        </a>
-        <a href="/research" class="pillar-card">
-          <h3>Research</h3>
-          <p>Six research programs developing methodologies appropriate to the complexity of traditional medicine interventions. Whole-systems design, adaptive protocols, and practice-based evidence networks.</p>
-          <span class="pillar-link">View programs &rarr;</span>
-        </a>
+      <div class="pillars-columns">
+        <div class="pillars-left">
+          <a href="/education" class="pillar-card" data-pillar="0">
+            <h3>Education</h3>
+            <p>Four credential tiers from foundation to fellowship. Case-based clinical mentorship, not lecture-hall reproduction. Every qualification is built on supervised practice within real patient populations.</p>
+            <ul class="pillar-details">
+              <li>Foundation Certificate &middot; 12 weeks</li>
+              <li>Advanced Diploma &middot; 12 months</li>
+              <li>Graduate Diploma &middot; 18 months</li>
+              <li>Fellowship &middot; 2 years</li>
+            </ul>
+            <span class="pillar-btn">Explore programs</span>
+          </a>
+          <a href="/network" class="pillar-card" data-pillar="1">
+            <h3>The Field</h3>
+            <p>A distributed clinical intelligence network. Credentialed practitioners running shared protocols, contributing outcome data, and conferencing on complex cases across divisional boundaries.</p>
+            <ul class="pillar-details">
+              <li>Shared clinical protocols</li>
+              <li>Real-time case conferencing</li>
+              <li>Outcome data contribution</li>
+              <li>Cross-divisional collaboration</li>
+            </ul>
+            <span class="pillar-btn">Enter The Field</span>
+          </a>
+          <a href="/research" class="pillar-card" data-pillar="2">
+            <h3>Research</h3>
+            <p>Six research programs developing methodologies appropriate to the complexity of traditional medicine interventions. Whole-systems design, adaptive protocols, and practice-based evidence networks.</p>
+            <ul class="pillar-details">
+              <li>Whole-systems trial design</li>
+              <li>Adaptive clinical protocols</li>
+              <li>Practice-based evidence networks</li>
+              <li>Traditional pharmacopoeia validation</li>
+            </ul>
+            <span class="pillar-btn">View programs</span>
+          </a>
+        </div>
+        <div class="pillars-right">
+          <div class="pillars-constellation">
+            <canvas id="pillars-canvas" aria-hidden="true"></canvas>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -245,6 +304,24 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     border-bottom: 1px solid var(--border-light);
   }
 
+  .hero-columns {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .hero-left {
+    min-width: 0;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-top: 0.25rem;
+  }
+
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.25rem, 4vw, 3.5rem);
@@ -265,51 +342,74 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     font-size: 1.0625rem;
     color: var(--text-secondary);
     line-height: 1.65;
-    max-width: 640px;
+    max-width: 80%;
     padding-left: 1.5rem;
     margin-bottom: 0;
   }
 
-  .hero-cta-row {
-    margin-top: 3rem;
+  /* Hero info card (right column) */
+  .hero-info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 24px;
+    background: var(--bg-card);
+  }
+
+  .hero-info-header {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    padding-left: 1.5rem;
+    gap: 10px;
   }
 
-  .hero-cta-primary {
-    display: inline-block;
-    padding: 12px 28px;
+  .hero-info-label {
     font-family: 'Manrope', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    color: #fff;
-    background: var(--accent-dark);
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .hero-cta-primary:hover {
-    background: var(--accent-darker-hover);
-    transform: translateY(-1px);
-  }
-
-  .hero-cta-secondary {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--text-tertiary);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-
-  .hero-cta-secondary:hover {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--accent-dark);
+    white-space: nowrap;
   }
+
+  .hero-info-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-light);
+  }
+
+  .hero-info-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .hero-info-pillar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.3;
+  }
+
+  .pillar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background: var(--bg-card-hover);
+    color: var(--accent-dark);
+    flex-shrink: 0;
+  }
+
 
 
   /* ═══════════ THREE PILLARS ═══════════ */
@@ -330,23 +430,52 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     margin-bottom: 0.75rem;
   }
 
-  .pillars-grid {
+  .pillars-columns {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0 2.5rem;
+    grid-template-columns: 2fr 3fr;
+    gap: 3rem;
     margin-top: 2.5rem;
+    align-items: start;
+  }
+
+  .pillars-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pillars-right {
+    position: sticky;
+    top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 560px;
+  }
+
+  .pillars-constellation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  #pillars-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .pillar-card {
     display: block;
-    padding: 1.75rem 0 0;
+    padding: 1.25rem 0;
     border-top: 1px solid var(--border-light);
     text-decoration: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.3s, padding 0.35s ease;
   }
 
   .pillar-card:hover {
     border-color: var(--accent-dark);
+    padding: 1.75rem 0;
   }
 
   .pillar-card h3 {
@@ -364,20 +493,70 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     margin-bottom: 0;
   }
 
-  .pillar-link {
-    display: inline-block;
-    margin-top: 1.25rem;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--accent-dark);
+  .pillar-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: max-height 0.35s ease, opacity 0.3s ease, margin 0.35s ease;
   }
 
-  .pillar-card:hover .pillar-link {
+  .pillar-card:hover .pillar-details {
+    max-height: 200px;
     opacity: 1;
+    margin-top: 0.75rem;
+  }
+
+  .pillar-details li {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--border-light);
+    line-height: 1.4;
+  }
+
+  .pillar-details li:last-child {
+    border-bottom: none;
+  }
+
+  .pillar-btn {
+    display: inline-block;
+    margin-top: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--text-heading);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease, padding 0.35s ease, background 0.2s, border-color 0.2s;
+  }
+
+  .pillar-card:hover .pillar-btn {
+    max-height: 50px;
+    opacity: 1;
+    margin-top: 1.25rem;
+    padding: 8px 18px;
+  }
+
+  .pillar-btn:hover {
+    background: #fff;
+    border-color: #fff;
+    color: #141210;
+  }
+
+  [data-theme="dark"] .pillar-btn:hover {
+    background: #e8dfd0;
+    border-color: #e8dfd0;
+    color: #141210;
   }
 
 
@@ -765,6 +944,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   @media (max-width: 1024px) {
     .home-hero { margin: 0 -20px; }
     .hero-inner { padding: 64px calc(1.5rem + 20px) 48px calc(1rem + 20px); }
+    .hero-columns { grid-template-columns: 1fr 220px; gap: 2rem; }
     .position-band { margin: 0 -20px; padding: 5rem 20px; }
     .divisions-grid { grid-template-columns: repeat(3, 1fr); }
     .pathway-grid { grid-template-columns: 1fr; }
@@ -773,10 +953,11 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   @media (max-width: 768px) {
     .hero-inner { padding: 48px 1.25rem 36px; }
+    .hero-columns { grid-template-columns: 1fr; }
     .hero-title { font-size: 2.25rem; }
-    .hero-lead { padding-left: 0; }
-    .hero-cta-row { padding-left: 0; flex-direction: column; gap: 1rem; align-items: flex-start; }
-    .pillars-grid { grid-template-columns: 1fr; }
+    .hero-lead { padding-left: 0; max-width: 100%; }
+    .pillars-right { display: none; }
+    .pillars-columns { grid-template-columns: 1fr; }
     .home-page .position-heading { font-size: 2rem; }
     .divisions-grid { grid-template-columns: 1fr 1fr; }
     .pathway-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -790,6 +971,310 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     .hero-title { font-size: 2rem; }
   }
 </style>
+
+<script is:inline data-astro-rerun>
+function __pillarsInit() {
+  if (window.__pillarsCleanup) { window.__pillarsCleanup(); window.__pillarsCleanup = null }
+
+  var canvas = document.getElementById('pillars-canvas')
+  if (!canvas) return
+  var ctx = canvas.getContext('2d')
+  if (!ctx) return
+
+  var wrapper = canvas.parentElement
+  var cards = document.querySelectorAll('.pillar-card[data-pillar]')
+  var dpr = window.devicePixelRatio || 1
+  var w, h, cx, cy
+  var hoveredArm = -1
+  var animId = 0
+  var visible = false
+  var rotAngle = 0 // slow continuous rotation
+
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark'
+  }
+
+  var TURNS = 1.6
+  var ARM_STATIC = 140      // static structure particles per arm
+  var CENTER_STATIC = 30
+  var TOTAL_ANGLE = TURNS * Math.PI * 2
+  var arms = [[], [], []]
+  var centerPts = []
+  var armTips = []
+  var rMax, rMin
+
+  // Flowing particles — continuously travel along arms
+  var flowParts = []
+  var MAX_FLOW = 100
+
+  // Spiral point for arm k at parameter t (0→1)
+  function spiralPt(k, t, r0, r1) {
+    var angle = t * TOTAL_ANGLE + k * (Math.PI * 2 / 3) + rotAngle
+    var r = r0 + (r1 - r0) * t
+    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
+  }
+
+  function spiralTangent(k, t, r0, r1) {
+    var angle = t * TOTAL_ANGLE + k * (Math.PI * 2 / 3) + rotAngle
+    var dr = r1 - r0
+    var r = r0 + dr * t
+    var dTheta = TOTAL_ANGLE
+    var tx = dr * Math.cos(angle) - r * dTheta * Math.sin(angle)
+    var ty = dr * Math.sin(angle) + r * dTheta * Math.cos(angle)
+    var len = Math.sqrt(tx * tx + ty * ty) || 1
+    return { x: tx / len, y: ty / len }
+  }
+
+  function buildArm(k) {
+    var pts = []
+    for (var i = 0; i <= ARM_STATIC; i++) {
+      var t = i / ARM_STATIC
+      var pos = spiralPt(k, t, rMin, rMax)
+      var tan = spiralTangent(k, t, rMin, rMax)
+      var perpX = -tan.y, perpY = tan.x
+      var scatter = (Math.random() - 0.5) * 6
+      pts.push({
+        hx: pos.x + perpX * scatter,
+        hy: pos.y + perpY * scatter,
+        r: 0.5 + Math.random() * 0.8,
+        ph: Math.random() * Math.PI * 2,
+        br: 0.4 + t * 0.5,
+        dsx: 0.0003 + Math.random() * 0.0008,
+        dsy: 0.0004 + Math.random() * 0.0009,
+        dax: 0.8 + Math.random() * 1.5,
+        day: 0.6 + Math.random() * 1.2,
+        t: t
+      })
+    }
+    return pts
+  }
+
+  function buildCenter() {
+    var pts = []
+    for (var i = 0; i < CENTER_STATIC; i++) {
+      var angle = Math.random() * Math.PI * 2
+      var dist = Math.random() * rMin * 1.8
+      pts.push({
+        hx: cx + Math.cos(angle) * dist,
+        hy: cy + Math.sin(angle) * dist,
+        r: 0.4 + Math.random() * 0.6,
+        ph: Math.random() * Math.PI * 2,
+        br: 0.6,
+        dsx: 0.0003 + Math.random() * 0.001,
+        dsy: 0.0004 + Math.random() * 0.001,
+        dax: 1 + Math.random() * 2,
+        day: 0.8 + Math.random() * 1.5
+      })
+    }
+    return pts
+  }
+
+  function spawnFlow() {
+    if (flowParts.length >= MAX_FLOW) return
+    var k = Math.floor(Math.random() * 3)
+    var outward = Math.random() > 0.3 // 70% outward, 30% return
+    flowParts.push({
+      arm: k,
+      t: outward ? 0 : 1,
+      speed: (0.001 + Math.random() * 0.002) * (outward ? 1 : -1),
+      r: 1 + Math.random() * 1.5,
+      alpha: 0.3 + Math.random() * 0.4,
+      perpOff: (Math.random() - 0.5) * 3 // slight perpendicular offset
+    })
+  }
+
+  function resize() {
+    var rect = wrapper.getBoundingClientRect()
+    w = rect.width
+    h = rect.height || 400
+    canvas.width = w * dpr
+    canvas.height = h * dpr
+    canvas.style.width = w + 'px'
+    canvas.style.height = h + 'px'
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+    cx = w / 2
+    cy = h / 2
+    rMin = 16
+    rMax = Math.min(w * 0.44, h * 0.44)
+
+    for (var k = 0; k < 3; k++) {
+      arms[k] = buildArm(k)
+      armTips[k] = spiralPt(k, 1, rMin, rMax)
+    }
+    centerPts = buildCenter()
+    flowParts = []
+  }
+
+  function draw(time) {
+    ctx.clearRect(0, 0, w, h)
+
+    // Slow rotation — one full turn every ~90 seconds
+    rotAngle = time * 0.00007
+
+    var dark = isDark()
+    var rgb = dark ? '212,112,78' : '165,61,46'
+    var ba = dark ? 0.32 : 0.2
+    var anyHover = hoveredArm !== -1
+    var DIM = 0.25 // multiplier for unfocused elements when hovering
+
+    // Pulse wave per arm (brightness ripple traveling outward)
+    var pulseSpeed = 0.0003
+
+    // Faint spiral guide paths
+    for (var k = 0; k < 3; k++) {
+      var isH = hoveredArm === k
+      var dim = anyHover && !isH ? DIM : 1
+      ctx.beginPath()
+      for (var i = 0; i <= 100; i++) {
+        var t = i / 100
+        var pt = spiralPt(k, t, rMin, rMax)
+        if (i === 0) ctx.moveTo(pt.x, pt.y)
+        else ctx.lineTo(pt.x, pt.y)
+      }
+      ctx.strokeStyle = 'rgba(' + rgb + ',' + (isH ? 0.12 : 0.04) * dim + ')'
+      ctx.lineWidth = isH ? 1.2 : 0.7
+      ctx.stroke()
+    }
+
+    // Center glow
+    var centerDim = anyHover ? 0.5 : 1
+    var cGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rMin * 3)
+    cGrad.addColorStop(0, 'rgba(' + rgb + ',' + (dark ? 0.14 : 0.1) * centerDim + ')')
+    cGrad.addColorStop(1, 'rgba(' + rgb + ',0)')
+    ctx.beginPath()
+    ctx.arc(cx, cy, rMin * 3, 0, Math.PI * 2)
+    ctx.fillStyle = cGrad
+    ctx.fill()
+
+    // Center dot
+    ctx.beginPath()
+    ctx.arc(cx, cy, 3.5, 0, Math.PI * 2)
+    ctx.fillStyle = 'rgba(' + rgb + ',' + (dark ? 0.55 : 0.45) * centerDim + ')'
+    ctx.fill()
+
+    // Center particles
+    for (var i = 0; i < centerPts.length; i++) {
+      var pt = centerPts[i]
+      var dx = Math.sin(time * pt.dsx + pt.ph) * pt.dax
+      var dy = Math.cos(time * pt.dsy + pt.ph + 1) * pt.day
+      ctx.beginPath()
+      ctx.arc(pt.hx + dx, pt.hy + dy, pt.r, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(' + rgb + ',' + ba * pt.br * centerDim + ')'
+      ctx.fill()
+    }
+
+    // Static arm particles with pulse
+    for (var k = 0; k < 3; k++) {
+      var pts = arms[k]
+      var isH = hoveredArm === k
+      var dim = anyHover && !isH ? DIM : 1
+      var hMult = isH ? 2 : dim
+
+      var pulsePhase = (time * pulseSpeed + k * 0.333) % 1.4
+      var pulseT = pulsePhase / 1.4
+
+      for (var i = 0; i < pts.length; i++) {
+        var pt = pts[i]
+        var sPos = spiralPt(k, pt.t, rMin, rMax)
+        var dx = Math.sin(time * pt.dsx + pt.ph) * pt.dax
+        var dy = Math.cos(time * pt.dsy + pt.ph + 1) * pt.day
+
+        var distP = Math.abs(pt.t - pulseT)
+        var pBr = distP < 0.15 ? (1 - distP / 0.15) * 0.5 : 0
+
+        var a = (ba * pt.br + pBr) * hMult
+        if (a > 1) a = 1
+
+        ctx.beginPath()
+        ctx.arc(sPos.x + dx, sPos.y + dy, pt.r + pBr * 0.6, 0, Math.PI * 2)
+        ctx.fillStyle = 'rgba(' + rgb + ',' + a + ')'
+        ctx.fill()
+      }
+
+      // Tip glow + node
+      var tip = spiralPt(k, 1, rMin, rMax)
+      var tipR = isH ? 22 : 12
+      var tGrad = ctx.createRadialGradient(tip.x, tip.y, 0, tip.x, tip.y, tipR)
+      tGrad.addColorStop(0, 'rgba(' + rgb + ',' + (isH ? 0.22 : 0.1) * dim + ')')
+      tGrad.addColorStop(1, 'rgba(' + rgb + ',0)')
+      ctx.beginPath()
+      ctx.arc(tip.x, tip.y, tipR, 0, Math.PI * 2)
+      ctx.fillStyle = tGrad
+      ctx.fill()
+
+      ctx.beginPath()
+      ctx.arc(tip.x, tip.y, isH ? 4.5 : 3, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(' + rgb + ',' + (isH ? 0.85 : 0.5) * dim + ')'
+      ctx.fill()
+    }
+
+    // Flowing particles along spiral arms
+    for (var i = flowParts.length - 1; i >= 0; i--) {
+      var fp = flowParts[i]
+      fp.t += fp.speed
+      if (fp.t > 1.05 || fp.t < -0.05) { flowParts.splice(i, 1); continue }
+
+      var pos = spiralPt(fp.arm, Math.max(0, Math.min(1, fp.t)), rMin, rMax)
+      var tan = spiralTangent(fp.arm, Math.max(0, Math.min(1, fp.t)), rMin, rMax)
+      var px = pos.x + (-tan.y) * fp.perpOff
+      var py = pos.y + tan.x * fp.perpOff
+
+      var isH = hoveredArm === fp.arm
+      var fDim = anyHover && !isH ? DIM : 1
+      var fAlpha = fp.alpha * (isH ? 1.8 : fDim)
+      // Fade at edges
+      if (fp.t < 0.1) fAlpha *= fp.t / 0.1
+      else if (fp.t > 0.9) fAlpha *= (1 - fp.t) / 0.1
+
+      ctx.beginPath()
+      ctx.arc(px, py, fp.r, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(' + rgb + ',' + fAlpha + ')'
+      ctx.fill()
+    }
+
+    // Spawn flowing particles continuously
+    if (Math.random() < 0.35) spawnFlow()
+
+  }
+
+  var lastFrame = 0
+  function tick(time) {
+    if (!visible) { animId = requestAnimationFrame(tick); return }
+    if (time - lastFrame > 33) {
+      lastFrame = time
+      draw(time)
+    }
+    animId = requestAnimationFrame(tick)
+  }
+
+  // Card hover → arm highlight
+  for (var i = 0; i < cards.length; i++) {
+    (function(idx) {
+      cards[idx].addEventListener('mouseenter', function() { hoveredArm = idx })
+      cards[idx].addEventListener('mouseleave', function() { hoveredArm = -1 })
+    })(i)
+  }
+
+  // Visibility
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { visible = e.isIntersecting })
+  }, { threshold: 0.1 })
+  observer.observe(canvas)
+
+  resize()
+  window.addEventListener('resize', resize)
+  animId = requestAnimationFrame(tick)
+
+  window.__pillarsCleanup = function() {
+    if (animId) cancelAnimationFrame(animId)
+    window.removeEventListener('resize', resize)
+    observer.disconnect()
+    hoveredArm = -1
+  }
+}
+__pillarsInit()
+</script>
 
 <script>
   function initHomeReveal() {
