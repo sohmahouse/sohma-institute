@@ -107,12 +107,14 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
 
     <!-- POSITIONING STATEMENT -->
-    <section class="position-band">
-      <div class="position-inner">
-        <span class="position-eyebrow">Foundational Position</span>
-        <h2 class="position-heading">The Post-Reductionist Correction</h2>
-        <p class="position-statement">The dominant framing positions traditional medicines as "complementary" or "alternative." The Institute rejects this. Ayurveda, TCM, Unani, Kampo, and Indigenous pharmacopoeia are sophisticated therapeutic architectures that anticipated network pharmacology, systems biology, and precision therapeutics by centuries. These are not analogies. They are convergent descriptions of the same therapeutic reality.</p>
-        <a href="/about" class="position-link">Read our full position &rarr;</a>
+    <section class="position-band" id="position">
+      <div class="position-scroll-outer">
+        <div class="position-scroll-sticky">
+          <div class="position-inner">
+            <p class="position-statement" id="position-text">The dominant framing positions traditional medicines as &ldquo;complementary&rdquo; or &ldquo;alternative.&rdquo; The Institute rejects this. Ayurveda, TCM, Unani, Kampo, and Indigenous pharmacopoeia are sophisticated therapeutic architectures that anticipated network pharmacology, systems biology, and precision therapeutics by centuries. These are not analogies. They are convergent descriptions of the same therapeutic reality.</p>
+            <a href="/about" class="position-link" id="position-link">Read Our Full Position</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -563,16 +565,28 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   /* ═══════════ POSITIONING STATEMENT ═══════════ */
   .position-band {
     margin: 0 -40px;
-    padding: 5rem 40px;
-    background: var(--bg-surface);
     border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
-    text-align: center;
+  }
+
+  .position-scroll-outer {
+    position: relative;
+    height: 300vh;
+  }
+
+  .position-scroll-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
   }
 
   .position-inner {
-    max-width: 640px;
-    margin: 0 auto;
+    max-width: 720px;
+    text-align: center;
   }
 
   .position-eyebrow {
@@ -593,29 +607,74 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     font-weight: 400;
     color: var(--text-heading);
     letter-spacing: -0.01em;
-    margin: 0 0 1.5rem;
+    margin: 0 0 2rem;
   }
 
   .position-statement {
-    font-size: 1.0625rem;
-    color: var(--text-secondary);
-    line-height: 1.85;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    color: var(--text-heading);
+    line-height: 1.65;
+    letter-spacing: -0.005em;
+  }
+
+  .position-statement :global(.pw) {
+    color: var(--text-heading);
+    opacity: 0.15;
+    transition: opacity 0.3s ease;
+  }
+
+  .position-statement :global(.pw.lit) {
+    opacity: 1;
+  }
+
+  .position-statement :global(.pw.lit.pw-accent) {
+    color: #141210;
+    background: var(--accent-dark);
+    padding: 0 0.12em 0.15em;
+    margin: -0.15em 0;
+    border-radius: 2px;
+    line-height: 1;
+  }
+
+  .position-statement :global(.pw.lit.pw-red) {
+    color: var(--accent-dark);
+  }
+
+  .position-statement :global(.pw.pw-italic) {
+    font-style: italic;
   }
 
   .position-link {
     display: inline-block;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
+    padding: 10px 24px;
     font-family: 'Manrope', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-    color: var(--accent-dark);
+    color: var(--text-heading);
     text-decoration: none;
-    transition: color 0.15s;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.4s ease, background 0.2s, border-color 0.2s;
+  }
+
+  .position-link.visible {
+    opacity: 1;
   }
 
   .position-link:hover {
-    color: var(--accent-darker-hover);
+    background: #fff;
+    border-color: #fff;
+    color: #141210;
+  }
+
+  [data-theme="dark"] .position-link:hover {
+    background: #e8dfd0;
+    border-color: #e8dfd0;
+    color: #141210;
   }
 
 
@@ -945,7 +1004,8 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     .home-hero { margin: 0 -20px; }
     .hero-inner { padding: 64px calc(1.5rem + 20px) 48px calc(1rem + 20px); }
     .hero-columns { grid-template-columns: 1fr 220px; gap: 2rem; }
-    .position-band { margin: 0 -20px; padding: 5rem 20px; }
+    .position-band { margin: 0 -20px; }
+    .position-scroll-sticky { padding: 0 20px; }
     .divisions-grid { grid-template-columns: repeat(3, 1fr); }
     .pathway-grid { grid-template-columns: 1fr; }
     .cta-section { margin: 0 -20px; }
@@ -959,6 +1019,11 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     .pillars-right { display: none; }
     .pillars-columns { grid-template-columns: 1fr; }
     .home-page .position-heading { font-size: 2rem; }
+    .position-statement { font-size: 1.375rem; min-height: 0; }
+    .position-scroll-outer { height: auto; }
+    .position-scroll-sticky { position: static; height: auto; padding: 4rem 20px; }
+    .position-statement :global(.pw) { opacity: 1; }
+    .position-link { opacity: 1; }
     .divisions-grid { grid-template-columns: 1fr 1fr; }
     .pathway-grid { grid-template-columns: 1fr; gap: 2rem; }
     .cta-inner { padding: 4rem 1.25rem; }
@@ -1274,6 +1339,76 @@ function __pillarsInit() {
   }
 }
 __pillarsInit()
+</script>
+
+<script is:inline data-astro-rerun>
+(function __positionInit() {
+  if (window.__positionCleanup) { window.__positionCleanup(); window.__positionCleanup = null }
+
+  var el = document.getElementById('position-text')
+  var outer = document.querySelector('.position-scroll-outer')
+  var link = document.getElementById('position-link')
+  if (!el || !outer) return
+
+  // Mobile: show full text, no scroll effect
+  var isMobile = window.innerWidth < 768
+  if (isMobile) {
+    if (link) link.classList.add('visible')
+    return
+  }
+
+  // Split into word spans
+  var words = el.textContent.trim().split(/\s+/)
+  el.innerHTML = words.map(function(w) {
+    return '<span class="pw">' + w + '</span>'
+  }).join(' ')
+
+  var spans = el.querySelectorAll('.pw')
+  var total = spans.length
+
+  // Mark accent + italic words
+  for (var i = 0; i < total; i++) {
+    if (words[i] === 'rejects') spans[i].classList.add('pw-accent')
+    if (words[i].indexOf('complementary') >= 0 || words[i].indexOf('alternative') >= 0) spans[i].classList.add('pw-italic')
+    if (words[i] === 'same' || words[i] === 'therapeutic' || words[i].indexOf('reality') === 0) spans[i].classList.add('pw-red')
+  }
+
+  function update() {
+    var rect = outer.getBoundingClientRect()
+    var runway = outer.offsetHeight - window.innerHeight
+    if (runway <= 0) return
+    var progress = Math.max(0, Math.min(1, -rect.top / runway))
+
+    var litCount = Math.round(progress * total)
+    for (var i = 0; i < total; i++) {
+      if (i < litCount) spans[i].classList.add('lit')
+      else spans[i].classList.remove('lit')
+    }
+
+    if (link) {
+      if (progress > 0.92) link.classList.add('visible')
+      else link.classList.remove('visible')
+    }
+  }
+
+  var ticking = false
+  function onScroll() {
+    if (!ticking) {
+      ticking = true
+      requestAnimationFrame(function() {
+        update()
+        ticking = false
+      })
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true })
+  update()
+
+  window.__positionCleanup = function() {
+    window.removeEventListener('scroll', onScroll)
+  }
+})()
 </script>
 
 <script>
