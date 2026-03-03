@@ -1611,6 +1611,9 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   var resizeTimer = 0
   var progressT = 0
   var prevProgressT = 0
+  var mouseX = -9999, mouseY = -9999
+  var CURSOR_RADIUS = 80
+  var CURSOR_FORCE = 3.5
 
   /* ── Spiral geometry ── */
   var TOTAL_THETA = Math.PI * 5    // ~2.5 turns
@@ -1758,6 +1761,59 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   var GEO_AXES = 6 // hexagonal symmetry
   var geoAxAngles = []
   for (var g = 0; g < GEO_AXES; g++) geoAxAngles.push(g * Math.PI * 2 / GEO_AXES)
+
+  /* ── Cursor spark interaction ── */
+  var cursorSparks = []
+  var MAX_SPARKS = 300
+  var _sparkRgb = '220,130,40'
+
+  function spawnCursorSpark(sx, sy, vxBase, vyBase) {
+    if (cursorSparks.length >= MAX_SPARKS) return
+    var angle = Math.atan2(vyBase, vxBase) + (Math.random() - 0.5) * 1.2
+    var speed = 1.5 + Math.random() * 3.5
+    cursorSparks.push({
+      x: sx, y: sy,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 15 + Math.random() * 25,
+      age: 0,
+      r: 0.4 + Math.random() * 0.8
+    })
+  }
+
+  function cursorPush(px, py) {
+    if (mouseX < -1000) return { x: 0, y: 0 }
+    var dx = px - mouseX, dy = py - mouseY
+    var d = Math.sqrt(dx * dx + dy * dy)
+    if (d >= CURSOR_RADIUS || d < 0.1) return { x: 0, y: 0 }
+    var influence = 1 - d / CURSOR_RADIUS
+    influence *= influence
+    var push = influence * CURSOR_FORCE
+    var nx = dx / d, ny = dy / d
+    if (Math.random() < influence * 0.12) {
+      spawnCursorSpark(px, py, nx * 2, ny * 2)
+    }
+    return { x: nx * push, y: ny * push }
+  }
+
+  function drawCursorSparks() {
+    for (var i = cursorSparks.length - 1; i >= 0; i--) {
+      var sp = cursorSparks[i]
+      sp.x += sp.vx
+      sp.y += sp.vy
+      sp.vx *= 0.92
+      sp.vy *= 0.92
+      sp.age++
+      if (sp.age >= sp.life) { cursorSparks.splice(i, 1); continue }
+      var fadeIn = Math.min(sp.age / 3, 1)
+      var fadeOut = Math.min((sp.life - sp.age) / 6, 1)
+      var sa = fadeIn * fadeOut * 0.9
+      ctx.beginPath()
+      ctx.arc(sp.x, sp.y, sp.r, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(' + _sparkRgb + ',' + sa + ')'
+      ctx.fill()
+    }
+  }
 
   /* ── Spawn ── */
   var fwdAccum = 0, fwdNodeAccum = 0, rhAccum = 0
@@ -1931,9 +1987,10 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       if (t < 0.05) a = (t / 0.05) * ba
       if (fadeZone > 0 && t > fadeZone) a *= (progressT - t) / 0.05
 
+      var cp = cursorPush(px, py)
       ctx.fillStyle = 'rgba(' + ((cs0 + cd0 * t) | 0) + ',' + ((cs1 + cd1 * t) | 0) + ',' + ((cs2 + cd2 * t) | 0) + ',' + a + ')'
       ctx.beginPath()
-      ctx.arc(px, py, fwd[b + 5] * 0.4, 0, Math.PI * 2)
+      ctx.arc(px + cp.x, py + cp.y, fwd[b + 5] * 0.4, 0, Math.PI * 2)
       ctx.fill()
     }
   }
@@ -1979,9 +2036,10 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       var a = ba
       if (t < 0.05) a *= t / 0.05
 
+      var cp = cursorPush(px, py)
       ctx.fillStyle = retPrefix + a + ')'
       ctx.beginPath()
-      ctx.arc(px, py, rh[b + 4] * 0.4, 0, Math.PI * 2)
+      ctx.arc(px + cp.x, py + cp.y, rh[b + 4] * 0.4, 0, Math.PI * 2)
       ctx.fill()
     }
   }
@@ -2059,9 +2117,10 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       if (p < 0.1) a *= p / 0.1
       if (p > 0.8) a *= (1 - p) / 0.2
 
+      var cp = cursorPush(px, py)
       ctx.fillStyle = geoPrefix + a + ')'
       ctx.beginPath()
-      ctx.arc(px, py, 0.6, 0, Math.PI * 2)
+      ctx.arc(px + cp.x, py + cp.y, 0.6, 0, Math.PI * 2)
       ctx.fill()
     }
   }
@@ -2127,11 +2186,18 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   }
   window.addEventListener('resize', debouncedResize)
 
-  /* ── Hover detection (node glow only) ── */
-  section.addEventListener('mousemove', function(e) {
+  /* ── Hover detection + cursor tracking ── */
+  function onSpiralMouseMove(e) {
     var rect = wrap.getBoundingClientRect()
     var mx = e.clientX - rect.left
     var my = e.clientY - rect.top
+    // Track cursor in canvas coordinates for spark interaction
+    var canvasRect = canvas.getBoundingClientRect()
+    mouseX = (e.clientX - canvasRect.left) * (W / canvasRect.width)
+    mouseY = (e.clientY - canvasRect.top) * (H / canvasRect.height)
+    // Update spark color to match current theme
+    var c = getColors()
+    _sparkRgb = c.fwdStart[0] + ',' + c.fwdStart[1] + ',' + c.fwdStart[2]
     hoveredNode = -1
     for (var i = 0; i < NODE_COUNT; i++) {
       var np = nodePositions[i]
@@ -2139,10 +2205,27 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       var dx = mx - np.x, dy = my - np.y
       if (Math.sqrt(dx * dx + dy * dy) < 40) { hoveredNode = i; break }
     }
-  })
-  section.addEventListener('mouseleave', function() {
+  }
+  function onSpiralMouseLeave() {
     hoveredNode = -1
-  })
+    mouseX = -9999; mouseY = -9999
+  }
+  section.addEventListener('mousemove', onSpiralMouseMove)
+  section.addEventListener('mouseleave', onSpiralMouseLeave)
+
+  // Touch support
+  function onSpiralTouchMove(e) {
+    if (e.touches.length > 0) {
+      var canvasRect = canvas.getBoundingClientRect()
+      mouseX = (e.touches[0].clientX - canvasRect.left) * (W / canvasRect.width)
+      mouseY = (e.touches[0].clientY - canvasRect.top) * (H / canvasRect.height)
+      var c = getColors()
+      _sparkRgb = c.fwdStart[0] + ',' + c.fwdStart[1] + ',' + c.fwdStart[2]
+    }
+  }
+  function onSpiralTouchEnd() { mouseX = -9999; mouseY = -9999 }
+  section.addEventListener('touchmove', onSpiralTouchMove, { passive: true })
+  section.addEventListener('touchend', onSpiralTouchEnd)
 
   /* ── Scroll drives carousel naturally via progressT + lerp in updateLabels ── */
 
@@ -2182,6 +2265,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     drawGeo()
     drawForward()
     drawReturnHelix()
+    drawCursorSparks()
     updateLabels()
   }
 
@@ -2211,6 +2295,10 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     visObs.disconnect()
     themeObs.disconnect()
     window.removeEventListener('resize', debouncedResize)
+    section.removeEventListener('mousemove', onSpiralMouseMove)
+    section.removeEventListener('mouseleave', onSpiralMouseLeave)
+    section.removeEventListener('touchmove', onSpiralTouchMove)
+    section.removeEventListener('touchend', onSpiralTouchEnd)
     section.classList.remove('pipeline-animated')
   }
 }

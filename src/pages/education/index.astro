@@ -82,21 +82,28 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
 
 
     <!-- PEDAGOGICAL COMMITMENTS -->
-    <section class="pillars-section">
+    <section class="pillars-section" id="pillars">
       <span class="pillars-eyebrow">How We Teach</span>
       <h2 class="section-heading">Pedagogical Commitments</h2>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <h3>Case-Based Architecture</h3>
-          <p>Every unit of competency is assessed through real clinical cases, not simulated scenarios. Students work within the Sohma House patient population from Tier 1 onward, with supervision intensity calibrated to credential level.</p>
+      <div class="pillars-columns">
+        <div class="pillars-left">
+          <div class="pillar-card" data-pillar="0">
+            <h3>Case-Based Architecture</h3>
+            <p>Every unit of competency is assessed through real clinical cases, not simulated scenarios. Students work within the Sohma House patient population from Tier 1 onward, with supervision intensity calibrated to credential level.</p>
+          </div>
+          <div class="pillar-card" data-pillar="1">
+            <h3>Inverse Classroom</h3>
+            <p>Didactic content is asynchronous. All synchronous contact hours are dedicated to clinical reasoning, case presentation, supervised practice, and peer conferencing. We don't pay clinicians to lecture. We pay them to mentor.</p>
+          </div>
+          <div class="pillar-card" data-pillar="2">
+            <h3>Portfolio Assessment</h3>
+            <p>No written examinations. Competency is demonstrated through clinical portfolios containing case documentation, reflective practice records, supervisor evaluations, and peer review. The portfolio becomes the practitioner's ongoing professional development record.</p>
+          </div>
         </div>
-        <div class="pillar-card">
-          <h3>Inverse Classroom</h3>
-          <p>Didactic content is asynchronous. All synchronous contact hours are dedicated to clinical reasoning, case presentation, supervised practice, and peer conferencing. We don't pay clinicians to lecture. We pay them to mentor.</p>
-        </div>
-        <div class="pillar-card">
-          <h3>Portfolio Assessment</h3>
-          <p>No written examinations. Competency is demonstrated through clinical portfolios containing case documentation, reflective practice records, supervisor evaluations, and peer review. The portfolio becomes the practitioner's ongoing professional development record.</p>
+        <div class="pillars-right">
+          <div class="pillars-constellation">
+            <canvas id="pillars-canvas" aria-hidden="true"></canvas>
+          </div>
         </div>
       </div>
     </section>
@@ -210,7 +217,7 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     font-weight: 400;
     color: var(--text-heading);
     line-height: 1.2;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -0.01em;
   }
 
@@ -293,16 +300,52 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     margin-bottom: 0.75rem;
   }
 
-  .pillars-grid {
+  .pillars-columns {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0 3.5rem;
+    grid-template-columns: 2fr 3fr;
+    gap: 3rem;
     margin-top: 2.5rem;
+    align-items: start;
+  }
+
+  .pillars-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 2rem;
+  }
+
+  .pillars-right {
+    position: sticky;
+    top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 480px;
+  }
+
+  .pillars-constellation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  #pillars-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .pillar-card {
     display: block;
-    padding: 2.5rem 0 0;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border-light);
+    transition: border-color 0.3s, padding 0.35s ease;
+  }
+
+  .pillar-card:hover {
+    border-color: var(--accent-dark);
+    padding: 1.75rem 0;
   }
 
   .pillar-card h3 {
@@ -310,7 +353,7 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     font-size: 1.35rem;
     font-weight: 500;
     color: var(--text-heading);
-    margin-bottom: 1.125rem;
+    margin-bottom: 0.875rem;
   }
 
   .pillar-card p {
@@ -539,6 +582,9 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
 
   .divisions-inner {
     max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .divisions-eyebrow {
@@ -548,8 +594,10 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: rgba(196, 110, 66, 0.7);
+    color: var(--accent-dark);
+    opacity: 0.7;
     margin-bottom: 0.75rem;
+    text-align: center;
   }
 
   .edu-page .divisions-heading {
@@ -559,14 +607,18 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     color: var(--text-heading);
     letter-spacing: -0.01em;
     margin: 0 0 1rem;
+    text-align: center;
   }
 
   .divisions-intro {
     font-size: 0.9375rem;
     color: var(--text-secondary);
     line-height: 1.75;
-    max-width: 620px;
-    margin-bottom: 2.5rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8rem;
+    text-align: center;
   }
 
   .divisions-grid {
@@ -574,6 +626,8 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     grid-template-columns: repeat(6, 1fr);
     gap: 2rem 2.5rem;
     justify-items: center;
+    width: 100%;
+    padding-top: 4rem;
   }
   .divisions-grid .division-card:nth-child(1) { grid-column: 1 / 3; }
   .divisions-grid .division-card:nth-child(2) { grid-column: 3 / 5; }
@@ -583,10 +637,10 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
 
   .division-card {
     display: block;
+    max-width: 240px;
     padding: 1.75rem 0;
     background: none;
     border: none;
-    border-top: 1px solid var(--border-light);
     border-radius: 0;
     text-decoration: none;
     transition: opacity 0.2s;
@@ -597,32 +651,21 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
   }
 
   .division-dot {
-    display: block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
+    display: none;
   }
-
-  [data-accent="terracotta"] .division-dot { background: var(--accent-dark); }
-  [data-accent="warm"] .division-dot { background: var(--chart-warm); }
-  [data-accent="blue"] .division-dot { background: var(--chart-blue); }
-  [data-accent="teal"] .division-dot { background: var(--chart-teal); }
-  [data-accent="purple"] .division-dot { background: var(--chart-purple); }
 
   .division-num {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    color: var(--text-heading);
-    opacity: 0.35;
+    font-size: 0.875rem;
+    color: var(--accent-dark);
     line-height: 1;
     margin-bottom: 0.75rem;
   }
 
   .division-card h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 500;
     color: var(--text-heading);
     line-height: 1.3;
@@ -747,6 +790,9 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
       padding: 64px calc(1.5rem + 20px) 48px calc(1rem + 20px);
     }
 
+    .pillars-right { display: none; }
+    .pillars-columns { grid-template-columns: 1fr; }
+
     .divisions-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -779,7 +825,8 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
     .ladder-track { display: none; }
     .ladder-right { max-width: none; }
 
-    .pillars-grid { grid-template-columns: 1fr; }
+    .pillars-right { display: none; }
+    .pillars-columns { grid-template-columns: 1fr; }
     .divisions-grid {
       grid-template-columns: 1fr;
     }
@@ -861,4 +908,486 @@ import PortalLayout from '../../layouts/PortalLayout.astro'
 
   document.addEventListener('DOMContentLoaded', initLadderProgress)
   document.addEventListener('astro:page-load', initLadderProgress)
+</script>
+
+<script is:inline data-astro-rerun>
+function __eduPillarsInit() {
+  if (window.__eduPillarsCleanup) { window.__eduPillarsCleanup(); window.__eduPillarsCleanup = null }
+
+  var canvas = document.getElementById('pillars-canvas')
+  if (!canvas) return
+  var ctx = canvas.getContext('2d')
+  if (!ctx) return
+
+  var wrapper = canvas.parentElement
+  var cards = document.querySelectorAll('.pillar-card[data-pillar]')
+  var dpr = window.devicePixelRatio || 1
+  var w, h, cx, cy
+  var hoveredNode = -1
+  var animId = 0
+  var visible = false
+  var mouseX = -9999, mouseY = -9999
+  var CURSOR_RADIUS = 80
+  var CURSOR_FORCE = 3.5
+
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark'
+  }
+
+  // Triangle geometry — 3 vertices slowly orbiting
+  var R = 0  // orbit radius, set on resize
+  var EDGE_PARTICLES = 120  // static particles per edge
+  var NODE_PARTICLES = 40   // ambient particles per node
+  var RING_PARTICLES = 200  // static particles along circumscribed circle
+  var edgePts = [[], [], []]  // particles along each edge
+  var nodePts = [[], [], []]  // ambient cloud around each vertex
+  var ringPts = []            // particles along the outer ring
+
+  // Flowing particles traveling edges + ring
+  var flowParts = []
+  var MAX_FLOW = 200
+  var orbitParts = []  // particles orbiting the ring
+  var MAX_ORBIT = 120
+
+  // Get vertex position for node k at time t
+  function vertex(k, time) {
+    var baseAngle = k * (Math.PI * 2 / 3) - Math.PI / 2  // start from top
+    var orbit = time * 0.00004  // slow rotation
+    var angle = baseAngle + orbit
+    // Subtle breathing — radius oscillates gently
+    var breathe = 1 + Math.sin(time * 0.0003 + k * 2.094) * 0.03
+    var r = R * breathe
+    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
+  }
+
+  function buildEdge(k) {
+    var pts = []
+    for (var i = 0; i < EDGE_PARTICLES; i++) {
+      var t = i / EDGE_PARTICLES
+      pts.push({
+        t: t,
+        r: 0.5 + Math.random() * 1.0,
+        ph: Math.random() * Math.PI * 2,
+        br: 0.4 + Math.random() * 0.5,
+        dsx: 0.0002 + Math.random() * 0.0006,
+        dsy: 0.0003 + Math.random() * 0.0007,
+        dax: 0.6 + Math.random() * 1.5,
+        day: 0.5 + Math.random() * 1.2,
+        perp: (Math.random() - 0.5) * 8
+      })
+    }
+    return pts
+  }
+
+  function buildNode(k) {
+    var pts = []
+    for (var i = 0; i < NODE_PARTICLES; i++) {
+      var angle = Math.random() * Math.PI * 2
+      var dist = Math.random() * 32
+      pts.push({
+        ox: Math.cos(angle) * dist,
+        oy: Math.sin(angle) * dist,
+        r: 0.4 + Math.random() * 0.8,
+        ph: Math.random() * Math.PI * 2,
+        br: 0.5 + Math.random() * 0.4,
+        dsx: 0.0003 + Math.random() * 0.001,
+        dsy: 0.0004 + Math.random() * 0.001,
+        dax: 1.0 + Math.random() * 2.0,
+        day: 0.8 + Math.random() * 1.5
+      })
+    }
+    return pts
+  }
+
+  function buildRing() {
+    var pts = []
+    for (var i = 0; i < RING_PARTICLES; i++) {
+      var angle = (i / RING_PARTICLES) * Math.PI * 2
+      pts.push({
+        angle: angle,
+        r: 0.4 + Math.random() * 0.9,
+        ph: Math.random() * Math.PI * 2,
+        br: 0.3 + Math.random() * 0.45,
+        dsx: 0.0002 + Math.random() * 0.0005,
+        radOff: (Math.random() - 0.5) * 10
+      })
+    }
+    return pts
+  }
+
+  function spawnFlow() {
+    if (flowParts.length >= MAX_FLOW) return
+    var edge = Math.floor(Math.random() * 3)
+    var forward = Math.random() > 0.25
+    flowParts.push({
+      edge: edge,
+      t: forward ? 0 : 1,
+      speed: (0.0015 + Math.random() * 0.004) * (forward ? 1 : -1),
+      r: 1.0 + Math.random() * 1.8,
+      alpha: 0.35 + Math.random() * 0.45,
+      perp: (Math.random() - 0.5) * 6
+    })
+  }
+
+  function spawnOrbit() {
+    if (orbitParts.length >= MAX_ORBIT) return
+    var cw = Math.random() > 0.3 ? 1 : -1
+    orbitParts.push({
+      angle: Math.random() * Math.PI * 2,
+      speed: (0.001 + Math.random() * 0.002) * cw,
+      r: 0.8 + Math.random() * 1.4,
+      alpha: 0.3 + Math.random() * 0.4,
+      radOff: (Math.random() - 0.5) * 8,
+      life: 250 + Math.random() * 350,
+      age: 0
+    })
+  }
+
+  function resize() {
+    var rect = wrapper.getBoundingClientRect()
+    w = rect.width
+    h = rect.height || 400
+    canvas.width = w * dpr
+    canvas.height = h * dpr
+    canvas.style.width = w + 'px'
+    canvas.style.height = h + 'px'
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+    cx = w / 2
+    cy = h / 2
+    R = Math.min(w * 0.38, h * 0.38)
+
+    for (var k = 0; k < 3; k++) {
+      edgePts[k] = buildEdge(k)
+      nodePts[k] = buildNode(k)
+    }
+    ringPts = buildRing()
+    flowParts = []
+    orbitParts = []
+  }
+
+  // Cursor repulsion — returns {x, y} offset, spawns sparks on contact
+  var _sparkRgb = '165,61,46'
+  function cursorPush(px, py) {
+    if (mouseX < -1000) return { x: 0, y: 0 }
+    var dx = px - mouseX, dy = py - mouseY
+    var d = Math.sqrt(dx * dx + dy * dy)
+    if (d >= CURSOR_RADIUS || d < 0.1) return { x: 0, y: 0 }
+    var influence = 1 - d / CURSOR_RADIUS
+    influence *= influence
+    var push = influence * CURSOR_FORCE
+    var nx = dx / d, ny = dy / d
+    // Sparks fly from contact — probability scales with closeness
+    if (Math.random() < influence * 0.12) {
+      spawnCursorSpark(px, py, nx * 2, ny * 2, _sparkRgb)
+    }
+    return { x: nx * push, y: ny * push }
+  }
+
+  // Spark pool for cursor interaction
+  var cursorSparks = []
+  var MAX_SPARKS = 300
+
+  function spawnCursorSpark(sx, sy, vxBase, vyBase, rgb) {
+    if (cursorSparks.length >= MAX_SPARKS) return
+    var angle = Math.atan2(vyBase, vxBase) + (Math.random() - 0.5) * 1.2
+    var speed = 1.5 + Math.random() * 3.5
+    cursorSparks.push({
+      x: sx, y: sy,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 15 + Math.random() * 25,
+      age: 0,
+      r: 0.4 + Math.random() * 0.8,
+      rgb: rgb
+    })
+  }
+
+  function draw(time) {
+    ctx.clearRect(0, 0, w, h)
+
+    var dark = isDark()
+    var rgb = dark ? '212,112,78' : '165,61,46'
+    _sparkRgb = rgb
+    var ba = dark ? 0.45 : 0.3
+    var anyHover = hoveredNode !== -1
+    var DIM = 0.15
+
+    // Get current vertex positions
+    var verts = []
+    for (var k = 0; k < 3; k++) verts.push(vertex(k, time))
+
+    // Edge indices: edge 0 = v0→v1, edge 1 = v1→v2, edge 2 = v2→v0
+    var edges = [[0, 1], [1, 2], [2, 0]]
+
+    // Which edges connect to hovered node?
+    function edgeTouchesNode(e, n) {
+      return edges[e][0] === n || edges[e][1] === n
+    }
+
+    // Draw faint edge lines
+    for (var e = 0; e < 3; e++) {
+      var a = verts[edges[e][0]], b = verts[edges[e][1]]
+      var eHover = anyHover && (edgeTouchesNode(e, hoveredNode))
+      var eDim = anyHover && !eHover ? DIM : 1
+      ctx.beginPath()
+      ctx.moveTo(a.x, a.y)
+      ctx.lineTo(b.x, b.y)
+      ctx.strokeStyle = 'rgba(' + rgb + ',' + (eHover ? 0.12 : 0.04) * eDim + ')'
+      ctx.lineWidth = eHover ? 1.2 : 0.6
+      ctx.stroke()
+    }
+
+    // Center glow
+    var centerDim = anyHover ? 0.4 : 1
+    var cGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 0.4)
+    cGrad.addColorStop(0, 'rgba(' + rgb + ',' + (dark ? 0.08 : 0.05) * centerDim + ')')
+    cGrad.addColorStop(1, 'rgba(' + rgb + ',0)')
+    ctx.beginPath()
+    ctx.arc(cx, cy, R * 0.4, 0, Math.PI * 2)
+    ctx.fillStyle = cGrad
+    ctx.fill()
+
+    // Circumscribed circle — faint ring guide
+    var ringR = R * 1.16  // circumradius of equilateral triangle inscribed at R
+    var ringDim = anyHover ? 0.4 : 1
+    ctx.beginPath()
+    ctx.arc(cx, cy, ringR, 0, Math.PI * 2)
+    ctx.strokeStyle = 'rgba(' + rgb + ',' + 0.03 * ringDim + ')'
+    ctx.lineWidth = 0.5
+    ctx.stroke()
+
+    // Static ring particles
+    var orbit = time * 0.00004
+    for (var i = 0; i < ringPts.length; i++) {
+      var rp = ringPts[i]
+      var a = rp.angle + orbit
+      var drift = Math.sin(time * rp.dsx + rp.ph) * 1.5
+      var rr = ringR + rp.radOff + drift
+      var rpx = cx + rr * Math.cos(a)
+      var rpy = cy + rr * Math.sin(a)
+      var cp = cursorPush(rpx, rpy)
+      ctx.beginPath()
+      ctx.arc(rpx + cp.x, rpy + cp.y, rp.r, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(' + rgb + ',' + ba * rp.br * ringDim + ')'
+      ctx.fill()
+    }
+
+    // Flowing orbit particles
+    for (var i = orbitParts.length - 1; i >= 0; i--) {
+      var op = orbitParts[i]
+      op.angle += op.speed
+      op.age++
+      if (op.age > op.life) { orbitParts.splice(i, 1); continue }
+
+      var rr = ringR + op.radOff
+      var opx = cx + rr * Math.cos(op.angle)
+      var opy = cy + rr * Math.sin(op.angle)
+      var cp = cursorPush(opx, opy)
+
+      var fadeIn = Math.min(op.age / 40, 1)
+      var fadeOut = Math.min((op.life - op.age) / 40, 1)
+      var oAlpha = op.alpha * fadeIn * fadeOut * ringDim
+
+      ctx.beginPath()
+      ctx.arc(opx + cp.x, opy + cp.y, op.r, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(' + rgb + ',' + oAlpha + ')'
+      ctx.fill()
+    }
+
+    // Pulse wave along edges
+    var pulseSpeed = 0.0004
+
+    // Static edge particles
+    for (var e = 0; e < 3; e++) {
+      var pts = edgePts[e]
+      var a = verts[edges[e][0]], b = verts[edges[e][1]]
+      var eHover = anyHover && edgeTouchesNode(e, hoveredNode)
+      var eDim = anyHover && !eHover ? DIM : 1
+      var eMult = eHover ? 1.8 : eDim
+
+      var pulsePhase = (time * pulseSpeed + e * 0.333) % 1.4
+      var pulseT = pulsePhase / 1.4
+
+      for (var i = 0; i < pts.length; i++) {
+        var pt = pts[i]
+        // Lerp along edge
+        var ex = a.x + (b.x - a.x) * pt.t
+        var ey = a.y + (b.y - a.y) * pt.t
+        // Perpendicular offset
+        var dx = b.x - a.x, dy = b.y - a.y
+        var len = Math.sqrt(dx * dx + dy * dy) || 1
+        var nx = -dy / len, ny = dx / len
+        // Drift
+        var driftX = Math.sin(time * pt.dsx + pt.ph) * pt.dax
+        var driftY = Math.cos(time * pt.dsy + pt.ph + 1) * pt.day
+
+        var distP = Math.abs(pt.t - pulseT)
+        var pBr = distP < 0.15 ? (1 - distP / 0.15) * 0.4 : 0
+
+        var alpha = (ba * pt.br + pBr) * eMult
+        if (alpha > 1) alpha = 1
+
+        var epx = ex + nx * pt.perp + driftX
+        var epy = ey + ny * pt.perp + driftY
+        var cp = cursorPush(epx, epy)
+        ctx.beginPath()
+        ctx.arc(epx + cp.x, epy + cp.y, pt.r + pBr * 0.5, 0, Math.PI * 2)
+        ctx.fillStyle = 'rgba(' + rgb + ',' + alpha + ')'
+        ctx.fill()
+      }
+    }
+
+    // Node vertices — glow + dot + ambient particles
+    for (var k = 0; k < 3; k++) {
+      var v = verts[k]
+      var isH = hoveredNode === k
+      var nDim = anyHover && !isH ? DIM : 1
+      var nMult = isH ? 2 : nDim
+
+      // Glow
+      var glowR = isH ? 36 : 22
+      var nGrad = ctx.createRadialGradient(v.x, v.y, 0, v.x, v.y, glowR)
+      nGrad.addColorStop(0, 'rgba(' + rgb + ',' + (isH ? 0.25 : 0.12) * nDim + ')')
+      nGrad.addColorStop(1, 'rgba(' + rgb + ',0)')
+      ctx.beginPath()
+      ctx.arc(v.x, v.y, glowR, 0, Math.PI * 2)
+      ctx.fillStyle = nGrad
+      ctx.fill()
+
+      // Core dot
+      ctx.beginPath()
+      ctx.arc(v.x, v.y, isH ? 6 : 4, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(' + rgb + ',' + (isH ? 0.95 : 0.65) * nDim + ')'
+      ctx.fill()
+
+      // Ambient node particles
+      var nPts = nodePts[k]
+      for (var i = 0; i < nPts.length; i++) {
+        var pt = nPts[i]
+        var driftX = Math.sin(time * pt.dsx + pt.ph) * pt.dax
+        var driftY = Math.cos(time * pt.dsy + pt.ph + 1) * pt.day
+        var npx = v.x + pt.ox + driftX
+        var npy = v.y + pt.oy + driftY
+        var cp = cursorPush(npx, npy)
+        ctx.beginPath()
+        ctx.arc(npx + cp.x, npy + cp.y, pt.r, 0, Math.PI * 2)
+        ctx.fillStyle = 'rgba(' + rgb + ',' + ba * pt.br * nMult + ')'
+        ctx.fill()
+      }
+    }
+
+    // Flowing particles along edges
+    for (var i = flowParts.length - 1; i >= 0; i--) {
+      var fp = flowParts[i]
+      fp.t += fp.speed
+      if (fp.t > 1.05 || fp.t < -0.05) { flowParts.splice(i, 1); continue }
+
+      var e = fp.edge
+      var a = verts[edges[e][0]], b = verts[edges[e][1]]
+      var tt = Math.max(0, Math.min(1, fp.t))
+      var px = a.x + (b.x - a.x) * tt
+      var py = a.y + (b.y - a.y) * tt
+      // Perpendicular
+      var dx = b.x - a.x, dy = b.y - a.y
+      var len = Math.sqrt(dx * dx + dy * dy) || 1
+      px += (-dy / len) * fp.perp
+      py += (dx / len) * fp.perp
+
+      var cp = cursorPush(px, py)
+      var eHover = anyHover && edgeTouchesNode(e, hoveredNode)
+      var fDim = anyHover && !eHover ? DIM : 1
+      var fAlpha = fp.alpha * (eHover ? 1.6 : fDim)
+      if (fp.t < 0.1) fAlpha *= fp.t / 0.1
+      else if (fp.t > 0.9) fAlpha *= (1 - fp.t) / 0.1
+
+      ctx.beginPath()
+      ctx.arc(px + cp.x, py + cp.y, fp.r, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(' + rgb + ',' + fAlpha + ')'
+      ctx.fill()
+    }
+
+    // Cursor sparks
+    for (var i = cursorSparks.length - 1; i >= 0; i--) {
+      var sp = cursorSparks[i]
+      sp.x += sp.vx
+      sp.y += sp.vy
+      sp.vx *= 0.92
+      sp.vy *= 0.92
+      sp.age++
+      if (sp.age >= sp.life) { cursorSparks.splice(i, 1); continue }
+
+      var fadeIn = Math.min(sp.age / 3, 1)
+      var fadeOut = Math.min((sp.life - sp.age) / 6, 1)
+      var sa = fadeIn * fadeOut * 0.9
+
+      ctx.beginPath()
+      ctx.arc(sp.x, sp.y, sp.r, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(' + sp.rgb + ',' + sa + ')'
+      ctx.fill()
+    }
+
+    if (Math.random() < 0.6) spawnFlow()
+    if (Math.random() < 0.4) spawnOrbit()
+  }
+
+  var lastFrame = 0
+  function tick(time) {
+    if (!visible) { animId = requestAnimationFrame(tick); return }
+    if (time - lastFrame > 33) {
+      lastFrame = time
+      draw(time)
+    }
+    animId = requestAnimationFrame(tick)
+  }
+
+  for (var i = 0; i < cards.length; i++) {
+    (function(idx) {
+      cards[idx].addEventListener('mouseenter', function() { hoveredNode = idx })
+      cards[idx].addEventListener('mouseleave', function() { hoveredNode = -1 })
+    })(i)
+  }
+
+  // Mouse interaction on canvas
+  function onMouseMove(e) {
+    var rect = canvas.getBoundingClientRect()
+    mouseX = (e.clientX - rect.left) * (w / rect.width)
+    mouseY = (e.clientY - rect.top) * (h / rect.height)
+  }
+  function onMouseLeave() { mouseX = -9999; mouseY = -9999 }
+  canvas.addEventListener('mousemove', onMouseMove)
+  canvas.addEventListener('mouseleave', onMouseLeave)
+
+  function onTouchMove(e) {
+    if (e.touches.length > 0) {
+      var rect = canvas.getBoundingClientRect()
+      mouseX = (e.touches[0].clientX - rect.left) * (w / rect.width)
+      mouseY = (e.touches[0].clientY - rect.top) * (h / rect.height)
+    }
+  }
+  function onTouchEnd() { mouseX = -9999; mouseY = -9999 }
+  canvas.addEventListener('touchmove', onTouchMove, { passive: true })
+  canvas.addEventListener('touchend', onTouchEnd)
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { visible = e.isIntersecting })
+  }, { threshold: 0.1 })
+  observer.observe(canvas)
+
+  resize()
+  window.addEventListener('resize', resize)
+  animId = requestAnimationFrame(tick)
+
+  window.__eduPillarsCleanup = function() {
+    if (animId) cancelAnimationFrame(animId)
+    window.removeEventListener('resize', resize)
+    canvas.removeEventListener('mousemove', onMouseMove)
+    canvas.removeEventListener('mouseleave', onMouseLeave)
+    canvas.removeEventListener('touchmove', onTouchMove)
+    canvas.removeEventListener('touchend', onTouchEnd)
+    observer.disconnect()
+    hoveredNode = -1
+  }
+}
+__eduPillarsInit()
 </script>

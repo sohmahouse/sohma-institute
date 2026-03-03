@@ -103,7 +103,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     <section class="ecology-section" id="ecology">
       <div class="section-header">
         <h2 class="section-heading">Position Within the Regenerative Health Ecology</h2>
-        <p class="section-intro">The Institute doesn't operate in isolation. It's Node III of a four-part ecology — receiving clinical intelligence from the front line and distributing validated knowledge outward.</p>
+        <p class="section-intro">The Institute doesn't operate in isolation. It's Node II of a three-part ecology — receiving clinical intelligence from the front line and distributing validated knowledge outward.</p>
       </div>
 
       <div class="ecology-row">
@@ -112,7 +112,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
           <canvas id="ecology-canvas" aria-hidden="true"></canvas>
           <div class="eco-label eco-label-institute eco-active">
             <div class="eco-label-bar"></div>
-            <span class="eco-label-num">III</span>
+            <span class="eco-label-num">II</span>
             <h3>Sohma Institute</h3>
             <span class="eco-label-role">Education, Research & Credentialing</span>
           </div>
@@ -120,13 +120,13 @@ import PortalLayout from '../layouts/PortalLayout.astro'
             <div class="eco-label-bar"></div>
             <span class="eco-label-num">I</span>
             <h3>Sohma House</h3>
-            <span class="eco-label-role">Clinical Core</span>
+            <span class="eco-label-role">Clinical Practice & Patient Care</span>
           </div>
           <div class="eco-label eco-label-consulting">
             <div class="eco-label-bar"></div>
-            <span class="eco-label-num">IV</span>
-            <h3>Consulting Arm</h3>
-            <span class="eco-label-role">Advisory & Dissemination</span>
+            <span class="eco-label-num">III</span>
+            <h3>Sohma Consulting</h3>
+            <span class="eco-label-role">Advisory, Strategy & Dissemination</span>
           </div>
         </div>
 
@@ -139,7 +139,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
       <!-- Mobile fallback -->
       <div class="ecology-mobile-fallback">
         <div class="eco-mobile-node eco-mobile-active">
-          <div class="eco-mobile-num">III</div>
+          <div class="eco-mobile-num">II</div>
           <div>
             <h3>Sohma Institute</h3>
             <span>Education, Research & Credentialing</span>
@@ -150,15 +150,15 @@ import PortalLayout from '../layouts/PortalLayout.astro'
           <div class="eco-mobile-num">I</div>
           <div>
             <h3>Sohma House</h3>
-            <span>Clinical Core</span>
+            <span>Clinical Practice & Patient Care</span>
           </div>
         </div>
         <div class="eco-mobile-arrow">&updownarrow;</div>
         <div class="eco-mobile-node">
-          <div class="eco-mobile-num">IV</div>
+          <div class="eco-mobile-num">III</div>
           <div>
-            <h3>Consulting Arm</h3>
-            <span>Advisory & Dissemination</span>
+            <h3>Sohma Consulting</h3>
+            <span>Advisory, Strategy & Dissemination</span>
           </div>
         </div>
       </div>
@@ -497,12 +497,23 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     border-bottom: 1px solid var(--border-light);
   }
 
+  .ecology-section .section-header {
+    padding-bottom: 2.5rem;
+  }
+
+  .ecology-section .section-heading {
+    font-size: 3rem;
+    line-height: 1.05;
+    max-width: 640px;
+  }
+
   .ecology-row {
     display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 3rem;
+    grid-template-columns: 1fr auto;
+    gap: 0;
     align-items: center;
-    margin: 2rem 0;
+    margin: 0;
+    padding-right: 3rem;
   }
 
   .ecology-canvas-wrap {
@@ -527,7 +538,7 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     background: var(--bg-surface);
     border: 1px solid var(--border-light);
     border-radius: 4px;
-    min-width: 160px;
+    width: 190px;
     opacity: 0.7;
     transition: opacity 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
@@ -590,9 +601,9 @@ import PortalLayout from '../layouts/PortalLayout.astro'
     text-transform: uppercase;
   }
 
-  .eco-label-institute { top: 2%; left: 50%; transform: translateX(-50%); }
-  .eco-label-house { bottom: 2%; left: 12%; }
-  .eco-label-consulting { bottom: 2%; right: 12%; }
+  .eco-label-institute { top: 4%; left: 50%; transform: translateX(-50%); }
+  .eco-label-house { bottom: 6%; left: 10%; }
+  .eco-label-consulting { bottom: 6%; right: 10%; }
 
   /* Mobile fallback */
   .ecology-mobile-fallback {
@@ -655,14 +666,59 @@ import PortalLayout from '../layouts/PortalLayout.astro'
 
   .ecology-text {
     align-self: center;
+    width: 300px;
+    padding: 1.5rem 1.75rem;
+    border-radius: 4px;
+    background: var(--bg-surface);
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
   }
 
-  .ecology-text-heading {
+  .ecology-text::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: 5px;
+    background: conic-gradient(
+      from var(--glow-angle, 0deg),
+      transparent 0%,
+      transparent 30%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 70%,
+      transparent 100%
+    );
+    animation: ecology-glow-spin 6s linear infinite;
+  }
+
+  .ecology-text::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    border-radius: 3px;
+    background: var(--bg-surface);
+  }
+
+  @property --glow-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes ecology-glow-spin {
+    from { --glow-angle: 0deg; }
+    to { --glow-angle: 360deg; }
+  }
+
+  .about-page .ecology-text-heading {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: var(--text-heading);
-    margin: 0 0 1rem;
+    margin: 0 0 1.5rem;
     line-height: 1.3;
   }
 
@@ -878,293 +934,460 @@ import PortalLayout from '../layouts/PortalLayout.astro'
   }
 </style>
 
-<script>
-;(function ecologyLoop() {
-  const wrap = document.getElementById('ecology-wrap')
-  const canvas = document.getElementById('ecology-canvas')
+
+<script is:inline data-astro-rerun>
+;function __ecoTriquetraInit() {
+  if (window.__ecoCleanup) { window.__ecoCleanup(); window.__ecoCleanup = null }
+
+  var wrap = document.getElementById('ecology-wrap')
+  var canvas = document.getElementById('ecology-canvas')
   if (!wrap || !canvas) return
-  const ctx = canvas.getContext('2d')
+  var ctx = canvas.getContext('2d')
   if (!ctx) return
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  var W = 0, H = 0, dpr = 1, animId = 0, visible = false, time = 0
+  var mouseX = -9999, mouseY = -9999
+  var CURSOR_RADIUS = 80, CURSOR_FORCE = 3.0
+  var PI = Math.PI, TAU = PI * 2
 
-  /* ── Flow colours ── */
-  const FLOW_COLORS = [
-    '#7db3d4', // House → Institute (cool blue)
-    '#d4704e', // Institute → House (warm terracotta)
-    '#8fa87a', // Institute → Consulting (sage green)
-    '#b994d4', // Consulting → House (soft purple)
-  ]
+  /* ── Node t-values on the triquetra ── */
+  var NODE_T = [PI, 5 * PI / 3, PI / 3] // Institute, House, Consulting
+  var NODE_LABELS = ['institute', 'house', 'consulting']
+  var NODE_R1 = [22, 16, 16]
+  var NODE_R2 = [38, 28, 28]
+  var hoveredNode = -1
 
-  /* ── Node positions (ratios of canvas size) ── */
-  const NODES = [
-    { x: 0.50, y: 0.20, r: 32, label: 'institute' },
-    { x: 0.25, y: 0.78, r: 24, label: 'house' },
-    { x: 0.75, y: 0.78, r: 24, label: 'consulting' },
-  ]
+  /* ── Theme-aware colors ── */
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') !== 'light'
+  }
+  function getColors() {
+    var d = isDark()
+    return {
+      node: d ? [212, 112, 78] : [140, 50, 35],
+      orbit: d ? [196, 130, 90] : [160, 100, 70],
+      flow: d ? [212, 112, 78] : [140, 50, 35],
+      spark: d ? '255,220,180' : '180,140,100',
+      pathAlpha: d ? 0.06 : 0.04,
+      baseMul: d ? 1.0 : 0.65,
+    }
+  }
 
-  /* ── Flow definitions: [fromNodeIdx, toNodeIdx, density, colorIdx] ── */
-  const FLOWS = [
-    [1, 0, 140, 0], // House → Institute
-    [0, 1, 100, 1], // Institute → House
-    [0, 2, 100, 2], // Institute → Consulting
-    [2, 1, 70, 3],  // Consulting → House
-  ]
+  /* ── Triquetra parametric curve ── */
+  var S = 1, cx = 0, cy = 0
 
-  /* ── Particle pool ── */
-  const MAX_PARTICLES = 500
-  const STRIDE = 6 // progress, speed, flowIdx, active, jitter, sinePhase
-  const pool = new Float32Array(MAX_PARTICLES * STRIDE)
+  function triquetraX(t) {
+    return cx + S * (Math.sin(t) + 2 * Math.sin(2 * t))
+  }
+  function triquetraY(t) {
+    return cy + S * (Math.cos(t) - 2 * Math.cos(2 * t))
+  }
 
-  let W = 0, H = 0, dpr = 1
-  let animId = 0
-  let visible = false
-  const activeFlows = [true, true, true, true]
-  let hoveredNode = -1
-  let time = 0
+  /* Tangent (derivative) for perpendicular jitter */
+  function triquetraDX(t) {
+    return S * (Math.cos(t) + 4 * Math.cos(2 * t))
+  }
+  function triquetraDY(t) {
+    return S * (-Math.sin(t) - 4 * Math.sin(2 * t))
+  }
+
+  /* Get node screen position from its t-value */
+  function nodePos(idx, offset) {
+    var t = NODE_T[idx] + offset
+    return { x: triquetraX(t), y: triquetraY(t) }
+  }
 
   /* ── Resize ── */
-  let resizeTimer = 0
+  var resizeTimer = 0
   function resize() {
-    const rect = wrap.getBoundingClientRect()
+    var rect = wrap.getBoundingClientRect()
     dpr = Math.min(window.devicePixelRatio || 1, 2)
-    W = rect.width
-    H = rect.height
-    canvas.width = W * dpr
-    canvas.height = H * dpr
-    canvas.style.width = W + 'px'
-    canvas.style.height = H + 'px'
+    W = rect.width; H = rect.height
+    canvas.width = W * dpr; canvas.height = H * dpr
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px'
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    S = Math.min(0.096 * W, 0.12 * H)
+    cx = 0.5 * W
+    cy = 0.58 * H
   }
-
-  function debouncedResize() {
-    clearTimeout(resizeTimer)
-    resizeTimer = window.setTimeout(resize, 200)
-  }
+  function debouncedResize() { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 200) }
   window.addEventListener('resize', debouncedResize)
   resize()
 
-  /* ── Bezier path helper ── */
-  function getFlowPath(flowIdx) {
-    const flow = FLOWS[flowIdx]
-    const from = NODES[flow[0]]
-    const to = NODES[flow[1]]
-    const fx = from.x * W, fy = from.y * H
-    const tx = to.x * W, ty = to.y * H
-
-    // Perpendicular offset for bidirectional edges (flows 0 & 1 share left edge)
-    let offX = 0, offY = 0
-    if (flowIdx === 0 || flowIdx === 1) {
-      const dx = tx - fx, dy = ty - fy
-      const len = Math.sqrt(dx * dx + dy * dy) || 1
-      const nx = -dy / len, ny = dx / len
-      const sign = flowIdx === 0 ? 1 : -1
-      offX = nx * 8 * sign
-      offY = ny * 8 * sign
-    }
-
-    const mx = (fx + tx) / 2 + offX
-    const my = (fy + ty) / 2 + offY
-    // Control point offset toward centre of triangle
-    const cx = mx + (0.5 * W - mx) * 0.35
-    const cy = my + (0.5 * H - my) * 0.35
-
-    return { fx: fx + offX, fy: fy + offY, cx, cy, tx: tx + offX, ty: ty + offY }
+  /* ── Flow particles along triquetra ── */
+  var FLOW_COUNT = 300
+  var FLOW_STRIDE = 7 // t, speed, jitterSeed, sinePhase, size, baseAlpha, active
+  var flow = new Float32Array(FLOW_COUNT * FLOW_STRIDE)
+  for (var i = 0; i < FLOW_COUNT; i++) {
+    var b = i * FLOW_STRIDE
+    flow[b]     = Math.random() * TAU        // t position
+    flow[b + 1] = 0.003 + Math.random() * 0.006  // speed
+    flow[b + 2] = (Math.random() - 0.5) * 2      // jitter seed
+    flow[b + 3] = Math.random() * TAU             // sine phase
+    flow[b + 4] = 0.8 + Math.random() * 1.4       // size
+    flow[b + 5] = 0.15 + Math.random() * 0.35     // base alpha
+    flow[b + 6] = 1                                // active
   }
 
-  /* ── Evaluate quadratic bezier at t ── */
-  function bezierAt(path, t) {
-    const mt = 1 - t
-    return {
-      x: mt * mt * path.fx + 2 * mt * t * path.cx + t * t * path.tx,
-      y: mt * mt * path.fy + 2 * mt * t * path.cy + t * t * path.ty,
-    }
+  /* ── Orbital particles around each node ── */
+  var ORBIT_COUNT = 75 // 25 per node
+  var ORBIT_STRIDE = 7 // nodeIdx, ringIdx, angle, speed, size, baseAlpha, _
+  var orbits = new Float32Array(ORBIT_COUNT * ORBIT_STRIDE)
+  for (var i = 0; i < ORBIT_COUNT; i++) {
+    var b = i * ORBIT_STRIDE
+    var ni = Math.floor(i / 25)
+    orbits[b]     = ni
+    orbits[b + 1] = Math.random() < 0.6 ? 0 : 1
+    orbits[b + 2] = Math.random() * TAU
+    orbits[b + 3] = (0.004 + Math.random() * 0.01) * (Math.random() < 0.5 ? 1 : -1)
+    orbits[b + 4] = 0.8 + Math.random() * 0.7
+    orbits[b + 5] = 0.15 + Math.random() * 0.3
+    orbits[b + 6] = 0
   }
 
-  /* ── Initialise particles ── */
-  function initParticles() {
-    let idx = 0
-    for (let fi = 0; fi < FLOWS.length; fi++) {
-      const count = FLOWS[fi][2]
-      for (let i = 0; i < count; i++) {
-        const base = idx * STRIDE
-        pool[base] = Math.random()                       // progress
-        pool[base + 1] = 0.001 + Math.random() * 0.002   // speed
-        pool[base + 2] = fi                               // flow index
-        pool[base + 3] = 1                                // active immediately
-        pool[base + 4] = (Math.random() - 0.5) * 2       // jitter seed
-        pool[base + 5] = Math.random() * Math.PI * 2     // sine phase
-        idx++
+  /* ── Cursor sparks ── */
+  var MAX_SPARKS = 200
+  var cursorSparks = []
+  var _sparkRgb = '255,220,180'
+
+  function spawnSpark(x, y, angle) {
+    if (cursorSparks.length >= MAX_SPARKS) return
+    var speed = 1.5 + Math.random() * 3
+    var a = angle + (Math.random() - 0.5) * 1.2
+    cursorSparks.push({
+      x: x, y: y,
+      vx: Math.cos(a) * speed,
+      vy: Math.sin(a) * speed,
+      life: 0,
+      maxLife: 12 + Math.random() * 25,
+      size: 0.5 + Math.random() * 1.5,
+      rgb: _sparkRgb
+    })
+  }
+
+  function cursorPush(px, py) {
+    var dx = px - mouseX, dy = py - mouseY
+    var d2 = dx * dx + dy * dy
+    var r2 = CURSOR_RADIUS * CURSOR_RADIUS
+    if (d2 > r2 || d2 < 1) return { x: 0, y: 0 }
+    var d = Math.sqrt(d2)
+    var influence = 1 - d / CURSOR_RADIUS
+    influence *= influence
+    var f = influence * CURSOR_FORCE
+    var nx = dx / d, ny = dy / d
+    if (Math.random() < influence * 0.1) {
+      spawnSpark(px, py, Math.atan2(-ny, -nx))
+    }
+    return { x: nx * f * 8, y: ny * f * 8 }
+  }
+
+  /* ── Distance in parameter space (wrapping) ── */
+  function paramDist(a, b) {
+    var d = Math.abs(a - b)
+    return d > PI ? TAU - d : d
+  }
+
+  /* ── Check if parameter t is near a node ── */
+  function nearestNodeBrightness(t) {
+    var best = 99
+    for (var i = 0; i < 3; i++) {
+      var d = paramDist(t, NODE_T[i])
+      if (d < best) best = d
+    }
+    // Brighten within 0.4 radians of a node
+    if (best < 0.4) return 1.0 + (1.0 - best / 0.4) * 0.8
+    return 1.0
+  }
+
+  /* ═══════════ DRAW FUNCTIONS ═══════════ */
+
+  function drawTriquetraPath(tOffset) {
+    var col = getColors()
+    var c = col.node
+    var steps = 200
+    var alpha = col.pathAlpha
+
+    // Hover: brighten path near hovered node
+    if (hoveredNode >= 0) {
+      // Draw dimmed full path first
+      ctx.beginPath()
+      for (var i = 0; i <= steps; i++) {
+        var t = (i / steps) * TAU + tOffset
+        var px = triquetraX(t), py = triquetraY(t)
+        if (i === 0) ctx.moveTo(px, py)
+        else ctx.lineTo(px, py)
       }
+      ctx.closePath()
+      ctx.strokeStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (alpha * 0.3) + ')'
+      ctx.lineWidth = 0.5
+      ctx.stroke()
+
+      // Draw bright section near hovered node
+      ctx.beginPath()
+      var nodeT = NODE_T[hoveredNode]
+      var started = false
+      for (var i = 0; i <= steps; i++) {
+        var t = (i / steps) * TAU + tOffset
+        var rawT = ((t % TAU) + TAU) % TAU
+        var d = paramDist(rawT, nodeT)
+        if (d < 0.8) {
+          var px = triquetraX(t), py = triquetraY(t)
+          if (!started) { ctx.moveTo(px, py); started = true }
+          else ctx.lineTo(px, py)
+        }
+      }
+      ctx.strokeStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (alpha * 3) + ')'
+      ctx.lineWidth = 0.8
+      ctx.stroke()
+    } else {
+      // No hover: draw full path
+      ctx.beginPath()
+      for (var i = 0; i <= steps; i++) {
+        var t = (i / steps) * TAU + tOffset
+        var px = triquetraX(t), py = triquetraY(t)
+        if (i === 0) ctx.moveTo(px, py)
+        else ctx.lineTo(px, py)
+      }
+      ctx.closePath()
+      ctx.strokeStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + alpha + ')'
+      ctx.lineWidth = 0.5
+      ctx.stroke()
     }
   }
-  initParticles()
 
-  /* ── Intersection Observer (visibility gating only) ── */
-  const observer = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.isIntersecting) {
-        visible = true
-        if (!animId) tick()
-      } else {
-        visible = false
-      }
+  function drawNodeHalos(tOffset) {
+    var col = getColors()
+    var c = col.node
+    var d = isDark()
+
+    for (var i = 0; i < 3; i++) {
+      var pos = nodePos(i, tOffset)
+      var nx = pos.x, ny = pos.y
+      var breathe = 1 + Math.sin(time * 0.4 + i * 2.1) * 0.06
+      var isHov = hoveredNode === i
+      var r1 = NODE_R1[i] * breathe
+      var r2 = NODE_R2[i] * breathe
+
+      // Radial glow
+      var grad = ctx.createRadialGradient(nx, ny, 0, nx, ny, r2 * 1.8)
+      var glowA = isHov ? (d ? 0.2 : 0.14) : (d ? 0.1 : 0.06)
+      grad.addColorStop(0, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + glowA + ')')
+      grad.addColorStop(0.5, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (glowA * 0.4) + ')')
+      grad.addColorStop(1, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',0)')
+      ctx.beginPath()
+      ctx.arc(nx, ny, r2 * 1.8, 0, TAU)
+      ctx.fillStyle = grad
+      ctx.fill()
+
+      // Outer ring
+      ctx.beginPath()
+      ctx.arc(nx, ny, r2, 0, TAU)
+      ctx.strokeStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (isHov ? (d ? 0.15 : 0.1) : (d ? 0.07 : 0.05)) + ')'
+      ctx.lineWidth = 0.5
+      ctx.stroke()
+
+      // Inner ring
+      ctx.beginPath()
+      ctx.arc(nx, ny, r1, 0, TAU)
+      ctx.strokeStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (isHov ? (d ? 0.2 : 0.14) : (d ? 0.1 : 0.07)) + ')'
+      ctx.lineWidth = 0.5
+      ctx.stroke()
+
+      // Core dot
+      ctx.beginPath()
+      ctx.arc(nx, ny, isHov ? 3.5 : 2.5, 0, TAU)
+      ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (isHov ? (d ? 0.7 : 0.6) : (d ? 0.5 : 0.4)) + ')'
+      ctx.fill()
     }
-  }, { threshold: 0.15 })
-  observer.observe(wrap)
+  }
 
-  /* ── Hover ── */
-  function onMouseMove(e) {
-    const rect = wrap.getBoundingClientRect()
-    const mx = e.clientX - rect.left
-    const my = e.clientY - rect.top
+  function drawFlowParticles(tOffset) {
+    var col = getColors()
+    var c = col.flow
+    var mul = col.baseMul
+
+    for (var i = 0; i < FLOW_COUNT; i++) {
+      var b = i * FLOW_STRIDE
+      if (!flow[b + 6]) continue
+
+      // Advance
+      flow[b] += flow[b + 1]
+      if (flow[b] > TAU) flow[b] -= TAU
+
+      var t = flow[b] + tOffset
+      var px = triquetraX(t)
+      var py = triquetraY(t)
+
+      // Perpendicular jitter
+      var tdx = triquetraDX(t), tdy = triquetraDY(t)
+      var tlen = Math.sqrt(tdx * tdx + tdy * tdy) || 1
+      var jitter = Math.sin(flow[b] * 3 + flow[b + 3]) * 3.5 * flow[b + 2]
+      px += (-tdy / tlen) * jitter
+      py += (tdx / tlen) * jitter
+
+      // Cursor push
+      var cp = cursorPush(px, py)
+      px += cp.x; py += cp.y
+
+      // Alpha with near-node brightening
+      var rawT = ((flow[b] % TAU) + TAU) % TAU
+      var bright = nearestNodeBrightness(rawT)
+      var alpha = flow[b + 5] * bright * mul
+
+      // Hover dimming
+      if (hoveredNode >= 0) {
+        var nearHov = paramDist(rawT, NODE_T[hoveredNode])
+        alpha *= nearHov < 0.8 ? 1.4 : 0.3
+      }
+
+      ctx.beginPath()
+      ctx.arc(px, py, flow[b + 4], 0, TAU)
+      ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + alpha + ')'
+      ctx.fill()
+    }
+  }
+
+  function drawOrbitals(tOffset) {
+    var col = getColors()
+    var c = col.orbit
+    var mul = col.baseMul
+
+    for (var i = 0; i < ORBIT_COUNT; i++) {
+      var b = i * ORBIT_STRIDE
+      var ni = orbits[b]
+      var ri = orbits[b + 1]
+      var pos = nodePos(ni, tOffset)
+      var nx = pos.x, ny = pos.y
+      var breathe = 1 + Math.sin(time * 0.4 + ni * 2.1) * 0.06
+      var r = (ri === 0 ? NODE_R1[ni] : NODE_R2[ni]) * breathe
+
+      // Advance angle
+      orbits[b + 2] += orbits[b + 3]
+      var angle = orbits[b + 2]
+      var px = nx + Math.cos(angle) * r
+      var py = ny + Math.sin(angle) * r
+
+      // Cursor push
+      var cp = cursorPush(px, py)
+      px += cp.x; py += cp.y
+
+      var alpha = orbits[b + 5] * mul
+      // Brighten on hover
+      if (hoveredNode === ni) alpha *= 1.6
+      else if (hoveredNode >= 0) alpha *= 0.3
+
+      ctx.beginPath()
+      ctx.arc(px, py, orbits[b + 4], 0, TAU)
+      ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + alpha + ')'
+      ctx.fill()
+    }
+  }
+
+  function drawSparks() {
+    for (var i = cursorSparks.length - 1; i >= 0; i--) {
+      var s = cursorSparks[i]
+      s.x += s.vx; s.y += s.vy
+      s.vx *= 0.93; s.vy *= 0.93
+      s.life++
+      if (s.life >= s.maxLife) { cursorSparks.splice(i, 1); continue }
+      var t = s.life / s.maxLife
+      var alpha = t < 0.15 ? t / 0.15 : 1 - (t - 0.15) / 0.85
+      alpha *= 0.8
+      ctx.beginPath()
+      ctx.arc(s.x, s.y, s.size * (1 - t * 0.5), 0, TAU)
+      ctx.fillStyle = 'rgba(' + s.rgb + ',' + alpha + ')'
+      ctx.fill()
+    }
+  }
+
+  /* ═══════════ HOVER DETECTION ═══════════ */
+  function detectHover(mx, my, tOffset) {
     hoveredNode = -1
-    for (let i = 0; i < NODES.length; i++) {
-      const nx = NODES[i].x * W, ny = NODES[i].y * H
-      const dist = Math.sqrt((mx - nx) ** 2 + (my - ny) ** 2)
-      if (dist < 50) { hoveredNode = i; break }
+    for (var i = 0; i < 3; i++) {
+      var pos = nodePos(i, tOffset)
+      var dx = mx - pos.x, dy = my - pos.y
+      if (Math.sqrt(dx * dx + dy * dy) < 50) {
+        hoveredNode = i
+        return
+      }
     }
   }
-  function onMouseLeave() { hoveredNode = -1 }
-  wrap.addEventListener('mousemove', onMouseMove)
-  wrap.addEventListener('mouseleave', onMouseLeave)
 
-  /* ── Is flow connected to node? ── */
-  function flowConnected(flowIdx, nodeIdx) {
-    return FLOWS[flowIdx][0] === nodeIdx || FLOWS[flowIdx][1] === nodeIdx
-  }
+  /* ═══════════ MAIN LOOP ═══════════ */
+  var tOffset = 0
 
-  /* ── Draw ── */
   function tick() {
     if (!visible) { animId = 0; return }
     animId = requestAnimationFrame(tick)
     time += 0.016
+    tOffset = time * 0.00004 * TAU
 
     ctx.clearRect(0, 0, W, H)
 
-    if (reducedMotion) {
-      drawNodesStatic()
-      return
-    }
+    // Detect hover with current offset
+    if (mouseX > -9000) detectHover(mouseX, mouseY, tOffset)
 
-    // Draw flow paths (faint)
-    for (let fi = 0; fi < FLOWS.length; fi++) {
-      if (!activeFlows[fi]) continue
-      const path = getFlowPath(fi)
-      let alpha = 0.08
-      if (hoveredNode >= 0) {
-        alpha = flowConnected(fi, hoveredNode) ? 0.15 : 0.03
-      }
-      ctx.beginPath()
-      ctx.moveTo(path.fx, path.fy)
-      ctx.quadraticCurveTo(path.cx, path.cy, path.tx, path.ty)
-      ctx.strokeStyle = FLOW_COLORS[FLOWS[fi][3]]
-      ctx.globalAlpha = alpha
-      ctx.lineWidth = 1
-      ctx.stroke()
-      ctx.globalAlpha = 1
-    }
+    // Update spark color
+    var col = getColors()
+    _sparkRgb = col.spark
 
-    // Update & draw particles
-    for (let i = 0; i < MAX_PARTICLES; i++) {
-      const base = i * STRIDE
-      if (!pool[base + 3]) continue
-
-      const fi = pool[base + 2]
-      if (!activeFlows[fi]) continue
-
-      // Advance
-      pool[base] += pool[base + 1]
-      if (pool[base] > 1) pool[base] -= 1
-
-      const progress = pool[base]
-      const path = getFlowPath(fi)
-      const pos = bezierAt(path, progress)
-
-      // Perpendicular jitter
-      const jitter = Math.sin(progress * Math.PI * 4 + pool[base + 5]) * 3 * pool[base + 4]
-      // Approximate tangent for perpendicular
-      const tNext = Math.min(progress + 0.01, 1)
-      const posNext = bezierAt(path, tNext)
-      const tdx = posNext.x - pos.x, tdy = posNext.y - pos.y
-      const tlen = Math.sqrt(tdx * tdx + tdy * tdy) || 1
-      pos.x += (-tdy / tlen) * jitter
-      pos.y += (tdx / tlen) * jitter
-
-      let baseAlpha = 0.4 + pool[base + 4] * 0.15
-      if (hoveredNode >= 0) {
-        baseAlpha = flowConnected(fi, hoveredNode) ? 0.7 : 0.1
-      }
-
-      const color = FLOW_COLORS[FLOWS[fi][3]]
-      ctx.fillStyle = color
-      ctx.globalAlpha = baseAlpha
-      ctx.shadowColor = color
-      ctx.shadowBlur = 4
-      ctx.fillRect(pos.x - 1, pos.y - 1, 2, 2)
-    }
-    ctx.shadowBlur = 0
-    ctx.globalAlpha = 1
-
-    // Draw nodes
-    drawNodes()
+    drawTriquetraPath(tOffset)
+    drawNodeHalos(tOffset)
+    drawFlowParticles(tOffset)
+    drawOrbitals(tOffset)
+    drawSparks()
   }
 
-  function drawNodes() {
-    for (let i = 0; i < NODES.length; i++) {
-      const n = NODES[i]
-      const nx = n.x * W, ny = n.y * H
-      const breathe = n.r * (1 + Math.sin(time * 0.5 + i) * 0.03)
-      const isHovered = hoveredNode === i
+  /* ── Visibility gating ── */
+  var observer = new IntersectionObserver(function(entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) { visible = true; if (!animId) tick() }
+      else { visible = false }
+    }
+  }, { threshold: 0.15 })
+  observer.observe(wrap)
 
-      const grad = ctx.createRadialGradient(nx, ny, 0, nx, ny, breathe * 1.5)
-      const baseAlpha = isHovered ? 0.35 : 0.18
-      const edgeAlpha = isHovered ? 0.08 : 0.02
-
-      // Use a neutral warm colour for nodes
-      grad.addColorStop(0, `rgba(165,61,46,${baseAlpha})`)
-      grad.addColorStop(0.6, `rgba(165,61,46,${baseAlpha * 0.5})`)
-      grad.addColorStop(1, `rgba(165,61,46,${edgeAlpha})`)
-
-      ctx.beginPath()
-      ctx.arc(nx, ny, breathe * 1.5, 0, Math.PI * 2)
-      ctx.fillStyle = grad
-      ctx.fill()
-
-      // Core dot
-      ctx.beginPath()
-      ctx.arc(nx, ny, 3, 0, Math.PI * 2)
-      ctx.fillStyle = `rgba(165,61,46,${isHovered ? 0.6 : 0.3})`
-      ctx.fill()
+  /* ── Mouse / Touch ── */
+  function onEcoMouseMove(e) {
+    var rect = canvas.getBoundingClientRect()
+    mouseX = (e.clientX - rect.left) * (W / rect.width)
+    mouseY = (e.clientY - rect.top) * (H / rect.height)
+  }
+  function onEcoMouseLeave() { mouseX = -9999; mouseY = -9999; hoveredNode = -1 }
+  function onEcoTouchMove(e) {
+    if (e.touches.length > 0) {
+      var rect = canvas.getBoundingClientRect()
+      mouseX = (e.touches[0].clientX - rect.left) * (W / rect.width)
+      mouseY = (e.touches[0].clientY - rect.top) * (H / rect.height)
     }
   }
+  function onEcoTouchEnd() { mouseX = -9999; mouseY = -9999; hoveredNode = -1 }
+  wrap.addEventListener('mousemove', onEcoMouseMove)
+  wrap.addEventListener('mouseleave', onEcoMouseLeave)
+  wrap.addEventListener('touchmove', onEcoTouchMove, { passive: true })
+  wrap.addEventListener('touchend', onEcoTouchEnd)
 
-  function drawNodesStatic() {
-    for (let i = 0; i < NODES.length; i++) {
-      const n = NODES[i]
-      const nx = n.x * W, ny = n.y * H
-      const grad = ctx.createRadialGradient(nx, ny, 0, nx, ny, n.r * 1.5)
-      grad.addColorStop(0, 'rgba(165,61,46,0.18)')
-      grad.addColorStop(1, 'rgba(165,61,46,0.02)')
-      ctx.beginPath()
-      ctx.arc(nx, ny, n.r * 1.5, 0, Math.PI * 2)
-      ctx.fillStyle = grad
-      ctx.fill()
-      ctx.beginPath()
-      ctx.arc(nx, ny, 3, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(165,61,46,0.3)'
-      ctx.fill()
-    }
-  }
-
-  /* ── Theme change observer ── */
-  const themeObs = new MutationObserver(() => {
-    // Colours are CSS-independent (hardcoded RGBA), so just redraw
-    if (visible && !animId) tick()
-  })
+  /* ── Theme observer ── */
+  var themeObs = new MutationObserver(function() { if (visible && !animId) tick() })
   themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
-})()
 
+  /* ── Cleanup ── */
+  window.__ecoCleanup = function() {
+    if (animId) cancelAnimationFrame(animId)
+    animId = 0; visible = false
+    observer.disconnect()
+    themeObs.disconnect()
+    window.removeEventListener('resize', debouncedResize)
+    wrap.removeEventListener('mousemove', onEcoMouseMove)
+    wrap.removeEventListener('mouseleave', onEcoMouseLeave)
+    wrap.removeEventListener('touchmove', onEcoTouchMove)
+    wrap.removeEventListener('touchend', onEcoTouchEnd)
+  }
+}
+__ecoTriquetraInit()
+</script>
+
+<script>
 /* ── Scroll-based band activation ── */
 function initAboutBandScroll() {
   const bands = document.querySelectorAll('.about-band')
